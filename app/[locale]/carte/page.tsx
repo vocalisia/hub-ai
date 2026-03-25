@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
 
-const WorldMap = nextDynamic(() => import('@/components/WorldMap'), { ssr: false })
+const Globe3D = nextDynamic(() => import('@/components/Globe3D'), { ssr: false })
 
 export async function generateMetadata({
   params: { locale }
@@ -32,14 +32,15 @@ export default async function CartePage({
   const t = await getTranslations({ locale, namespace: 'map' })
 
   return (
-    <main className="min-h-screen bg-[#0A0A1A] py-20 px-4">
+    <main className="min-h-screen bg-[#030014] pt-28 pb-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-black text-white mb-4">{t('title')}</h1>
-          <p className="text-gray-400 text-xl">{t('subtitle')}</p>
+        <div className="text-center mb-8">
+          <span className="text-purple-400 text-xs font-medium uppercase tracking-[0.2em] mb-4 block">Interactive</span>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-4">{t('title')}</h1>
+          <p className="text-gray-500 text-lg">{t('subtitle')}</p>
         </div>
 
-        {/* Schema LocalBusiness pour chaque ville */}
+        {/* Schema LocalBusiness */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -54,16 +55,8 @@ export default async function CartePage({
                   "item": {
                     "@type": "LocalBusiness",
                     "name": "Hub AI — Geneve",
-                    "address": {
-                      "@type": "PostalAddress",
-                      "addressLocality": "Geneve",
-                      "addressCountry": "CH"
-                    },
-                    "geo": {
-                      "@type": "GeoCoordinates",
-                      "latitude": 46.2044,
-                      "longitude": 6.1432
-                    }
+                    "address": { "@type": "PostalAddress", "addressLocality": "Geneve", "addressCountry": "CH" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 46.2044, "longitude": 6.1432 }
                   }
                 },
                 {
@@ -72,11 +65,7 @@ export default async function CartePage({
                   "item": {
                     "@type": "LocalBusiness",
                     "name": "Hub AI — Montreal",
-                    "address": {
-                      "@type": "PostalAddress",
-                      "addressLocality": "Montreal",
-                      "addressCountry": "CA"
-                    }
+                    "address": { "@type": "PostalAddress", "addressLocality": "Montreal", "addressCountry": "CA" }
                   }
                 },
                 {
@@ -85,11 +74,7 @@ export default async function CartePage({
                   "item": {
                     "@type": "LocalBusiness",
                     "name": "Hub AI — San Francisco",
-                    "address": {
-                      "@type": "PostalAddress",
-                      "addressLocality": "San Francisco",
-                      "addressCountry": "US"
-                    }
+                    "address": { "@type": "PostalAddress", "addressLocality": "San Francisco", "addressCountry": "US" }
                   }
                 }
               ]
@@ -97,7 +82,9 @@ export default async function CartePage({
           }}
         />
 
-        <WorldMap />
+        <div className="bg-white/[0.02] rounded-3xl border border-white/5 p-4 md:p-8">
+          <Globe3D />
+        </div>
       </div>
     </main>
   )
