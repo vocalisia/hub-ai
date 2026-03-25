@@ -23,6 +23,7 @@ export default function Navbar() {
     { href: `/${locale}`, label: t('home') },
     { href: `/${locale}/carte`, label: t('map') },
     { href: `/${locale}/blog`, label: t('blog') },
+    { href: `/${locale}/contact`, label: t('contact') },
   ]
 
   const switchLocale = (newLocale: string) => {

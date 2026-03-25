@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server'
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import '@/app/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -90,6 +91,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
