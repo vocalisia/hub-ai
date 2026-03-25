@@ -4,13 +4,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
-export async function generateStaticParams() {
-  const posts = getAllPosts()
-  const locales = ['fr', 'en', 'de', 'it']
-  return locales.flatMap(locale =>
-    posts.map(post => ({ locale, slug: post.slug }))
-  )
-}
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({
   params

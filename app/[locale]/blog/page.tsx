@@ -4,6 +4,8 @@ import GeoFilter from '@/components/GeoFilter'
 import { getTranslations } from 'next-intl/server'
 import type { Metadata } from 'next'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({
   params: { locale }
 }: {

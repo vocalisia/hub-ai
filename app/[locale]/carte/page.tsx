@@ -1,8 +1,10 @@
 import { getTranslations } from 'next-intl/server'
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 import type { Metadata } from 'next'
 
-const WorldMap = dynamic(() => import('@/components/WorldMap'), { ssr: false })
+export const dynamic = 'force-dynamic'
+
+const WorldMap = nextDynamic(() => import('@/components/WorldMap'), { ssr: false })
 
 export async function generateMetadata({
   params: { locale }
