@@ -2,29 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: #0A0A1A;
+  background: #030014;
   color: white;
+  overflow-x: hidden;
 }
 
-/* MapLibre overrides */
-.maplibregl-popup-content {
-  background: transparent !important;
-  padding: 0 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #030014;
+}
+::-webkit-scrollbar-thumb {
+  background: #8b5cf620;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf640;
 }
 
-.maplibregl-popup-tip {
-  border-top-color: #1A1A2E !important;
-}
-
-.maplibregl-popup-close-button {
-  color: white !important;
-  font-size: 18px;
-  padding: 4px 8px;
+/* Selection */
+::selection {
+  background: #8b5cf640;
+  color: white;
 }

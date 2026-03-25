@@ -2,6 +2,8 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
+import Navbar from '@/components/Navbar'
+import '@/app/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -84,8 +86,9 @@ export default async function LocaleLayout({
         <link rel="alternate" hrefLang="it" href="https://sebastien-ia.com/it" />
         <link rel="alternate" hrefLang="x-default" href="https://sebastien-ia.com/fr" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-[#030014] text-white antialiased`}>
         <NextIntlClientProvider messages={messages}>
+          <Navbar />
           {children}
         </NextIntlClientProvider>
       </body>
