@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useMemo, useCallback } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Sphere, Html } from '@react-three/drei'
+import { OrbitControls, Sphere, Html, Line } from '@react-three/drei'
 import * as THREE from 'three'
 
 const CITIES = [
@@ -78,9 +78,7 @@ function CityMarker({ city, radius }: { city: typeof CITIES[0]; radius: number }
 }
 
 function ArcConnection({ from, to, radius }: { from: typeof CITIES[0]; to: typeof CITIES[0]; radius: number }) {
-  const curveRef = useRef<THREE.Line>(null)
-
-  const curve = useMemo(() => {
+  const points = useMemo(() => {
     const start = latLngToVector3(from.lat, from.lng, radius)
     const end = latLngToVector3(to.lat, to.lng, radius)
     const mid = start.clone().add(end).multiplyScalar(0.5)
@@ -88,14 +86,17 @@ function ArcConnection({ from, to, radius }: { from: typeof CITIES[0]; to: typeo
     mid.normalize().multiplyScalar(radius + dist * 0.3)
 
     const curve = new THREE.QuadraticBezierCurve3(start, mid, end)
-    const points = curve.getPoints(50)
-    return new THREE.BufferGeometry().setFromPoints(points)
+    return curve.getPoints(50).map(p => [p.x, p.y, p.z] as [number, number, number])
   }, [from, to, radius])
 
   return (
-    <line ref={curveRef as any} geometry={curve}>
-      <lineBasicMaterial color="#8b5cf6" transparent opacity={0.4} />
-    </line>
+    <Line
+      points={points}
+      color="#8b5cf6"
+      lineWidth={1.5}
+      transparent
+      opacity={0.4}
+    />
   )
 }
 
