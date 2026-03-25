@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Home",
+    "ecosystem": "Ecosystem",
+    "map": "AI Map",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Hub AI",
+    "subtitle": "Switzerland - Europe - Americas",
+    "description": "Discover the most complete AI network: automation, SMEs, innovation. Present in Switzerland, Europe, Canada and USA.",
+    "cta_map": "Explore the Map",
+    "cta_blog": "Read the Blog"
+  },
+  "map": {
+    "title": "Interactive AI Map",
+    "subtitle": "200+ geolocated AI players",
+    "filter_all": "All",
+    "filter_ch": "🇨🇭 Switzerland",
+    "filter_eu": "🇪🇺 Europe",
+    "filter_ca": "🇨🇦 Canada",
+    "filter_us": "🇺🇸 USA"
+  },
+  "blog": {
+    "title": "AI Blog",
+    "subtitle": "Geolocated SEO articles",
+    "read_more": "Read more",
+    "min_read": "min read"
+  },
+  "seo": {
+    "home_title": "Hub AI — AI Hub Switzerland, Europe, Canada, USA",
+    "home_description": "Complete AI ecosystem: automation, Swiss SMEs, AI innovations in Europe and Americas. Expert multilingual blog.",
+    "map_title": "Interactive AI Map — 200+ Global Players",
+    "blog_title": "AI Blog — Expert Geolocated Articles"
+  }
+}

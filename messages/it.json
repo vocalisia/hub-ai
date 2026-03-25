@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Home",
+    "ecosystem": "Ecosistema",
+    "map": "Mappa IA",
+    "blog": "Blog",
+    "contact": "Contatto"
+  },
+  "hero": {
+    "title": "Hub AI",
+    "subtitle": "Svizzera - Europa - Americhe",
+    "description": "Scopri la rete IA piu completa: automazione, PMI, innovazione. Presente in Svizzera, Europa, Canada e USA.",
+    "cta_map": "Esplora la Mappa",
+    "cta_blog": "Leggi il Blog"
+  },
+  "map": {
+    "title": "Mappa IA Interattiva",
+    "subtitle": "200+ attori IA geolocalizzati",
+    "filter_all": "Tutti",
+    "filter_ch": "🇨🇭 Svizzera",
+    "filter_eu": "🇪🇺 Europa",
+    "filter_ca": "🇨🇦 Canada",
+    "filter_us": "🇺🇸 USA"
+  },
+  "blog": {
+    "title": "Blog IA",
+    "subtitle": "Articoli SEO geolocalizzati",
+    "read_more": "Leggi di piu",
+    "min_read": "min di lettura"
+  },
+  "seo": {
+    "home_title": "Hub AI — Hub IA Svizzera, Europa, Canada, USA",
+    "home_description": "Ecosistema IA completo: automazione, PMI svizzere, innovazioni IA in Europa e Americhe.",
+    "map_title": "Mappa IA Interattiva — 200+ Attori Globali",
+    "blog_title": "Blog IA — Articoli Esperti Geolocalizzati"
+  }
+}

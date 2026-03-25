@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "ecosystem": "Okosystem",
+    "map": "KI-Karte",
+    "blog": "Blog",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Hub AI",
+    "subtitle": "Schweiz - Europa - Amerika",
+    "description": "Entdecken Sie das vollstandigste KI-Netzwerk: Automatisierung, KMU, Innovation. Prasent in der Schweiz, Europa, Kanada und USA.",
+    "cta_map": "Karte erkunden",
+    "cta_blog": "Blog lesen"
+  },
+  "map": {
+    "title": "Interaktive KI-Karte",
+    "subtitle": "200+ geolokal KI-Akteure",
+    "filter_all": "Alle",
+    "filter_ch": "🇨🇭 Schweiz",
+    "filter_eu": "🇪🇺 Europa",
+    "filter_ca": "🇨🇦 Kanada",
+    "filter_us": "🇺🇸 USA"
+  },
+  "blog": {
+    "title": "KI Blog",
+    "subtitle": "Geolokale SEO-Artikel",
+    "read_more": "Weiterlesen",
+    "min_read": "Min. Lesezeit"
+  },
+  "seo": {
+    "home_title": "Hub AI — KI-Hub Schweiz, Europa, Kanada, USA",
+    "home_description": "Vollstandiges KI-Okosystem: Automatisierung, Schweizer KMU, KI-Innovationen in Europa und Amerika.",
+    "map_title": "Interaktive KI-Karte — 200+ globale Akteure",
+    "blog_title": "KI Blog — Expertenartikel mit Geolokalisierung"
+  }
+}

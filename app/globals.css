@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0A0A1A;
+  color: white;
+}
+
+/* MapLibre overrides */
+.maplibregl-popup-content {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+}
+
+.maplibregl-popup-tip {
+  border-top-color: #1A1A2E !important;
+}
+
+.maplibregl-popup-close-button {
+  color: white !important;
+  font-size: 18px;
+  padding: 4px 8px;
+}
