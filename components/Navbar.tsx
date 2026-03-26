@@ -24,6 +24,7 @@ export default function Navbar() {
     { href: `/${locale}/carte`, label: t('map') },
     { href: `/${locale}/blog`, label: t('blog') },
     { href: `/${locale}/ebooks`, label: t('ebooks') },
+    { href: `/${locale}/quiz`, label: 'Quiz IA' },
     { href: `/${locale}/contact`, label: t('contact') },
   ]
 

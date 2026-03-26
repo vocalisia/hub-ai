@@ -21,7 +21,7 @@ interface Props {
   index?: number
 }
 
-export default function EbookCard({ ebook, index = 0 }: Props) {
+export default function EbookCard({ ebook, index = 0, locale = 'fr' }: Props & { locale?: string }) {
   const [chaptersOpen, setChaptersOpen] = useState(false)
 
   return (
@@ -174,7 +174,7 @@ export default function EbookCard({ ebook, index = 0 }: Props) {
 
           {/* CTA Button */}
           <a
-            href="#"
+            href={`/${locale}/contact?ebook=${encodeURIComponent(ebook.title)}`}
             className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold transition-all duration-300 bg-gradient-to-r from-[#FFD700]/10 to-[#DAA520]/10 text-[#FFD700] border border-[#FFD700]/20 hover:border-[#FFD700]/50 hover:bg-[#FFD700]/15 hover:shadow-[0_0_20px_rgba(255,215,0,0.1)]"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
