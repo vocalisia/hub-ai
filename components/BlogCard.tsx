@@ -93,7 +93,7 @@ export default function BlogCard({ post, locale, index = 0 }: Props) {
                 })}
               </span>
               <span className="flex items-center gap-1.5 text-purple-400/80 text-sm font-medium group-hover:text-purple-300 transition-colors">
-                Lire
+                {locale === 'en' ? 'Read' : locale === 'de' ? 'Lesen' : locale === 'it' ? 'Leggi' : 'Lire'}
                 <svg className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

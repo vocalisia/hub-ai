@@ -57,6 +57,8 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <meta property="og:image" content="https://ai-due.com/api/og" />
         {/* Google Analytics 4 */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-PE4BF17GKG" />
         <script dangerouslySetInnerHTML={{ __html: `

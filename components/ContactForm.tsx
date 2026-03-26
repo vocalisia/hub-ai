@@ -16,9 +16,13 @@ export default function ContactForm() {
     e.preventDefault()
     setStatus('sending')
 
-    // Simulate form submission - replace with actual API endpoint
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500))
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (!res.ok) throw new Error('Failed')
       setStatus('sent')
       setFormData({ name: '', email: '', subject: '', message: '' })
     } catch {

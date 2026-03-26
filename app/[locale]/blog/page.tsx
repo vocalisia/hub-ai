@@ -63,7 +63,7 @@ export default async function BlogPage({
           {/* Header */}
           <div className="text-center mb-16">
             <span className="inline-block text-purple-400 text-xs font-semibold uppercase tracking-[0.25em] mb-5 px-4 py-2 rounded-full border border-purple-500/20 bg-purple-500/5">
-              Expert Articles
+              {locale === 'en' ? 'Expert Articles' : locale === 'de' ? 'Expertenartikel' : locale === 'it' ? 'Articoli Esperti' : 'Articles Experts'}
             </span>
             <h1 className="text-5xl md:text-6xl font-black text-white mb-5 leading-tight">
               {t('title').split(' ')[0]}{' '}
@@ -109,7 +109,7 @@ export default async function BlogPage({
           {/* Post count */}
           <div className="flex items-center justify-between mb-8">
             <p className="text-gray-600 text-sm">
-              <span className="text-white font-semibold">{posts.length}</span> article{posts.length !== 1 ? 's' : ''}
+              <span className="text-white font-semibold">{posts.length}</span> {locale === 'en' ? 'articles' : locale === 'de' ? 'Artikel' : locale === 'it' ? 'articoli' : 'articles'}
             </p>
           </div>
 

@@ -27,6 +27,7 @@ export default function Navbar() {
     { href: `/${locale}/ebooks`, label: t('ebooks') },
     { href: `/${locale}/quiz`, label: 'Quiz IA' },
     { href: `/${locale}/games`, label: 'Jeux IA' },
+    { href: `/${locale}/tools`, label: 'Tools' },
     { href: `/${locale}/contact`, label: t('contact') },
   ]
 
