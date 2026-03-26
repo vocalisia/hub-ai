@@ -27,101 +27,99 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center pt-20 sm:pt-24">
-        {/* Left: Text */}
-        <div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/20 bg-purple-500/5 text-purple-400 text-xs font-medium mb-8 tracking-wider uppercase"
-          >
-            <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-            Network Active
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] mb-4 sm:mb-6"
-          >
-            <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">AI</span>
-            <br />
-            <span className="text-white">DUE</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-400 text-sm sm:text-lg md:text-xl max-w-lg mb-6 sm:mb-10 leading-relaxed"
-          >
-            {t('description')}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex flex-wrap gap-4"
-          >
-            <Link
-              href={`/${locale}/carte`}
-              className="group px-6 py-3.5 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all hover:-translate-y-0.5"
-            >
-              <span className="flex items-center gap-2">
-                {t('cta_map')}
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </span>
-            </Link>
-            <Link
-              href={`/${locale}/blog`}
-              className="px-6 py-3.5 border border-white/10 text-gray-300 font-semibold rounded-xl hover:bg-white/5 hover:border-white/20 transition-all"
-            >
-              {t('cta_blog')}
-            </Link>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="grid grid-cols-2 sm:flex gap-4 sm:gap-8 mt-8 sm:mt-14 pt-6 sm:pt-8 border-t border-white/5"
-          >
-            {[
-              { value: '8', label: 'Connected Sites' },
-              { value: '33+', label: 'AI Articles' },
-              { value: '4', label: 'Languages' },
-              { value: '68', label: 'AI Cities' }
-            ].map(({ value, label }) => (
-              <div key={label}>
-                <div className="text-2xl font-black text-white">{value}</div>
-                <div className="text-gray-600 text-xs uppercase tracking-wider mt-1">{label}</div>
-              </div>
-            ))}
-          </motion.div>
+      {/* Globe behind content - full screen centered */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        <div className="w-[120vw] h-[120vh] sm:w-[100vw] sm:h-[100vh] opacity-50 sm:opacity-65 lg:opacity-75 flex items-center justify-center">
+          <div className="w-full h-full">
+            <Globe3D />
+          </div>
         </div>
+      </div>
 
-        {/* Right: 3D Globe */}
+      {/* Content over globe */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 text-center">
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="hidden lg:block"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/20 bg-purple-500/5 text-purple-400 text-xs font-medium mb-6 sm:mb-8 tracking-wider uppercase backdrop-blur-sm"
         >
-          <Globe3D />
+          <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+          Network Active
         </motion.div>
-        {/* Mobile Globe (smaller) */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3 }}
-          className="lg:hidden w-full h-[300px] -mt-4"
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-[0.85] mb-4 sm:mb-6"
         >
-          <Globe3D />
+          <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">AI</span>
+          {' '}
+          <span className="text-white">DUE</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="text-purple-300/80 text-sm sm:text-base font-medium mb-4 tracking-widest uppercase"
+        >
+          {t('subtitle')}
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed"
+        >
+          {t('description')}
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16"
+        >
+          <Link
+            href={`/${locale}/carte`}
+            className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all hover:-translate-y-0.5 text-sm sm:text-base"
+          >
+            <span className="flex items-center justify-center gap-2">
+              {t('cta_map')}
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </Link>
+          <Link
+            href={`/${locale}/blog`}
+            className="px-8 py-4 border border-white/10 text-gray-300 font-bold rounded-xl hover:bg-white/5 hover:border-white/20 transition-all backdrop-blur-sm text-sm sm:text-base"
+          >
+            {t('cta_blog')}
+          </Link>
+        </motion.div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="grid grid-cols-4 gap-3 sm:gap-6 max-w-xl mx-auto pt-6 sm:pt-8 border-t border-white/5"
+        >
+          {[
+            { value: '8', label: 'Sites' },
+            { value: '43', label: 'Articles' },
+            { value: '4', label: 'Langues' },
+            { value: '68', label: 'Villes' }
+          ].map(({ value, label }) => (
+            <div key={label} className="text-center">
+              <div className="text-xl sm:text-3xl font-black text-white">{value}</div>
+              <div className="text-gray-600 text-[10px] sm:text-xs uppercase tracking-wider mt-1">{label}</div>
+            </div>
+          ))}
         </motion.div>
       </div>
 
@@ -130,7 +128,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
