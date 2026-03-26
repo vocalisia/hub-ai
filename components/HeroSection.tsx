@@ -27,7 +27,7 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pt-24">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center pt-20 sm:pt-24">
         {/* Left: Text */}
         <div>
           <motion.div
@@ -43,7 +43,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] mb-4 sm:mb-6"
           >
             <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">AI</span>
             <br />
@@ -54,7 +54,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 text-lg md:text-xl max-w-lg mb-10 leading-relaxed"
+            className="text-gray-400 text-sm sm:text-lg md:text-xl max-w-lg mb-6 sm:mb-10 leading-relaxed"
           >
             {t('description')}
           </motion.p>
@@ -89,7 +89,7 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="flex gap-8 mt-14 pt-8 border-t border-white/5"
+            className="grid grid-cols-2 sm:flex gap-4 sm:gap-8 mt-8 sm:mt-14 pt-6 sm:pt-8 border-t border-white/5"
           >
             {[
               { value: '8', label: 'Connected Sites' },
@@ -111,6 +111,15 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
           className="hidden lg:block"
+        >
+          <Globe3D />
+        </motion.div>
+        {/* Mobile Globe (smaller) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+          className="lg:hidden w-full h-[300px] -mt-4"
         >
           <Globe3D />
         </motion.div>

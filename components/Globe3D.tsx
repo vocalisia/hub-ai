@@ -541,7 +541,7 @@ function GlobeScene() {
 
 export default function Globe3D() {
   return (
-    <div className="w-full h-[600px] md:h-[750px] relative">
+    <div className="w-full h-full min-h-[280px] sm:min-h-[400px] md:min-h-[600px] lg:min-h-[750px] relative">
       <Canvas
         camera={{ position: [0, 0.5, 3.8], fov: 45 }}
         style={{ background: 'transparent' }}

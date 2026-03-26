@@ -127,7 +127,7 @@ export default function NeuralNetworkBuilder() {
         </motion.div>
       )}
 
-      <div className="relative bg-[#0a0a1f] rounded-2xl border border-purple-500/20 overflow-hidden" style={{ height: '400px' }}>
+      <div className="relative bg-[#0a0a1f] rounded-2xl border border-purple-500/20 overflow-hidden" style={{ height: '350px' }}>
         <svg width="100%" height="100%" viewBox="0 0 500 400">
           {/* Connections */}
           {connections.map((c, i) => {

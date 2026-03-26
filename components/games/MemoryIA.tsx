@@ -114,7 +114,7 @@ export default function MemoryIA() {
         <div className="text-[#FFD700] font-bold">{timer}s</div>
       </div>
 
-      <div className="grid grid-cols-4 gap-3 mb-4">
+      <div className="grid grid-cols-4 gap-2 sm:gap-3 mb-4">
         {cards.map(card => (
           <motion.button
             key={card.id}

@@ -59,9 +59,9 @@ export default async function ContactPage({
             <div className="lg:col-span-3">
               <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 overflow-hidden">
                 <iframe
-                  src="https://app.iclosed.io/e/sebastien-ai"
+                  src="https://app.iclosed.io/e/VOCALIS/vocalis-demo-1"
                   style={{ width: '100%', height: '650px', border: 'none', borderRadius: '12px' }}
-                  title="Book a call"
+                  title="vocalis demo"
                   allow="camera;microphone"
                 />
               </div>
