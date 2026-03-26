@@ -4,12 +4,13 @@
     "ecosystem": "Okosystem",
     "map": "KI-Karte",
     "blog": "Blog",
+    "ebooks": "eBooks",
     "contact": "Kontakt"
   },
   "hero": {
-    "title": "Hub AI",
-    "subtitle": "Schweiz - Europa - Amerika",
-    "description": "Entdecken Sie das vollstandigste KI-Netzwerk: Automatisierung, KMU, Innovation. Prasent in der Schweiz, Europa, Kanada und USA.",
+    "title": "KI-Architektur",
+    "subtitle": "Entwerfen · Bereitstellen · Skalieren",
+    "description": "Die Referenzplattform fur KI-Architektur: Design intelligenter Systeme, autonome Agenten, Automatisierung und Integration.",
     "cta_map": "Karte erkunden",
     "cta_blog": "Blog lesen"
   },
@@ -29,8 +30,8 @@
     "min_read": "Min. Lesezeit"
   },
   "seo": {
-    "home_title": "Hub AI — KI-Hub Schweiz, Europa, Kanada, USA",
-    "home_description": "Vollstandiges KI-Okosystem: Automatisierung, Schweizer KMU, KI-Innovationen in Europa und Amerika.",
+    "home_title": "AI-DUE — KI-Architektur & Intelligente Systeme | Schweiz, Europa, Amerika",
+    "home_description": "Modernste KI-Architektur: Design intelligenter Systeme, autonome Agenten, Automatisierung und Bereitstellung. Mehrsprachige Expertenplattform.",
     "map_title": "Interaktive KI-Karte — 200+ globale Akteure",
     "blog_title": "KI Blog — Expertenartikel mit Geolokalisierung"
   }

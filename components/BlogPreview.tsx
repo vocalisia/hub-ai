@@ -36,9 +36,9 @@ export default function BlogPreview() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-purple-400 text-xs font-medium uppercase tracking-[0.2em] mb-4 block">Insights</span>
+          <span className="text-purple-400 text-xs font-medium uppercase tracking-[0.2em] mb-4 block">AI Architecture Insights</span>
           <h2 className="text-4xl md:text-5xl font-black text-white">
-            Latest Articles
+            Latest AI Articles
           </h2>
         </motion.div>
 

@@ -45,11 +45,9 @@ export default function HeroSection() {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] mb-6"
           >
-            <span className="text-white">Hub</span>
+            <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">AI</span>
             <br />
-            <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
-              AI
-            </span>
+            <span className="text-white">DUE</span>
           </motion.h1>
 
           <motion.p
@@ -94,10 +92,10 @@ export default function HeroSection() {
             className="flex gap-8 mt-14 pt-8 border-t border-white/5"
           >
             {[
-              { value: '6', label: 'Sites' },
+              { value: '8', label: 'Connected Sites' },
+              { value: '33+', label: 'AI Articles' },
               { value: '4', label: 'Languages' },
-              { value: '16', label: 'Cities' },
-              { value: '200+', label: 'AI Players' }
+              { value: '68', label: 'AI Cities' }
             ].map(({ value, label }) => (
               <div key={label}>
                 <div className="text-2xl font-black text-white">{value}</div>

@@ -19,14 +19,14 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href={`/${locale}`} className="flex items-center gap-3 group mb-5">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center font-black text-white text-sm group-hover:scale-110 transition-transform">
-                H
+                A
               </div>
               <span className="text-white font-bold text-lg">
-                Hub <span className="text-purple-400">AI</span>
+                AI-<span className="text-purple-400">DUE</span>
               </span>
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed mb-6">
-              Global AI Ecosystem — Connecting AI innovation across Switzerland, Europe, Canada and USA.
+              AI Architecture & Intelligent Systems — Design, deploy and scale AI across Switzerland, Europe, Canada and USA.
             </p>
 
             {/* Social links */}
@@ -143,7 +143,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/[0.04] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-700 text-xs">
-            {currentYear} Hub AI. All rights reserved.
+            {currentYear} AI-DUE. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-xs text-gray-700">
             <a href="#" className="hover:text-gray-500 transition-colors">Privacy Policy</a>

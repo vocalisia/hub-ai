@@ -23,6 +23,7 @@ export default function Navbar() {
     { href: `/${locale}`, label: t('home') },
     { href: `/${locale}/carte`, label: t('map') },
     { href: `/${locale}/blog`, label: t('blog') },
+    { href: `/${locale}/ebooks`, label: t('ebooks') },
     { href: `/${locale}/contact`, label: t('contact') },
   ]
 
@@ -39,10 +40,10 @@ export default function Navbar() {
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center font-black text-white text-sm group-hover:scale-110 transition-transform">
-              H
+              A
             </div>
             <span className="text-white font-bold text-lg hidden sm:block">
-              Hub <span className="text-purple-400">AI</span>
+              AI-<span className="text-purple-400">DUE</span>
             </span>
           </Link>
 

@@ -30,9 +30,9 @@ export default function NetworkGraph() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-purple-400 text-xs font-medium uppercase tracking-[0.2em] mb-4 block">Ecosystem</span>
+          <span className="text-purple-400 text-xs font-medium uppercase tracking-[0.2em] mb-4 block">Architecture</span>
           <h2 className="text-4xl md:text-5xl font-black text-white">
-            Connected Network
+            AI Architecture Network
           </h2>
         </motion.div>
 

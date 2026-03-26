@@ -20,19 +20,19 @@ export async function generateMetadata({
     title: seo.home_title,
     description: seo.home_description,
     alternates: {
-      canonical: `https://sebastien-ia.com/${locale}`,
+      canonical: `https://ai-due.com/${locale}`,
       languages: {
-        'fr': 'https://sebastien-ia.com/fr',
-        'en': 'https://sebastien-ia.com/en',
-        'de': 'https://sebastien-ia.com/de',
-        'it': 'https://sebastien-ia.com/it'
+        'fr': 'https://ai-due.com/fr',
+        'en': 'https://ai-due.com/en',
+        'de': 'https://ai-due.com/de',
+        'it': 'https://ai-due.com/it'
       }
     },
     openGraph: {
       title: seo.home_title,
       description: seo.home_description,
-      url: `https://sebastien-ia.com/${locale}`,
-      siteName: 'Hub AI',
+      url: `https://ai-due.com/${locale}`,
+      siteName: 'AI-DUE',
       locale: locale,
       type: 'website'
     },
@@ -63,29 +63,29 @@ export default async function LocaleLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "Hub AI",
-              "url": "https://sebastien-ia.com",
-              "description": "Hub IA multilingue — Suisse, Europe, Canada, USA",
+              "name": "AI-DUE",
+              "url": "https://ai-due.com",
+              "description": "AI Architecture & Intelligent Systems — Switzerland, Europe, Canada, USA",
               "inLanguage": [locale],
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": `https://sebastien-ia.com/${locale}/blog?q={search_term_string}`,
+                "target": `https://ai-due.com/${locale}/blog?q={search_term_string}`,
                 "query-input": "required name=search_term_string"
               },
               "author": {
                 "@type": "Person",
                 "name": "Sebastien",
-                "url": "https://sebastien-ia.com"
+                "url": "https://ai-due.com"
               }
             })
           }}
         />
         {/* Hreflang complet */}
-        <link rel="alternate" hrefLang="fr" href="https://sebastien-ia.com/fr" />
-        <link rel="alternate" hrefLang="en" href="https://sebastien-ia.com/en" />
-        <link rel="alternate" hrefLang="de" href="https://sebastien-ia.com/de" />
-        <link rel="alternate" hrefLang="it" href="https://sebastien-ia.com/it" />
-        <link rel="alternate" hrefLang="x-default" href="https://sebastien-ia.com/fr" />
+        <link rel="alternate" hrefLang="fr" href="https://ai-due.com/fr" />
+        <link rel="alternate" hrefLang="en" href="https://ai-due.com/en" />
+        <link rel="alternate" hrefLang="de" href="https://ai-due.com/de" />
+        <link rel="alternate" hrefLang="it" href="https://ai-due.com/it" />
+        <link rel="alternate" hrefLang="x-default" href="https://ai-due.com/fr" />
       </head>
       <body className={`${inter.className} bg-[#030014] text-white antialiased`}>
         <NextIntlClientProvider messages={messages}>

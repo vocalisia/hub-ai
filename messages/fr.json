@@ -4,12 +4,13 @@
     "ecosystem": "Ecosysteme",
     "map": "Carte IA",
     "blog": "Blog",
+    "ebooks": "eBooks",
     "contact": "Contact"
   },
   "hero": {
-    "title": "Hub AI",
-    "subtitle": "Suisse - Europe - Ameriques",
-    "description": "Decouvrez le reseau IA le plus complet : automatisation, PME, innovation. Present en Suisse, Europe, Canada et USA.",
+    "title": "Architecture IA",
+    "subtitle": "Concevoir · Deployer · Scaler",
+    "description": "Plateforme de reference en architecture IA : conception de systemes intelligents, deploiement d'agents autonomes, automatisation et integration. Suisse, Europe, Canada, USA.",
     "cta_map": "Explorer la Carte",
     "cta_blog": "Lire le Blog"
   },
@@ -29,8 +30,8 @@
     "min_read": "min de lecture"
   },
   "seo": {
-    "home_title": "Hub AI — Hub IA Suisse, Europe, Canada, USA",
-    "home_description": "Ecosysteme IA complet : automatisation, PME suisses, innovations IA en Europe et Ameriques. Blog expert multilingue.",
+    "home_title": "AI-DUE — Architecture IA & Systemes Intelligents | Suisse, Europe, Ameriques",
+    "home_description": "Architecture IA de pointe : conception de systemes d'intelligence artificielle, agents autonomes, automatisation et deploiement. Expert multilingue Suisse, Europe, Canada, USA.",
     "map_title": "Carte IA Interactive — 200+ Acteurs Mondiaux",
     "blog_title": "Blog IA — Articles Experts Geolocalises"
   }

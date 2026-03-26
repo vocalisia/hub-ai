@@ -1,0 +1,241 @@
+---
+title: "Architecture RAG — Retrieval Augmented Generation pour l'Entreprise"
+slug: "architecture-rag-retrieval"
+date: "2025-03-13"
+author: "Sebastien"
+category: "Architecture IA"
+tags: ["RAG", "retrieval", "vector database", "embeddings", "knowledge base"]
+geo:
+  city: "Paris"
+  region: "Ile-de-France"
+  country: "FR"
+  lat: 48.8566
+  lng: 2.3522
+  continent: "Europe"
+readTime: 10
+excerpt: "Maitrisez l'architecture RAG (Retrieval Augmented Generation) : bases vectorielles, embeddings, chunking, reranking et patterns avances pour deployer un systeme RAG en entreprise."
+---
+
+## Qu'est-ce que le RAG et Pourquoi est-il Incontournable ?
+
+Le **RAG** (Retrieval Augmented Generation) est devenu le pattern architectural dominant pour exploiter les LLMs en entreprise. Son principe est simple mais puissant : plutot que de se fier uniquement aux connaissances encodees dans les poids du modele, on **recupere des documents pertinents** avant de generer une reponse.
+
+A Paris, les entreprises francaises et europeennes adoptent massivement le RAG pour une raison fondamentale : il permet d'ancrer les reponses de l'IA dans les **donnees proprietaires** de l'entreprise tout en reduisant drastiquement les hallucinations.
+
+### Les Limites des LLMs sans RAG
+
+- **Connaissances figees** : le modele ne connait que ses donnees d'entrainement
+- **Hallucinations** : le modele invente des informations avec aplomb
+- **Donnees proprietaires** : impossible d'acceder aux documents internes
+- **Fraicheur** : les informations sont obsoletes apres la date de cutoff
+- **Cout de fine-tuning** : adapter un LLM a chaque domaine est prohibitif
+
+Le RAG resout elegamment ces cinq problemes.
+
+## Architecture RAG de Reference
+
+### Pipeline RAG Standard
+
+```
+Documents Sources
+→ Ingestion et Preprocessing
+→ Chunking (decoupage en segments)
+→ Embedding (vectorisation)
+→ Indexation dans une Vector DB
+---
+Requete Utilisateur
+→ Embedding de la requete
+→ Recherche vectorielle (similarity search)
+→ Reranking des resultats
+→ Construction du prompt avec contexte
+→ Generation LLM
+→ Reponse contextualisee
+```
+
+### Les Composants Detailles
+
+| Composant | Role | Options |
+|-----------|------|---------|
+| Document Loader | Ingestion multi-format | Unstructured, LlamaIndex |
+| Chunker | Decoupage intelligent | Recursive, Semantic, Agentic |
+| Embedding Model | Vectorisation | OpenAI ada-002, Cohere, BGE |
+| Vector Database | Stockage et recherche | Pinecone, Weaviate, Qdrant, Chroma |
+| Retriever | Recherche de documents | Similarity, MMR, Hybrid |
+| Reranker | Re-classement des resultats | Cohere Rerank, ColBERT, cross-encoder |
+| LLM | Generation de la reponse | GPT-4, Claude, Mistral |
+
+## Le Chunking : L'Art du Decoupage
+
+Le **chunking** — la maniere dont vous decoupez vos documents — a un impact direct sur la qualite des resultats RAG. Un mauvais chunking produit des reponses mediocres, quel que soit le LLM utilise.
+
+### Strategies de Chunking
+
+**Chunking par Taille Fixe**
+- Decoupage tous les N tokens avec chevauchement (overlap)
+- Simple mais perd le contexte semantique
+- Overlap de 10-20% recommande
+
+**Chunking Recursif**
+- Decoupe d'abord par paragraphes, puis par phrases si trop long
+- Preserve mieux la structure du document
+- Methode par defaut de LangChain
+
+**Chunking Semantique**
+- Utilise les embeddings pour identifier les ruptures de sens
+- Produit des chunks thematiquement coherents
+- Plus couteux en calcul mais meilleure qualite
+
+**Chunking Agentic**
+- Un LLM decide comment decouper le document
+- Comprend la structure logique (sections, arguments)
+- Qualite optimale mais cout eleve
+
+### Recommandations de Taille
+
+| Type de Contenu | Taille Recommandee | Overlap |
+|-----------------|-------------------|---------|
+| Documentation technique | 500-1000 tokens | 100 tokens |
+| Articles de blog | 300-500 tokens | 50 tokens |
+| Code source | Par fonction/classe | Contexte complet |
+| FAQ | 1 question-reponse par chunk | Aucun |
+| Contrats/legal | 200-400 tokens | 50 tokens |
+
+## Bases Vectorielles : Le Coeur du RAG
+
+### Fonctionnement des Embeddings
+
+Les **embeddings** transforment du texte en vecteurs numeriques de haute dimension (768 a 3072 dimensions). Deux textes semantiquement proches auront des vecteurs proches dans cet espace.
+
+### Comparatif des Vector Databases
+
+| Base | Type | Scalabilite | Filtering | Prix |
+|------|------|-------------|-----------|------|
+| **Pinecone** | Managed | Excellente | Metadata | Pay-per-use |
+| **Weaviate** | Open-source/Managed | Tres bonne | GraphQL | Gratuit/Managed |
+| **Qdrant** | Open-source/Managed | Tres bonne | Payload | Gratuit/Managed |
+| **Chroma** | Open-source | Moyenne | Metadata | Gratuit |
+| **pgvector** | Extension PostgreSQL | Bonne | SQL natif | Gratuit |
+| **Milvus** | Open-source | Excellente | Expression | Gratuit |
+
+### Choix de la Base Vectorielle
+
+Pour les entreprises, le choix depend de plusieurs facteurs :
+
+- **Volume** : moins de 1M de vecteurs ? pgvector ou Chroma suffisent
+- **Production** : Pinecone ou Weaviate managed pour la fiabilite
+- **Budget** : Qdrant ou Chroma en self-hosted pour reduire les couts
+- **Integration** : pgvector si vous utilisez deja PostgreSQL
+
+## Patterns RAG Avances
+
+### RAG Hybride (Keyword + Semantic)
+
+La recherche purement vectorielle rate parfois des documents contenant des termes specifiques (noms propres, acronymes, references). Le **RAG hybride** combine :
+
+- **Recherche semantique** (embeddings) pour la comprehension du sens
+- **Recherche lexicale** (BM25) pour les correspondances exactes
+- **Fusion** : Reciprocal Rank Fusion (RRF) pour combiner les scores
+
+Ce pattern ameliore le recall de **15 a 30%** selon les benchmarks.
+
+### RAG avec Reranking
+
+Apres la recherche initiale (top 20-50 resultats), un modele de **reranking** re-evalue la pertinence de chaque document par rapport a la question :
+
+```
+Requete → Retrieval (top 50) → Reranker → Top 5 → LLM → Reponse
+```
+
+Les rerankers cross-encoder (Cohere Rerank, BGE Reranker) ameliorent significativement la precision.
+
+### Agentic RAG
+
+Le RAG agentic utilise un agent IA pour orchestrer le processus de recherche :
+
+1. L'agent analyse la question et planifie la strategie de recherche
+2. Il formule plusieurs requetes de recherche sous differents angles
+3. Il evalue la qualite des resultats et re-cherche si necessaire
+4. Il synthetise les informations collectees en une reponse coherente
+
+Ce pattern excelle pour les questions complexes qui necessitent des informations de sources multiples.
+
+### Graph RAG
+
+**Graph RAG** structure les connaissances en graphe plutot qu'en chunks independants :
+
+- Les entites (personnes, concepts, produits) sont des noeuds
+- Les relations entre entites sont des aretes
+- La recherche exploite la structure du graphe pour des reponses plus riches
+
+Particulierement efficace pour les bases de connaissances avec des relations complexes entre entites.
+
+## Evaluation de la Qualite RAG
+
+### Metriques RAGAS
+
+Le framework **RAGAS** definit quatre metriques cles :
+
+- **Faithfulness** : la reponse est-elle fidele aux documents recuperes ?
+- **Answer Relevancy** : la reponse est-elle pertinente par rapport a la question ?
+- **Context Precision** : les documents recuperes sont-ils pertinents ?
+- **Context Recall** : tous les documents necessaires ont-ils ete recuperes ?
+
+### Pipeline d'Evaluation
+
+```
+Dataset de test (questions + reponses attendues)
+→ Execution du pipeline RAG
+→ Calcul des metriques RAGAS
+→ Analyse des echecs
+→ Ajustement (chunking, embedding, prompt)
+→ Re-evaluation
+```
+
+La mise en place d'un pipeline d'evaluation automatise est essentielle pour ameliorer continuellement la qualite du systeme, un principe que [Agents-IA.pro](https://agents-ia.pro) applique dans ses deployments.
+
+## RAG en Production : Bonnes Pratiques
+
+### Gestion des Documents
+
+- **Metadonnees riches** : date, source, auteur, categorie pour le filtrage
+- **Versionnement** : tracker les changements de documents sources
+- **Fraicheur** : re-indexer regulierement les documents mis a jour
+- **Deduplication** : eviter les doublons qui polluent les resultats
+
+### Optimisation des Prompts RAG
+
+Le prompt RAG doit :
+
+- **Instruire le LLM** a ne repondre qu'a partir des documents fournis
+- **Gerer l'absence d'information** : "Si les documents ne contiennent pas la reponse, dites-le"
+- **Citer les sources** : permettre la verification par l'utilisateur
+- **Structurer la reponse** : format adapte au use case
+
+### Performance et Scalabilite
+
+- **Caching** : cacher les embeddings de requetes frequentes
+- **Pre-filtering** : filtrer par metadonnees avant la recherche vectorielle
+- **Async retrieval** : paralleliser les recherches dans plusieurs index
+- **Compression** : quantizer les embeddings pour reduire la memoire
+
+Le SEO et le contenu web beneficient aussi de ces techniques RAG. [SEO-True](https://seo-true.com) demontre comment l'IA et le retrieval intelligent transforment les strategies de contenu.
+
+## Cas d'Usage Enterprise
+
+### Knowledge Base Interne
+
+Le cas d'usage le plus deploye : permettre aux employes d'interroger la documentation interne (Confluence, SharePoint, Google Drive) en langage naturel.
+
+### Support Client
+
+Les chatbots de support alimentes par RAG recuperent les articles de la base de connaissances pour repondre aux clients avec precision et en citant les sources.
+
+### Analyse Documentaire
+
+Les equipes juridiques, financieres et compliance utilisent le RAG pour analyser des corpus de documents (contrats, rapports, reglementations) et en extraire des insights.
+
+## Conclusion
+
+L'architecture RAG est la clef de voute de l'IA generative en entreprise. Maitriser le chunking, les bases vectorielles, le reranking et les patterns avances permet de construire des systemes qui repondent avec precision tout en s'ancrant dans les donnees proprietaires.
+
+Pour aller plus loin, decouvrez comment deployer un [LLM en production](/blog/architecture-llm-production) et les [fondamentaux de l'architecture IA](/blog/architecture-ia-fondamentaux).

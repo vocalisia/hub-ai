@@ -52,7 +52,7 @@ export default function GeoSection() {
         >
           <span className="text-purple-400 text-xs font-medium uppercase tracking-[0.2em] mb-4 block">Global Reach</span>
           <h2 className="text-4xl md:text-5xl font-black text-white">
-            4 Regions, 1 Network
+            AI Architecture Worldwide
           </h2>
         </motion.div>
 
