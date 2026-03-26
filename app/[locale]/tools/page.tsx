@@ -9,8 +9,8 @@ export async function generateMetadata({
   params: { locale: string }
 }): Promise<Metadata> {
   return {
-    title: 'AI Tools — Outils IA Recommandes | AI-DUE',
-    description: 'Selection d\'outils IA verifies et recommandes par AI-DUE. Architecture, automatisation, voix, analyse et deploiement.',
+    title: 'AI Tools — Outils IA Interactifs & Recommandes | AI-DUE',
+    description: 'Calculateur ROI, generateur de prompts, score de maturite IA et selection d\'outils IA verifies par AI-DUE.',
     alternates: {
       canonical: `https://ai-due.com/${locale}/tools`,
       languages: {
@@ -21,8 +21,8 @@ export async function generateMetadata({
       }
     },
     openGraph: {
-      title: 'AI Tools — Outils IA Recommandes | AI-DUE',
-      description: 'Selection d\'outils IA verifies et recommandes par AI-DUE.',
+      title: 'AI Tools — Outils IA Interactifs & Recommandes | AI-DUE',
+      description: 'Calculateur ROI, generateur de prompts, score de maturite IA et outils recommandes.',
       url: `https://ai-due.com/${locale}/tools`,
       siteName: 'AI-DUE',
       locale: locale,
@@ -31,7 +31,49 @@ export async function generateMetadata({
   }
 }
 
-const TOOLS = [
+const INTERACTIVE_TOOLS = [
+  {
+    name: 'Calculateur ROI',
+    description: 'Estimez les economies et le retour sur investissement de l\'IA dans votre entreprise. Simulez en temps reel.',
+    href: '/tools/roi',
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+      </svg>
+    ),
+    gradient: 'from-purple-600 to-purple-400',
+    border: 'hover:border-purple-500/40',
+    glow: 'group-hover:shadow-[0_0_40px_rgba(139,92,246,0.15)]',
+  },
+  {
+    name: 'Generateur de Prompts',
+    description: 'Creez des prompts IA structures et optimises pour vos besoins : emails, articles, code et plus.',
+    href: '/tools/prompt',
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
+    gradient: 'from-cyan-500 to-blue-500',
+    border: 'hover:border-cyan-500/40',
+    glow: 'group-hover:shadow-[0_0_40px_rgba(6,182,212,0.15)]',
+  },
+  {
+    name: 'Score Maturite IA',
+    description: 'Evaluez la maturite IA de votre entreprise en 6 criteres et recevez des recommandations personnalisees.',
+    href: '/tools/maturite',
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ),
+    gradient: 'from-gold-accent to-amber-500',
+    border: 'hover:border-amber-500/40',
+    glow: 'group-hover:shadow-[0_0_40px_rgba(255,215,0,0.12)]',
+  },
+]
+
+const EXTERNAL_TOOLS = [
   {
     name: 'Vocalis AI',
     description: 'Assistant vocal IA professionnel. Automatisez vos appels, qualifiez vos leads et gerez votre accueil telephonique 24/7.',
@@ -123,19 +165,57 @@ export default async function ToolsPage({
           {/* Header */}
           <div className="text-center mb-16">
             <span className="inline-block text-cyan-400 text-xs font-semibold uppercase tracking-[0.25em] mb-5 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5">
-              Stack IA
+              Outils Interactifs & Stack IA
             </span>
             <h1 className="text-5xl md:text-6xl font-black text-white mb-5 leading-tight">
               Nos{' '}
               <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Outils</span>
             </h1>
             <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              {locale === 'en' ? 'Curated AI tools we use and recommend for building intelligent systems.' :
-               locale === 'de' ? 'Kuratierte KI-Tools, die wir verwenden und empfehlen.' :
-               locale === 'it' ? 'Strumenti IA selezionati che usiamo e raccomandiamo.' :
-               'Selection d\'outils IA que nous utilisons et recommandons pour construire des systemes intelligents.'}
+              {locale === 'en' ? 'Interactive AI tools and curated stack to accelerate your digital transformation.' :
+               locale === 'de' ? 'Interaktive KI-Tools und kuratierter Stack fur Ihre digitale Transformation.' :
+               locale === 'it' ? 'Strumenti IA interattivi e stack curato per la vostra trasformazione digitale.' :
+               'Outils IA interactifs et stack selectionne pour accelerer votre transformation digitale.'}
             </p>
             <div className="mx-auto mt-8 w-24 h-[2px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+          </div>
+
+          {/* Interactive Tools Section */}
+          <div className="mb-20">
+            <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-gold-accent flex items-center justify-center text-white text-sm">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </span>
+              Outils Interactifs
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {INTERACTIVE_TOOLS.map((tool) => (
+                <Link
+                  key={tool.name}
+                  href={`/${locale}${tool.href}`}
+                  className={`group relative bg-[#0a0a1f]/80 rounded-2xl border border-white/[0.06] p-7 transition-all duration-300 ${tool.border} ${tool.glow} hover:-translate-y-1`}
+                >
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center text-white mb-5 group-hover:scale-110 transition-transform shadow-lg`}>
+                    {tool.icon}
+                  </div>
+
+                  <h3 className="text-white font-bold text-lg mb-2 group-hover:text-purple-300 transition-colors">{tool.name}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-4">{tool.description}</p>
+
+                  <span className="inline-flex items-center gap-1.5 text-purple-400 text-sm font-medium group-hover:gap-2.5 transition-all">
+                    Essayer
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Schema.org */}
@@ -147,61 +227,84 @@ export default async function ToolsPage({
                 "@type": "ItemList",
                 "name": "AI Tools — AI-DUE",
                 "url": `https://ai-due.com/${locale}/tools`,
-                "numberOfItems": TOOLS.length,
-                "itemListElement": TOOLS.map((tool, i) => ({
-                  "@type": "ListItem",
-                  "position": i + 1,
-                  "item": {
-                    "@type": "SoftwareApplication",
-                    "name": tool.name,
-                    "description": tool.description,
-                    "url": tool.url,
-                    "applicationCategory": tool.category
-                  }
-                }))
+                "numberOfItems": EXTERNAL_TOOLS.length + INTERACTIVE_TOOLS.length,
+                "itemListElement": [
+                  ...INTERACTIVE_TOOLS.map((tool, i) => ({
+                    "@type": "ListItem",
+                    "position": i + 1,
+                    "item": {
+                      "@type": "WebApplication",
+                      "name": tool.name,
+                      "description": tool.description,
+                      "url": `https://ai-due.com/${locale}${tool.href}`
+                    }
+                  })),
+                  ...EXTERNAL_TOOLS.map((tool, i) => ({
+                    "@type": "ListItem",
+                    "position": INTERACTIVE_TOOLS.length + i + 1,
+                    "item": {
+                      "@type": "SoftwareApplication",
+                      "name": tool.name,
+                      "description": tool.description,
+                      "url": tool.url,
+                      "applicationCategory": tool.category
+                    }
+                  }))
+                ]
               })
             }}
           />
 
-          {/* Tools Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {TOOLS.map((tool) => (
-              <a
-                key={tool.name}
-                href={tool.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative bg-[#0a0a1f]/80 rounded-2xl border border-white/[0.06] p-6 transition-all duration-300 hover:border-purple-500/30 hover:shadow-[0_0_30px_rgba(139,92,246,0.08)] hover:-translate-y-1"
-              >
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          {/* External Tools Section */}
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-600 to-blue-500 flex items-center justify-center text-white text-sm">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </span>
+              Stack IA Recommande
+            </h2>
 
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/10 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
-                    {tool.icon}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              {EXTERNAL_TOOLS.map((tool) => (
+                <a
+                  key={tool.name}
+                  href={tool.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative bg-[#0a0a1f]/80 rounded-2xl border border-white/[0.06] p-6 transition-all duration-300 hover:border-purple-500/30 hover:shadow-[0_0_30px_rgba(139,92,246,0.08)] hover:-translate-y-1"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/10 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                      {tool.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-base group-hover:text-purple-300 transition-colors">{tool.name}</h3>
+                      <span className="text-purple-400/60 text-xs font-medium">{tool.category}</span>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-white font-bold text-base group-hover:text-purple-300 transition-colors">{tool.name}</h3>
-                    <span className="text-purple-400/60 text-xs font-medium">{tool.category}</span>
+
+                  <p className="text-gray-500 text-sm leading-relaxed mb-4">{tool.description}</p>
+
+                  <div className="flex flex-wrap gap-1.5">
+                    {tool.tags.map(tag => (
+                      <span key={tag} className="text-[10px] text-gray-500 bg-white/[0.03] px-2 py-0.5 rounded-full border border-white/[0.06]">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                </div>
 
-                <p className="text-gray-500 text-sm leading-relaxed mb-4">{tool.description}</p>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {tool.tags.map(tag => (
-                    <span key={tag} className="text-[10px] text-gray-500 bg-white/[0.03] px-2 py-0.5 rounded-full border border-white/[0.06]">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <svg className="w-4 h-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </div>
-              </a>
-            ))}
+                  <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <svg className="w-4 h-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* CTA */}

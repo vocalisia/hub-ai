@@ -73,10 +73,10 @@ export default function PromptGame() {
                    totalScore >= 120 ? 'Bon Prompteur' :
                    totalScore >= 60 ? 'Apprenti Prompteur' : 'Debutant'
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center p-6 rounded-2xl border border-[#FFD700]/30 bg-[#FFD700]/5">
-        <div className="text-5xl mb-3">✍️</div>
-        <h3 className="text-2xl font-black text-white mb-2">{rating}</h3>
-        <p className="text-[#FFD700] font-bold text-3xl mb-1">Score: {totalScore}</p>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center p-4 sm:p-6 rounded-2xl border border-[#FFD700]/30 bg-[#FFD700]/5">
+        <div className="text-4xl sm:text-5xl mb-3">✍️</div>
+        <h3 className="text-xl sm:text-2xl font-black text-white mb-2">{rating}</h3>
+        <p className="text-[#FFD700] font-bold text-2xl sm:text-3xl mb-1">Score: {totalScore}</p>
         <p className="text-gray-400 mb-6">sur {CHALLENGES.length} challenges</p>
         <div className="grid gap-2 mb-4">
           {LINKS.map(link => (
@@ -90,7 +90,7 @@ export default function PromptGame() {
             </a>
           ))}
         </div>
-        <button onClick={reset} className="px-6 py-2 rounded-xl bg-purple-600 text-white font-bold text-sm">Rejouer</button>
+        <button onClick={reset} className="px-6 py-3 min-h-[44px] rounded-xl bg-purple-600 text-white font-bold text-sm w-full sm:w-auto">Rejouer</button>
       </motion.div>
     )
   }
@@ -112,12 +112,12 @@ export default function PromptGame() {
         onChange={(e) => setPrompt(e.target.value)}
         disabled={submitted}
         placeholder="Ecrivez votre prompt ici..."
-        className="w-full h-40 rounded-xl bg-white/[0.03] border border-white/10 p-4 text-white text-sm placeholder-gray-600 focus:border-purple-500/50 focus:outline-none resize-none mb-4"
+        className="w-full h-32 sm:h-40 rounded-xl bg-white/[0.03] border border-white/10 p-3 sm:p-4 text-white text-sm placeholder-gray-600 focus:border-purple-500/50 focus:outline-none resize-none mb-4"
       />
 
       {!submitted ? (
         <button onClick={evaluate} disabled={prompt.length < 10}
-          className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-[#FFD700] text-white font-bold disabled:opacity-30 disabled:cursor-not-allowed">
+          className="w-full py-3 min-h-[44px] rounded-xl bg-gradient-to-r from-purple-600 to-[#FFD700] text-white font-bold disabled:opacity-30 disabled:cursor-not-allowed">
           Evaluer mon prompt
         </button>
       ) : (
@@ -134,7 +134,7 @@ export default function PromptGame() {
                 ))}
               </div>
             </div>
-            <button onClick={next} className="w-full py-3 rounded-xl bg-purple-600 text-white font-bold">
+            <button onClick={next} className="w-full py-3 min-h-[44px] rounded-xl bg-purple-600 text-white font-bold">
               {currentChallenge + 1 < CHALLENGES.length ? 'Challenge suivant →' : 'Voir resultats'}
             </button>
           </motion.div>

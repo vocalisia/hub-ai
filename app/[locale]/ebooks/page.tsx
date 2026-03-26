@@ -158,7 +158,7 @@ export default async function EbooksPage({
             <span className="inline-block text-[#FFD700] text-xs font-semibold uppercase tracking-[0.25em] mb-5 px-4 py-2 rounded-full border border-[#FFD700]/20 bg-[#FFD700]/5">
               Bibliotheque IA
             </span>
-            <h1 className="text-5xl md:text-6xl font-black text-white mb-5 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-5 leading-tight">
               Nos{' '}
               <span className="gradient-text-gold">eBooks</span>
             </h1>
@@ -171,7 +171,7 @@ export default async function EbooksPage({
           </div>
 
           {/* Stats */}
-          <div className="flex items-center justify-center gap-8 mb-12">
+          <div className="flex items-center justify-center gap-4 sm:gap-8 mb-12">
             <div className="text-center">
               <p className="text-2xl font-black text-white">{EBOOKS.length}</p>
               <p className="text-gray-500 text-xs font-medium uppercase tracking-wider">eBooks</p>
@@ -223,7 +223,7 @@ export default async function EbooksPage({
 
           {/* Bottom CTA */}
           <div className="text-center mt-16">
-            <div className="inline-block bg-[#0a0a1f]/60 rounded-2xl border border-white/[0.06] px-8 py-6">
+            <div className="inline-block bg-[#0a0a1f]/60 rounded-2xl border border-white/[0.06] px-4 py-5 sm:px-8 sm:py-6 max-w-full">
               <p className="text-gray-400 text-sm mb-1">Vous souhaitez un eBook personnalise pour votre entreprise ?</p>
               <a
                 href={`/${locale}/contact`}

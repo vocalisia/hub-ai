@@ -74,7 +74,7 @@ export default function BlogPostPage({
                   "publisher": {
                     "@type": "Organization",
                     "name": "Hub AI",
-                    "url": "https://sebastien-ia.com"
+                    "url": "https://ai-due.com"
                   },
                   "keywords": post.tags.join(', '),
                   "contentLocation": {
@@ -129,7 +129,7 @@ export default function BlogPostPage({
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-black text-white mb-6 leading-[1.1] tracking-tight">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black text-white mb-6 leading-[1.1] tracking-tight">
                 {post.title}
               </h1>
 
@@ -176,7 +176,7 @@ export default function BlogPostPage({
                 <h2 className="text-2xl font-bold text-white mb-8">
                   Articles similaires
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
                   {related.map(r => (
                     <Link
                       key={r.slug}
@@ -205,7 +205,7 @@ export default function BlogPostPage({
             <div className="mt-16 text-center">
               <Link
                 href={`/${params.locale}/blog`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all text-sm font-medium"
+                className="inline-flex items-center gap-2 px-6 py-3 min-h-[44px] rounded-xl border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all text-sm font-medium"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />

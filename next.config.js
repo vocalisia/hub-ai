@@ -9,7 +9,7 @@ const nextConfig = {
   },
   images: {
     domains: [
-      'sebastien-ia.com',
+      'ai-due.com',
       'aiautomationsaas.com',
       'iapmesuisse.ch',
       'images.unsplash.com'

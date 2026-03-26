@@ -127,8 +127,8 @@ export default function NeuralNetworkBuilder() {
         </motion.div>
       )}
 
-      <div className="relative bg-[#0a0a1f] rounded-2xl border border-purple-500/20 overflow-hidden" style={{ height: '350px' }}>
-        <svg width="100%" height="100%" viewBox="0 0 500 400">
+      <div className="relative bg-[#0a0a1f] rounded-2xl border border-purple-500/20 overflow-hidden" style={{ minHeight: '300px' }}>
+        <svg width="100%" height="100%" viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet" className="touch-none">
           {/* Connections */}
           {connections.map((c, i) => {
             const from = nodes.find(n => n.id === c.from)
@@ -158,6 +158,8 @@ export default function NeuralNetworkBuilder() {
           {/* Nodes */}
           {nodes.map(node => (
             <g key={node.id} onClick={() => handleNodeClick(node.id)} className="cursor-pointer">
+              {/* Invisible larger touch target */}
+              <circle cx={node.x} cy={node.y} r="35" fill="transparent" />
               <circle cx={node.x} cy={node.y} r={node.active ? 24 : 20}
                 fill={colors[node.type]} opacity={node.active ? 1 : 0.7}
                 stroke={node.active ? '#fff' : 'transparent'} strokeWidth="2"
@@ -191,7 +193,7 @@ export default function NeuralNetworkBuilder() {
 
       {/* Bouton Valider */}
       {!gameOver && connections.length > 0 && (
-        <div className="flex gap-3 mt-4">
+        <div className="flex flex-col sm:flex-row gap-3 mt-4">
           <button
             onClick={() => {
               if (connections.length >= REQUIRED_CONNECTIONS) {
@@ -203,11 +205,11 @@ export default function NeuralNetworkBuilder() {
                 setTimeout(() => setMessage(''), 2500)
               }
             }}
-            className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#FFD700] to-[#DAA520] text-black font-bold text-sm hover:scale-[1.02] transition-transform"
+            className="flex-1 py-3 min-h-[44px] rounded-xl bg-gradient-to-r from-[#FFD700] to-[#DAA520] text-black font-bold text-sm hover:scale-[1.02] transition-transform"
           >
             ✓ Valider mon reseau ({connections.length}/{REQUIRED_CONNECTIONS})
           </button>
-          <button onClick={reset} className="px-4 py-3 rounded-xl border border-white/10 text-gray-400 text-sm hover:bg-white/5">
+          <button onClick={reset} className="px-4 py-3 min-h-[44px] rounded-xl border border-white/10 text-gray-400 text-sm hover:bg-white/5">
             Recommencer
           </button>
         </div>
@@ -232,7 +234,7 @@ export default function NeuralNetworkBuilder() {
                   </a>
                 ))}
               </div>
-              <button onClick={reset} className="px-6 py-2 rounded-xl bg-purple-600 text-white font-bold text-sm">Rejouer</button>
+              <button onClick={reset} className="px-6 py-3 min-h-[44px] rounded-xl bg-purple-600 text-white font-bold text-sm w-full sm:w-auto">Rejouer</button>
             </div>
           </motion.div>
         )}

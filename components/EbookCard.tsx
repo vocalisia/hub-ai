@@ -168,7 +168,7 @@ export default function EbookCard({ ebook, index = 0, locale = 'fr' }: Props & {
             {/* CTA Button */}
             <button
               onClick={() => setModalOpen(true)}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold transition-all duration-300 bg-gradient-to-r from-[#FFD700]/10 to-[#DAA520]/10 text-[#FFD700] border border-[#FFD700]/20 hover:border-[#FFD700]/50 hover:bg-[#FFD700]/15 hover:shadow-[0_0_20px_rgba(255,215,0,0.1)]"
+              className="flex items-center justify-center gap-2 w-full py-3 min-h-[48px] rounded-xl text-sm font-bold transition-all duration-300 bg-gradient-to-r from-[#FFD700]/10 to-[#DAA520]/10 text-[#FFD700] border border-[#FFD700]/20 hover:border-[#FFD700]/50 hover:bg-[#FFD700]/15 hover:shadow-[0_0_20px_rgba(255,215,0,0.1)]"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -194,7 +194,7 @@ export default function EbookCard({ ebook, index = 0, locale = 'fr' }: Props & {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#0a0a1f] rounded-2xl border border-white/[0.08] p-6 sm:p-8 w-full max-w-md"
+              className="bg-[#0a0a1f] rounded-2xl border border-white/[0.08] p-5 sm:p-8 w-full max-w-md mx-4 sm:mx-0"
             >
               {success ? (
                 <div className="text-center py-4">
@@ -248,7 +248,7 @@ export default function EbookCard({ ebook, index = 0, locale = 'fr' }: Props & {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-[#FFD700] to-[#DAA520] text-black hover:opacity-90 transition-opacity disabled:opacity-50"
+                      className="w-full py-3 min-h-[48px] rounded-xl text-sm font-bold bg-gradient-to-r from-[#FFD700] to-[#DAA520] text-black hover:opacity-90 transition-opacity disabled:opacity-50"
                     >
                       {loading ? 'Envoi en cours...' : 'Recevoir le eBook par email'}
                     </button>

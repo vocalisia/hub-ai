@@ -24,22 +24,22 @@ export default function QuizListPage({ params: { locale } }: { params: { locale:
   const l = labels[locale] || labels.fr
 
   return (
-    <main className="min-h-screen bg-[#030014] py-20 px-4">
+    <main className="min-h-screen bg-[#030014] py-16 sm:py-20 px-4">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#FFD700]/20 bg-[#FFD700]/5 text-[#FFD700] text-sm mb-6">
+        <div className="text-center mb-10 sm:mb-16">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#FFD700]/20 bg-[#FFD700]/5 text-[#FFD700] text-xs sm:text-sm mb-6">
             {l.badge}
           </span>
-          <h1 className="text-5xl font-black text-white mb-4">
+          <h1 className="text-3xl sm:text-5xl font-black text-white mb-4">
             {l.title} <span className="bg-gradient-to-r from-purple-400 to-[#FFD700] bg-clip-text text-transparent">IA</span>
           </h1>
-          <p className="text-gray-400 text-xl max-w-2xl mx-auto">{l.subtitle}</p>
+          <p className="text-gray-400 text-base sm:text-xl max-w-2xl mx-auto">{l.subtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {QUIZZES.map((quiz) => (
             <Link key={quiz.slug} href={`/${locale}/quiz/${quiz.slug}`}>
-              <div className="group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-purple-500/30 hover:bg-purple-500/[0.03] transition-all h-full">
+              <div className="group p-4 sm:p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-purple-500/30 hover:bg-purple-500/[0.03] transition-all h-full">
                 <div className="text-4xl mb-4">{quiz.icon}</div>
                 <h2 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
                   {t(quiz.title, locale)}

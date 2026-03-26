@@ -51,7 +51,7 @@ export default function BlogCard({ post, locale, index = 0 }: Props) {
             }}
           />
 
-          <div className="relative p-6">
+          <div className="relative p-4 sm:p-6">
             {/* Geo badge + Read time */}
             <div className="flex items-center justify-between mb-5">
               <span
@@ -78,7 +78,7 @@ export default function BlogCard({ post, locale, index = 0 }: Props) {
             </div>
 
             {/* Title */}
-            <h2 className="text-white font-bold text-lg mb-3 group-hover:text-purple-300 transition-colors duration-300 line-clamp-2 leading-snug">
+            <h2 className="text-white font-bold text-base sm:text-lg mb-3 group-hover:text-purple-300 transition-colors duration-300 line-clamp-2 leading-snug">
               {post.title}
             </h2>
 
@@ -92,7 +92,7 @@ export default function BlogCard({ post, locale, index = 0 }: Props) {
                   day: 'numeric', month: 'short', year: 'numeric'
                 })}
               </span>
-              <span className="flex items-center gap-1.5 text-purple-400/80 text-sm font-medium group-hover:text-purple-300 transition-colors">
+              <span className="flex items-center gap-1.5 text-purple-400/80 text-sm font-medium group-hover:text-purple-300 transition-colors min-h-[44px] sm:min-h-0 items-center">
                 {locale === 'en' ? 'Read' : locale === 'de' ? 'Lesen' : locale === 'it' ? 'Leggi' : 'Lire'}
                 <svg className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

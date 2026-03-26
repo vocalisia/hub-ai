@@ -76,13 +76,13 @@ export default function QuizEngine({ quiz }: { quiz: Quiz }) {
       <AnimatePresence mode="wait">
         {!showResult ? (
           <motion.div key={current} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.3 }}>
-            <h2 className="text-2xl font-bold text-white mb-8">{t(quiz.questions[current].question, locale)}</h2>
+            <h2 className="text-lg sm:text-2xl font-bold text-white mb-6 sm:mb-8">{t(quiz.questions[current].question, locale)}</h2>
             <div className="grid gap-3">
               {quiz.questions[current].answers.map((answer, i) => (
-                <motion.button key={i} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={() => handleAnswer(answer.category)} className="w-full text-left p-5 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-purple-500/10 hover:border-purple-500/30 transition-all group">
-                  <div className="flex items-center gap-4">
-                    <span className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm font-bold group-hover:bg-purple-500/20">{String.fromCharCode(65 + i)}</span>
-                    <span className="text-gray-300 group-hover:text-white transition-colors">{t(answer.text, locale)}</span>
+                <motion.button key={i} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={() => handleAnswer(answer.category)} className="w-full text-left p-4 sm:p-5 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-purple-500/10 hover:border-purple-500/30 transition-all group min-h-[52px]">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <span className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm font-bold group-hover:bg-purple-500/20 flex-shrink-0">{String.fromCharCode(65 + i)}</span>
+                    <span className="text-gray-300 group-hover:text-white transition-colors text-sm sm:text-base">{t(answer.text, locale)}</span>
                   </div>
                 </motion.button>
               ))}
@@ -91,8 +91,8 @@ export default function QuizEngine({ quiz }: { quiz: Quiz }) {
         ) : result && (
           <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
             <div className="text-center mb-8">
-              <div className="text-6xl mb-4">{result.icon}</div>
-              <h2 className="text-3xl font-black text-white mb-3">{t(result.title, locale)}</h2>
+              <div className="text-4xl sm:text-6xl mb-4">{result.icon}</div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">{t(result.title, locale)}</h2>
               {quiz.type === 'score' && (
                 <div className="text-[#FFD700] font-bold text-lg mb-2">{l.score} : {answers.filter(a => a === 'correct').length} / {quiz.questions.length}</div>
               )}
@@ -102,7 +102,7 @@ export default function QuizEngine({ quiz }: { quiz: Quiz }) {
               <h3 className="text-lg font-bold text-white mb-4 text-center">{l.resources}</h3>
               <div className="grid gap-3">
                 {result.links.map(link => (
-                  <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 rounded-xl border border-[#FFD700]/20 bg-[#FFD700]/[0.03] hover:bg-[#FFD700]/[0.08] hover:border-[#FFD700]/40 transition-all group">
+                  <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 sm:p-4 rounded-xl border border-[#FFD700]/20 bg-[#FFD700]/[0.03] hover:bg-[#FFD700]/[0.08] hover:border-[#FFD700]/40 transition-all group min-h-[52px]">
                     <div>
                       <div className="text-[#FFD700] font-bold group-hover:text-yellow-300">{link.label}</div>
                       <div className="text-gray-500 text-sm">{t(link.description, locale)}</div>
@@ -112,9 +112,9 @@ export default function QuizEngine({ quiz }: { quiz: Quiz }) {
                 ))}
               </div>
             </div>
-            <div className="flex gap-3 justify-center">
-              <button onClick={() => navigator.clipboard?.writeText(window.location.href)} className="px-6 py-3 rounded-xl border border-purple-500/30 text-purple-300 hover:bg-purple-500/10 transition-all text-sm font-bold">{l.copy}</button>
-              <button onClick={restart} className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-[#FFD700] text-white font-bold text-sm hover:opacity-90 transition-opacity">{l.restart}</button>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button onClick={() => navigator.clipboard?.writeText(window.location.href)} className="px-6 py-3 min-h-[44px] rounded-xl border border-purple-500/30 text-purple-300 hover:bg-purple-500/10 transition-all text-sm font-bold">{l.copy}</button>
+              <button onClick={restart} className="px-6 py-3 min-h-[44px] rounded-xl bg-gradient-to-r from-purple-600 to-[#FFD700] text-white font-bold text-sm hover:opacity-90 transition-opacity">{l.restart}</button>
             </div>
             <div className="mt-12 pt-8 border-t border-white/5 text-center">
               <p className="text-gray-500 text-sm mb-3">{l.others}</p>

@@ -29,8 +29,8 @@ export default function HeroSection() {
 
       {/* Globe behind content - full screen centered */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-        <div className="w-[120vw] h-[120vh] sm:w-[100vw] sm:h-[100vh] opacity-50 sm:opacity-65 lg:opacity-75 flex items-center justify-center">
-          <div className="w-full h-full">
+        <div className="w-[100vw] h-[100vh] opacity-40 sm:opacity-65 lg:opacity-75 flex items-center justify-center">
+          <div className="w-full h-full max-w-[100vw]">
             <Globe3D />
           </div>
         </div>
@@ -51,7 +51,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-[0.85] mb-4 sm:mb-6"
+          className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-[0.85] mb-4 sm:mb-6"
         >
           <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">AI</span>
           {' '}

@@ -12,11 +12,11 @@ export default function Footer() {
       {/* Gradient divider */}
       <div className="gradient-divider" />
 
-      <div className="max-w-6xl mx-auto px-6 pt-16 pb-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-8">
         {/* Main footer grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
           {/* Brand column */}
-          <div className="lg:col-span-1">
+          <div className="col-span-2 lg:col-span-1">
             <Link href={`/${locale}`} className="flex items-center gap-3 group mb-5">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center font-black text-white text-sm group-hover:scale-110 transition-transform">
                 A
@@ -141,14 +141,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.04] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-700 text-xs">
+        <div className="border-t border-white/[0.04] pt-6 sm:pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-gray-700 text-xs text-center md:text-left">
             {currentYear} AI-DUE. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-xs text-gray-700">
-            <a href="#" className="hover:text-gray-500 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-500 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-gray-500 transition-colors">Impressum</a>
+          <div className="flex items-center gap-4 sm:gap-6 text-xs text-gray-700 flex-wrap justify-center">
+            <a href="#" className="hover:text-gray-500 transition-colors py-2">Privacy Policy</a>
+            <a href="#" className="hover:text-gray-500 transition-colors py-2">Terms of Service</a>
+            <a href="#" className="hover:text-gray-500 transition-colors py-2">Impressum</a>
           </div>
         </div>
       </div>

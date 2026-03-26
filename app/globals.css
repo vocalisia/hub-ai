@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -224,7 +225,13 @@ h1, h2, h3, h4, h5, h6 {
 .prose-premium p {
   color: #d1d5db;
   line-height: 1.85;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 640px) {
+  .prose-premium p {
+    font-size: 1.05rem;
+  }
 }
 
 .prose-premium a {
@@ -260,7 +267,15 @@ h1, h2, h3, h4, h5, h6 {
   background: #0a0a1a !important;
   border: 1px solid rgba(139, 92, 246, 0.15);
   border-radius: 12px;
-  padding: 1.25rem;
+  padding: 1rem;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .prose-premium pre {
+    padding: 1.25rem;
+  }
 }
 
 .prose-premium pre code {
@@ -284,6 +299,8 @@ h1, h2, h3, h4, h5, h6 {
 .prose-premium img {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 100%;
+  height: auto;
 }
 
 .prose-premium hr {
@@ -334,4 +351,31 @@ h1, h2, h3, h4, h5, h6 {
     rgba(6, 182, 212, 0.2),
     transparent
   );
+}
+
+/* ===== SCROLLBAR UTILITIES ===== */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+button, a, [role="button"], input[type="submit"] {
+  touch-action: manipulation;
+}
+
+/* Prevent horizontal overflow globally */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Minimum touch targets on mobile */
+@media (max-width: 768px) {
+  button, a, [role="button"] {
+    min-height: 44px;
+  }
 }

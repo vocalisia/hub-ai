@@ -47,7 +47,7 @@ export default async function CartePage({
             <span className="inline-block text-purple-400 text-xs font-semibold uppercase tracking-[0.25em] mb-5 px-4 py-2 rounded-full border border-purple-500/20 bg-purple-500/5">
               Interactive
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
               {t('title').split(' ')[0]}{' '}
               <span className="gradient-text-purple">{t('title').split(' ').slice(1).join(' ')}</span>
             </h1>
@@ -100,7 +100,7 @@ export default async function CartePage({
           {/* Globe + Sidebar layout */}
           <div className="flex flex-col lg:flex-row gap-6">
             {/* Globe */}
-            <div className="flex-1 bg-white/[0.015] rounded-3xl border border-white/[0.05] p-4 md:p-6 overflow-hidden">
+            <div className="flex-1 bg-white/[0.015] rounded-2xl sm:rounded-3xl border border-white/[0.05] p-2 sm:p-4 md:p-6 overflow-hidden min-h-[350px] sm:min-h-[500px]">
               <Globe3D />
             </div>
 

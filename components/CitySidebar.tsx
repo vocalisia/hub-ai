@@ -83,7 +83,7 @@ export default function CitySidebar() {
   const totalCount = filteredCities.length
 
   return (
-    <div className="lg:w-[340px] bg-white/[0.015] rounded-3xl border border-white/[0.05] p-5 flex flex-col max-h-[750px]">
+    <div className="w-full lg:w-[340px] bg-white/[0.015] rounded-2xl sm:rounded-3xl border border-white/[0.05] p-4 sm:p-5 flex flex-col max-h-[500px] sm:max-h-[750px]">
       {/* Header */}
       <div className="mb-5">
         <h3 className="text-white font-bold text-lg mb-1">Network Nodes</h3>
@@ -107,12 +107,12 @@ export default function CitySidebar() {
       </div>
 
       {/* Filter tabs */}
-      <div className="flex gap-1 mb-5 flex-wrap">
+      <div className="flex gap-1 mb-5 flex-wrap overflow-x-auto pb-1 scrollbar-none">
         {Object.entries(REGIONS).map(([key, label]) => (
           <button
             key={key}
             onClick={() => setActiveTab(key)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+            className={`px-3 py-2 sm:py-1.5 rounded-lg text-xs font-semibold transition-all flex-shrink-0 min-h-[36px] ${
               activeTab === key
                 ? 'bg-purple-600/20 text-purple-300 border border-purple-500/30'
                 : 'text-gray-500 hover:text-gray-300 hover:bg-white/[0.04] border border-transparent'

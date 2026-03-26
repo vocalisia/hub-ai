@@ -114,14 +114,14 @@ export default function MemoryIA() {
         <div className="text-[#FFD700] font-bold">{timer}s</div>
       </div>
 
-      <div className="grid grid-cols-4 gap-2 sm:gap-3 mb-4">
+      <div className="grid grid-cols-4 gap-2 sm:gap-3 mb-4 max-w-md mx-auto sm:max-w-none">
         {cards.map(card => (
           <motion.button
             key={card.id}
             onClick={() => handleCardClick(card.id)}
             whileHover={!card.flipped && !card.matched ? { scale: 1.05 } : {}}
             whileTap={!card.flipped && !card.matched ? { scale: 0.95 } : {}}
-            className={`aspect-square rounded-xl border-2 flex flex-col items-center justify-center gap-1 transition-all ${
+            className={`aspect-square rounded-xl border-2 flex flex-col items-center justify-center gap-1 transition-all min-h-[60px] sm:min-h-0 ${
               card.matched ? 'border-green-500/50 bg-green-500/10' :
               card.flipped ? 'border-[#FFD700]/50 bg-[#FFD700]/10' :
               'border-white/10 bg-white/[0.03] hover:border-purple-500/30 cursor-pointer'
@@ -129,11 +129,11 @@ export default function MemoryIA() {
           >
             {card.flipped || card.matched ? (
               <motion.div initial={{ rotateY: 90 }} animate={{ rotateY: 0 }} className="text-center">
-                <div className="text-2xl sm:text-3xl">{card.icon}</div>
-                <div className="text-[10px] text-gray-400 font-bold mt-1">{card.label}</div>
+                <div className="text-xl sm:text-3xl">{card.icon}</div>
+                <div className="text-[9px] sm:text-[10px] text-gray-400 font-bold mt-0.5 sm:mt-1 truncate max-w-full px-1">{card.label}</div>
               </motion.div>
             ) : (
-              <div className="text-xl text-purple-500/30 font-bold">?</div>
+              <div className="text-lg sm:text-xl text-purple-500/30 font-bold">?</div>
             )}
           </motion.button>
         ))}
@@ -159,7 +159,7 @@ export default function MemoryIA() {
                   </a>
                 ))}
               </div>
-              <button onClick={reset} className="px-6 py-2 rounded-xl bg-purple-600 text-white font-bold text-sm">Rejouer</button>
+              <button onClick={reset} className="px-6 py-3 min-h-[44px] rounded-xl bg-purple-600 text-white font-bold text-sm w-full sm:w-auto">Rejouer</button>
             </div>
           </motion.div>
         )}

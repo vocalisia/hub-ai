@@ -100,7 +100,7 @@ export default function PipelineChallenge() {
               key={step.id}
               layout
               onClick={() => handleClick(i)}
-              className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-all text-left ${
+              className={`w-full flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border transition-all text-left min-h-[52px] ${
                 isCorrect ? 'border-green-500/50 bg-green-500/10' :
                 isSelected ? 'border-[#FFD700]/50 bg-[#FFD700]/10 scale-[1.02]' :
                 'border-white/10 bg-white/[0.02] hover:border-purple-500/30 hover:bg-purple-500/5'
@@ -123,14 +123,14 @@ export default function PipelineChallenge() {
 
       {/* Bouton Valider */}
       {!gameOver && (
-        <div className="flex gap-3 mb-4">
+        <div className="flex flex-col sm:flex-row gap-3 mb-4">
           <button
             onClick={validate}
-            className="flex-1 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-[#FFD700] text-white font-bold text-sm hover:scale-[1.02] transition-transform"
+            className="flex-1 py-3 min-h-[44px] rounded-xl bg-gradient-to-r from-purple-600 to-[#FFD700] text-white font-bold text-sm hover:scale-[1.02] transition-transform"
           >
             ✓ Valider l'ordre
           </button>
-          <button onClick={reset} className="px-4 py-3 rounded-xl border border-white/10 text-gray-400 text-sm hover:bg-white/5">
+          <button onClick={reset} className="px-4 py-3 min-h-[44px] rounded-xl border border-white/10 text-gray-400 text-sm hover:bg-white/5">
             Melanger
           </button>
         </div>
@@ -161,7 +161,7 @@ export default function PipelineChallenge() {
                   </a>
                 ))}
               </div>
-              <button onClick={reset} className="px-6 py-2 rounded-xl bg-purple-600 text-white font-bold text-sm">Rejouer</button>
+              <button onClick={reset} className="px-6 py-3 min-h-[44px] rounded-xl bg-purple-600 text-white font-bold text-sm w-full sm:w-auto">Rejouer</button>
             </div>
           </motion.div>
         )}

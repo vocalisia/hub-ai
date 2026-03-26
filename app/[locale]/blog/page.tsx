@@ -65,7 +65,7 @@ export default async function BlogPage({
             <span className="inline-block text-purple-400 text-xs font-semibold uppercase tracking-[0.25em] mb-5 px-4 py-2 rounded-full border border-purple-500/20 bg-purple-500/5">
               {locale === 'en' ? 'Expert Articles' : locale === 'de' ? 'Expertenartikel' : locale === 'it' ? 'Articoli Esperti' : 'Articles Experts'}
             </span>
-            <h1 className="text-5xl md:text-6xl font-black text-white mb-5 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-5 leading-tight">
               {t('title').split(' ')[0]}{' '}
               <span className="gradient-text-purple">{t('title').split(' ').slice(1).join(' ') || 'IA'}</span>
             </h1>
@@ -88,7 +88,7 @@ export default async function BlogPage({
                 "@context": "https://schema.org",
                 "@type": "Blog",
                 "name": "Blog IA — Hub AI",
-                "url": `https://sebastien-ia.com/${locale}/blog`,
+                "url": `https://ai-due.com/${locale}/blog`,
                 "description": "Articles experts sur l'IA geolocalises CH/EU/CA/USA",
                 "blogPost": posts.slice(0, 5).map(post => ({
                   "@type": "BlogPosting",

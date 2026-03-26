@@ -1,8 +1,19 @@
 'use client'
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Sphere, Line, Float } from '@react-three/drei'
 import * as THREE from 'three'
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+  return isMobile
+}
 
 // === ALL CITIES ===
 const CITIES = [
@@ -124,7 +135,7 @@ function latLngToVec3(lat: number, lng: number, r: number): THREE.Vector3 {
 }
 
 // === GOLD BRAIN (neural mesh) ===
-function GoldenBrain() {
+function GoldenBrain({ isMobile = false }: { isMobile?: boolean }) {
   const brainRef = useRef<THREE.Group>(null)
   const neuronsRef = useRef<THREE.Points>(null)
   const pulseLinesRef = useRef<THREE.Group>(null)
@@ -135,8 +146,9 @@ function GoldenBrain() {
     const conns: [number, number][] = []
     const surface: THREE.Vector3[] = []
 
+    const hemisphereCount = isMobile ? 80 : 250
     // LEFT HEMISPHERE
-    for (let i = 0; i < 250; i++) {
+    for (let i = 0; i < hemisphereCount; i++) {
       const u = Math.random() * Math.PI
       const v = Math.random() * Math.PI * 2
       // Brain shape: wider at top, narrower at bottom, split in middle
@@ -158,7 +170,7 @@ function GoldenBrain() {
     }
 
     // RIGHT HEMISPHERE
-    for (let i = 0; i < 250; i++) {
+    for (let i = 0; i < hemisphereCount; i++) {
       const u = Math.random() * Math.PI
       const v = Math.random() * Math.PI * 2
       const baseR = 0.32
@@ -178,7 +190,8 @@ function GoldenBrain() {
     }
 
     // BRAIN STEM
-    for (let i = 0; i < 40; i++) {
+    const stemCount = isMobile ? 15 : 40
+    for (let i = 0; i < stemCount; i++) {
       const t = Math.random()
       const angle = Math.random() * Math.PI * 2
       const r = 0.06 + Math.random() * 0.03
@@ -190,7 +203,8 @@ function GoldenBrain() {
     }
 
     // SULCI (grooves) - dense connection points along brain folds
-    for (let i = 0; i < 60; i++) {
+    const sulciCount = isMobile ? 20 : 60
+    for (let i = 0; i < sulciCount; i++) {
       const t = (i / 60) * Math.PI
       const side = i % 2 === 0 ? -1 : 1
       pts.push(new THREE.Vector3(
@@ -222,7 +236,7 @@ function GoldenBrain() {
     })
 
     return { positions, connections: conns, brainSurface: surface }
-  }, [])
+  }, [isMobile])
 
   // Animate brain rotation and neuron pulses
   useFrame((state) => {
@@ -288,7 +302,7 @@ function GoldenBrain() {
 
         {/* Dense neural connections (gold circuit lines) */}
         <group ref={pulseLinesRef}>
-          {connections.slice(0, 300).map(([a, b], i) => {
+          {connections.slice(0, isMobile ? 80 : 300).map(([a, b], i) => {
             const pa = [positions[a * 3], positions[a * 3 + 1], positions[a * 3 + 2]] as [number, number, number]
             const pb = [positions[b * 3], positions[b * 3 + 1], positions[b * 3 + 2]] as [number, number, number]
             // Curved connections for more organic look
@@ -484,7 +498,7 @@ function NeuronParticles() {
 }
 
 // === MAIN SCENE ===
-function GlobeScene() {
+function GlobeScene({ isMobile = false }: { isMobile?: boolean }) {
   const globeRef = useRef<THREE.Group>(null)
 
   useFrame((state) => {
@@ -502,22 +516,22 @@ function GlobeScene() {
 
       <group ref={globeRef}>
         {/* Dark globe */}
-        <Sphere args={[RADIUS, 64, 64]}>
+        <Sphere args={[RADIUS, isMobile ? 32 : 64, isMobile ? 32 : 64]}>
           <meshStandardMaterial color="#080820" transparent opacity={0.92} />
         </Sphere>
 
         {/* Gold wireframe */}
-        <Sphere args={[RADIUS + 0.003, 36, 36]}>
+        <Sphere args={[RADIUS + 0.003, isMobile ? 20 : 36, isMobile ? 20 : 36]}>
           <meshBasicMaterial color="#DAA520" wireframe transparent opacity={0.06} />
         </Sphere>
 
-        {/* All city markers */}
-        {CITIES.map((city, i) => (
+        {/* City markers - show only active on mobile */}
+        {(isMobile ? CITIES.filter(c => c.active) : CITIES).map((city, i) => (
           <CityMarker key={i} city={city} />
         ))}
 
-        {/* All arc connections */}
-        {HUB_CONNECTIONS.map(([from, to], i) => (
+        {/* Arc connections - fewer on mobile */}
+        {(isMobile ? HUB_CONNECTIONS.slice(0, 6) : HUB_CONNECTIONS).map(([from, to], i) => (
           <ArcConnection key={i} fromIdx={from} toIdx={to} />
         ))}
 
@@ -526,7 +540,7 @@ function GlobeScene() {
       </group>
 
       {/* Golden brain at center */}
-      <GoldenBrain />
+      <GoldenBrain isMobile={isMobile} />
 
       <OrbitControls
         enableZoom={false}
@@ -540,20 +554,23 @@ function GlobeScene() {
 }
 
 export default function Globe3D() {
+  const isMobile = useIsMobile()
+
   return (
-    <div className="w-full h-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px] relative">
+    <div className="w-full h-full min-h-[350px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[800px] relative">
       <Canvas
-        camera={{ position: [0, 0.5, 3.8], fov: 45 }}
+        camera={{ position: [0, 0.5, isMobile ? 4.5 : 3.8], fov: isMobile ? 50 : 45 }}
         style={{ background: 'transparent' }}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ antialias: !isMobile, alpha: true }}
+        dpr={isMobile ? [1, 1.5] : [1, 2]}
       >
-        <GlobeScene />
+        <GlobeScene isMobile={isMobile} />
       </Canvas>
 
       {/* Gold glow overlay */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-yellow-500/8 rounded-full blur-[80px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] bg-amber-500/5 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120px] h-[120px] sm:w-[200px] sm:h-[200px] bg-yellow-500/8 rounded-full blur-[80px]" />
       </div>
     </div>
   )

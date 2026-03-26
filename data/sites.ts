@@ -2,7 +2,7 @@ export const SITES = [
   {
     id: 'hub',
     name: 'Hub AI',
-    url: 'https://sebastien-ia.com',
+    url: 'https://ai-due.com',
     description: {
       fr: 'Hub central de l\'ecosysteme IA',
       en: 'Central hub of the AI ecosystem',
@@ -50,7 +50,7 @@ export const SITES = [
   {
     id: 'ia-canada',
     name: 'IA Canada Hub',
-    url: 'https://sebastien-ia.com/en/canada',
+    url: 'https://ai-due.com/en/canada',
     description: {
       fr: 'Ecosysteme IA canadien',
       en: 'Canadian AI ecosystem',
@@ -66,7 +66,7 @@ export const SITES = [
   {
     id: 'ia-usa',
     name: 'IA USA Network',
-    url: 'https://sebastien-ia.com/en/usa',
+    url: 'https://ai-due.com/en/usa',
     description: {
       fr: 'Reseau IA americain',
       en: 'American AI network',
@@ -82,7 +82,7 @@ export const SITES = [
   {
     id: 'ia-europe',
     name: 'IA Europe Network',
-    url: 'https://sebastien-ia.com/fr/europe',
+    url: 'https://ai-due.com/fr/europe',
     description: {
       fr: 'Reseau IA europeen',
       en: 'European AI network',

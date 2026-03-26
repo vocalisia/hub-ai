@@ -20,7 +20,7 @@ export default function NetworkGraph() {
   const locale = useLocale() as 'fr' | 'en' | 'de' | 'it'
 
   return (
-    <section className="py-32 px-6 relative">
+    <section className="py-16 sm:py-32 px-4 sm:px-6 relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(139,92,246,0.05),transparent_60%)]" />
 
       <div className="max-w-6xl mx-auto relative">
@@ -31,12 +31,12 @@ export default function NetworkGraph() {
           className="text-center mb-16"
         >
           <span className="text-purple-400 text-xs font-medium uppercase tracking-[0.2em] mb-4 block">Architecture</span>
-          <h2 className="text-4xl md:text-5xl font-black text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white">
             AI Architecture Network
           </h2>
         </motion.div>
 
-        <div className="relative bg-gradient-to-b from-white/[0.02] to-transparent rounded-3xl border border-white/5 p-8 md:p-12 overflow-hidden">
+        <div className="relative bg-gradient-to-b from-white/[0.02] to-transparent rounded-2xl sm:rounded-3xl border border-white/5 p-3 sm:p-8 md:p-12 overflow-hidden">
           {/* Subtle grid */}
           <div className="absolute inset-0 opacity-[0.03]"
             style={{
@@ -45,7 +45,7 @@ export default function NetworkGraph() {
             }}
           />
 
-          <svg viewBox="0 0 1000 600" className="w-full h-auto relative z-10">
+          <svg viewBox="0 0 1000 600" className="w-full h-auto relative z-10" preserveAspectRatio="xMidYMid meet">
             {/* Gradient defs */}
             <defs>
               <filter id="glow">
@@ -156,13 +156,13 @@ export default function NetworkGraph() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
-                  className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8"
+                  className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 md:bottom-8 md:left-8 md:right-8"
                 >
-                  <div className="bg-black/80 backdrop-blur-2xl rounded-2xl p-6 border border-white/10">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h3 className="text-white font-bold text-lg mb-1">{site.name}</h3>
-                        <p className="text-gray-500 text-sm mb-3">{site.description[locale]}</p>
+                  <div className="bg-black/80 backdrop-blur-2xl rounded-2xl p-4 sm:p-6 border border-white/10">
+                    <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
+                      <div className="w-full sm:w-auto">
+                        <h3 className="text-white font-bold text-base sm:text-lg mb-1">{site.name}</h3>
+                        <p className="text-gray-500 text-xs sm:text-sm mb-3">{site.description[locale]}</p>
                         <div className="flex gap-2 flex-wrap">
                           {site.topics.map(topic => (
                             <span
@@ -179,7 +179,7 @@ export default function NetworkGraph() {
                         href={site.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="shrink-0 px-4 py-2 rounded-xl text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+                        className="shrink-0 w-full sm:w-auto text-center px-4 py-3 sm:py-2 rounded-xl text-white text-sm font-semibold hover:opacity-90 transition-opacity"
                         style={{ background: site.color }}
                       >
                         Visit
