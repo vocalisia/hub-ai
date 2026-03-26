@@ -61,12 +61,18 @@ export default function PipelineChallenge() {
     setSelected(null)
     setMoves(prev => prev + 1)
 
-    // Check win
-    const isCorrect = newPipeline.every((step, i) => step.correctPosition === i)
+  }
+
+  function validate() {
+    const isCorrect = pipeline.every((step, i) => step.correctPosition === i)
     if (isCorrect) {
       setGameOver(true)
       const score = Math.max(100 - (moves * 5), 30)
       setMessage(`Pipeline RAG complete ! Score: ${score}`)
+    } else {
+      const correct = pipeline.filter((step, i) => step.correctPosition === i).length
+      setMessage(`${correct}/${STEPS.length} etapes bien placees. Continuez !`)
+      setTimeout(() => setMessage(''), 3000)
     }
   }
 
@@ -114,6 +120,27 @@ export default function PipelineChallenge() {
       <p className="text-gray-500 text-xs text-center mb-4">
         Cliquez sur deux elements pour les echanger. Reconstituez le pipeline RAG !
       </p>
+
+      {/* Bouton Valider */}
+      {!gameOver && (
+        <div className="flex gap-3 mb-4">
+          <button
+            onClick={validate}
+            className="flex-1 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-[#FFD700] text-white font-bold text-sm hover:scale-[1.02] transition-transform"
+          >
+            ✓ Valider l'ordre
+          </button>
+          <button onClick={reset} className="px-4 py-3 rounded-xl border border-white/10 text-gray-400 text-sm hover:bg-white/5">
+            Melanger
+          </button>
+        </div>
+      )}
+
+      {message && !gameOver && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center text-sm font-bold mb-3 text-[#FFD700]">
+          {message}
+        </motion.div>
+      )}
 
       <AnimatePresence>
         {gameOver && (

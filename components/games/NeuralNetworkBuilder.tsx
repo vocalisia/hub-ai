@@ -189,6 +189,30 @@ export default function NeuralNetworkBuilder() {
         Cliquez sur deux noeuds pour les connecter. Construisez un reseau fonctionnel !
       </p>
 
+      {/* Bouton Valider */}
+      {!gameOver && connections.length > 0 && (
+        <div className="flex gap-3 mt-4">
+          <button
+            onClick={() => {
+              if (connections.length >= REQUIRED_CONNECTIONS) {
+                setGameOver(true)
+                setScore(prev => prev + 50)
+                setMessage('Reseau valide ! +50 bonus')
+              } else {
+                setMessage(`Il manque ${REQUIRED_CONNECTIONS - connections.length} connexion(s) !`)
+                setTimeout(() => setMessage(''), 2500)
+              }
+            }}
+            className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#FFD700] to-[#DAA520] text-black font-bold text-sm hover:scale-[1.02] transition-transform"
+          >
+            ✓ Valider mon reseau ({connections.length}/{REQUIRED_CONNECTIONS})
+          </button>
+          <button onClick={reset} className="px-4 py-3 rounded-xl border border-white/10 text-gray-400 text-sm hover:bg-white/5">
+            Recommencer
+          </button>
+        </div>
+      )}
+
       <AnimatePresence>
         {gameOver && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mt-6">
