@@ -127,32 +127,88 @@ function latLngToVec3(lat: number, lng: number, r: number): THREE.Vector3 {
 function GoldenBrain() {
   const brainRef = useRef<THREE.Group>(null)
   const neuronsRef = useRef<THREE.Points>(null)
+  const pulseLinesRef = useRef<THREE.Group>(null)
 
-  // Generate brain-like neural points
-  const { positions, connections } = useMemo(() => {
+  // Generate realistic brain shape with two hemispheres + sulci
+  const { positions, connections, brainSurface } = useMemo(() => {
     const pts: THREE.Vector3[] = []
     const conns: [number, number][] = []
+    const surface: THREE.Vector3[] = []
 
-    // Create brain shape with random neurons
-    for (let i = 0; i < 200; i++) {
-      const theta = Math.random() * Math.PI * 2
-      const phi = Math.random() * Math.PI
-      // Brain-like ellipsoid
-      const rx = 0.35 + Math.random() * 0.05
-      const ry = 0.25 + Math.random() * 0.03
-      const rz = 0.3 + Math.random() * 0.04
+    // LEFT HEMISPHERE
+    for (let i = 0; i < 250; i++) {
+      const u = Math.random() * Math.PI
+      const v = Math.random() * Math.PI * 2
+      // Brain shape: wider at top, narrower at bottom, split in middle
+      const baseR = 0.32
+      const bumps = 1 + 0.08 * Math.sin(u * 6) * Math.cos(v * 4) + 0.05 * Math.sin(u * 12 + v * 8)
+      const rx = baseR * bumps
+      const ry = baseR * 0.75 * bumps
+      const rz = baseR * 0.9 * bumps
 
-      const x = rx * Math.sin(phi) * Math.cos(theta)
-      const y = ry * Math.cos(phi) + 0.05
-      const z = rz * Math.sin(phi) * Math.sin(theta)
+      const x = rx * Math.sin(u) * Math.cos(v) - 0.04 // left offset
+      const y = ry * Math.cos(u) * 0.9 + 0.02
+      const z = rz * Math.sin(u) * Math.sin(v)
 
-      pts.push(new THREE.Vector3(x, y, z))
+      // Only left hemisphere
+      if (x < 0.02) {
+        pts.push(new THREE.Vector3(x, y, z))
+        if (Math.random() > 0.5) surface.push(new THREE.Vector3(x, y, z))
+      }
     }
 
-    // Connect nearby neurons
+    // RIGHT HEMISPHERE
+    for (let i = 0; i < 250; i++) {
+      const u = Math.random() * Math.PI
+      const v = Math.random() * Math.PI * 2
+      const baseR = 0.32
+      const bumps = 1 + 0.08 * Math.sin(u * 6 + 1) * Math.cos(v * 4 + 0.5) + 0.05 * Math.sin(u * 12 + v * 8 + 2)
+      const rx = baseR * bumps
+      const ry = baseR * 0.75 * bumps
+      const rz = baseR * 0.9 * bumps
+
+      const x = rx * Math.sin(u) * Math.cos(v) + 0.04 // right offset
+      const y = ry * Math.cos(u) * 0.9 + 0.02
+      const z = rz * Math.sin(u) * Math.sin(v)
+
+      if (x > -0.02) {
+        pts.push(new THREE.Vector3(x, y, z))
+        if (Math.random() > 0.5) surface.push(new THREE.Vector3(x, y, z))
+      }
+    }
+
+    // BRAIN STEM
+    for (let i = 0; i < 40; i++) {
+      const t = Math.random()
+      const angle = Math.random() * Math.PI * 2
+      const r = 0.06 + Math.random() * 0.03
+      pts.push(new THREE.Vector3(
+        Math.cos(angle) * r,
+        -0.2 - t * 0.15,
+        Math.sin(angle) * r
+      ))
+    }
+
+    // SULCI (grooves) - dense connection points along brain folds
+    for (let i = 0; i < 60; i++) {
+      const t = (i / 60) * Math.PI
+      const side = i % 2 === 0 ? -1 : 1
+      pts.push(new THREE.Vector3(
+        side * 0.01,
+        0.15 * Math.cos(t),
+        0.28 * Math.sin(t)
+      ))
+    }
+
+    // Create neural connections - nearby neurons connect
     for (let i = 0; i < pts.length; i++) {
       for (let j = i + 1; j < pts.length; j++) {
-        if (pts[i].distanceTo(pts[j]) < 0.15 && Math.random() > 0.6) {
+        const dist = pts[i].distanceTo(pts[j])
+        if (dist < 0.1 && Math.random() > 0.7) {
+          conns.push([i, j])
+        }
+        // Long-range connections (inter-hemisphere)
+        if (dist > 0.2 && dist < 0.5 && Math.random() > 0.97) {
           conns.push([i, j])
         }
       }
@@ -165,37 +221,53 @@ function GoldenBrain() {
       positions[i * 3 + 2] = p.z
     })
 
-    return { positions, connections: conns, points: pts }
+    return { positions, connections: conns, brainSurface: surface }
   }, [])
 
-  // Animated neuron pulses
+  // Animate brain rotation and neuron pulses
   useFrame((state) => {
+    const t = state.clock.elapsedTime
     if (brainRef.current) {
-      brainRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.3) * 0.1
+      brainRef.current.rotation.y = Math.sin(t * 0.2) * 0.15
+      brainRef.current.rotation.x = Math.sin(t * 0.15) * 0.05
     }
+    // Pulse the neuron points
     if (neuronsRef.current) {
-      const sizes = neuronsRef.current.geometry.attributes.size
-      if (sizes) {
-        for (let i = 0; i < sizes.count; i++) {
-          const base = 0.008
-          const pulse = Math.sin(state.clock.elapsedTime * 2 + i * 0.5) * 0.004
-          sizes.setX(i, base + pulse)
+      const mat = neuronsRef.current.material as THREE.PointsMaterial
+      mat.opacity = 0.7 + Math.sin(t * 1.5) * 0.3
+    }
+    // Pulse connection groups
+    if (pulseLinesRef.current) {
+      pulseLinesRef.current.children.forEach((child, i) => {
+        const mesh = child as THREE.Mesh
+        if (mesh.material && 'opacity' in mesh.material) {
+          (mesh.material as THREE.Material).opacity = 0.15 + Math.sin(t * 2 + i * 0.3) * 0.15
         }
-        sizes.needsUpdate = true
-      }
+      })
     }
   })
 
-  const sizes = useMemo(() => {
-    const s = new Float32Array(positions.length / 3)
-    for (let i = 0; i < s.length; i++) s[i] = 0.008 + Math.random() * 0.005
-    return s
-  }, [positions])
+  // Connection lines from brain to globe surface (neural highways to cities)
+  const brainToCityLines = useMemo(() => {
+    const lines: [number, number, number][][] = []
+    const activeCities = CITIES.filter(c => c.active)
+    activeCities.forEach((city, i) => {
+      const cityPos = latLngToVec3(city.lat, city.lng, RADIUS)
+      // Start from random brain surface point
+      const brainPt = brainSurface[i % brainSurface.length] || new THREE.Vector3(0, 0, 0)
+      const mid = brainPt.clone().add(cityPos).multiplyScalar(0.5)
+      mid.normalize().multiplyScalar(RADIUS * 0.5)
+
+      const curve = new THREE.QuadraticBezierCurve3(brainPt, mid, cityPos)
+      lines.push(curve.getPoints(30).map(p => [p.x, p.y, p.z] as [number, number, number]))
+    })
+    return lines
+  }, [brainSurface])
 
   return (
-    <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.3}>
+    <Float speed={1} rotationIntensity={0.1} floatIntensity={0.2}>
       <group ref={brainRef}>
-        {/* Neuron points */}
+        {/* Neuron points - gold dots on brain surface */}
         <points ref={neuronsRef}>
           <bufferGeometry>
             <bufferAttribute
@@ -204,46 +276,74 @@ function GoldenBrain() {
               array={positions}
               itemSize={3}
             />
-            <bufferAttribute
-              attach="attributes-size"
-              count={sizes.length}
-              array={sizes}
-              itemSize={1}
-            />
           </bufferGeometry>
           <pointsMaterial
             color="#FFD700"
-            size={0.012}
+            size={0.015}
             transparent
             opacity={0.9}
             sizeAttenuation
           />
         </points>
 
-        {/* Neural connections (gold lines) */}
-        {connections.slice(0, 150).map(([a, b], i) => {
-          const pa = [positions[a * 3], positions[a * 3 + 1], positions[a * 3 + 2]] as [number, number, number]
-          const pb = [positions[b * 3], positions[b * 3 + 1], positions[b * 3 + 2]] as [number, number, number]
-          return (
-            <Line
-              key={i}
-              points={[pa, pb]}
-              color="#DAA520"
-              lineWidth={0.5}
-              transparent
-              opacity={0.3 + Math.sin(i * 0.7) * 0.15}
-            />
-          )
-        })}
+        {/* Dense neural connections (gold circuit lines) */}
+        <group ref={pulseLinesRef}>
+          {connections.slice(0, 300).map(([a, b], i) => {
+            const pa = [positions[a * 3], positions[a * 3 + 1], positions[a * 3 + 2]] as [number, number, number]
+            const pb = [positions[b * 3], positions[b * 3 + 1], positions[b * 3 + 2]] as [number, number, number]
+            // Curved connections for more organic look
+            const mx = (pa[0] + pb[0]) / 2 + (Math.random() - 0.5) * 0.03
+            const my = (pa[1] + pb[1]) / 2 + (Math.random() - 0.5) * 0.03
+            const mz = (pa[2] + pb[2]) / 2 + (Math.random() - 0.5) * 0.03
+            return (
+              <Line
+                key={`n${i}`}
+                points={[pa, [mx, my, mz], pb]}
+                color={i % 3 === 0 ? '#FFD700' : i % 3 === 1 ? '#FFA500' : '#DAA520'}
+                lineWidth={i % 5 === 0 ? 1.5 : 0.8}
+                transparent
+                opacity={0.2 + (i % 10) * 0.03}
+              />
+            )
+          })}
+        </group>
 
-        {/* Brain glow sphere */}
-        <Sphere args={[0.38, 32, 32]}>
-          <meshBasicMaterial color="#FFD700" transparent opacity={0.03} />
+        {/* Brain glow layers */}
+        <Sphere args={[0.35, 32, 32]}>
+          <meshStandardMaterial
+            color="#FFD700"
+            transparent
+            opacity={0.04}
+            emissive="#FFD700"
+            emissiveIntensity={0.3}
+          />
         </Sphere>
-        <Sphere args={[0.45, 16, 16]}>
-          <meshBasicMaterial color="#DAA520" transparent opacity={0.015} />
+        <Sphere args={[0.28, 32, 32]}>
+          <meshStandardMaterial
+            color="#FFA500"
+            transparent
+            opacity={0.06}
+            emissive="#FFA500"
+            emissiveIntensity={0.5}
+          />
+        </Sphere>
+        {/* Inner core glow */}
+        <Sphere args={[0.12, 16, 16]}>
+          <meshBasicMaterial color="#FFD700" transparent opacity={0.15} />
         </Sphere>
       </group>
+
+      {/* Neural highways: brain to active cities */}
+      {brainToCityLines.map((pts, i) => (
+        <Line
+          key={`btc${i}`}
+          points={pts}
+          color="#FFD700"
+          lineWidth={1}
+          transparent
+          opacity={0.12}
+        />
+      ))}
     </Float>
   )
 }
