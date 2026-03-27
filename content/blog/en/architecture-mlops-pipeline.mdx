@@ -1,0 +1,276 @@
+---
+title: "MLOps and AI Pipelines — Industrializing Your Artificial Intelligence Models"
+slug: "architecture-mlops-pipeline"
+date: "2025-03-16"
+author: "Sebastien"
+category: "Architecture IA"
+tags: ["MLOps", "pipeline", "CI/CD IA", "monitoring", "model registry", "feature store"]
+geo:
+  city: "Berlin"
+  region: "Berlin"
+  country: "DE"
+  lat: 52.5200
+  lng: 13.4050
+  continent: "Europe"
+readTime: 9
+excerpt: "Complete MLOps guide: industrialize your AI models with automated pipelines, CI/CD for ML, feature stores, model registry, and production monitoring."
+---
+
+## MLOps: From Prototype to Production
+
+Berlin, with its dynamic tech scene and numerous AI startups (Ada Health, Merantix, Helsing), is fertile ground for industrializing artificial intelligence. **MLOps** (Machine Learning Operations) is the discipline that transforms a Jupyter notebook into a reliable, scalable, and maintainable production system.
+
+According to Gartner, **85% of AI projects fail in production** — not because of model quality, but because of the lack of MLOps practices. This guide details the architectures and tools to avoid this pitfall.
+
+## The Pillars of MLOps
+
+### The ML Lifecycle
+
+The lifecycle of a machine learning model comprises distinct phases:
+
+```
+1. Data exploration
+2. Feature engineering
+3. Experimentation and training
+4. Evaluation and validation
+5. Deployment to production
+6. Monitoring and observability
+7. Retraining and continuous improvement
+→ Back to step 1
+```
+
+MLOps automates and ensures the reliability of each step in this cycle.
+
+### MLOps Maturity Levels
+
+| Level | Description | Automation |
+|--------|-------------|---------------|
+| **0** | Manual | Everything done by hand, notebooks |
+| **1** | Automated pipeline | Automated training, manual deployment |
+| **2** | CI/CD for ML | Automated training and deployment |
+| **3** | Full MLOps | Monitoring, automatic retraining, A/B testing |
+
+The majority of companies are between levels 0 and 1. The goal is to reach at least **level 2** for serious production use.
+
+## Architecture of a Complete ML Pipeline
+
+### Overview
+
+```
+Data Sources → Data Validation → Feature Store
+→ Training Pipeline → Model Validation
+→ Model Registry → Deployment Pipeline
+→ Serving Infrastructure → Monitoring
+→ Retraining Trigger → (loop)
+```
+
+### Data Pipeline
+
+The data pipeline is the foundation of any ML system:
+
+**Ingestion**
+- Multiple sources: databases, APIs, files, streaming
+- Tools: Apache Kafka, Airbyte, Fivetran, custom connectors
+
+**Data Validation**
+- Schema validation: types, formats, constraints
+- Statistical validation: distribution, outliers, missing values
+- Tools: **Great Expectations**, **Pandera**, **TFX Data Validation**
+
+**Feature Engineering**
+- Transforming raw data into usable features
+- Encoding, normalization, derived variable creation
+- Tools: **dbt**, **Apache Spark**, custom Python
+
+### Feature Store
+
+The **Feature Store** is a central component of mature MLOps:
+
+- **Centralized storage** of reusable features across teams and models
+- **Online/offline consistency**: same features for training and inference
+- **Versioning**: complete transformation history
+- **Discovery**: catalog of available features
+
+| Feature Store | Type | Strengths |
+|--------------|------|--------|
+| **Feast** | Open-source | Lightweight, flexible |
+| **Tecton** | Managed | Enterprise, real-time |
+| **Hopsworks** | Open-source/Managed | Complete, model-centric |
+| **AWS SageMaker FS** | Managed | AWS integration |
+| **Vertex AI FS** | Managed | GCP integration |
+
+### Training Pipeline
+
+The training pipeline automates the model creation process:
+
+1. **Data retrieval**: extracting features from the Feature Store
+2. **Data splitting**: train/validation/test with stratification
+3. **Hyperparameter search**: Optuna, Ray Tune, Bayesian optimization
+4. **Distributed training**: multi-GPU, multi-node for large models
+5. **Experiment tracking**: logging metrics, parameters, and artifacts
+
+**Experiment Tracking Tools:**
+
+| Tool | Strengths | Integration |
+|-------|--------|-------------|
+| **MLflow** | Open-source, standard | Universal |
+| **Weights & Biases** | Rich UI, collaboration | Python SDK |
+| **Neptune** | Metadata store, versioning | Python SDK |
+| **Comet ML** | Experiment comparison | Python SDK |
+
+## CI/CD for Machine Learning
+
+### Differences from Traditional CI/CD
+
+CI/CD for ML is not limited to code — it includes **data** and **models**:
+
+| Traditional CI/CD | ML CI/CD |
+|----------------|---------|
+| Code only | Code + Data + Model |
+| Unit tests | Unit tests + Model tests |
+| Fast build | Potentially long training |
+| Artifact: binary | Artifact: model + config |
+| Simple rollback | Rollback + quality monitoring |
+
+### ML CI/CD Pipeline
+
+```
+Git Push → Code Tests → Data Validation
+→ Feature Pipeline → Training → Model Validation
+→ Model Registry → Staging Deployment
+→ Integration Tests → Production Deployment
+→ Canary/Shadow → Full Rollout
+```
+
+### Model Validation Gate
+
+Before any deployment, the model must pass **validation gates**:
+
+- **Performance**: metrics above thresholds (accuracy, F1, AUC)
+- **Regression**: no degradation compared to the production model
+- **Bias**: fairness evaluation across subpopulations
+- **Robustness**: stable behavior under perturbations
+- **Latency**: inference time within acceptable limits
+
+## Model Registry
+
+The **Model Registry** manages the model lifecycle:
+
+- **Versioning**: each trained model is versioned with its metadata
+- **Staging**: model states (Development, Staging, Production, Archived)
+- **Lineage**: link between model, training data, and code
+- **Approval**: validation workflow before promotion to production
+
+### Implementation with MLflow
+
+```
+MLflow Model Registry
+├── Model: fraud-detector
+│   ├── Version 1 (Archived) - accuracy: 0.89
+│   ├── Version 2 (Production) - accuracy: 0.93
+│   └── Version 3 (Staging) - accuracy: 0.94
+└── Model: recommendation-engine
+    ├── Version 1 (Archived)
+    └── Version 2 (Production)
+```
+
+## Production Monitoring
+
+### Types of Monitoring
+
+ML monitoring goes beyond traditional infrastructure monitoring:
+
+**Data Drift**
+Production data diverges from training data. Detected through statistical tests (KS test, PSI, Jensen-Shannon divergence).
+
+**Concept Drift**
+The relationship between features and target changes. The model becomes obsolete even if features remain similar.
+
+**Model Performance**
+Tracking quality metrics in production, comparing with validation metrics.
+
+**Operational Metrics**
+Latency, throughput, error rate, resource utilization — classic DevOps monitoring.
+
+### Recommended Monitoring Stack
+
+| Tool | Role |
+|-------|------|
+| **Evidently AI** | Data drift, model performance |
+| **Arize AI** | Complete ML observability |
+| **Prometheus + Grafana** | Infrastructure metrics |
+| **NannyML** | Performance estimation without ground truth |
+| **Whylabs** | Profiling and continuous monitoring |
+
+### Alerting and Retraining
+
+Monitoring should trigger **automatic actions**:
+
+1. **Alert** when drift exceeds a threshold
+2. **Automatic investigation** of the cause
+3. **Retraining** with new data
+4. **Validation** of the new model
+5. **Progressive deployment** (canary)
+
+The reliability of these pipelines is a key element of trust in AI. [Trustly-AI](https://trustly-ai.com) emphasizes the importance of robust monitoring to ensure that AI systems remain performant and trustworthy over time.
+
+## Pipeline Orchestration
+
+### Orchestration Tools
+
+| Tool | Type | Strengths |
+|-------|------|--------|
+| **Apache Airflow** | DAG-based | Standard, flexible |
+| **Prefect** | DAG-based | Python-native, modern UI |
+| **Dagster** | Asset-based | Data-centric, types |
+| **Kubeflow Pipelines** | K8s-native | ML-specific |
+| **ZenML** | ML-specific | Portable, stack-agnostic |
+
+### Orchestration Best Practices
+
+- **Idempotency**: each step can be re-executed without side effects
+- **Retry**: automatic handling of transient errors
+- **Parallelism**: simultaneous execution of independent steps
+- **Caching**: reusing intermediate results
+- **Versioning**: each pipeline is versioned with its code
+
+## MLOps for SMEs
+
+SMEs, particularly in Switzerland and Germany, often think MLOps is reserved for large enterprises. [IA PME Suisse](https://iapmesuisse.ch) demonstrates that it is possible to adopt pragmatic MLOps practices on a reasonable budget:
+
+### Budget MLOps Stack
+
+- **Git**: code versioning
+- **DVC**: data versioning
+- **MLflow** (open-source): tracking + model registry
+- **GitHub Actions**: CI/CD
+- **Docker**: containerization
+- **Evidently** (open-source): monitoring
+
+**Total cost: $0/month** (excluding compute infrastructure)
+
+## MLOps Trends 2025
+
+### LLMOps
+
+The emergence of LLMs creates new practices:
+- **Prompt versioning**: managing prompts like code
+- **Evaluation frameworks**: automated benchmarks for LLMs
+- **Cost monitoring**: tracking costs per token and per request
+- **Guardrails**: input/output filtering
+
+### Platform Engineering for ML
+
+Platform teams are building **Internal Developer Platforms** (IDP) for ML, offering a self-service experience to data scientists.
+
+### GitOps for ML
+
+Infrastructure and model deployments are managed entirely via Git, with automatic reconciliation.
+
+## Conclusion
+
+MLOps is the key to transforming AI experiments into reliable production systems. Automated pipelines, model registry, feature store, and monitoring form a coherent ecosystem that guarantees quality, reproducibility, and continuous improvement.
+
+To master the foundations, see our guide on [AI architecture fundamentals](/fr/blog/architecture-ia-fondamentaux) and discover the AI landscape in [Germany](/fr/blog/ia-allemagne-2025).
+
+Also read: [Deploying an LLM in production](/fr/blog/architecture-llm-production) and our guide on [RAG architecture](/fr/blog/architecture-rag-retrieval). Also discover [Cloud and Hybrid architecture](/fr/blog/architecture-ia-cloud-hybrid) and [AI for SMEs](/fr/blog/ia-pme-guide).

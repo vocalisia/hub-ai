@@ -33,13 +33,14 @@ const gameSlugs = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = []
+  const lastDeploy = '2026-03-27'
 
   // Static pages in all locales
   for (const page of staticPages) {
     for (const locale of locales) {
       entries.push({
         url: `${BASE_URL}/${locale}${page}`,
-        lastModified: new Date(),
+        lastModified: lastDeploy,
         changeFrequency: page === '' ? 'weekly' : 'monthly',
         priority: page === '' ? 1.0 : 0.8,
       })
@@ -71,7 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of locales) {
       entries.push({
         url: `${BASE_URL}/${locale}/quiz/${slug}`,
-        lastModified: new Date(),
+        lastModified: lastDeploy,
         changeFrequency: 'monthly',
         priority: 0.7,
       })
@@ -83,7 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of locales) {
       entries.push({
         url: `${BASE_URL}/${locale}/games/${slug}`,
-        lastModified: new Date(),
+        lastModified: lastDeploy,
         changeFrequency: 'monthly',
         priority: 0.7,
       })

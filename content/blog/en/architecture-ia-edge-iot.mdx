@@ -1,0 +1,252 @@
+---
+title: "Edge AI and IoT — Architecture for Embedded Artificial Intelligence"
+slug: "architecture-ia-edge-iot"
+date: "2025-03-19"
+author: "Sebastien"
+category: "Architecture IA"
+tags: ["edge AI", "IoT", "embarque", "TinyML", "inference locale", "latence"]
+geo:
+  city: "Stockholm"
+  region: "Stockholm"
+  country: "SE"
+  lat: 59.3293
+  lng: 18.0686
+  continent: "Europe"
+readTime: 9
+excerpt: "Complete guide to Edge AI and IoT architecture: TinyML, embedded inference, deployment architectures, specialized hardware, and industrial use cases for artificial intelligence at the edge."
+---
+
+## Stockholm and the Nordics: Edge AI Pioneers
+
+Stockholm, home to companies like Ericsson, ABB, and a thriving IoT startup scene, is at the forefront of **Edge AI** — artificial intelligence executed directly on devices, at the network periphery. The Nordic countries, leaders in 5G connectivity and Industry 4.0, represent an ideal testing ground for these architectures.
+
+**Edge AI** addresses a fundamental need: not all data can (or should) travel to the cloud for processing. Latency, bandwidth, privacy, and reliability demand bringing intelligence closer to the data.
+
+## Why Edge AI?
+
+### The Limits of Cloud-Only
+
+Cloud-centric architecture presents critical limitations for certain use cases:
+
+- **Latency**: a cloud round-trip takes at least 50-200ms — unacceptable for autonomous vehicles or robotics
+- **Bandwidth**: a 4K camera generates ~12 Mbps — impossible to send everything to the cloud
+- **Connectivity**: no network = no AI in a cloud-only architecture
+- **Privacy**: certain data must never leave the device
+- **Cost**: transferring and processing massive IoT data in the cloud is expensive
+
+### Edge AI Advantages
+
+| Advantage | Description |
+|-----------|-------------|
+| **Ultra-low latency** | Inference in just a few milliseconds |
+| **Offline operation** | No network dependency |
+| **Privacy** | Data stays on the device |
+| **Bandwidth** | Only results are transmitted |
+| **Reduced cost** | Less transfer and cloud compute |
+| **Reliability** | No cloud single point of failure |
+
+## Reference Edge AI Architecture
+
+### Cloud-Edge-Device Topology
+
+```
+Cloud
+├── Model training
+├── Model registry and distribution
+├── Aggregation and analytics
+└── Dashboard and monitoring
+
+Edge (Gateway/Local server)
+├── Medium model inference
+├── Pre-processing and filtering
+├── Device orchestration
+└── Cache and buffering
+
+Device (Sensor/Device)
+├── TinyML inference
+├── Data capture
+├── Local pre-processing
+└── Real-time alerts
+```
+
+### Deployment Patterns
+
+**Pattern 1: Inference on Device**
+The AI model runs directly on the sensor or embedded device. Minimal latency, but compute and memory constraints.
+
+**Pattern 2: Inference on Edge Gateway**
+Sensor data is sent to a local edge server (Raspberry Pi, Jetson, industrial server) that runs inference. Good compromise between power and latency.
+
+**Pattern 3: Split Inference**
+The model is split in two: the first layers run on the device, the deeper layers on the edge or cloud. Optimizes bandwidth while preserving quality.
+
+**Pattern 4: Federated Edge**
+Multiple edge devices collaborate for inference. Used in vehicular (V2X) and industrial scenarios.
+
+## Hardware for Edge AI
+
+### Platform Comparison
+
+| Platform | Compute | RAM | Power | Price | Use Case |
+|----------|---------|-----|-------|-------|----------|
+| **NVIDIA Jetson Orin Nano** | 40 TOPS | 8 GB | 15W | $199 | Robotics, vision |
+| **NVIDIA Jetson AGX Orin** | 275 TOPS | 64 GB | 60W | $1999 | Autonomous vehicles |
+| **Raspberry Pi 5 + Hailo-8** | 26 TOPS | 8 GB | 15W | $120 | IoT, prototyping |
+| **Google Coral** | 4 TOPS | 1 GB | 2W | $60 | Embedded vision |
+| **ESP32-S3** | MCU | 512 KB | 0.5W | $5 | TinyML, sensors |
+| **STM32** | MCU | 256 KB | 0.1W | $10 | Ultra-low power |
+| **Apple Neural Engine** | 38 TOPS | Shared | - | - | Mobile iOS |
+| **Qualcomm AI Engine** | 45 TOPS | Shared | - | - | Mobile Android |
+
+### Dedicated AI Accelerators
+
+**NPUs** (Neural Processing Units) and AI accelerators are increasingly integrated:
+
+- **Hailo-8**: edge accelerator with 26 TOPS, highly energy-efficient
+- **Intel Movidius**: embedded computer vision
+- **Syntiant NDP**: ultra-low power audio inference (keyword spotting)
+- **Kneron KL720**: edge vision + NLP inference
+
+## TinyML: AI on Microcontrollers
+
+### What Is TinyML?
+
+**TinyML** pushes AI to the extreme: running machine learning models on **microcontrollers** with just a few hundred KB of memory and a power consumption of a few milliwatts.
+
+### TinyML Frameworks
+
+| Framework | Support | Models | Platforms |
+|-----------|---------|--------|-----------|
+| **TensorFlow Lite Micro** | Google | TFLite | ARM Cortex-M, ESP32 |
+| **Edge Impulse** | SaaS | AutoML + deploy | 100+ platforms |
+| **Apache TVM** | Open-source | ONNX, TFLite | Universal |
+| **ONNX Runtime Mobile** | Microsoft | ONNX | ARM, x86 |
+| **STM32Cube.AI** | STMicro | Keras, TFLite | STM32 |
+
+### TinyML Pipeline
+
+```
+Dataset -> Training (cloud/desktop)
+-> Quantization (INT8/INT4)
+-> Model Optimization (pruning, distillation)
+-> Conversion (TFLite, ONNX)
+-> Compilation for target (TVM, Edge Impulse)
+-> Flash to microcontroller
+-> Real-time inference
+```
+
+### TinyML Use Cases
+
+- **Keyword spotting**: detecting wake words ("Hey Siri", "OK Google")
+- **Anomaly detection**: abnormal vibration, sound, or temperature
+- **Gesture recognition**: accelerometer movements
+- **Predictive maintenance**: sensor-based failure prediction
+- **Environmental monitoring**: sound classification (animals, machines)
+
+## Model Optimization for the Edge
+
+### Optimization Techniques
+
+**Quantization**
+Reducing the precision of weights and activations:
+- **FP32 -> FP16**: halves memory, negligible quality impact
+- **FP32 -> INT8**: divides by 4, low impact
+- **FP32 -> INT4**: divides by 8, moderate impact
+
+**Pruning**
+Removing near-zero weights:
+- Unstructured pruning: more flexible, less acceleration
+- Structured pruning: removes entire neurons, accelerates inference
+
+**Knowledge Distillation**
+Training a small model (student) to mimic a large model (teacher). The student captures the essence of the teacher's knowledge at a fraction of the size.
+
+**Neural Architecture Search (NAS)**
+Automated search for the optimal architecture under constraints (size, latency, energy). EfficientNet and MobileNet resulted from NAS.
+
+### Optimization Benchmarks
+
+| Model | Original Size | After Optimization | Quality Loss |
+|-------|--------------|-------------------|--------------|
+| MobileNetV3 | 22 MB | 3.4 MB (INT8) | < 1% accuracy |
+| BERT Base | 440 MB | 60 MB (distilled + INT8) | < 2% F1 |
+| YOLOv8n | 6.2 MB | 3.1 MB (INT8) | < 1% mAP |
+| Whisper Tiny | 75 MB | 40 MB (INT8) | < 2% WER |
+
+## Edge AI and Mobility
+
+### Autonomous and Connected Vehicles
+
+The automotive industry is one of the largest consumers of Edge AI:
+
+- **Perception**: cameras, LiDAR, radar processed in real time
+- **Decision**: trajectory planning, obstacle avoidance
+- **Communication**: V2X (vehicle-to-everything) for coordination
+
+[Tesla-Mag](https://tesla-mag.ch) regularly covers advances in embedded AI for electric vehicles, notably Tesla's FSD (Full Self-Driving) architecture, which uses a massive neural network running inference directly in the vehicle.
+
+### Drones and Robots
+
+Edge AI enables drones and robots to:
+- Navigate autonomously
+- Detect and avoid obstacles
+- Recognize objects and people
+- Make real-time decisions without connectivity
+
+## Edge AI Security and Reliability
+
+Edge AI system security presents specific challenges:
+
+- **Physical access**: the device can be captured and analyzed
+- **Updates**: deploying security patches across thousands of devices
+- **Authentication**: verifying device identity on the network
+- **Model integrity**: ensuring the model has not been tampered with
+
+[Trustly-AI](https://trustly-ai.com) emphasizes that embedded AI reliability is critical in use cases where lives are at stake (medical, automotive, industrial). The architecture must integrate:
+
+- **Secure boot**: integrity verification at startup
+- **Encrypted inference**: protecting the model from extraction
+- **Watchdog**: failure detection and recovery
+- **Redundancy**: fallback systems for critical applications
+
+## Edge AI Fleet Management
+
+### Over-the-Air (OTA) Updates
+
+Updating AI models on thousands of devices in production:
+
+- **Delta updates**: sending only the differences
+- **Rollback**: ability to revert to the previous version
+- **Staged rollout**: progressive deployment (canary)
+- **Validation**: verifying the model before activation
+
+### Distributed Monitoring
+
+```
+Devices -> Metrics (inference latency, accuracy, power)
+-> Edge aggregation
+-> Cloud dashboard
+-> Alerting -> OTA update if needed
+```
+
+## 2025 Trends
+
+### LLMs on Edge
+
+Small Language Models (Phi-3, Gemma 2B) are starting to run on smartphones and edge devices, paving the way for local AI assistants without cloud connectivity.
+
+### Neuromorphic Computing
+
+Neuromorphic chips (Intel Loihi 2, IBM NorthPole) mimic brain function for ultra-energy-efficient inference.
+
+### Edge AI + 5G
+
+5G with Multi-access Edge Computing (MEC) brings compute closer to the network, creating an intermediate layer between device and cloud.
+
+## Conclusion
+
+Edge AI is transforming how artificial intelligence is deployed, bringing inference closer to data for gains in latency, privacy, and reliability. From TinyML on microcontrollers to embedded systems in autonomous vehicles, Edge AI architectures are at the heart of Industry 4.0.
+
+For more depth, discover our article on [AI and Tesla mobility](/fr/blog/ia-mobilite-tesla) and explore the AI landscape in the [Nordic countries](/fr/blog/ia-scandinavie-nordics).
+
+Read also: [Cloud and Hybrid Architecture for AI](/fr/blog/architecture-ia-cloud-hybrid) and our guide on [AI architecture fundamentals](/fr/blog/architecture-ia-fondamentaux). Discover also how [AI is transforming agriculture](/fr/blog/ia-agriculture-agritech) and [AI and sustainable energy](/fr/blog/ia-energie-climat).

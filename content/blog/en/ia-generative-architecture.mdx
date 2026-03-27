@@ -1,0 +1,226 @@
+---
+title: "Generative AI — Foundation Model Architecture and Applications"
+slug: "ia-generative-architecture"
+date: "2025-03-15"
+author: "Sebastien"
+category: "Architecture IA"
+tags: ["IA generative", "modeles fondation", "diffusion", "transformer", "GPT", "Claude"]
+geo:
+  city: "London"
+  region: "England"
+  country: "GB"
+  lat: 51.5074
+  lng: -0.1278
+  continent: "Europe"
+readTime: 10
+excerpt: "Explore foundation model architecture: transformers, diffusion, attention mechanisms. Understanding GPT, Claude, Llama, Stable Diffusion and their enterprise applications."
+---
+
+## Generative AI: An Architectural Revolution
+
+London has established itself as a major hub for generative AI in Europe, with players like Google DeepMind, Stability AI, and a dynamic startup scene. Generative AI — the ability of machines to **create new content** (text, images, code, audio, video) — relies on fundamental architectures that are essential to understand for effective deployment.
+
+In 2025, foundation models are no longer mere technological curiosities. They constitute the infrastructure upon which applications are built that transform every industry.
+
+## The Transformer Architecture: The 2017 Revolution
+
+### The Attention Mechanism
+
+The **Transformer**, introduced in the paper "Attention Is All You Need" (Vaswani et al., 2017), revolutionized deep learning. Its key innovation: the **self-attention** mechanism.
+
+Unlike recurrent networks (RNN/LSTM) that process sequences word by word, the transformer analyzes **all words simultaneously** and calculates the relationships between each of them. This parallelization enables:
+
+- **Massive training** across thousands of GPUs
+- Capturing **long-distance dependencies** in text
+- Near-linear **scalability** with model size
+
+### Encoder-Decoder Architecture
+
+The original transformer comprises two parts:
+
+| Component | Role | Models |
+|-----------|------|--------|
+| **Encoder** | Understand input text | BERT, RoBERTa |
+| **Decoder** | Generate text | GPT, Llama |
+| **Encoder-Decoder** | Text-to-text transformation | T5, BART |
+
+Modern LLMs (GPT-4, Claude, Llama) primarily use the **decoder-only** architecture, optimized for text generation.
+
+### Scaling Laws
+
+**Scaling laws** (Kaplan et al., 2020) demonstrated that transformer performance increases predictably with:
+
+- The **number of parameters** in the model
+- The **amount of training data**
+- The **compute** (FLOPs) used for training
+
+This discovery motivated the race toward ever-larger models, from GPT-2 (1.5B) to GPT-4 (estimated at 1.8T parameters).
+
+## Text Foundation Models
+
+### GPT-4 and the OpenAI Family
+
+**Architecture**: Decoder-only transformer, likely mixture-of-experts (MoE)
+
+- **GPT-4 Turbo**: 128K token context window, multimodal (text + vision)
+- **GPT-4o**: optimized for speed and multimodality
+- **o1/o3**: reasoning models with internal chain-of-thought
+
+### Claude and the Anthropic Family
+
+**Architecture**: Decoder-only transformer with Constitutional AI (RLHF + CAI)
+
+- **Claude 3.5 Sonnet**: performance/cost balance, excellent at code
+- **Claude 3 Opus**: most capable model, complex reasoning
+- **Claude 3 Haiku**: fast and economical for simple tasks
+
+Anthropic's Constitutional AI approach adds a unique architectural layer: the model is trained to follow ethical principles formulated in natural language, rather than simply imitating human responses.
+
+### Llama and Open Source Models
+
+**Architecture**: Decoder-only transformer with innovations (RoPE, GQA, SwiGLU)
+
+- **Llama 3 405B**: performance close to GPT-4, open-source
+- **Llama 3 70B**: excellent quality/size ratio
+- **Llama 3 8B**: deployable on consumer GPU
+
+### Mistral and European AI
+
+**Architecture**: Decoder-only with Sliding Window Attention and MoE
+
+- **Mistral Large**: commercial reference model
+- **Mixtral 8x22B**: efficient MoE architecture
+- **Mistral 7B**: performant for its size
+
+### Foundation Model Comparison
+
+| Model | Parameters | Context | Open-Source | Strengths |
+|-------|-----------|---------|-------------|-----------|
+| GPT-4 Turbo | ~1.8T | 128K | No | Reasoning, multimodal |
+| Claude 3.5 Sonnet | N/A | 200K | No | Code, analysis, safety |
+| Llama 3 405B | 405B | 128K | Yes | Open-source performance |
+| Mixtral 8x22B | 141B (active 39B) | 64K | Yes | MoE efficiency |
+| Gemini Ultra | N/A | 1M+ | No | Ultra-long context |
+
+## Diffusion Model Architecture
+
+### The Diffusion Principle
+
+**Diffusion** models (Stable Diffusion, DALL-E, Midjourney) generate images by reversing a noising process:
+
+1. **Forward process**: gradual addition of Gaussian noise to an image
+2. **Reverse process**: a neural network learns to remove noise step by step
+3. **Conditioning**: text guides the denoising process via cross-attention
+
+### Latent Diffusion Architecture (Stable Diffusion)
+
+```
+Text → Text Encoder (CLIP) → Text Embeddings
+                                      ↓
+Random noise → U-Net (iterative denoising + cross-attention) → Latent denoised
+                                      ↓
+                               VAE Decoder → Final image
+```
+
+The innovation of **Stable Diffusion** is working in latent space (encoded by a VAE) rather than in pixel space, considerably reducing computational costs.
+
+### Recent Developments
+
+- **SDXL**: improved resolution and quality
+- **SD3 / Flux**: MMDiT (Multi-Modal Diffusion Transformer) architecture
+- **ControlNet**: fine-grained generation control (pose, edges, depth)
+- **IP-Adapter**: style transfer from reference images
+
+## Audio and Voice Model Architecture
+
+Generative audio AI relies on specific architectures:
+
+### Text-to-Speech (TTS)
+
+- **VITS / XTTS**: voice synthesis with voice cloning
+- **Bark**: multilingual audio generation (text, music, effects)
+- **ElevenLabs**: studio-quality TTS via API
+
+### Speech-to-Text (STT)
+
+- **Whisper** (OpenAI): state-of-the-art multilingual transcription
+- **Deepgram**: STT optimized for real-time production
+
+### Voice AI Applications
+
+[Voice AI](https://vocalis.blog) systems combine these architectures to create complete voice assistants. The [Vocalis](https://vocalis.blog) platform explores these technologies and their enterprise applications in depth.
+
+## Mixture-of-Experts (MoE) Architecture
+
+### The MoE Pattern
+
+**Mixture-of-Experts** is a key architecture for scaling LLMs efficiently:
+
+- The model contains N experts (specialized sub-networks)
+- A **router** selects K experts for each token
+- Only active experts consume compute
+- Result: a model with many parameters but reduced inference cost
+
+### MoE Advantages
+
+- **Efficiency**: Mixtral 8x22B has 141B parameters but only activates 39B per token
+- **Specialization**: each expert can specialize in a domain
+- **Scalability**: add experts without increasing inference cost
+
+### MoE Challenges
+
+- **Memory**: all parameters must be in VRAM, even if only some are active
+- **Load balancing**: prevent certain experts from being over-solicited
+- **Communication**: synchronization between experts on multi-GPU is complex
+
+## Enterprise Applications of Generative AI
+
+### Content Generation
+
+Generative AI transforms the creation of marketing, editorial, and SEO content. [AI agents](https://agents-ia.pro) enable the automation of complete content production workflows.
+
+### Code Generation
+
+Code assistants (Copilot, Cursor, Codeium) rely on LLMs fine-tuned on code. The architecture includes:
+
+- Context retrieval (project files)
+- Real-time completion (streaming)
+- IDE integration (LSP, extensions)
+
+### Document Analysis and Synthesis
+
+Long-context models (Claude 200K, Gemini 1M+) enable analyzing entire documents in a single pass, eliminating the need for RAG chunking in certain use cases.
+
+### Image and Design Generation
+
+Diffusion models generate visuals for marketing, product, and design. The productionized architecture includes:
+
+- Generation queue (priority, fair scheduling)
+- Automatic post-processing (upscaling, background removal)
+- Generated content moderation
+
+## 2025 Architectural Trends
+
+### Native Multimodal Models
+
+Models are evolving toward **native multimodality**: text, image, audio, and video in a single model. GPT-4o and Gemini Ultra illustrate this convergence.
+
+### Efficient Inference
+
+**Distillation**, **pruning**, and **quantization** techniques enable deploying powerful models on more accessible hardware, down to mobile devices.
+
+### Reasoning Models
+
+Models like o1/o3 from OpenAI introduce internal **chain-of-thought reasoning**, improving performance on complex tasks at the cost of increased latency.
+
+### Small Language Models (SLMs)
+
+Phi-3, Gemma 2, and Llama 3 8B demonstrate that smaller, well-trained models can rival much larger models on specific tasks.
+
+## Conclusion
+
+Generative AI architecture is evolving at an unprecedented pace. From transformers to diffusion models, from MoE to multimodal models, each architectural innovation opens new possibilities for enterprises.
+
+Understanding these architectures is essential for making the right technology choices. Discover how to deploy them in our guide on [deploying LLMs in production](/fr/blog/architecture-llm-production) and explore the AI landscape in the [United Kingdom](/fr/blog/ia-uk-2025).
+
+Also read: [RAG Architecture for Enterprise](/fr/blog/architecture-rag-retrieval) and our guide on [AI architecture fundamentals](/fr/blog/architecture-ia-fondamentaux). Also discover [Voice AI architecture](/fr/blog/architecture-voice-ai) and [autonomous AI agents](/fr/blog/agents-ia-autonomes).

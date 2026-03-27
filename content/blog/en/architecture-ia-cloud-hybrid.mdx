@@ -1,0 +1,218 @@
+---
+title: "Cloud and Hybrid Architecture for AI — AWS, Azure, GCP and On-Premise"
+slug: "architecture-ia-cloud-hybrid"
+date: "2025-03-14"
+author: "Sebastien"
+category: "Architecture IA"
+tags: ["cloud", "hybrid", "AWS", "Azure", "GCP", "infrastructure IA", "on-premise"]
+geo:
+  city: "Amsterdam"
+  region: "Noord-Holland"
+  country: "NL"
+  lat: 52.3676
+  lng: 4.9041
+  continent: "Europe"
+readTime: 9
+excerpt: "Complete comparison of cloud and hybrid architectures for AI: AWS, Azure, GCP, and on-premise. Discover how to choose and design the optimal infrastructure for your AI workloads."
+---
+
+## The Cloud as the Foundation of Modern AI
+
+Amsterdam, with one of the densest datacenter ecosystems in the world, perfectly embodies the convergence between cloud infrastructure and artificial intelligence. The three hyperscalers — **AWS, Azure, and GCP** — operate major regions there, and European companies are massively deploying their AI workloads.
+
+But choosing a cloud architecture for AI goes beyond selecting a provider. It means designing an **infrastructure capable of supporting model training, large-scale inference, massive data storage, and regulatory compliance** — all with controlled costs.
+
+## Cloud Provider Comparison for AI
+
+### AWS (Amazon Web Services)
+
+**AI Strengths:**
+- **SageMaker**: end-to-end ML platform (notebooks, training, deployment)
+- **Bedrock**: access to foundation models (Claude, Llama, Titan)
+- **Inferentia/Trainium**: custom chips for AI inference and training
+- **S3 + Glue**: robust data lake and ETL
+
+**Key AI Services:**
+
+| Service | Usage |
+|---------|-------|
+| SageMaker | ML training and deployment |
+| Bedrock | LLMs as a Service |
+| Comprehend | NLP |
+| Rekognition | Computer vision |
+| Lex | Conversational chatbots |
+| Kendra | Enterprise search (RAG) |
+
+### Azure (Microsoft)
+
+**AI Strengths:**
+- **Azure OpenAI Service**: native access to GPT-4, DALL-E with enterprise compliance
+- **Azure ML**: ML platform with AutoML and pipelines
+- **Microsoft 365 Integration**: Copilot within the Office ecosystem
+- **Cognitive Services**: pre-built AI APIs
+
+**Distinctive advantage:** Integration with the Microsoft ecosystem (Active Directory, Teams, Office) makes Azure the natural choice for enterprises already on the Microsoft stack.
+
+### GCP (Google Cloud Platform)
+
+**AI Strengths:**
+- **Vertex AI**: unified ML platform with AutoML and custom training
+- **TPUs**: specialized hardware for training large models
+- **BigQuery ML**: ML directly in the data warehouse
+- **Gemini API**: access to Google models
+
+**Distinctive advantage:** Google's legacy in AI/ML (TensorFlow, BERT, Transformer) translates into particularly mature tools for deep learning.
+
+### Global Comparison Table
+
+| Criterion | AWS | Azure | GCP |
+|-----------|-----|-------|-----|
+| ML Maturity | Very high | High | Very high |
+| Native LLMs | Bedrock (multi) | OpenAI (exclusive) | Gemini |
+| AI Hardware | Inferentia, Trainium | Nvidia GPUs | TPUs, Nvidia GPUs |
+| Data ecosystem | S3, Glue, Redshift | Data Lake, Synapse | BigQuery, Dataflow |
+| European regions | 8+ | 12+ | 6+ |
+| GPU pricing | $$$  | $$$ | $$ |
+| Enterprise features | Excellent | Excellent | Good |
+
+## Hybrid Architecture: The Best of Both Worlds
+
+### Why Hybrid for AI?
+
+**Hybrid** architecture combines public cloud and on-premise infrastructure (or private cloud). For AI, this approach addresses specific needs:
+
+- **Data sovereignty**: certain data cannot leave the territory (GDPR, Swiss DPA, health data)
+- **Latency**: edge inference requires physical proximity
+- **Costs**: occasional training justifies the cloud, while continuous inference can be cheaper on-premise
+- **Compliance**: certain regulations require physical control of servers
+
+### Hybrid Architecture Patterns
+
+**Pattern 1: Train in Cloud, Infer On-Premise**
+
+```
+Cloud (AWS/Azure/GCP)          On-Premise
+├── Training GPU cluster       ├── Inference servers
+├── Data preprocessing         ├── Model cache
+├── Experiment tracking        ├── API endpoints
+└── Model registry       →→→   └── Monitoring
+```
+
+Training, which is GPU-intensive, is done in the cloud. The trained model is deployed on-premise for inference, ensuring data sovereignty in production.
+
+**Pattern 2: Data On-Premise, Compute in Cloud**
+
+Sensitive data stays on-premise. Only anonymized or synthetic data is sent to the cloud for training. Swiss companies, supported by [IA PME Suisse](https://iapmesuisse.ch), frequently adopt this pattern to comply with the DPA.
+
+**Pattern 3: Multi-Cloud with Orchestration**
+
+Leveraging each provider's strengths:
+- **Azure** for LLMs (OpenAI Service)
+- **AWS** for data lake and ML pipeline (SageMaker)
+- **GCP** for high-performance training (TPUs)
+- **On-premise** for sensitive data and edge inference
+
+### Multi-Cloud Orchestration
+
+| Tool | Function |
+|------|----------|
+| **Kubernetes (K8s)** | Cross-cloud container orchestration |
+| **Terraform** | Infrastructure as Code multi-provider |
+| **MLflow** | Model registry and tracking cross-environment |
+| **KubeFlow** | ML pipelines on Kubernetes |
+| **Anthos / Arc / Omni** | Hyperscaler hybrid solutions |
+
+## GPU Infrastructure for AI
+
+### Hardware Selection
+
+GPU hardware is the main limiting factor in AI architectures:
+
+| GPU | VRAM | Usage | Cloud Price (h) |
+|-----|------|-------|-----------------|
+| Nvidia A100 | 80 GB | Training + Inference | $3-5 |
+| Nvidia H100 | 80 GB | High-perf training | $5-8 |
+| Nvidia L4 | 24 GB | Optimized inference | $0.7-1.2 |
+| Nvidia T4 | 16 GB | Budget inference | $0.3-0.5 |
+| AWS Inferentia2 | 32 GB | AWS inference | $0.7-1.0 |
+| Google TPU v5 | 16-96 GB | Google training | $1.5-4.0 |
+
+### GPU Sizing for LLMs
+
+LLMs require VRAM proportional to their size:
+
+- **7B parameters** (Llama 3 7B): 1x A100 or 1x L4 (quantized)
+- **13B parameters**: 1x A100 80GB
+- **70B parameters**: 2-4x A100 or 1x H100
+- **405B parameters**: 8x H100 (cluster)
+
+For inference, **quantization** (INT4/INT8) divides memory requirements by 2 to 4.
+
+## Security and Compliance
+
+### Zero-Trust Architecture for AI
+
+Security of cloud and hybrid AI architectures is based on the **Zero Trust** principle:
+
+- **Encryption**: data encrypted at rest and in transit (TLS 1.3, AES-256)
+- **Identity & Access**: granular IAM, MFA, least privilege
+- **Network**: VPC, private endpoints, no public model exposure
+- **Audit**: exhaustive logging of all model and data access
+
+[Trustly-AI](https://trustly-ai.com) emphasizes that trust in AI starts with a secure infrastructure, especially in hybrid architectures where data moves between environments.
+
+### GDPR and AI Act Compliance
+
+Architecture must integrate from the design phase:
+
+- **Data residency**: data stays in the appropriate region
+- **Right to erasure**: ability to delete a user's data from the training set
+- **Audit trail**: tracing personal data usage in the ML pipeline
+- **Risk assessment**: AI system classification according to the European AI Act
+
+## Cloud AI Cost Optimization
+
+### Cost Reduction Strategies
+
+1. **Spot/Preemptible instances**: up to -90% for training (with checkpointing)
+2. **Reserved instances**: -30 to -60% for continuous inference
+3. **Auto-scaling**: adapt resources to demand
+4. **Model optimization**: quantization and distillation to reduce GPU needs
+5. **Data tiering**: hot/cold storage based on access frequency
+
+### Example Cloud AI Budget
+
+For an SMB deploying a RAG system with chatbot:
+
+| Component | Service | Monthly Cost |
+|-----------|---------|-------------|
+| Vector DB | Pinecone Starter | $70 |
+| LLM API | Claude 3 Haiku | $200 |
+| Compute | AWS Lambda | $50 |
+| Storage | S3 | $30 |
+| Monitoring | CloudWatch | $20 |
+| **Total** | | **$370/month** |
+
+An accessible budget demonstrating that AI in production is no longer reserved for large enterprises.
+
+## 2025 Trends
+
+### Serverless AI
+
+Serverless functions (Lambda, Cloud Functions) increasingly integrate native AI capabilities, eliminating infrastructure management.
+
+### European Sovereign AI
+
+Sovereign cloud initiatives (Gaia-X, NumSpot, S3NS) offer European alternatives for sensitive AI workloads.
+
+### GPU-as-a-Service
+
+Players like CoreWeave, Lambda Labs, and Together AI offer on-demand GPU specialized for AI, often cheaper than the hyperscalers.
+
+## Conclusion
+
+The choice between cloud, on-premise, and hybrid for AI depends on your specific constraints: data volume, latency requirements, budget, compliance, and internal skills. Hybrid architecture is emerging as the **dominant pattern** in Europe, combining the power of cloud for training and on-premise control for sensitive data.
+
+Deepen your knowledge with our guide on [AI architecture fundamentals](/fr/blog/architecture-ia-fondamentaux) and discover the [AI landscape in Europe](/fr/blog/ia-europe-panorama).
+
+For more depth, consult [AI security architecture](/fr/blog/architecture-ia-securite) and our guide on [MLOps pipelines](/fr/blog/architecture-mlops-pipeline). Read also: [Edge AI and IoT](/fr/blog/architecture-ia-edge-iot) and the [AI landscape in Switzerland](/fr/blog/ia-suisse-2025).

@@ -23,18 +23,40 @@ export interface BlogPost {
 }
 
 export function getAllPosts(locale: string = 'fr'): BlogPost[] {
-  const files = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx'))
+  const files = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx') && !f.includes('/'))
 
   return files
     .map(filename => {
-      const raw = fs.readFileSync(path.join(BLOG_DIR, filename), 'utf8')
+      // Check if translated version exists
+      const localePath = path.join(BLOG_DIR, locale, filename)
+      const frPath = path.join(BLOG_DIR, filename)
+
+      let raw: string
+      let isTranslated = false
+
+      if (locale !== 'fr' && fs.existsSync(localePath)) {
+        raw = fs.readFileSync(localePath, 'utf8')
+        isTranslated = true
+      } else {
+        raw = fs.readFileSync(frPath, 'utf8')
+      }
+
       const { data, content } = matter(raw)
 
-      // Titre selon locale
-      const title = locale === 'en' ? (data.titleEN || data.title) :
-                    locale === 'de' ? (data.titleDE || data.title) :
-                    locale === 'it' ? (data.titleIT || data.title) :
-                    data.title
+      // Title: use translated file title, or fallback to frontmatter locale title, or FR
+      let title = data.title
+      if (!isTranslated) {
+        title = locale === 'en' ? (data.titleEN || data.title) :
+                locale === 'de' ? (data.titleDE || data.title) :
+                locale === 'it' ? (data.titleIT || data.title) :
+                data.title
+      }
+
+      // Excerpt: use translated file excerpt or fallback
+      let excerpt = data.excerpt
+      if (!isTranslated && locale !== 'fr') {
+        excerpt = data[`excerpt${locale.toUpperCase()}`] || data.excerpt
+      }
 
       return {
         slug: data.slug,
@@ -44,7 +66,7 @@ export function getAllPosts(locale: string = 'fr'): BlogPost[] {
         tags: data.tags || [],
         geo: data.geo,
         readTime: data.readTime || 5,
-        excerpt: data.excerpt,
+        excerpt,
         content
       }
     })

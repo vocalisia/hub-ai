@@ -1,0 +1,278 @@
+---
+title: "Voice AI Architecture — Designing Intelligent Voice Systems"
+slug: "architecture-voice-ai"
+date: "2025-03-18"
+author: "Sebastien"
+category: "Architecture IA"
+tags: ["voice AI", "TTS", "STT", "SIP", "telephonie", "NLU", "architecture vocale"]
+geo:
+  city: "Lausanne"
+  region: "Vaud"
+  country: "CH"
+  lat: 46.5197
+  lng: 6.6323
+  continent: "Europe"
+readTime: 9
+excerpt: "Complete technical guide on Voice AI architecture: STT, TTS, NLU, SIP, AI telephony, designing intelligent voice systems for enterprise and automation."
+---
+
+## Lausanne: A Hub for Voice AI Innovation
+
+Lausanne, home to EPFL and its research ecosystem in signal processing and AI, is a privileged location for exploring the architecture of intelligent voice systems. **Voice AI** — artificial intelligence applied to voice — is experiencing exponential growth, driven by advances in speech synthesis, voice recognition, and natural language understanding.
+
+In 2025, Voice AI systems are no longer limited to consumer voice assistants (Alexa, Siri). They are penetrating the enterprise world: **automated call centers, phone assistants, industrial voice control, accessibility** and much more.
+
+## Reference Architecture of a Voice AI System
+
+### Complete Voice Pipeline
+
+```
+Audio Input (microphone/phone)
+→ VAD (Voice Activity Detection)
+→ STT (Speech-to-Text)
+→ NLU (Natural Language Understanding)
+→ Dialogue Manager / LLM
+→ NLG (Natural Language Generation)
+→ TTS (Text-to-Speech)
+→ Audio Output (speaker/phone)
+```
+
+Each component of this pipeline represents a specific architectural challenge, and optimizing the whole determines the quality of the user experience.
+
+### Real-Time Constraints
+
+Voice AI imposes **extreme latency constraints**:
+
+| Component | Target Latency | Critical Threshold |
+|-----------|--------------|----------------|
+| VAD | < 50ms | 100ms |
+| STT | < 300ms | 500ms |
+| NLU/LLM | < 500ms | 1000ms |
+| TTS | < 200ms | 400ms |
+| **Total pipeline** | **< 1s** | **2s** |
+
+Beyond 2 seconds of total latency, the conversational experience degrades significantly. The user perceives an uncomfortable silence and loses trust in the system.
+
+## Speech-to-Text (STT): From Voice to Text
+
+### Modern STT Architectures
+
+**Whisper (OpenAI)**
+- Encoder-decoder transformer architecture
+- Trained on 680,000 hours of multilingual audio
+- **State-of-the-art** transcription quality
+- Open-source, self-hosted deployment
+- Supports 99 languages
+
+**Deepgram**
+- Proprietary architecture optimized for real-time
+- Sub-300ms streaming latency
+- Domain-specialized models (medical, finance, call center)
+- SaaS API with volume pricing
+
+**Google Speech-to-Text v2**
+- USM (Universal Speech Model) based on foundation models
+- Excellent multilingual and code-switching support
+- Native GCP integration
+
+### STT Comparison
+
+| Solution | Latency | Quality | Self-hosted | Price |
+|----------|---------|---------|-------------|------|
+| Whisper large-v3 | Medium | Excellent | Yes | Free |
+| Deepgram Nova-2 | Very low | Excellent | No | $0.0043/min |
+| Google STT v2 | Low | Very good | No | $0.006/min |
+| Azure Speech | Low | Very good | No | $0.005/min |
+| faster-whisper | Low | Excellent | Yes | Free |
+
+### STT Optimization
+
+- **Streaming**: transcribe in real-time rather than waiting for the end of the sentence
+- **Endpointing**: intelligently detecting the end of an utterance
+- **Custom vocabulary**: adding industry-specific terms
+- **Noise reduction**: audio pre-processing to improve quality
+- **Speaker diarization**: identifying who is speaking in a conversation
+
+## Text-to-Speech (TTS): From Text to Voice
+
+### Evolution of TTS Architectures
+
+TTS architecture has gone through three generations:
+
+**Generation 1: Concatenative**
+- Assembly of pre-recorded audio segments
+- Limited quality, robotic voice
+
+**Generation 2: Neural TTS**
+- Tacotron, WaveNet, FastSpeech
+- Natural voice but compute-intensive
+
+**Generation 3: Zero-Shot Voice Cloning**
+- XTTS, Bark, ElevenLabs
+- Voice cloning from just a few seconds of audio
+- Near-human quality
+
+### Production TTS Solutions
+
+| Solution | Quality | Latency | Voice Cloning | Price |
+|----------|---------|---------|-------------|------|
+| ElevenLabs | Excellent | Low | Yes | $0.18/1K chars |
+| XTTS v2 | Very good | Medium | Yes | Free (open) |
+| Azure Neural TTS | Very good | Low | Yes (custom) | $0.016/1K chars |
+| Google Cloud TTS | Good | Low | No | $0.016/1K chars |
+| Cartesia Sonic | Excellent | Very low | Yes | Pay-per-use |
+
+### Streaming TTS
+
+For a fluid conversational experience, TTS must work in **streaming** mode:
+
+1. The LLM generates text token by token
+2. TTS begins synthesis from the first words
+3. Audio is streamed to the client
+4. Result: the user hears the response almost instantly
+
+The [Vocalis](https://vocalis.pro) platform masters these streaming techniques to deliver AI phone conversations with imperceptible latency.
+
+## NLU and Dialogue Management
+
+### Natural Language Understanding (NLU)
+
+NLU transforms transcribed text into **intent** and **entities**:
+
+- **Intent detection**: what does the user want to do? (book, cancel, inquire)
+- **Entity extraction**: what specific elements? (date, location, amount)
+- **Sentiment analysis**: what is the user's emotion?
+- **Context tracking**: multi-turn conversational context tracking
+
+### LLM as Dialogue Manager
+
+In 2025, LLMs are progressively replacing traditional NLU systems:
+
+**LLM Advantages:**
+- Superior contextual understanding
+- No need to manually define intents
+- Natural multi-turn conversation handling
+- Reasoning and decision-making capabilities
+
+**LLM Dialogue Architecture:**
+
+```
+STT Output (text)
+→ System Prompt (role, instructions, constraints)
+→ Conversation History (short-term memory)
+→ Tool Definitions (available actions)
+→ LLM (GPT-4, Claude, Llama)
+→ Decision: text response OR tool call
+→ TTS (if text response)
+```
+
+## Telephony Architecture (SIP/VoIP)
+
+### Telephony Integration
+
+For telephony use cases (call centers, automated switchboard), Voice AI architecture integrates with **SIP/VoIP** infrastructure:
+
+```
+Phone network (PSTN/SIP)
+→ SIP Trunk Provider (Twilio, Telnyx, Vonage)
+→ SIP Gateway → Media Server
+→ Audio Stream → Voice AI Pipeline
+→ Audio Response → Media Server → SIP
+→ Back to caller
+```
+
+### Telephony Components
+
+| Component | Role | Options |
+|-----------|------|---------|
+| SIP Trunk | Phone connection | Twilio, Telnyx, Vonage |
+| Media Server | Audio processing | Asterisk, FreeSWITCH, Jambonz |
+| WebSocket | Bidirectional audio streaming | Custom, LiveKit |
+| DTMF Handler | Keypad management | Integrated in media server |
+
+### Call Management
+
+A telephony Voice AI system must handle:
+
+- **Call transfer**: to a human agent if needed
+- **Hold**: hold music with periodic messages
+- **Conference**: adding participants
+- **Recording**: with consent, for quality and compliance
+- **DTMF**: keypad interaction (menus, codes)
+
+For an in-depth exploration of voice AI technologies, [Vocalis Blog](https://vocalis.blog) regularly publishes detailed technical analyses.
+
+## Multi-Modal Voice Architecture
+
+### Voice + Vision
+
+The most advanced systems combine voice and vision:
+
+- **Smart displays**: the voice assistant displays visual information
+- **Video call AI**: visual analysis during a video call
+- **Ambient intelligence**: the assistant understands the visual context
+
+### Voice + Agents
+
+Integrating Voice AI with [autonomous AI agents](https://agents-ia.pro) creates systems capable of:
+
+- Understanding a complex voice request
+- Planning and executing actions (booking, search, transaction)
+- Communicating the result vocally
+- Handling errors and requesting clarifications
+
+## Challenges and Solutions
+
+### Noise and Difficult Environments
+
+- **Noise cancellation**: RNNoise, NVIDIA Maxine
+- **Beam forming**: directional microphone focusing
+- **Acoustic Echo Cancellation**: echo suppression in full-duplex
+
+### Multilingualism
+
+- **Language detection**: automatic language identification
+- **Code-switching**: handling mid-conversation language changes
+- **Accent adaptation**: robustness to regional accents
+
+In Switzerland, where four national languages coexist, these challenges are particularly acute. Voice AI systems deployed in Lausanne must handle French, German, Italian, and English fluently.
+
+### Accessibility
+
+Voice AI is a major lever for **accessibility**:
+- Voice interfaces for the visually impaired
+- Voice control for people with reduced mobility
+- Real-time subtitling for the hearing impaired
+
+## Voice AI Quality Metrics
+
+| Metric | Description | Target |
+|----------|-------------|-------|
+| WER | Word Error Rate (STT) | < 5% |
+| MOS | Mean Opinion Score (TTS) | > 4.0/5 |
+| E2E Latency | Total pipeline time | < 1.5s |
+| Task Success Rate | Task completion rate | > 85% |
+| User Satisfaction | Satisfaction score | > 4.0/5 |
+| Containment Rate | Calls resolved without human | > 70% |
+
+## Enterprise Use Cases
+
+### Automated Call Center
+
+The most commonly deployed use case: automating call handling for frequently asked questions, appointment scheduling, and intelligent routing. Discover real-world applications in our article on [AI telephony](/fr/blog/voix-ia-telephonie).
+
+### Internal Voice Assistant
+
+A voice assistant for employees: querying internal systems, dictating notes, automating workflows — all by voice.
+
+### Industrial Voice Control
+
+In industrial environments (hands busy, noisy surroundings), voice control allows interacting with systems without a touchscreen.
+
+## Conclusion
+
+Voice AI architecture is a fascinating field that combines signal processing, NLP, LLMs, and telephony infrastructure. The key to success lies in optimizing end-to-end latency and conversational experience quality.
+
+Lausanne and French-speaking Switzerland are at the forefront of this innovation. To go further, explore our guide on [AI chatbots for enterprises](/fr/blog/chatbot-ia-entreprise).
+
+Also read: [AI telephony and synthetic voice](/fr/blog/voix-ia-telephonie) and our guide on [AI architecture fundamentals](/fr/blog/architecture-ia-fondamentaux). Also discover [autonomous AI agent architecture](/fr/blog/architecture-agents-autonomes) and [AI in Switzerland 2025](/fr/blog/ia-suisse-2025).

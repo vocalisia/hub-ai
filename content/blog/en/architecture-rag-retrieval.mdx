@@ -1,0 +1,243 @@
+---
+title: "RAG Architecture — Retrieval Augmented Generation for the Enterprise"
+slug: "architecture-rag-retrieval"
+date: "2025-03-13"
+author: "Sebastien"
+category: "Architecture IA"
+tags: ["RAG", "retrieval", "vector database", "embeddings", "knowledge base"]
+geo:
+  city: "Paris"
+  region: "Ile-de-France"
+  country: "FR"
+  lat: 48.8566
+  lng: 2.3522
+  continent: "Europe"
+readTime: 10
+excerpt: "Master RAG architecture (Retrieval Augmented Generation): vector databases, embeddings, chunking, reranking, and advanced patterns for deploying an enterprise RAG system."
+---
+
+## What is RAG and Why is it Essential?
+
+**RAG** (Retrieval Augmented Generation) has become the dominant architectural pattern for leveraging LLMs in the enterprise. Its principle is simple yet powerful: rather than relying solely on knowledge encoded in the model's weights, it **retrieves relevant documents** before generating a response.
+
+In Paris, French and European companies are massively adopting RAG for a fundamental reason: it allows AI responses to be anchored in the company's **proprietary data** while drastically reducing hallucinations.
+
+### The Limitations of LLMs without RAG
+
+- **Frozen knowledge**: the model only knows its training data
+- **Hallucinations**: the model confidently invents information
+- **Proprietary data**: impossible to access internal documents
+- **Freshness**: information becomes outdated after the cutoff date
+- **Fine-tuning cost**: adapting an LLM to each domain is prohibitively expensive
+
+RAG elegantly solves all five of these problems.
+
+## Reference RAG Architecture
+
+### Standard RAG Pipeline
+
+```
+Source Documents
+→ Ingestion and Preprocessing
+→ Chunking (splitting into segments)
+→ Embedding (vectorization)
+→ Indexing into a Vector DB
+---
+User Query
+→ Query Embedding
+→ Vector Search (similarity search)
+→ Result Reranking
+→ Prompt Construction with Context
+→ LLM Generation
+→ Contextualized Response
+```
+
+### Detailed Components
+
+| Component | Role | Options |
+|-----------|------|---------|
+| Document Loader | Multi-format ingestion | Unstructured, LlamaIndex |
+| Chunker | Intelligent splitting | Recursive, Semantic, Agentic |
+| Embedding Model | Vectorization | OpenAI ada-002, Cohere, BGE |
+| Vector Database | Storage and search | Pinecone, Weaviate, Qdrant, Chroma |
+| Retriever | Document search | Similarity, MMR, Hybrid |
+| Reranker | Result re-ranking | Cohere Rerank, ColBERT, cross-encoder |
+| LLM | Response generation | GPT-4, Claude, Mistral |
+
+## Chunking: The Art of Splitting
+
+**Chunking** — the way you split your documents — has a direct impact on RAG result quality. Poor chunking produces mediocre answers, regardless of the LLM used.
+
+### Chunking Strategies
+
+**Fixed-Size Chunking**
+- Splitting every N tokens with overlap
+- Simple but loses semantic context
+- 10-20% overlap recommended
+
+**Recursive Chunking**
+- First splits by paragraphs, then by sentences if too long
+- Better preserves document structure
+- LangChain's default method
+
+**Semantic Chunking**
+- Uses embeddings to identify meaning breaks
+- Produces thematically coherent chunks
+- More computationally expensive but higher quality
+
+**Agentic Chunking**
+- An LLM decides how to split the document
+- Understands logical structure (sections, arguments)
+- Optimal quality but high cost
+
+### Size Recommendations
+
+| Content Type | Recommended Size | Overlap |
+|-----------------|-------------------|---------|
+| Technical documentation | 500-1000 tokens | 100 tokens |
+| Blog articles | 300-500 tokens | 50 tokens |
+| Source code | Per function/class | Full context |
+| FAQ | 1 question-answer per chunk | None |
+| Contracts/legal | 200-400 tokens | 50 tokens |
+
+## Vector Databases: The Heart of RAG
+
+### How Embeddings Work
+
+**Embeddings** transform text into high-dimensional numerical vectors (768 to 3,072 dimensions). Two semantically similar texts will have close vectors in this space.
+
+### Vector Database Comparison
+
+| Database | Type | Scalability | Filtering | Price |
+|------|------|-------------|-----------|------|
+| **Pinecone** | Managed | Excellent | Metadata | Pay-per-use |
+| **Weaviate** | Open-source/Managed | Very good | GraphQL | Free/Managed |
+| **Qdrant** | Open-source/Managed | Very good | Payload | Free/Managed |
+| **Chroma** | Open-source | Moderate | Metadata | Free |
+| **pgvector** | PostgreSQL Extension | Good | Native SQL | Free |
+| **Milvus** | Open-source | Excellent | Expression | Free |
+
+### Choosing the Right Vector Database
+
+For enterprises, the choice depends on several factors:
+
+- **Volume**: less than 1M vectors? pgvector or Chroma are sufficient
+- **Production**: Pinecone or Weaviate managed for reliability
+- **Budget**: Qdrant or Chroma self-hosted to reduce costs
+- **Integration**: pgvector if you already use PostgreSQL
+
+## Advanced RAG Patterns
+
+### Hybrid RAG (Keyword + Semantic)
+
+Purely vector search sometimes misses documents containing specific terms (proper names, acronyms, references). **Hybrid RAG** combines:
+
+- **Semantic search** (embeddings) for meaning comprehension
+- **Lexical search** (BM25) for exact matches
+- **Fusion**: Reciprocal Rank Fusion (RRF) to combine scores
+
+This pattern improves recall by **15 to 30%** according to benchmarks.
+
+### RAG with Reranking
+
+After the initial search (top 20-50 results), a **reranking** model re-evaluates the relevance of each document against the question:
+
+```
+Query → Retrieval (top 50) → Reranker → Top 5 → LLM → Response
+```
+
+Cross-encoder rerankers (Cohere Rerank, BGE Reranker) significantly improve precision.
+
+### Agentic RAG
+
+Agentic RAG uses an AI agent to orchestrate the search process:
+
+1. The agent analyzes the question and plans the search strategy
+2. It formulates multiple search queries from different angles
+3. It evaluates result quality and re-searches if necessary
+4. It synthesizes collected information into a coherent response
+
+This pattern excels for complex questions that require information from multiple sources.
+
+### Graph RAG
+
+**Graph RAG** structures knowledge as a graph rather than independent chunks:
+
+- Entities (people, concepts, products) are nodes
+- Relationships between entities are edges
+- Search leverages the graph structure for richer answers
+
+Particularly effective for knowledge bases with complex relationships between entities.
+
+## RAG Quality Evaluation
+
+### RAGAS Metrics
+
+The **RAGAS** framework defines four key metrics:
+
+- **Faithfulness**: is the answer faithful to the retrieved documents?
+- **Answer Relevancy**: is the answer relevant to the question?
+- **Context Precision**: are the retrieved documents relevant?
+- **Context Recall**: were all necessary documents retrieved?
+
+### Evaluation Pipeline
+
+```
+Test dataset (questions + expected answers)
+→ RAG pipeline execution
+→ RAGAS metrics calculation
+→ Failure analysis
+→ Adjustment (chunking, embedding, prompt)
+→ Re-evaluation
+```
+
+Setting up an automated evaluation pipeline is essential for continuously improving system quality, a principle that [Agents-IA.pro](https://agents-ia.pro) applies in its deployments.
+
+## RAG in Production: Best Practices
+
+### Document Management
+
+- **Rich metadata**: date, source, author, category for filtering
+- **Versioning**: tracking source document changes
+- **Freshness**: regularly re-indexing updated documents
+- **Deduplication**: avoiding duplicates that pollute results
+
+### RAG Prompt Optimization
+
+The RAG prompt should:
+
+- **Instruct the LLM** to answer only from the provided documents
+- **Handle missing information**: "If the documents don't contain the answer, say so"
+- **Cite sources**: allow user verification
+- **Structure the response**: format suited to the use case
+
+### Performance and Scalability
+
+- **Caching**: cache frequent query embeddings
+- **Pre-filtering**: filter by metadata before vector search
+- **Async retrieval**: parallelize searches across multiple indexes
+- **Compression**: quantize embeddings to reduce memory
+
+SEO and web content also benefit from these RAG techniques. [SEO-True](https://seo-true.com) demonstrates how AI and intelligent retrieval are transforming content strategies.
+
+## Enterprise Use Cases
+
+### Internal Knowledge Base
+
+The most commonly deployed use case: enabling employees to query internal documentation (Confluence, SharePoint, Google Drive) in natural language.
+
+### Customer Support
+
+RAG-powered support chatbots retrieve knowledge base articles to respond to customers accurately and with source citations.
+
+### Document Analysis
+
+Legal, financial, and compliance teams use RAG to analyze document corpora (contracts, reports, regulations) and extract insights.
+
+## Conclusion
+
+RAG architecture is the cornerstone of generative AI in the enterprise. Mastering chunking, vector databases, reranking, and advanced patterns enables building systems that respond accurately while staying grounded in proprietary data.
+
+To go further, discover how to deploy an [LLM in production](/fr/blog/architecture-llm-production) and the [AI architecture fundamentals](/fr/blog/architecture-ia-fondamentaux).
+
+Also read: [Autonomous AI agent architecture](/fr/blog/architecture-agents-autonomes) and our guide on [AI architecture security](/fr/blog/architecture-ia-securite). Also discover how [AI is transforming SEO](/fr/blog/seo-ia-2025) and [AI chatbots for enterprises](/fr/blog/chatbot-ia-entreprise).
