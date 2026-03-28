@@ -43,6 +43,16 @@ export default function EbookCard({ ebook, index = 0, locale = 'fr' }: Props & {
       })
 
       if (!res.ok) throw new Error('Failed')
+      const data = await res.json()
+      // Trigger direct PDF download
+      if (data.downloadUrl) {
+        const a = document.createElement('a')
+        a.href = data.downloadUrl
+        a.download = data.downloadUrl.split('/').pop() || 'ebook.pdf'
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+      }
       setSuccess(true)
     } catch {
       setError('Une erreur est survenue. Veuillez reessayer.')
