@@ -91,12 +91,7 @@ export default async function LocaleLayout({
             })
           }}
         />
-        {/* Hreflang complet */}
-        <link rel="alternate" hrefLang="fr" href="https://ai-due.com/fr" />
-        <link rel="alternate" hrefLang="en" href="https://ai-due.com/en" />
-        <link rel="alternate" hrefLang="de" href="https://ai-due.com/de" />
-        <link rel="alternate" hrefLang="it" href="https://ai-due.com/it" />
-        <link rel="alternate" hrefLang="x-default" href="https://ai-due.com/fr" />
+        {/* Hreflang - géré par alternates dans generateMetadata de chaque page */}
       </head>
       <body className={`${inter.className} bg-[#030014] text-white antialiased`}>
         <NextIntlClientProvider messages={messages}>

@@ -16,10 +16,22 @@ export async function generateMetadata({
   const post = posts.find(p => p.slug === params.slug)
   if (!post) return {}
 
+  const locale = params.locale
+  const slug = params.slug
+
   return {
-    title: `${post.title} | Hub AI`,
+    title: `${post.title} | AI-DUE`,
     description: post.excerpt,
     keywords: post.tags.join(', '),
+    alternates: {
+      canonical: `https://ai-due.com/${locale}/blog/${slug}`,
+      languages: {
+        'fr': `https://ai-due.com/fr/blog/${slug}`,
+        'en': `https://ai-due.com/en/blog/${slug}`,
+        'de': `https://ai-due.com/de/blog/${slug}`,
+        'it': `https://ai-due.com/it/blog/${slug}`,
+      }
+    },
     other: {
       'geo.region': post.geo?.country,
       'geo.placename': post.geo?.city,
@@ -29,6 +41,9 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: `https://ai-due.com/${locale}/blog/${slug}`,
+      siteName: 'AI-DUE',
+      locale: locale,
       type: 'article',
       publishedTime: post.date,
       tags: post.tags
