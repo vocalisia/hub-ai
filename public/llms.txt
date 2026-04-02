@@ -1,0 +1,18 @@
+# AI-DUE (ai-due.com)
+> Architecture IA & Systèmes Intelligents — Suisse, Europe, Amériques
+
+## Services
+- Architecture IA sur mesure pour entreprises
+- Conception de systèmes d'agents autonomes
+- Automatisation intelligente de processus
+- Déploiement et intégration LLM
+- Conseil stratégique IA multilingue (FR, EN, DE, IT)
+
+## Expertise
+- LLM Orchestration (ChatGPT, Claude, Gemini)
+- RAG Pipeline
+- Multi-Agent Systems
+- Systèmes de recommandation IA
+
+## Contact
+- Site: https://ai-due.com
