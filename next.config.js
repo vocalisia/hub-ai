@@ -20,8 +20,21 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          { key: 'X-Robots-Tag', value: 'index, follow' },
-          { key: 'Cache-Control', value: 'public, max-age=3600' }
+          { key: 'X-Robots-Tag', value: 'index, follow' }
+        ]
+      },
+      {
+        // Static assets: cache 1h
+        source: '/_next/static/(.*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
+        ]
+      },
+      {
+        // Dynamic blog pages: no CDN cache (force-dynamic pages)
+        source: '/:locale/blog/:slug*',
+        headers: [
+          { key: 'Cache-Control', value: 'no-store' }
         ]
       }
     ]
