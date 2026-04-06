@@ -17,12 +17,20 @@ export default function ContactForm() {
     setStatus('sending')
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: '0ab0bb41-b3fc-46cd-9498-7007bb919de5',
+          subject: `ai-due.com - Nouveau message de ${formData.name}`,
+          from_site: 'ai-due.com',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       })
-      if (!res.ok) throw new Error('Failed')
+      const data = await res.json()
+      if (!data.success) throw new Error(data.message || 'Failed')
       setStatus('sent')
       setFormData({ name: '', email: '', subject: '', message: '' })
     } catch {

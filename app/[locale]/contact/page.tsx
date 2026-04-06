@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import SidebarContactForm from '@/components/SidebarContactForm'
 
 export const dynamic = 'force-dynamic'
 
@@ -122,6 +123,8 @@ export default async function ContactPage({
                   </span>
                 </p>
               </div>
+
+              <SidebarContactForm locale={locale} />
             </div>
           </div>
         </div>
