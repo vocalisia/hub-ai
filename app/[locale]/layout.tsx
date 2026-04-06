@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import CookieBanner from '@/components/CookieBanner'
 import '@/app/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -18,6 +19,7 @@ export async function generateMetadata({
   const seo = (messages as any).seo
 
   return {
+    metadataBase: new URL('https://ai-due.com'),
     title: seo.home_title,
     description: seo.home_description,
     alternates: {
@@ -59,36 +61,48 @@ export default async function LocaleLayout({
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <meta property="og:image" content="https://ai-due.com/api/og" />
-        {/* Google Analytics 4 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PE4BF17GKG" />
-        <script dangerouslySetInnerHTML={{ __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-PE4BF17GKG');
-        `}} />
         {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "AI-DUE",
-              "url": "https://ai-due.com",
-              "description": "AI Architecture & Intelligent Systems — Switzerland, Europe, Canada, USA",
-              "inLanguage": [locale],
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": `https://ai-due.com/${locale}/blog?q={search_term_string}`,
-                "query-input": "required name=search_term_string"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "AI-DUE",
+                "url": "https://ai-due.com",
+                "description": "AI Architecture & Intelligent Systems — Switzerland, Europe, Canada, USA",
+                "inLanguage": [locale],
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": `https://ai-due.com/${locale}/blog?q={search_term_string}`,
+                  "query-input": "required name=search_term_string"
+                },
+                "author": {
+                  "@type": "Person",
+                  "name": "Sebastien",
+                  "url": "https://ai-due.com"
+                }
               },
-              "author": {
-                "@type": "Person",
-                "name": "Sebastien",
-                "url": "https://ai-due.com"
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "@id": "https://ai-due.com/#organization",
+                "name": "AI-DUE",
+                "url": "https://ai-due.com",
+                "logo": "https://ai-due.com/favicon.svg",
+                "description": "AI Architecture & Intelligent Systems — Strategic consulting, training and AI integration for businesses in Switzerland, Europe, Canada and USA.",
+                "email": "contact@ai-due.com",
+                "founder": {
+                  "@type": "Person",
+                  "name": "Sebastien",
+                  "url": "https://ai-due.com"
+                },
+                "areaServed": ["Switzerland", "Europe", "Canada", "United States"],
+                "knowsLanguage": ["fr", "en", "de", "it"],
+                "sameAs": []
               }
-            })
+            ])
           }}
         />
         {/* Hreflang - géré par alternates dans generateMetadata de chaque page */}
@@ -98,6 +112,7 @@ export default async function LocaleLayout({
           <Navbar />
           {children}
           <Footer />
+          <CookieBanner />
         </NextIntlClientProvider>
       </body>
     </html>
