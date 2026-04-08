@@ -23,7 +23,7 @@ export default function CookieBanner() {
   }
 
   function handleDecline() {
-    localStorage.setItem(CONSENT_KEY, 'declined')
+    localStorage.setItem(CONSENT_KEY, 'rejected')
     setVisible(false)
   }
 
