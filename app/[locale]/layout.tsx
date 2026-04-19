@@ -1,11 +1,14 @@
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
+import { Suspense } from 'react'
 
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
+import GA4Tracker from '@/components/GA4Tracker'
 import '@/app/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -62,10 +65,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        {/* Consent Mode v2 + dynamic GA4 — raw inline script, FIRST in <head>, to avoid Next.js preloading GA URL. */}
+        {/* Consent Mode v2 — DOIT être avant gtag.js */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;var c=typeof localStorage!=='undefined'?localStorage.getItem('hub_cookies'):null;gtag('consent','default',{analytics_storage:c==='rejected'?'denied':'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-PE4BF17GKG');var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-PE4BF17GKG';document.head.appendChild(s);})();`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;var _c=(typeof localStorage!=='undefined')?localStorage.getItem('hub_cookies'):null;gtag('consent','default',{analytics_storage:_c==='rejected'?'denied':'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});`,
           }}
         />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -117,11 +120,22 @@ export default async function LocaleLayout({
         {/* Hreflang - géré par alternates dans generateMetadata de chaque page */}
       </head>
       <body className={`${inter.className} bg-[#030014] text-white antialiased`}>
+        {/* GA4 tag — strategy afterInteractive = chargé après hydration, fiable Next.js 14 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-PE4BF17GKG"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`gtag('js',new Date());gtag('config','G-PE4BF17GKG');`}
+        </Script>
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           {children}
           <Footer />
           <CookieBanner />
+          <Suspense fallback={null}>
+            <GA4Tracker />
+          </Suspense>
         </NextIntlClientProvider>
       </body>
     </html>
