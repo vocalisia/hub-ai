@@ -1,0 +1,950 @@
+{
+  "headers": [
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.ai-due.com" }],
+      "destination": "https://ai-due.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/ai-lead-generation-methods-2026",
+      "destination": "/fr/blog/ai-lead-generation-methods-2026",
+      "permanent": false
+    },
+    {
+      "source": "/generation-leads-ia-methodes-2025",
+      "destination": "/ai-lead-generation-methods-2026",
+      "permanent": true
+    },
+    {
+      "source": "/autonomous-ai-agents-complete-guide-2026",
+      "destination": "/fr/blog/autonomous-ai-agents-complete-guide-2026",
+      "permanent": false
+    },
+    {
+      "source": "/guide-agents-ia-autonomes-2025",
+      "destination": "/autonomous-ai-agents-complete-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/whatsapp-ai-agent-customer-communication",
+      "destination": "/fr/blog/whatsapp-ai-agent-customer-communication",
+      "permanent": false
+    },
+    {
+      "source": "/agent-whatsapp-ia-communication-client",
+      "destination": "/whatsapp-ai-agent-customer-communication",
+      "permanent": true
+    },
+    {
+      "source": "/vocal-ai-agent-call-automation",
+      "destination": "/fr/blog/vocal-ai-agent-call-automation",
+      "permanent": false
+    },
+    {
+      "source": "/agent-vocal-ia-automatisation-appels",
+      "destination": "/vocal-ai-agent-call-automation",
+      "permanent": true
+    },
+    {
+      "source": "/ai-agents-vs-chatbots-comparison-2026",
+      "destination": "/fr/blog/ai-agents-vs-chatbots-comparison-2026",
+      "permanent": false
+    },
+    {
+      "source": "/agents-ia-vs-chatbots-comparaison",
+      "destination": "/ai-agents-vs-chatbots-comparison-2026",
+      "permanent": true
+    },
+    {
+      "source": "/agentic-ai-business-revolution",
+      "destination": "/fr/blog/agentic-ai-business-revolution",
+      "permanent": false
+    },
+    {
+      "source": "/ia-agentique-revolution-business",
+      "destination": "/agentic-ai-business-revolution",
+      "permanent": true
+    },
+    {
+      "source": "/ai-sales-prospecting-automation",
+      "destination": "/fr/blog/ai-sales-prospecting-automation",
+      "permanent": false
+    },
+    {
+      "source": "/automatisation-prospection-commerciale-ia",
+      "destination": "/ai-sales-prospecting-automation",
+      "permanent": true
+    },
+    {
+      "source": "/ai-agents-business-use-cases",
+      "destination": "/fr/blog/ai-agents-business-use-cases",
+      "permanent": false
+    },
+    {
+      "source": "/cas-usage-agents-ia-entreprise",
+      "destination": "/ai-agents-business-use-cases",
+      "permanent": true
+    },
+    {
+      "source": "/ai-seo-2026-complete-guide",
+      "destination": "/fr/blog/ai-seo-2026-complete-guide",
+      "permanent": false
+    },
+    {
+      "source": "/seo-ia-2025-guide-complet",
+      "destination": "/ai-seo-2026-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/geo-vs-seo-strategy-2026",
+      "destination": "/fr/blog/geo-vs-seo-strategy-2026",
+      "permanent": false
+    },
+    {
+      "source": "/geo-vs-seo-strategie-2025",
+      "destination": "/geo-vs-seo-strategy-2026",
+      "permanent": true
+    },
+    {
+      "source": "/voice-search-optimization-guide-2026",
+      "destination": "/fr/blog/voice-search-optimization-guide-2026",
+      "permanent": false
+    },
+    {
+      "source": "/recherche-vocale-optimisation-voice-search",
+      "destination": "/voice-search-optimization-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/ai-digital-marketing-sme-tools",
+      "destination": "/fr/blog/ai-digital-marketing-sme-tools",
+      "permanent": false
+    },
+    {
+      "source": "/marketing-digital-ia-pme-outils",
+      "destination": "/ai-digital-marketing-sme-tools",
+      "permanent": true
+    },
+    {
+      "source": "/ai-transforms-seo-natural-referencing-2026",
+      "destination": "/fr/blog/ai-transforms-seo-natural-referencing-2026",
+      "permanent": false
+    },
+    {
+      "source": "/ia-transforme-referencement-naturel-2025",
+      "destination": "/ai-transforms-seo-natural-referencing-2026",
+      "permanent": true
+    },
+    {
+      "source": "/ai-seo-swiss-sme-local-strategy",
+      "destination": "/fr/blog/ai-seo-swiss-sme-local-strategy",
+      "permanent": false
+    },
+    {
+      "source": "/seo-ia-pme-suisses-strategie-locale",
+      "destination": "/ai-seo-swiss-sme-local-strategy",
+      "permanent": true
+    },
+    {
+      "source": "/ai-vocal-content-audio-blog-seo",
+      "destination": "/fr/blog/ai-vocal-content-audio-blog-seo",
+      "permanent": false
+    },
+    {
+      "source": "/contenu-vocal-ia-blog-audio-seo",
+      "destination": "/ai-vocal-content-audio-blog-seo",
+      "permanent": true
+    },
+    {
+      "source": "/eeat-google-2026-ai-authority",
+      "destination": "/fr/blog/eeat-google-2026-ai-authority",
+      "permanent": false
+    },
+    {
+      "source": "/eeat-google-2025-ia-autorite",
+      "destination": "/eeat-google-2026-ai-authority",
+      "permanent": true
+    },
+    {
+      "source": "/sell-online-2026-ai-strategies",
+      "destination": "/fr/blog/sell-online-2026-ai-strategies",
+      "permanent": false
+    },
+    {
+      "source": "/vendre-en-ligne-2025-strategies-ia",
+      "destination": "/sell-online-2026-ai-strategies",
+      "permanent": true
+    },
+    {
+      "source": "/marketplace-security-ai-protection",
+      "destination": "/fr/blog/marketplace-security-ai-protection",
+      "permanent": false
+    },
+    {
+      "source": "/securite-marketplace-ia-protection",
+      "destination": "/marketplace-security-ai-protection",
+      "permanent": true
+    },
+    {
+      "source": "/customer-trust-ai-ecommerce-conversion",
+      "destination": "/fr/blog/customer-trust-ai-ecommerce-conversion",
+      "permanent": false
+    },
+    {
+      "source": "/confiance-client-ia-conversion-ecommerce",
+      "destination": "/customer-trust-ai-ecommerce-conversion",
+      "permanent": true
+    },
+    {
+      "source": "/ai-dropshipping-2026-complete-method",
+      "destination": "/fr/blog/ai-dropshipping-2026-complete-method",
+      "permanent": false
+    },
+    {
+      "source": "/dropshipping-ia-2025-methode-complete",
+      "destination": "/ai-dropshipping-2026-complete-method",
+      "permanent": true
+    },
+    {
+      "source": "/reputation-digitale-ia-ecommercants",
+      "destination": "/fr/blog/reputation-digitale-ia-ecommercants",
+      "permanent": false
+    },
+    {
+      "source": "/ai-certifications-boost-ecommerce-conversions",
+      "destination": "/fr/blog/ai-certifications-boost-ecommerce-conversions",
+      "permanent": false
+    },
+    {
+      "source": "/certifications-ia-booster-conversions-ecommerce",
+      "destination": "/ai-certifications-boost-ecommerce-conversions",
+      "permanent": true
+    },
+    {
+      "source": "/tesla-ai-2026-tech-innovation",
+      "destination": "/fr/blog/tesla-ai-2026-tech-innovation",
+      "permanent": false
+    },
+    {
+      "source": "/tesla-ia-2025-innovation-technologique",
+      "destination": "/tesla-ai-2026-tech-innovation",
+      "permanent": true
+    },
+    {
+      "source": "/tech-ai-innovations-digital-business-2026",
+      "destination": "https://ai-due.com/fr/blog/innovations-tech-ia-business-digital-2025",
+      "permanent": false
+    },
+    {
+      "source": "/innovations-tech-ia-business-digital-2025",
+      "destination": "/tech-ai-innovations-digital-business-2026",
+      "permanent": true
+    },
+    {
+      "source": "/ai-trends-2026-entrepreneurs",
+      "destination": "https://ai-due.com/fr/blog/tendances-ia-2025-entrepreneurs",
+      "permanent": false
+    },
+    {
+      "source": "/tendances-ia-2025-entrepreneurs",
+      "destination": "/ai-trends-2026-entrepreneurs",
+      "permanent": true
+    },
+    {
+      "source": "/entrepreneurs-adopt-ai-competitiveness-2026",
+      "destination": "https://ai-due.com/fr/blog/entrepreneurs-adoptent-ia-competitivite-2025",
+      "permanent": false
+    },
+    {
+      "source": "/entrepreneurs-adoptent-ia-competitivite-2025",
+      "destination": "/entrepreneurs-adopt-ai-competitiveness-2026",
+      "permanent": true
+    },
+    {
+      "source": "/artificial-intelligence-business-complete-guide",
+      "destination": "https://ai-due.com/fr/blog/intelligence-artificielle-business-guide-complet",
+      "permanent": false
+    },
+    {
+      "source": "/intelligence-artificielle-business-guide-complet",
+      "destination": "/artificial-intelligence-business-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/ai-sites-network-digital-resources",
+      "destination": "https://ai-due.com/fr/blog/reseau-sites-ia-ressources-digital",
+      "permanent": false
+    },
+    {
+      "source": "/reseau-sites-ia-ressources-digital",
+      "destination": "/ai-sites-network-digital-resources",
+      "permanent": true
+    },
+    {
+      "source": "/11-essential-ai-tools-businesses-2026",
+      "destination": "https://ai-due.com/fr/blog/11-outils-ia-indispensables-entreprises-2025",
+      "permanent": false
+    },
+    {
+      "source": "/11-outils-ia-indispensables-entreprises-2025",
+      "destination": "/11-essential-ai-tools-businesses-2026",
+      "permanent": true
+    },
+    {
+      "source": "/transform-business-ai-2026-guide",
+      "destination": "https://ai-due.com/fr/blog/transformer-entreprise-ia-2025-guide",
+      "permanent": false
+    },
+    {
+      "source": "/transformer-entreprise-ia-2025-guide",
+      "destination": "/transform-business-ai-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/guide-agents-ia-autonomes-2025",
+      "destination": "/fr/blog/autonomous-ai-agents-complete-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/guide-agents-ia-autonomes-2025",
+      "destination": "/fr/blog/autonomous-ai-agents-complete-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/guide-agents-ia-autonomes-2025",
+      "destination": "/fr/blog/autonomous-ai-agents-complete-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/guide-agents-ia-autonomes-2025",
+      "destination": "/fr/blog/autonomous-ai-agents-complete-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/agent-whatsapp-ia-communication-client",
+      "destination": "/fr/blog/whatsapp-ai-agent-customer-communication",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/agent-whatsapp-ia-communication-client",
+      "destination": "/fr/blog/whatsapp-ai-agent-customer-communication",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/agent-whatsapp-ia-communication-client",
+      "destination": "/fr/blog/whatsapp-ai-agent-customer-communication",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/agent-whatsapp-ia-communication-client",
+      "destination": "/fr/blog/whatsapp-ai-agent-customer-communication",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/agent-vocal-ia-automatisation-appels",
+      "destination": "/fr/blog/vocal-ai-agent-call-automation",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/agent-vocal-ia-automatisation-appels",
+      "destination": "/fr/blog/vocal-ai-agent-call-automation",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/agent-vocal-ia-automatisation-appels",
+      "destination": "/fr/blog/vocal-ai-agent-call-automation",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/agent-vocal-ia-automatisation-appels",
+      "destination": "/fr/blog/vocal-ai-agent-call-automation",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/generation-leads-ia-methodes-2025",
+      "destination": "/fr/blog/ai-lead-generation-methods-2026",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/generation-leads-ia-methodes-2025",
+      "destination": "/fr/blog/ai-lead-generation-methods-2026",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/generation-leads-ia-methodes-2025",
+      "destination": "/fr/blog/ai-lead-generation-methods-2026",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/generation-leads-ia-methodes-2025",
+      "destination": "/fr/blog/ai-lead-generation-methods-2026",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/agents-ia-vs-chatbots-comparaison",
+      "destination": "/fr/blog/ai-agents-vs-chatbots-comparison-2026",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/agents-ia-vs-chatbots-comparaison",
+      "destination": "/fr/blog/ai-agents-vs-chatbots-comparison-2026",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/agents-ia-vs-chatbots-comparaison",
+      "destination": "/fr/blog/ai-agents-vs-chatbots-comparison-2026",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/agents-ia-vs-chatbots-comparaison",
+      "destination": "/fr/blog/ai-agents-vs-chatbots-comparison-2026",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/ia-agentique-revolution-business",
+      "destination": "/fr/blog/agentic-ai-business-revolution",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/ia-agentique-revolution-business",
+      "destination": "/fr/blog/agentic-ai-business-revolution",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/ia-agentique-revolution-business",
+      "destination": "/fr/blog/agentic-ai-business-revolution",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/ia-agentique-revolution-business",
+      "destination": "/fr/blog/agentic-ai-business-revolution",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/automatisation-prospection-commerciale-ia",
+      "destination": "/fr/blog/ai-sales-prospecting-automation",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/automatisation-prospection-commerciale-ia",
+      "destination": "/fr/blog/ai-sales-prospecting-automation",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/automatisation-prospection-commerciale-ia",
+      "destination": "/fr/blog/ai-sales-prospecting-automation",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/automatisation-prospection-commerciale-ia",
+      "destination": "/fr/blog/ai-sales-prospecting-automation",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/cas-usage-agents-ia-entreprise",
+      "destination": "/fr/blog/ai-agents-business-use-cases",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/cas-usage-agents-ia-entreprise",
+      "destination": "/fr/blog/ai-agents-business-use-cases",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/cas-usage-agents-ia-entreprise",
+      "destination": "/fr/blog/ai-agents-business-use-cases",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/cas-usage-agents-ia-entreprise",
+      "destination": "/fr/blog/ai-agents-business-use-cases",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/seo-ia-2025-guide-complet",
+      "destination": "/fr/blog/ai-seo-2026-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/seo-ia-2025-guide-complet",
+      "destination": "/fr/blog/ai-seo-2026-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/seo-ia-2025-guide-complet",
+      "destination": "/fr/blog/ai-seo-2026-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/seo-ia-2025-guide-complet",
+      "destination": "/fr/blog/ai-seo-2026-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/geo-vs-seo-strategie-2025",
+      "destination": "/fr/blog/geo-vs-seo-strategy-2026",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/geo-vs-seo-strategie-2025",
+      "destination": "/fr/blog/geo-vs-seo-strategy-2026",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/geo-vs-seo-strategie-2025",
+      "destination": "/fr/blog/geo-vs-seo-strategy-2026",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/geo-vs-seo-strategie-2025",
+      "destination": "/fr/blog/geo-vs-seo-strategy-2026",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/recherche-vocale-optimisation-voice-search",
+      "destination": "/fr/blog/voice-search-optimization-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/recherche-vocale-optimisation-voice-search",
+      "destination": "/fr/blog/voice-search-optimization-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/recherche-vocale-optimisation-voice-search",
+      "destination": "/fr/blog/voice-search-optimization-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/recherche-vocale-optimisation-voice-search",
+      "destination": "/fr/blog/voice-search-optimization-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/marketing-digital-ia-pme-outils",
+      "destination": "/fr/blog/ai-digital-marketing-sme-tools",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/marketing-digital-ia-pme-outils",
+      "destination": "/fr/blog/ai-digital-marketing-sme-tools",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/marketing-digital-ia-pme-outils",
+      "destination": "/fr/blog/ai-digital-marketing-sme-tools",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/marketing-digital-ia-pme-outils",
+      "destination": "/fr/blog/ai-digital-marketing-sme-tools",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/ia-transforme-referencement-naturel-2025",
+      "destination": "/fr/blog/ai-transforms-seo-natural-referencing-2026",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/ia-transforme-referencement-naturel-2025",
+      "destination": "/fr/blog/ai-transforms-seo-natural-referencing-2026",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/ia-transforme-referencement-naturel-2025",
+      "destination": "/fr/blog/ai-transforms-seo-natural-referencing-2026",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/ia-transforme-referencement-naturel-2025",
+      "destination": "/fr/blog/ai-transforms-seo-natural-referencing-2026",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/seo-ia-pme-suisses-strategie-locale",
+      "destination": "/fr/blog/ai-seo-swiss-sme-local-strategy",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/seo-ia-pme-suisses-strategie-locale",
+      "destination": "/fr/blog/ai-seo-swiss-sme-local-strategy",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/seo-ia-pme-suisses-strategie-locale",
+      "destination": "/fr/blog/ai-seo-swiss-sme-local-strategy",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/seo-ia-pme-suisses-strategie-locale",
+      "destination": "/fr/blog/ai-seo-swiss-sme-local-strategy",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/contenu-vocal-ia-blog-audio-seo",
+      "destination": "/fr/blog/ai-vocal-content-audio-blog-seo",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/contenu-vocal-ia-blog-audio-seo",
+      "destination": "/fr/blog/ai-vocal-content-audio-blog-seo",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/contenu-vocal-ia-blog-audio-seo",
+      "destination": "/fr/blog/ai-vocal-content-audio-blog-seo",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/contenu-vocal-ia-blog-audio-seo",
+      "destination": "/fr/blog/ai-vocal-content-audio-blog-seo",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/eeat-google-2025-ia-autorite",
+      "destination": "/fr/blog/eeat-google-2026-ai-authority",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/eeat-google-2025-ia-autorite",
+      "destination": "/fr/blog/eeat-google-2026-ai-authority",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/eeat-google-2025-ia-autorite",
+      "destination": "/fr/blog/eeat-google-2026-ai-authority",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/eeat-google-2025-ia-autorite",
+      "destination": "/fr/blog/eeat-google-2026-ai-authority",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/vendre-en-ligne-2025-strategies-ia",
+      "destination": "/fr/blog/sell-online-2026-ai-strategies",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/vendre-en-ligne-2025-strategies-ia",
+      "destination": "/fr/blog/sell-online-2026-ai-strategies",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/vendre-en-ligne-2025-strategies-ia",
+      "destination": "/fr/blog/sell-online-2026-ai-strategies",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/vendre-en-ligne-2025-strategies-ia",
+      "destination": "/fr/blog/sell-online-2026-ai-strategies",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/securite-marketplace-ia-protection",
+      "destination": "/fr/blog/marketplace-security-ai-protection",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/securite-marketplace-ia-protection",
+      "destination": "/fr/blog/marketplace-security-ai-protection",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/securite-marketplace-ia-protection",
+      "destination": "/fr/blog/marketplace-security-ai-protection",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/securite-marketplace-ia-protection",
+      "destination": "/fr/blog/marketplace-security-ai-protection",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/confiance-client-ia-conversion-ecommerce",
+      "destination": "/fr/blog/customer-trust-ai-ecommerce-conversion",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/confiance-client-ia-conversion-ecommerce",
+      "destination": "/fr/blog/customer-trust-ai-ecommerce-conversion",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/confiance-client-ia-conversion-ecommerce",
+      "destination": "/fr/blog/customer-trust-ai-ecommerce-conversion",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/confiance-client-ia-conversion-ecommerce",
+      "destination": "/fr/blog/customer-trust-ai-ecommerce-conversion",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/dropshipping-ia-2025-methode-complete",
+      "destination": "/fr/blog/ai-dropshipping-2026-complete-method",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/dropshipping-ia-2025-methode-complete",
+      "destination": "/fr/blog/ai-dropshipping-2026-complete-method",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/dropshipping-ia-2025-methode-complete",
+      "destination": "/fr/blog/ai-dropshipping-2026-complete-method",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/dropshipping-ia-2025-methode-complete",
+      "destination": "/fr/blog/ai-dropshipping-2026-complete-method",
+      "permanent": true
+    },
+    {
+      "source": "/reputation-digitale-ia-ecommerçants",
+      "destination": "/fr/blog/digital-reputation-ai-ecommerce-sellers",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/reputation-digitale-ia-ecommerçants",
+      "destination": "/fr/blog/digital-reputation-ai-ecommerce-sellers",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/reputation-digitale-ia-ecommerçants",
+      "destination": "/fr/blog/digital-reputation-ai-ecommerce-sellers",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/reputation-digitale-ia-ecommerçants",
+      "destination": "/fr/blog/digital-reputation-ai-ecommerce-sellers",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/reputation-digitale-ia-ecommerçants",
+      "destination": "/fr/blog/digital-reputation-ai-ecommerce-sellers",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/certifications-ia-booster-conversions-ecommerce",
+      "destination": "/fr/blog/ai-certifications-boost-ecommerce-conversions",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/certifications-ia-booster-conversions-ecommerce",
+      "destination": "/fr/blog/ai-certifications-boost-ecommerce-conversions",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/certifications-ia-booster-conversions-ecommerce",
+      "destination": "/fr/blog/ai-certifications-boost-ecommerce-conversions",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/certifications-ia-booster-conversions-ecommerce",
+      "destination": "/fr/blog/ai-certifications-boost-ecommerce-conversions",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/tesla-ia-2025-innovation-technologique",
+      "destination": "/fr/blog/tesla-ai-2026-tech-innovation",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/tesla-ia-2025-innovation-technologique",
+      "destination": "/fr/blog/tesla-ai-2026-tech-innovation",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/tesla-ia-2025-innovation-technologique",
+      "destination": "/fr/blog/tesla-ai-2026-tech-innovation",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/tesla-ia-2025-innovation-technologique",
+      "destination": "/fr/blog/tesla-ai-2026-tech-innovation",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/innovations-tech-ia-business-digital-2025",
+      "destination": "/fr/blog/tech-ai-innovations-digital-business-2026",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/innovations-tech-ia-business-digital-2025",
+      "destination": "/fr/blog/tech-ai-innovations-digital-business-2026",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/innovations-tech-ia-business-digital-2025",
+      "destination": "/fr/blog/tech-ai-innovations-digital-business-2026",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/innovations-tech-ia-business-digital-2025",
+      "destination": "/fr/blog/tech-ai-innovations-digital-business-2026",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/tendances-ia-2025-entrepreneurs",
+      "destination": "/fr/blog/ai-trends-2026-entrepreneurs",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/tendances-ia-2025-entrepreneurs",
+      "destination": "/fr/blog/ai-trends-2026-entrepreneurs",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/tendances-ia-2025-entrepreneurs",
+      "destination": "/fr/blog/ai-trends-2026-entrepreneurs",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/tendances-ia-2025-entrepreneurs",
+      "destination": "/fr/blog/ai-trends-2026-entrepreneurs",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/entrepreneurs-adoptent-ia-competitivite-2025",
+      "destination": "/fr/blog/entrepreneurs-adopt-ai-competitiveness-2026",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/entrepreneurs-adoptent-ia-competitivite-2025",
+      "destination": "/fr/blog/entrepreneurs-adopt-ai-competitiveness-2026",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/entrepreneurs-adoptent-ia-competitivite-2025",
+      "destination": "/fr/blog/entrepreneurs-adopt-ai-competitiveness-2026",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/entrepreneurs-adoptent-ia-competitivite-2025",
+      "destination": "/fr/blog/entrepreneurs-adopt-ai-competitiveness-2026",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/intelligence-artificielle-business-guide-complet",
+      "destination": "/fr/blog/artificial-intelligence-business-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/intelligence-artificielle-business-guide-complet",
+      "destination": "/fr/blog/artificial-intelligence-business-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/intelligence-artificielle-business-guide-complet",
+      "destination": "/fr/blog/artificial-intelligence-business-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/intelligence-artificielle-business-guide-complet",
+      "destination": "/fr/blog/artificial-intelligence-business-complete-guide",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/reseau-sites-ia-ressources-digital",
+      "destination": "/fr/blog/ai-sites-network-digital-resources",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/reseau-sites-ia-ressources-digital",
+      "destination": "/fr/blog/ai-sites-network-digital-resources",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/reseau-sites-ia-ressources-digital",
+      "destination": "/fr/blog/ai-sites-network-digital-resources",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/reseau-sites-ia-ressources-digital",
+      "destination": "/fr/blog/ai-sites-network-digital-resources",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/11-outils-ia-indispensables-entreprises-2025",
+      "destination": "/fr/blog/11-essential-ai-tools-businesses-2026",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/11-outils-ia-indispensables-entreprises-2025",
+      "destination": "/fr/blog/11-essential-ai-tools-businesses-2026",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/11-outils-ia-indispensables-entreprises-2025",
+      "destination": "/fr/blog/11-essential-ai-tools-businesses-2026",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/11-outils-ia-indispensables-entreprises-2025",
+      "destination": "/fr/blog/11-essential-ai-tools-businesses-2026",
+      "permanent": true
+    },
+    {
+      "source": "/fr/blog/transformer-entreprise-ia-2025-guide",
+      "destination": "/fr/blog/transform-business-ai-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/transformer-entreprise-ia-2025-guide",
+      "destination": "/fr/blog/transform-business-ai-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/de/blog/transformer-entreprise-ia-2025-guide",
+      "destination": "/fr/blog/transform-business-ai-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/it/blog/transformer-entreprise-ia-2025-guide",
+      "destination": "/fr/blog/transform-business-ai-2026-guide",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
+      ]
+    }
+  ]
+}

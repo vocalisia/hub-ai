@@ -13,10 +13,90 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --navy-900: #0a0f2e;
+  --navy-800: #0f1648;
+  --navy-700: #1a2560;
+  --gold: #AD7D4E;
+  --gold-light: #C9A572;
+  --gold-soft: rgba(201, 165, 114, 0.15);
+}
+
 body {
-  background: #030014;
+  background: #0a0f2e;
   color: white;
   overflow-x: hidden;
+  font-family: var(--font-lato), 'Lato', -apple-system, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-lato), 'Lato', -apple-system, sans-serif;
+}
+
+.eyebrow {
+  color: #AD7D4E;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.text-gold {
+  color: #AD7D4E;
+}
+
+.bg-gold {
+  background: #AD7D4E;
+}
+
+.btn-gold {
+  background: #AD7D4E;
+  color: #0a0f2e;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-gold:hover { opacity: 0.88; }
+
+.btn-gold-outline {
+  background: transparent;
+  border: 2px solid rgba(201, 165, 114, 0.55);
+  color: #AD7D4E;
+  font-weight: 700;
+  padding: 12px 30px;
+  border-radius: 50px;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-gold-outline:hover { background: rgba(201, 165, 114, 0.1); }
+
+.luxury-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 165, 114, 0.15);
+  border-radius: 16px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.luxury-card:hover {
+  border-color: rgba(201, 165, 114, 0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(201, 165, 114, 0.08);
+}
+
+.gradient-text-luxury {
+  background: linear-gradient(135deg, #C9A572, #AD7D4E, #8B6239);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ===== TYPOGRAPHY ===== */

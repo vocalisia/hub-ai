@@ -1,19 +1,130 @@
+# robots.txt for ai-due.com
+# Last updated: 2026-04-24
+
+# ============================================================
+# Default rules — all crawlers
+# ============================================================
 User-agent: *
 Allow: /
 
-Sitemap: https://ai-due.com/sitemap.xml
+# Block private / non-indexable areas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /_vercel/
+Disallow: /*.json$
 
+# Block transactional / dynamic per-locale routes
+Disallow: /fr/paiement
+Disallow: /en/paiement
+Disallow: /de/paiement
+Disallow: /it/paiement
+Disallow: /fr/simulation/
+Disallow: /en/simulation/
+Disallow: /de/simulation/
+Disallow: /it/simulation/
+
+# Avoid query-string duplicate content (UTM, session, etc.)
+Disallow: /*?*utm_
+Disallow: /*?*fbclid=
+Disallow: /*?*gclid=
+
+# ============================================================
+# AI crawlers — explicitly allowed for visibility / GEO
+# ============================================================
 User-agent: GPTBot
 Allow: /
+Disallow: /api/
+Disallow: /fr/paiement
+Disallow: /en/paiement
+Disallow: /de/paiement
+Disallow: /it/paiement
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /api/
 
-User-agent: Google-Extended
+User-agent: OAI-SearchBot
 Allow: /
-
-User-agent: Anthropic-AI
-Allow: /
+Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /api/
+Disallow: /fr/paiement
+Disallow: /en/paiement
+Disallow: /de/paiement
+Disallow: /it/paiement
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: Bytespider
+Allow: /
+Disallow: /api/
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /api/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /api/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /api/
+
+User-agent: YouBot
+Allow: /
+Disallow: /api/
+
+User-agent: Diffbot
+Allow: /
+Disallow: /api/
+
+# ============================================================
+# Bad bots / scrapers — blocked
+# ============================================================
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+# ============================================================
+# Sitemaps
+# ============================================================
+Sitemap: https://ai-due.com/sitemap.xml

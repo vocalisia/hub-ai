@@ -18,20 +18,19 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
-        headers: [
-          { key: 'X-Robots-Tag', value: 'index, follow' }
-        ]
-      },
-      {
-        // Static assets: cache 1h
         source: '/_next/static/(.*)',
         headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
         ]
       },
       {
-        // Dynamic blog pages: no CDN cache (force-dynamic pages)
+        source: '/api/(.*)',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' }
+        ]
+      },
+      {
         source: '/:locale/blog/:slug*',
         headers: [
           { key: 'Cache-Control', value: 'no-store' }

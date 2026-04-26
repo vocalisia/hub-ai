@@ -14,10 +14,21 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   if (!quiz) return {}
   const title = t(quiz.title, params.locale)
   const desc = t(quiz.description, params.locale)
+  const slug = params.slug
   return {
     title: `${title} | AI-DUE Quiz`,
     description: desc,
-    openGraph: { title, description: desc, type: 'website' }
+    alternates: {
+      canonical: `https://ai-due.com/${params.locale}/quiz/${slug}`,
+      languages: {
+        en: `https://ai-due.com/en/quiz/${slug}`,
+        fr: `https://ai-due.com/fr/quiz/${slug}`,
+        de: `https://ai-due.com/de/quiz/${slug}`,
+        it: `https://ai-due.com/it/quiz/${slug}`,
+        'x-default': `https://ai-due.com/en/quiz/${slug}`,
+      },
+    },
+    openGraph: { title, description: desc, type: 'website', url: `https://ai-due.com/${params.locale}/quiz/${slug}` },
   }
 }
 

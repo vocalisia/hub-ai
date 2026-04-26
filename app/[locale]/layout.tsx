@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
-import { Inter } from 'next/font/google'
+import { Montserrat, Lato } from 'next/font/google'
 import Script from 'next/script'
 import { Suspense } from 'react'
 
@@ -11,7 +11,19 @@ import CookieBanner from '@/components/CookieBanner'
 import GA4Tracker from '@/components/GA4Tracker'
 import '@/app/globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+  variable: '--font-montserrat',
+  display: 'swap',
+})
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-lato',
+  display: 'swap',
+})
 
 export async function generateMetadata({
   params: { locale }
@@ -119,7 +131,7 @@ export default async function LocaleLayout({
         />
         {/* Hreflang - géré par alternates dans generateMetadata de chaque page */}
       </head>
-      <body className={`${inter.className} bg-[#030014] text-white antialiased`}>
+      <body className={`${montserrat.variable} ${lato.variable} font-body bg-[#0a0f2e] text-white antialiased`}>
         {/* GA4 tag — strategy afterInteractive = chargé après hydration, fiable Next.js 14 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PE4BF17GKG"

@@ -1,0 +1,387 @@
+Found 76 FR articles
+
+
+[1/76] 11-essential-ai-tools-businesses-2026.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[2/76] agent-ia-autonome-guide-complet.mdx
+  ⚠ en: no target file for agent-ia-autonome-guide-complet.mdx
+  ⚠ de: no target file for agent-ia-autonome-guide-complet.mdx
+  ⚠ it: no target file for agent-ia-autonome-guide-complet.mdx
+
+[3/76] agentic-ai-business-revolution.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[4/76] agents-ia-autonomes.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[5/76] ai-agents-business-use-cases.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[6/76] ai-agents-vs-chatbots-comparison-2026.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[7/76] ai-canada-montreal.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[8/76] ai-certifications-boost-ecommerce-conversions.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[9/76] ai-digital-marketing-sme-tools.mdx
+  ✓ en: already translated
+  → translating de... done
+  → translating it... done
+
+[10/76] ai-dropshipping-2026-complete-method.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[11/76] ai-lead-generation-methods-2026.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[12/76] ai-sales-prospecting-automation.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[13/76] ai-seo-2026-complete-guide.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[14/76] ai-seo-swiss-sme-local-strategy.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[15/76] ai-sites-network-digital-resources.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[16/76] ai-transforms-seo-natural-referencing-2026.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[17/76] ai-trends-2026-entrepreneurs.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[18/76] ai-vocal-content-audio-blog-seo.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[19/76] architecture-agents-autonomes.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[20/76] architecture-ia-cloud-hybrid.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[21/76] architecture-ia-edge-iot.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[22/76] architecture-ia-fondamentaux.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[23/76] architecture-ia-multi-agents.mdx
+  ⚠ en: no target file for architecture-ia-multi-agents.mdx
+  ⚠ de: no target file for architecture-ia-multi-agents.mdx
+  ⚠ it: no target file for architecture-ia-multi-agents.mdx
+
+[24/76] architecture-ia-securite.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[25/76] architecture-llm-production.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[26/76] architecture-mlops-pipeline.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[27/76] architecture-rag-retrieval.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[28/76] architecture-voice-ai.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[29/76] artificial-intelligence-business-complete-guide.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[30/76] autonomous-ai-agents-complete-guide-2026.mdx
+  ✓ en: already translated
+  → translating de... done
+  → translating it... done
+
+[31/76] chatbot-ia-entreprise.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[32/76] customer-trust-ai-ecommerce-conversion.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[33/76] digital-reputation-ai-ecommerce-sellers.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[34/76] eeat-google-2026-ai-authority.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[35/76] entrepreneurs-adopt-ai-competitiveness-2026.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[36/76] formation-ia-revendeur.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[37/76] geo-vs-seo-strategy-2026.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[38/76] ia-agriculture-agritech.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[39/76] ia-allemagne-2025.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[40/76] ia-automatisation-entreprise.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[41/76] ia-canada-toronto.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[42/76] ia-cybersecurite.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[43/76] ia-ecommerce-retail.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[44/76] ia-education-formation.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[45/76] ia-energie-climat.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[46/76] ia-espagne-portugal.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[47/76] ia-ethique-confiance.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[48/76] ia-europe-panorama.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[49/76] ia-fintech-banque.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[50/76] ia-france-2025.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[51/76] ia-generative-architecture.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[52/76] ia-immobilier-proptech.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[53/76] ia-italie-2025.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[54/76] ia-juridique-legaltech.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[55/76] ia-marketing-digital.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[56/76] ia-mobilite-tesla.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[57/76] ia-pme-guide.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[58/76] ia-rh-recrutement.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[59/76] ia-sante-medecine.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[60/76] ia-scandinavie-nordics.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[61/76] ia-suisse-2025.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[62/76] ia-uk-2025.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[63/76] ia-usa-east-coast.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[64/76] ia-usa-silicon-valley.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[65/76] ia-vancouver-ouest-canadien.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[66/76] marketplace-security-ai-protection.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[67/76] plateforme-ia-entreprise-comparatif.mdx
+  ⚠ en: no target file for plateforme-ia-entreprise-comparatif.mdx
+  ⚠ de: no target file for plateforme-ia-entreprise-comparatif.mdx
+  ⚠ it: no target file for plateforme-ia-entreprise-comparatif.mdx
+
+[68/76] sell-online-2026-ai-strategies.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[69/76] seo-ia-2025.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[70/76] tech-ai-innovations-digital-business-2026.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[71/76] tesla-ai-2026-tech-innovation.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[72/76] transform-business-ai-2026-guide.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[73/76] vocal-ai-agent-call-automation.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[74/76] voice-search-optimization-guide-2026.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+[75/76] voix-ia-telephonie.mdx
+  ✓ en: already translated
+  ✓ de: already translated
+  ✓ it: already translated
+
+[76/76] whatsapp-ai-agent-customer-communication.mdx
+  → translating en... done
+  → translating de... done
+  → translating it... done
+
+============================================================
+✅ Translated: 67 files
+⏩ Skipped (already done): 161 files
+❌ Errors: 0

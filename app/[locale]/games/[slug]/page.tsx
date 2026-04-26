@@ -17,12 +17,23 @@ const GAMES: Record<string, { component: any; title: string; description: string
   'prompt-engineering': { component: PromptGame, title: 'Prompt Engineering Game', description: 'Ecrivez le meilleur prompt pour chaque defi', icon: '✍️' },
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
   const game = GAMES[params.slug]
   if (!game) return {}
+  const slug = params.slug
   return {
     title: `${game.title} | AI-DUE Games`,
     description: game.description,
+    alternates: {
+      canonical: `https://ai-due.com/${params.locale}/games/${slug}`,
+      languages: {
+        en: `https://ai-due.com/en/games/${slug}`,
+        fr: `https://ai-due.com/fr/games/${slug}`,
+        de: `https://ai-due.com/de/games/${slug}`,
+        it: `https://ai-due.com/it/games/${slug}`,
+        'x-default': `https://ai-due.com/en/games/${slug}`,
+      },
+    },
   }
 }
 
