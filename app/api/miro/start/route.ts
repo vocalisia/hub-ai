@@ -10,6 +10,56 @@ const LLM_BASE = process.env.MAMMOUTH_API_KEY
   : 'https://api.openai.com/v1/chat/completions'
 const LLM_MODEL = process.env.LLM_MODEL ?? 'gpt-4o-mini'
 
+// ── RATE LIMIT : 1 simulation par IP par 30 jours ────────────────────────────
+// Empêche l'abus du widget public (coût ~$0.04/simulation × N visites = explose)
+// Storage: Upstash Redis REST (TTL 30j). Si Redis indispo → fallback memory (process-local).
+const RL_URL = process.env.UPSTASH_REDIS_REST_URL ?? ''
+const RL_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN ?? ''
+const RL_TTL_SECONDS = 30 * 24 * 60 * 60 // 30 jours
+
+const memoryFallback = new Map<string, number>() // dev local seulement
+
+async function checkRateLimit(ip: string): Promise<{ allowed: boolean; resetAt?: number }> {
+  const key = `miro:rl:${ip.replace(/[^a-zA-Z0-9.:_-]/g, '_')}`
+
+  // Production : Upstash Redis
+  if (RL_URL && RL_TOKEN) {
+    try {
+      const setRes = await fetch(`${RL_URL}/set/${encodeURIComponent(key)}/1?nx=true&ex=${RL_TTL_SECONDS}`, {
+        headers: { Authorization: `Bearer ${RL_TOKEN}` },
+        signal: AbortSignal.timeout(3000),
+      })
+      const data = (await setRes.json()) as { result: string | null }
+      // result === "OK" → première fois (allowed). null → déjà existe (refused)
+      if (data.result === 'OK') return { allowed: true }
+      // Récupère TTL pour le reset
+      const ttlRes = await fetch(`${RL_URL}/ttl/${encodeURIComponent(key)}`, {
+        headers: { Authorization: `Bearer ${RL_TOKEN}` },
+        signal: AbortSignal.timeout(3000),
+      })
+      const ttl = (await ttlRes.json()) as { result: number }
+      return { allowed: false, resetAt: Date.now() + ttl.result * 1000 }
+    } catch {
+      // Si Redis fail, fallback memory (mieux que tout autoriser)
+    }
+  }
+
+  // Fallback memory (dev local)
+  const now = Date.now()
+  const last = memoryFallback.get(key)
+  if (last && now - last < RL_TTL_SECONDS * 1000) {
+    return { allowed: false, resetAt: last + RL_TTL_SECONDS * 1000 }
+  }
+  memoryFallback.set(key, now)
+  return { allowed: true }
+}
+
+function getClientIp(req: NextRequest): string {
+  const xff = req.headers.get('x-forwarded-for')
+  if (xff) return xff.split(',')[0].trim()
+  return req.headers.get('x-real-ip') ?? 'unknown'
+}
+
 type Reaction = {
   platform: 'twitter' | 'reddit' | 'polymarket'
   agent: string
@@ -100,6 +150,21 @@ async function runSimulation(text: string, userPrompt: string, locale: string): 
 
 export async function POST(req: NextRequest) {
   try {
+    // RATE LIMIT — 1 simulation par IP par 30 jours
+    const ip = getClientIp(req)
+    const rl = await checkRateLimit(ip)
+    if (!rl.allowed) {
+      const resetDate = rl.resetAt ? new Date(rl.resetAt).toISOString() : 'unknown'
+      return NextResponse.json(
+        {
+          ok: false,
+          error: 'Rate limit reached: 1 simulation per IP per 30 days. Try again later.',
+          resetAt: resetDate,
+        },
+        { status: 429, headers: { 'Retry-After': String(RL_TTL_SECONDS) } },
+      )
+    }
+
     const formData = await req.formData()
     const file = formData.get('file') as File | null
     const promptInput = (formData.get('prompt') as string) ?? ''
