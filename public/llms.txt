@@ -1,18 +1,25 @@
-# AI-DUE (ai-due.com)
-> Architecture IA & Systèmes Intelligents — Suisse, Europe, Amériques
+# AI Due
 
-## Services
-- Architecture IA sur mesure pour entreprises
-- Conception de systèmes d'agents autonomes
-- Automatisation intelligente de processus
-- Déploiement et intégration LLM
-- Conseil stratégique IA multilingue (FR, EN, DE, IT)
+> Hub central de l'ecosysteme IA francophone. Plateforme de reference sur l'intelligence artificielle avec 129 articles, carte interactive des outils IA, ebooks et contenu en 4 langues.
 
-## Expertise
-- LLM Orchestration (ChatGPT, Claude, Gemini)
-- RAG Pipeline
-- Multi-Agent Systems
-- Systèmes de recommandation IA
+## Ce que fait AI Due
 
-## Contact
-- Site: https://ai-due.com
+AI Due est le HUB central du cocon semantique IA francophone. Il centralise les informations sur les outils IA, les actualites, les guides pratiques et les ressources pour professionnels et entreprises adoptant l'IA.
+
+## Contenu
+
+- 129 articles SEO sur l'IA (FR/EN/ES/DE)
+- Carte interactive des outils IA par categorie
+- Ebooks et guides pratiques IA
+- Comparatifs outils IA (ChatGPT, Claude, Gemini, Mistral, Llama)
+- Actualites IA : Open Source, Anthropic, OpenAI, Google DeepMind, Mistral
+
+## Architecture
+
+Hub central d'un cocon semantique de 11 satellites IA en 4 clusters thematiques. Maillage interne vers : vocalis.pro, seo-true.com, trustly-ai.com, iapmesuisse.ch, agents-ia.pro.
+
+## Pages
+
+- Homepage : https://ai-due.com
+- Blog : https://ai-due.com/blog
+- Carte IA : https://ai-due.com/carte
