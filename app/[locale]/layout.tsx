@@ -50,7 +50,7 @@ export async function generateMetadata({
       title: seo.home_title,
       description: seo.home_description,
       url: `https://ai-due.com/${locale}`,
-      siteName: 'AI-DUE',
+      siteName: 'AI-Due',
       locale: locale,
       type: 'website'
     },
@@ -80,7 +80,7 @@ export default async function LocaleLayout({
         {/* Consent Mode v2 — DOIT être avant gtag.js */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;var _c=(typeof localStorage!=='undefined')?localStorage.getItem('hub_cookies'):null;gtag('consent','default',{analytics_storage:_c==='rejected'?'denied':'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});var _c=(typeof localStorage!=='undefined')?localStorage.getItem('hub_cookies'):null;if(_c==='accepted'){gtag('consent','update',{analytics_storage:'granted'});}`,
           }}
         />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -93,7 +93,7 @@ export default async function LocaleLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
-                "name": "AI-DUE",
+                "name": "AI-Due",
                 "url": "https://ai-due.com",
                 "description": "AI Architecture & Intelligent Systems — Switzerland, Europe, Canada, USA",
                 "inLanguage": [locale],
@@ -112,9 +112,9 @@ export default async function LocaleLayout({
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 "@id": "https://ai-due.com/#organization",
-                "name": "AI-DUE",
+                "name": "AI-Due",
                 "url": "https://ai-due.com",
-                "logo": "https://ai-due.com/favicon.svg",
+                "logo": {"@type": "ImageObject", "url": "https://ai-due.com/favicon.svg", "width": 512, "height": 512},
                 "description": "AI Architecture & Intelligent Systems — Strategic consulting, training and AI integration for businesses in Switzerland, Europe, Canada and USA.",
                 "email": "contact@ai-due.com",
                 "founder": {
