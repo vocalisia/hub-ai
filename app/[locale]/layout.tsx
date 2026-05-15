@@ -77,10 +77,17 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        {/* Consent Mode v2 — DOIT être avant gtag.js */}
+        {/* Consent Mode v2 — DOIT être avant gtag.js (raw <script> en head pour garantir l'ordre HTML) */}
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});var _c=(typeof localStorage!=='undefined')?localStorage.getItem('hub_cookies'):null;if(_c==='accepted'){gtag('consent','update',{analytics_storage:'granted'});}`,
+          }}
+        />
+        {/* GA4 — chargé INLINE en head APRÈS consent default pour respecter l'ordre RGPD */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PE4BF17GKG" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `gtag('js',new Date());gtag('config','G-PE4BF17GKG',{anonymize_ip:true});`,
           }}
         />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -132,14 +139,7 @@ export default async function LocaleLayout({
         {/* Hreflang - géré par alternates dans generateMetadata de chaque page */}
       </head>
       <body className={`${montserrat.variable} ${lato.variable} font-body bg-[#0a0f2e] text-white antialiased`}>
-        {/* GA4 tag — strategy afterInteractive = chargé après hydration, fiable Next.js 14 */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-PE4BF17GKG"
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`gtag('js',new Date());gtag('config','G-PE4BF17GKG');`}
-        </Script>
+        {/* GA4 tag déplacé dans <head> au-dessus pour garantir ordre consent->gtag */}
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           {children}
@@ -153,3 +153,4 @@ export default async function LocaleLayout({
     </html>
   )
 }
+
