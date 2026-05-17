@@ -54,6 +54,14 @@ const RULES = [
     fix: "Inverser le ternaire : `rejected ? 'denied' : 'granted'`.",
   },
   {
+    code: "no_raw_gtag_script_src",
+    severity: "critical",
+    mode: "forbid",
+    pattern: /<script\s[^>]*async[^>]*src=["'][^"']*googletagmanager\.com[^"']*["']/,
+    msg: "DANGER : <script async src='gtag.js'> en JSX — Next.js hoist cet élément AVANT les scripts inline, cassant l'ordre consent-first RGPD.",
+    fix: "Remplacer par un createElement dynamique DANS le script consent inline : `(function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-XXX';document.head.appendChild(s);})()`",
+  },
+  {
     code: "no_hardcoded_noindex",
     severity: "critical",
     mode: "forbid",
