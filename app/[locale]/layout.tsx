@@ -77,14 +77,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        {/* Consent Mode v2 — DOIT être avant gtag.js (raw <script> en head pour garantir l'ordre HTML) */}
+        {/* Consent Mode v2 + GA4 loader — tout inline pour forcer l'ordre (Next.js hoist les <script src> avant les inline, ce qui casse le consent) */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});var _c=(typeof localStorage!=='undefined')?localStorage.getItem('hub_cookies'):null;if(_c==='accepted'){gtag('consent','update',{analytics_storage:'granted'});}`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});var _c=(typeof localStorage!=='undefined')?localStorage.getItem('hub_cookies'):null;if(_c==='accepted'){gtag('consent','update',{analytics_storage:'granted'});}(function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-PE4BF17GKG';document.head.appendChild(s);})();`,
           }}
         />
-        {/* GA4 — chargé INLINE en head APRÈS consent default pour respecter l'ordre RGPD */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PE4BF17GKG" />
         <script
           dangerouslySetInnerHTML={{
             __html: `gtag('js',new Date());gtag('config','G-PE4BF17GKG',{anonymize_ip:true});`,
