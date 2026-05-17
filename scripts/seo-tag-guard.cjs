@@ -51,7 +51,15 @@ const RULES = [
     mode: "forbid",
     pattern: /rejected\s*\?\s*['"`]granted['"`]\s*:\s*['"`]denied['"`]/,
     msg: "Logique GA4 consent INVERSÉE détectée (`rejected ? granted : denied`) — tracking activé sur refus EU.",
-    fix: "Inverser le ternaire : `rejected ? 'denied' : 'granted'`.",
+    fix: "Inverser le ternaire : utiliser `accepted ? 'granted' : 'denied'`.",
+  },
+  {
+    code: "no_optout_ga4_consent",
+    severity: "critical",
+    mode: "forbid",
+    pattern: /rejected\s*\?\s*['"`]denied['"`]\s*:\s*['"`]granted['"`]/,
+    msg: "Logique GA4 consent OPT-OUT détectée (`rejected ? denied : granted`) — tracking activé par défaut, viole RGPD opt-in EU.",
+    fix: "Utiliser `accepted ? 'granted' : 'denied'` — denied par défaut, granted uniquement si user accepte explicitement.",
   },
   {
     code: "no_raw_gtag_script_src",
