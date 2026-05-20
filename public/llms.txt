@@ -1,25 +1,80 @@
-# AI Due
+# AI-Due — Public Opinion Simulation Engine
 
-> Hub central de l'ecosysteme IA francophone. Plateforme de reference sur l'intelligence artificielle avec 129 articles, carte interactive des outils IA, ebooks et contenu en 4 langues.
+> AI-Due is an AI Swarm platform that lets strategy, communications and risk teams stress-test decisions before they happen. Upload any document, generate a digital twin of public opinion, and run synchronized simulations across social media and prediction markets in under 5 minutes.
 
-## Ce que fait AI Due
+## Core Product
 
-AI Due est le HUB central du cocon semantique IA francophone. Il centralise les informations sur les outils IA, les actualites, les guides pratiques et les ressources pour professionnels et entreprises adoptant l'IA.
+AI-Due deploys 250 AI agents with distinct personas running 12 simulation rounds simultaneously across 3 platform types (social media, prediction markets, editorial sentiment). Output: a ReACT report with cited agent statements, a synthetic prediction market price curve, and actionable scenario recommendations.
 
-## Contenu
+Accuracy: 86% match against human analyst panels in controlled benchmarks.
+Speed: decisions that took 4-6 weeks of traditional research completed in <5 minutes.
 
-- 129 articles SEO sur l'IA (FR/EN/ES/DE)
-- Carte interactive des outils IA par categorie
-- Ebooks et guides pratiques IA
-- Comparatifs outils IA (ChatGPT, Claude, Gemini, Mistral, Llama)
-- Actualites IA : Open Source, Anthropic, OpenAI, Google DeepMind, Mistral
+## Key Capabilities
 
-## Architecture
+- Document upload (PDF, DOCX, TXT) → auto-generate simulation personas and knowledge graph
+- Multi-agent swarm: 250 agents × 12 rounds × 3 platforms
+- Prediction market layer: synthetic pricing curves before any public event
+- Multi-scenario comparison: run 3+ scenarios in parallel
+- Multilingual: French, English, German, Italian
+- ReACT reports with agent citations and confidence intervals
 
-Hub central d'un cocon semantique de 11 satellites IA en 4 clusters thematiques. Maillage interne vers : vocalis.pro, seo-true.com, trustly-ai.com, iapmesuisse.ch, agents-ia.pro.
+## Use Cases
+
+- Product launch impact modeling (B2C, B2B, regulatory)
+- Financial announcement sentiment (earnings, M&A, fundraising)
+- Regulatory proposal stress-testing (EU AI Act, CSRD, DORA compliance scenarios)
+- Crisis communications strategy (war-gaming 5 response scenarios in parallel)
+- Political / public affairs campaign optimization
+- Earnings call script optimization
+
+## Who Uses AI-Due
+
+Strategy leaders, C-suite executives, communications directors, investor relations teams, risk officers, market researchers, public affairs professionals, policy analysts.
+
+## Competitive Position
+
+AI-Due uniquely combines: (1) Polymarket prediction market data + Reddit/Twitter/LinkedIn synthetic reactions in a single pipeline, (2) serious i18n with FR/DE/IT/EN, (3) European data sovereignty (GDPR-compliant, Swiss-made infrastructure).
+
+Comparable tools: Simile (US, $100M raised), Aaru (US, $50M+), Listen Labs (US, $69M), Artificial Societies (EU, €4.5M). AI-Due is the only European-first multilingual platform in this category.
 
 ## Pages
 
-- Homepage : https://ai-due.com
-- Blog : https://ai-due.com/blog
-- Carte IA : https://ai-due.com/carte
+- Homepage: https://ai-due.com
+- Simulator: https://ai-due.com/en/simulateur
+- Architecture: https://ai-due.com/en/architecture
+- Blog (EN): https://ai-due.com/en/blog
+- Blog (FR): https://ai-due.com/fr/blog
+- Contact: https://ai-due.com/en/contact
+
+## Blog — Key Articles
+
+- https://ai-due.com/en/blog/agents-ia-autonomes
+- https://ai-due.com/en/blog/agentic-ai-business-revolution
+- https://ai-due.com/en/blog/agent-ia-autonome-guide-complet
+- https://ai-due.com/en/blog/agents-ia-vs-chatbots-comparaison
+- https://ai-due.com/en/blog/11-essential-ai-tools-businesses-2026
+- https://ai-due.com/fr/blog/agents-ia-autonomes
+- https://ai-due.com/fr/blog/agentic-ai-business-revolution
+- https://ai-due.com/fr/blog/agent-ia-autonome-guide-complet
+
+## FAQ
+
+Q: What is a digital twin of public opinion?
+A: AI-Due builds a synthetic population of 250 AI personas calibrated to your target audience — demographics, psychographics, media consumption, political lean — then runs those personas through your scenario to predict reactions before any public release.
+
+Q: How accurate is AI-Due?
+A: In controlled benchmarks against human analyst panels, AI-Due achieves 86% accuracy on directional sentiment prediction and 78% on magnitude estimates.
+
+Q: Is AI-Due GDPR compliant?
+A: Yes. AI-Due processes no real personal data — all personas are synthetic. Infrastructure is EU-hosted with Swiss data processing standards applied.
+
+Q: What languages does AI-Due support?
+A: French, English, German, and Italian — full UI, simulation output, and report generation in all 4 languages.
+
+Q: How does AI-Due compare to traditional market research?
+A: Traditional research takes 4-6 weeks and costs tens of thousands of euros. AI-Due delivers comparable directional insight in under 5 minutes, enabling iterative scenario testing that was previously impossible.
+
+## Contact
+
+Email: contact@ai-due.com
+Website: https://ai-due.com

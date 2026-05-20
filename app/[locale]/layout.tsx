@@ -134,7 +134,17 @@ export default async function LocaleLayout({
                 },
                 "areaServed": ["Switzerland", "Europe", "Canada", "United States"],
                 "knowsLanguage": ["fr", "en", "de", "it"],
-                "sameAs": []
+                "sameAs": [
+                  "https://www.linkedin.com/company/ai-due",
+                  "https://twitter.com/ai_due_com",
+                  "https://github.com/ai-due"
+                ],
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "email": "contact@ai-due.com",
+                  "contactType": "customer support",
+                  "availableLanguage": ["French", "English", "German", "Italian"]
+                }
               }
             ])
           }}
