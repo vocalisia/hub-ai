@@ -43,7 +43,8 @@ export async function generateMetadata({
         'fr': 'https://ai-due.com/fr',
         'en': 'https://ai-due.com/en',
         'de': 'https://ai-due.com/de',
-        'it': 'https://ai-due.com/it'
+        'it': 'https://ai-due.com/it',
+        'x-default': 'https://ai-due.com/en'
       }
     },
     openGraph: {
