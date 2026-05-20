@@ -110,8 +110,10 @@ export default async function LocaleLayout({
                 },
                 "author": {
                   "@type": "Person",
-                  "name": "Sebastien",
-                  "url": "https://ai-due.com"
+                  "name": "Laurent Duplat",
+                  "url": "https://ai-due.com/about",
+                  "jobTitle": "Publication Director",
+                  "sameAs": ["https://www.linkedin.com/in/laurentduplat/"]
                 }
               },
               {
@@ -125,8 +127,10 @@ export default async function LocaleLayout({
                 "email": "contact@ai-due.com",
                 "founder": {
                   "@type": "Person",
-                  "name": "Sebastien",
-                  "url": "https://ai-due.com"
+                  "name": "Laurent Duplat",
+                  "url": "https://ai-due.com/about",
+                  "jobTitle": "Publication Director",
+                  "sameAs": ["https://www.linkedin.com/in/laurentduplat/"]
                 },
                 "areaServed": ["Switzerland", "Europe", "Canada", "United States"],
                 "knowsLanguage": ["fr", "en", "de", "it"],

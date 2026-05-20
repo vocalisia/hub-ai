@@ -3,14 +3,59 @@ import SidebarContactForm from '@/components/SidebarContactForm'
 
 export const dynamic = 'force-dynamic'
 
+const CONTACT_SEO: Record<string, { title: string; description: string }> = {
+  en: {
+    title: 'Contact AI-Due | AI Architecture & Decision Intelligence',
+    description: 'Contact AI-Due — AI architecture, public opinion simulation and decision intelligence for teams in Switzerland, Europe, Canada and the USA.',
+  },
+  fr: {
+    title: 'Contact AI-Due | Architecture IA & Intelligence Décisionnelle',
+    description: "Contactez AI-Due — architecture IA, simulation d'opinion publique et intelligence décisionnelle pour vos équipes en Suisse, Europe, Canada et USA.",
+  },
+  de: {
+    title: 'AI-Due kontaktieren | KI-Architektur & Decision Intelligence',
+    description: 'Kontaktieren Sie AI-Due — KI-Architektur, Simulation öffentlicher Meinung und Decision Intelligence für Teams in der Schweiz, Europa, Kanada und USA.',
+  },
+  it: {
+    title: 'Contatto AI-Due | Architettura IA & Decision Intelligence',
+    description: 'Contatta AI-Due — architettura IA, simulazione dell’opinione pubblica e decision intelligence per team in Svizzera, Europa, Canada e USA.',
+  },
+}
+
 export async function generateMetadata({
   params: { locale }
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
+  const seo = CONTACT_SEO[locale] ?? CONTACT_SEO.en
+  const url = `https://ai-due.com/${locale}/contact`
+
   return {
-    title: 'Contact | AI-DUE',
-    description: 'Contactez AI-DUE - Architecture IA & Systemes Intelligents. Suisse, Europe, Canada, USA.',
+    title: seo.title,
+    description: seo.description,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: 'https://ai-due.com/en/contact',
+        fr: 'https://ai-due.com/fr/contact',
+        de: 'https://ai-due.com/de/contact',
+        it: 'https://ai-due.com/it/contact',
+        'x-default': 'https://ai-due.com/en/contact',
+      },
+    },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url,
+      siteName: 'AI-Due',
+      locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seo.title,
+      description: seo.description,
+    },
   }
 }
 
@@ -44,7 +89,7 @@ export default async function ContactPage({
             </span>
             <h1 className="text-5xl md:text-6xl font-black text-white mb-5 leading-tight">
               Contact{' '}
-              <span className="bg-gradient-to-r from-purple-400 to-[#FFD700] bg-clip-text text-transparent">AI-DUE</span>
+              <span className="bg-gradient-to-r from-purple-400 to-[#FFD700] bg-clip-text text-transparent">AI-Due</span>
             </h1>
             <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               {locale === 'en' ? 'Book a call to discuss your AI project.' :

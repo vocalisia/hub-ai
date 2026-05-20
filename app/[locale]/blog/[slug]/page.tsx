@@ -20,7 +20,7 @@ export async function generateMetadata({
   const slug = params.slug
 
   return {
-    title: `${post.title} | AI-DUE`,
+    title: `${post.title} | AI-Due`,
     description: post.excerpt,
     keywords: post.tags.join(', '),
     alternates: {
@@ -42,7 +42,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       url: `https://ai-due.com/${locale}/blog/${slug}`,
-      siteName: 'AI-DUE',
+      siteName: 'AI-Due',
       locale: locale,
       type: 'article',
       publishedTime: post.date,
@@ -85,10 +85,18 @@ export default function BlogPostPage({
                   "@type": "Article",
                   "headline": post.title,
                   "datePublished": post.date,
-                  "author": { "@type": "Person", "name": "Sebastien" },
+                  "author": { "@type": "Person", "name": "Laurent Duplat", "url": "https://ai-due.com/about" },
+                  "dateModified": post.date,
+                  "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": `https://ai-due.com/${params.locale}/blog/${params.slug}`
+                  },
+                  "image": post.geo?.country
+                    ? `https://ai-due.com/api/og?title=${encodeURIComponent(post.title)}`
+                    : "https://ai-due.com/api/og",
                   "publisher": {
                     "@type": "Organization",
-                    "name": "Hub AI",
+                    "name": "AI-Due",
                     "url": "https://ai-due.com"
                   },
                   "keywords": post.tags.join(', '),
