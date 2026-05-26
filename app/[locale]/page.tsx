@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+import { getMessages } from 'next-intl/server'
 import SwarmHero from '@/components/SwarmHero'
 import SwarmPress from '@/components/SwarmPress'
 import SwarmBento from '@/components/SwarmBento'
@@ -7,7 +9,37 @@ import SwarmWorkflow from '@/components/SwarmWorkflow'
 import SwarmTestimonials from '@/components/SwarmTestimonials'
 import SwarmCTA from '@/components/SwarmCTA'
 
-const FAQ_SCHEMA = {
+// Per-page metadata override — allows page-specific title/description per locale
+export async function generateMetadata({
+  params: { locale }
+}: {
+  params: { locale: string }
+}): Promise<Metadata> {
+  const messages = await getMessages()
+  const seo = (messages as any).seo
+
+  const canonicalUrl = locale === 'en'
+    ? 'https://ai-due.com/'
+    : `https://ai-due.com/${locale}/`
+
+  return {
+    title: seo.home_title,
+    description: seo.home_description,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        'fr': 'https://ai-due.com/fr/',
+        'en': 'https://ai-due.com/',
+        'de': 'https://ai-due.com/de/',
+        'it': 'https://ai-due.com/it/',
+        'x-default': 'https://ai-due.com/'
+      }
+    },
+  }
+}
+
+// EN FAQ — generic product questions
+const FAQ_SCHEMA_EN = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -38,6 +70,82 @@ const FAQ_SCHEMA = {
   ]
 }
 
+// FR FAQ — optimised for keyword "agent ia autonome" (vol 520, pos 4 → target top 3)
+const FAQ_SCHEMA_FR = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Qu'est-ce qu'un agent IA autonome ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un agent IA autonome est un programme d'intelligence artificielle capable de percevoir son environnement, de prendre des décisions et d'exécuter des tâches sans intervention humaine constante. Contrairement à un chatbot classique, un agent IA autonome planifie des séquences d'actions, utilise des outils externes (API, bases de données, navigateur web) et s'adapte aux résultats en temps réel pour atteindre un objectif défini."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment fonctionne AI-Due ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI-Due est une plateforme de simulation d'opinion publique alimentée par des essaims d'agents IA autonomes. Téléchargez un document, définissez un scénario, et AI-Due déploie 250 agents IA aux profils distincts pour simuler les réactions du marché sur les réseaux sociaux et les marchés de prédiction en moins de 5 minutes. Le rapport ReACT fournit des citations d'agents et une prévision synthétique."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels cas d'usage couvre un agent IA autonome avec AI-Due ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI-Due couvre l'analyse d'impact de lancement produit, le test de sentiment d'annonces financières, la modélisation de propositions réglementaires, la stratégie de communication de crise et l'optimisation de campagnes multi-canaux. La plateforme atteint 86% de précision comparé aux panels d'analystes humains."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelle est la différence entre AI-Due et un chatbot IA ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un chatbot IA répond à des questions dans une conversation unique. AI-Due orchestre un essaim d'agents IA autonomes qui travaillent en parallèle, chacun avec une personnalité et un rôle définis, pour simuler des dynamiques collectives complexes impossibles à reproduire avec un seul modèle de langage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AI-Due est-il disponible en Suisse et en Europe ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. AI-Due est la plateforme de référence en matière d'agent IA autonome pour les entreprises en Suisse, France, Belgique, Canada et aux États-Unis. L'interface est disponible en français, anglais, allemand et italien. Les données restent hébergées en Europe (RGPD)."
+      }
+    }
+  ]
+}
+
+// Service JSON-LD for FR — no price, audit gratuit CTA
+const SERVICE_SCHEMA_FR = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://ai-due.com/fr/#service",
+  "name": "Agent IA Autonome — Plateforme AI-Due",
+  "serviceType": "Intelligence Artificielle & Automatisation",
+  "description": "AI-Due déploie des agents IA autonomes pour automatiser vos processus métier, simuler l'opinion publique et accélérer la prise de décision. Disponible en Suisse, France, Belgique, Canada et USA.",
+  "url": "https://ai-due.com/fr/",
+  "areaServed": [
+    { "@type": "Country", "name": "Switzerland" },
+    { "@type": "Country", "name": "France" },
+    { "@type": "Country", "name": "Belgium" },
+    { "@type": "Country", "name": "Canada" },
+    { "@type": "Country", "name": "United States" }
+  ],
+  "inLanguage": "fr",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "url": "https://ai-due.com/fr/contact"
+  },
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://ai-due.com/#organization"
+  }
+}
+
 const SOFTWARE_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -57,12 +165,21 @@ const SOFTWARE_SCHEMA = {
   }
 }
 
-export default function HomePage() {
+export default function HomePage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  const isFr = locale === 'fr'
+  const schemas = isFr
+    ? [FAQ_SCHEMA_FR, SERVICE_SCHEMA_FR, SOFTWARE_SCHEMA]
+    : [FAQ_SCHEMA_EN, SOFTWARE_SCHEMA]
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([FAQ_SCHEMA, SOFTWARE_SCHEMA]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
       <main className="min-h-screen bg-[#0a0f2e]">
         <SwarmHero />

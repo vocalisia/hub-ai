@@ -34,10 +34,10 @@
   },
   "swarm": {
     "hero": {
-      "badge": "Moteur de simulation d'opinion · v1.0",
-      "title_line_1": "Testez l'avenir",
-      "title_line_2": "avant qu'il n'arrive.",
-      "subtitle": "Uploadez un document. Creez un jumeau numerique de l'opinion publique. Lancez des simulations synchronisees sur les reseaux sociaux et marches de prediction en quelques minutes.",
+      "badge": "Agent IA Autonome · Simulation d'Opinion v1.0",
+      "title_line_1": "Agent IA Autonome —",
+      "title_line_2": "Automatisez votre Business.",
+      "subtitle": "AI-Due deploie un agent IA autonome pour simuler l'opinion publique, automatiser vos processus et accelerer vos decisions strategiques. Lancez des simulations synchronisees sur les reseaux sociaux et marches de prediction en moins de 5 minutes.",
       "cta_primary": "Lancer une simulation",
       "cta_secondary": "Voir les tarifs",
       "stat_agents": "Agents",
@@ -230,8 +230,8 @@
     "error_generic": "Erreur lors du paiement. Reessayez."
   },
   "seo": {
-    "home_title": "AI-Due | Agents IA Intelligents & Automatisation pour PME",
-    "home_description": "Déployez des agents IA autonomes avec AI-Due : automatisez vos processus, réduisez les coûts et développez votre PME. Plateforme IA de référence en Europe.",
+    "home_title": "Agent IA Autonome — Automatisez votre Business avec AI-Due 2026",
+    "home_description": "AI-Due est la plateforme de référence pour déployer un agent IA autonome : automatisez vos processus, générez des leads et scaler votre PME. Suisse, Europe, Canada.",
     "map_title": "Carte IA Interactive — 200+ Acteurs Mondiaux",
     "blog_title": "Blog IA — Articles Experts Geolocalises"
   },

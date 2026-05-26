@@ -33,24 +33,29 @@ export async function generateMetadata({
   const messages = await getMessages()
   const seo = (messages as any).seo
 
+  // EN is the default locale — canonical points to / (root) to match Google's preference
+  const canonicalUrl = locale === 'en'
+    ? 'https://ai-due.com/'
+    : `https://ai-due.com/${locale}/`
+
   return {
     metadataBase: new URL('https://ai-due.com'),
     title: seo.home_title,
     description: seo.home_description,
     alternates: {
-      canonical: `https://ai-due.com/${locale}`,
+      canonical: canonicalUrl,
       languages: {
-        'fr': 'https://ai-due.com/fr',
-        'en': 'https://ai-due.com/en',
-        'de': 'https://ai-due.com/de',
-        'it': 'https://ai-due.com/it',
-        'x-default': 'https://ai-due.com/en'
+        'fr': 'https://ai-due.com/fr/',
+        'en': 'https://ai-due.com/',
+        'de': 'https://ai-due.com/de/',
+        'it': 'https://ai-due.com/it/',
+        'x-default': 'https://ai-due.com/'
       }
     },
     openGraph: {
       title: seo.home_title,
       description: seo.home_description,
-      url: `https://ai-due.com/${locale}`,
+      url: canonicalUrl,
       siteName: 'AI-Due',
       locale: locale,
       type: 'website'
