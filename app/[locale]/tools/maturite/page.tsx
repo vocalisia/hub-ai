@@ -10,8 +10,8 @@ export async function generateMetadata({
   params: { locale: string }
 }): Promise<Metadata> {
   return {
-    title: 'Score de Maturite IA — Evaluez votre entreprise | AI-DUE',
-    description: 'Evaluez la maturite IA de votre entreprise en 6 criteres cles. Recevez un score sur 100 et des recommandations personnalisees.',
+    title: 'Score de Maturité IA — Évaluez votre entreprise | AI-DUE',
+    description: 'Évaluez la maturité IA de votre entreprise en 6 critères clés. Recevez un score sur 100 et des recommandations personnalisées.',
     alternates: {
       canonical: `https://ai-due.com/${locale}/tools/maturite`,
       languages: {
@@ -22,8 +22,8 @@ export async function generateMetadata({
       }
     },
     openGraph: {
-      title: 'Score de Maturite IA — Evaluez votre entreprise | AI-DUE',
-      description: 'Evaluez votre maturite IA en 6 criteres. Score sur 100 + recommandations.',
+      title: 'Score de Maturité IA — Évaluez votre entreprise | AI-DUE',
+      description: 'Évaluez votre maturité IA en 6 critères. Score sur 100 + recommandations.',
       url: `https://ai-due.com/${locale}/tools/maturite`,
       siteName: 'AI-DUE',
       locale: locale,
@@ -59,8 +59,8 @@ export default async function MaturitePage({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "Score de Maturite IA",
-            "description": "Evaluez la maturite IA de votre entreprise en 6 criteres cles.",
+            "name": "Score de Maturité IA",
+            "description": "Évaluez la maturité IA de votre entreprise en 6 critères clés.",
             "url": `https://ai-due.com/${locale}/tools/maturite`,
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Web",
@@ -86,7 +86,7 @@ export default async function MaturitePage({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </li>
-              <li className="text-gold-accent">Score Maturite IA</li>
+              <li className="text-gold-accent">Score Maturité IA</li>
             </ol>
           </nav>
 
@@ -97,10 +97,10 @@ export default async function MaturitePage({
             </span>
             <h1 className="text-4xl md:text-5xl font-black text-white mb-5 leading-tight">
               Score de{' '}
-              <span className="bg-gradient-to-r from-gold-accent to-amber-400 bg-clip-text text-transparent">Maturite IA</span>
+              <span className="bg-gradient-to-r from-gold-accent to-amber-400 bg-clip-text text-transparent">Maturité IA</span>
             </h1>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-              Evaluez la maturite IA de votre entreprise sur 6 criteres strategiques. Obtenez votre score et des recommandations adaptees a votre niveau.
+              Évaluez la maturité IA de votre entreprise sur 6 critères stratégiques. Obtenez votre score et des recommandations adaptées à votre niveau.
             </p>
             <div className="mx-auto mt-8 w-24 h-[2px] bg-gradient-to-r from-transparent via-gold-accent/50 to-transparent" />
           </div>

@@ -71,7 +71,7 @@ export default function PipelineChallenge() {
       setMessage(`Pipeline RAG complete ! Score: ${score}`)
     } else {
       const correct = pipeline.filter((step, i) => step.correctPosition === i).length
-      setMessage(`${correct}/${STEPS.length} etapes bien placees. Continuez !`)
+      setMessage(`${correct}/${STEPS.length} étapes bien placées. Continuez !`)
       setTimeout(() => setMessage(''), 3000)
     }
   }
@@ -88,7 +88,7 @@ export default function PipelineChallenge() {
     <div className="w-full">
       <div className="flex items-center justify-between mb-4">
         <div className="text-purple-400 font-bold">Moves: {moves}</div>
-        <div className="text-gray-400 text-sm">Placez les etapes dans le bon ordre</div>
+        <div className="text-gray-400 text-sm">Placez les étapes dans le bon ordre</div>
       </div>
 
       <div className="space-y-2 mb-4">

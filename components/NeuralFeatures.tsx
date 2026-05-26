@@ -5,7 +5,7 @@ const FEATURES = [
   {
     icon: '🧠',
     title: 'LLM Orchestration',
-    description: 'GPT-4, Claude, Mistral, Gemini — routage intelligent entre modeles selon le cas d\'usage, le cout et la latence.',
+    description: 'GPT-4, Claude, Mistral, Gemini — routage intelligent entre modèles selon le cas d\'usage, le coût et la latence.',
     stats: '4 LLMs',
     color: '#8B5CF6',
     link: 'https://agents-ia.pro',
@@ -13,15 +13,15 @@ const FEATURES = [
   {
     icon: '🔗',
     title: 'RAG Pipeline',
-    description: 'Retrieval Augmented Generation avec vector search, chunking semantique et reranking pour des reponses contextuelles.',
-    stats: '99.2% precision',
+    description: 'Retrieval Augmented Generation avec vector search, chunking sémantique et reranking pour des réponses contextuelles.',
+    stats: '99.2% précision',
     color: '#FFD700',
     link: 'https://ai-due.com/fr/blog/architecture-rag-retrieval',
   },
   {
     icon: '🤖',
     title: 'Multi-Agent Systems',
-    description: 'Orchestration d\'agents autonomes avec memoire partagee, tool calling et delegation de taches complexes.',
+    description: 'Orchestration d\'agents autonomes avec mémoire partagée, tool calling et délégation de tâches complexes.',
     stats: '∞ agents',
     color: '#06B6D4',
     link: 'https://agents-ia.pro',
@@ -29,7 +29,7 @@ const FEATURES = [
   {
     icon: '📞',
     title: 'Voice AI Engine',
-    description: 'Telephonie IA temps reel : STT, NLU, dialogue management, TTS avec latence < 300ms.',
+    description: 'Téléphonie IA temps réel : STT, NLU, dialogue management, TTS avec latence < 300ms.',
     stats: '<300ms',
     color: '#10B981',
     link: 'https://vocalis.pro',
@@ -37,7 +37,7 @@ const FEATURES = [
   {
     icon: '⚡',
     title: 'Edge Inference',
-    description: 'Deploiement de modeles sur edge devices, TinyML et inference locale pour IoT et applications embarquees.',
+    description: 'Déploiement de modèles sur edge devices, TinyML et inference locale pour IoT et applications embarquées.',
     stats: '10x faster',
     color: '#F59E0B',
     link: 'https://ai-due.com/fr/blog/architecture-ia-edge-iot',
@@ -45,7 +45,7 @@ const FEATURES = [
   {
     icon: '🔒',
     title: 'AI Security',
-    description: 'Red teaming, prompt injection defense, guardrails et monitoring de la conformite EU AI Act.',
+    description: 'Red teaming, prompt injection defense, guardrails et monitoring de la conformité EU AI Act.',
     stats: 'EU compliant',
     color: '#EF4444',
     link: 'https://trustly-ai.com',
@@ -83,7 +83,7 @@ export default function NeuralFeatures() {
             Core <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Components</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
-            Les composants fondamentaux de notre architecture IA, concus pour la performance, la fiabilite et la scalabilite.
+            Les composants fondamentaux de notre architecture IA, conçus pour la performance, la fiabilité et la scalabilité.
           </p>
         </motion.div>
 
@@ -157,7 +157,7 @@ export default function NeuralFeatures() {
           {[
             { value: '<100ms', label: 'Latence inference', color: '#FFD700' },
             { value: '99.9%', label: 'Uptime garanti', color: '#10B981' },
-            { value: '5 LLMs', label: 'Modeles integres', color: '#8B5CF6' },
+            { value: '5 LLMs', label: 'Modèles intégrés', color: '#8B5CF6' },
             { value: 'EU AI Act', label: 'Conforme', color: '#06B6D4' },
           ].map(stat => (
             <div key={stat.label} className="text-center p-4 rounded-xl border border-white/5 bg-white/[0.01]">

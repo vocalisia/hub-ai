@@ -9,8 +9,8 @@ export async function generateMetadata({
   params: { locale: string }
 }): Promise<Metadata> {
   return {
-    title: 'AI Tools — Outils IA Interactifs & Recommandes | AI-DUE',
-    description: 'Calculateur ROI, generateur de prompts, score de maturite IA et selection d\'outils IA verifies par AI-DUE.',
+    title: 'AI Tools — Outils IA Interactifs & Recommandés | AI-DUE',
+    description: 'Calculateur ROI, générateur de prompts, score de maturité IA et sélection d\'outils IA vérifiés par AI-DUE.',
     alternates: {
       canonical: `https://ai-due.com/${locale}/tools`,
       languages: {
@@ -21,8 +21,8 @@ export async function generateMetadata({
       }
     },
     openGraph: {
-      title: 'AI Tools — Outils IA Interactifs & Recommandes | AI-DUE',
-      description: 'Calculateur ROI, generateur de prompts, score de maturite IA et outils recommandes.',
+      title: 'AI Tools — Outils IA Interactifs & Recommandés | AI-DUE',
+      description: 'Calculateur ROI, générateur de prompts, score de maturité IA et outils recommandés.',
       url: `https://ai-due.com/${locale}/tools`,
       siteName: 'AI-DUE',
       locale: locale,
@@ -34,7 +34,7 @@ export async function generateMetadata({
 const INTERACTIVE_TOOLS = [
   {
     name: 'Calculateur ROI',
-    description: 'Estimez les economies et le retour sur investissement de l\'IA dans votre entreprise. Simulez en temps reel.',
+    description: 'Estimez les économies et le retour sur investissement de l\'IA dans votre entreprise. Simulez en temps réel.',
     href: '/tools/roi',
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -46,8 +46,8 @@ const INTERACTIVE_TOOLS = [
     glow: 'group-hover:shadow-[0_0_40px_rgba(139,92,246,0.15)]',
   },
   {
-    name: 'Generateur de Prompts',
-    description: 'Creez des prompts IA structures et optimises pour vos besoins : emails, articles, code et plus.',
+    name: 'Générateur de Prompts',
+    description: 'Créez des prompts IA structurés et optimisés pour vos besoins : emails, articles, code et plus.',
     href: '/tools/prompt',
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,8 +59,8 @@ const INTERACTIVE_TOOLS = [
     glow: 'group-hover:shadow-[0_0_40px_rgba(6,182,212,0.15)]',
   },
   {
-    name: 'Score Maturite IA',
-    description: 'Evaluez la maturite IA de votre entreprise en 6 criteres et recevez des recommandations personnalisees.',
+    name: 'Score Maturité IA',
+    description: 'Évaluez la maturité IA de votre entreprise en 6 critères et recevez des recommandations personnalisées.',
     href: '/tools/maturite',
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -76,7 +76,7 @@ const INTERACTIVE_TOOLS = [
 const EXTERNAL_TOOLS = [
   {
     name: 'Vocalis AI',
-    description: 'Assistant vocal IA professionnel. Automatisez vos appels, qualifiez vos leads et gerez votre accueil telephonique 24/7.',
+    description: 'Assistant vocal IA professionnel. Automatisez vos appels, qualifiez vos leads et gérez votre accueil téléphonique 24/7.',
     url: 'https://vocalis.pro',
     category: 'Voice AI',
     icon: '\u{1F399}',
@@ -84,7 +84,7 @@ const EXTERNAL_TOOLS = [
   },
   {
     name: 'Claude (Anthropic)',
-    description: 'LLM de pointe pour le raisonnement, l\'analyse et la generation de contenu. Architecture Transformer avancee.',
+    description: 'LLM de pointe pour le raisonnement, l\'analyse et la génération de contenu. Architecture Transformer avancée.',
     url: 'https://claude.ai',
     category: 'LLM',
     icon: '\u{1F9E0}',
@@ -92,7 +92,7 @@ const EXTERNAL_TOOLS = [
   },
   {
     name: 'Cursor',
-    description: 'IDE augmente par l\'IA. Editeur de code intelligent avec completion, refactoring et generation contextuelle.',
+    description: 'IDE augmenté par l\'IA. Éditeur de code intelligent avec completion, refactoring et génération contextuelle.',
     url: 'https://cursor.sh',
     category: 'Development',
     icon: '\u{1F4BB}',
@@ -100,7 +100,7 @@ const EXTERNAL_TOOLS = [
   },
   {
     name: 'Vercel',
-    description: 'Plateforme de deploiement frontend. Deployez vos applications Next.js en quelques secondes avec edge functions.',
+    description: 'Plateforme de déploiement frontend. Déployez vos applications Next.js en quelques secondes avec edge functions.',
     url: 'https://vercel.com',
     category: 'Infrastructure',
     icon: '\u25B2',
@@ -108,7 +108,7 @@ const EXTERNAL_TOOLS = [
   },
   {
     name: 'Resend',
-    description: 'API email moderne pour developpeurs. Envoi transactionnel fiable avec React Email et analytics.',
+    description: 'API email moderne pour développeurs. Envoi transactionnel fiable avec React Email et analytics.',
     url: 'https://resend.com',
     category: 'Email',
     icon: '\u{1F4E7}',
@@ -116,7 +116,7 @@ const EXTERNAL_TOOLS = [
   },
   {
     name: 'Supabase',
-    description: 'Alternative open-source a Firebase. Base de donnees PostgreSQL, auth, storage et realtime integres.',
+    description: 'Alternative open-source à Firebase. Base de données PostgreSQL, auth, storage et realtime intégrés.',
     url: 'https://supabase.com',
     category: 'Database',
     icon: '\u{1F5C4}',
@@ -124,7 +124,7 @@ const EXTERNAL_TOOLS = [
   },
   {
     name: 'n8n',
-    description: 'Plateforme d\'automatisation open-source. Connectez vos outils et creez des workflows complexes sans code.',
+    description: 'Plateforme d\'automatisation open-source. Connectez vos outils et créez des workflows complexes sans code.',
     url: 'https://n8n.io',
     category: 'Automation',
     icon: '\u{1F504}',
@@ -132,7 +132,7 @@ const EXTERNAL_TOOLS = [
   },
   {
     name: 'Apify',
-    description: 'Plateforme de web scraping et data extraction. Actors prets a l\'emploi pour collecter des donnees a grande echelle.',
+    description: 'Plateforme de web scraping et data extraction. Actors prêts à l\'emploi pour collecter des données à grande échelle.',
     url: 'https://apify.com',
     category: 'Data',
     icon: '\u{1F577}',
@@ -175,7 +175,7 @@ export default async function ToolsPage({
               {locale === 'en' ? 'Interactive AI tools and curated stack to accelerate your digital transformation.' :
                locale === 'de' ? 'Interaktive KI-Tools und kuratierter Stack fur Ihre digitale Transformation.' :
                locale === 'it' ? 'Strumenti IA interattivi e stack curato per la vostra trasformazione digitale.' :
-               'Outils IA interactifs et stack selectionne pour accelerer votre transformation digitale.'}
+               'Outils IA interactifs et stack sélectionné pour accélérer votre transformation digitale.'}
             </p>
             <div className="mx-auto mt-8 w-24 h-[2px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
           </div>
@@ -263,7 +263,7 @@ export default async function ToolsPage({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </span>
-              Stack IA Recommande
+              Stack IA Recommandé
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -318,7 +318,7 @@ export default async function ToolsPage({
                 href={`/${locale}/contact`}
                 className="text-purple-400 hover:text-purple-300 font-semibold text-sm transition-colors inline-flex items-center gap-1.5"
               >
-                {locale === 'en' ? 'Talk to our team' : 'Contactez notre equipe'}
+                {locale === 'en' ? 'Talk to our team' : 'Contactez notre équipe'}
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

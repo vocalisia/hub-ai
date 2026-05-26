@@ -10,8 +10,8 @@ export async function generateMetadata({
   params: { locale: string }
 }): Promise<Metadata> {
   return {
-    title: 'eBooks IA — Guides Experts Architecture & Intelligence Artificielle | AI-DUE',
-    description: 'Telechargez nos eBooks gratuits sur l\'architecture IA, l\'IA generative et l\'intelligence artificielle. Guides complets avec cas pratiques, design patterns et deploiement.',
+    title: 'eBooks IA — Guides Experts Architecture & Intelligence Artificielle | AI-Due',
+    description: 'Téléchargez nos eBooks gratuits sur l\'architecture IA, l\'IA générative et l\'intelligence artificielle. Guides complets avec cas pratiques, design patterns et déploiement.',
     alternates: {
       canonical: `https://ai-due.com/${locale}/ebooks`,
       languages: {
@@ -22,10 +22,10 @@ export async function generateMetadata({
       }
     },
     openGraph: {
-      title: 'eBooks IA — Guides Experts | AI-DUE',
-      description: 'Guides complets sur l\'architecture IA, l\'IA generative et l\'intelligence artificielle. Telechargement gratuit.',
+      title: 'eBooks IA — Guides Experts | AI-Due',
+      description: 'Guides complets sur l\'architecture IA, l\'IA générative et l\'intelligence artificielle. Téléchargement gratuit.',
       url: `https://ai-due.com/${locale}/ebooks`,
-      siteName: 'AI-DUE',
+      siteName: 'AI-Due',
       locale: locale,
       type: 'website'
     },
@@ -40,21 +40,21 @@ export async function generateMetadata({
 const EBOOKS: EbookData[] = [
   {
     id: 'architecture-ia',
-    title: 'Architecture IA — Le Guide Definitif',
-    subtitle: 'Concevoir des systemes IA robustes et scalables',
-    description: 'Le guide complet pour architecturer des systemes d\'intelligence artificielle en production. Design patterns, microservices IA, pipelines MLOps, strategies de deploiement, scaling horizontal et monitoring avance. De la conception au deploiement, chaque etape est detaillee avec des cas concrets.',
+    title: 'Architecture IA — Le Guide Définitif',
+    subtitle: 'Concevoir des systèmes IA robustes et scalables',
+    description: 'Le guide complet pour architecturer des systèmes d\'intelligence artificielle en production. Design patterns, microservices IA, pipelines MLOps, stratégies de déploiement, scaling horizontal et monitoring avancé. De la conception au déploiement, chaque étape est détaillée avec des cas concrets.',
     chapters: [
-      'Introduction a l\'architecture IA moderne',
-      'Design Patterns pour systemes intelligents',
-      'Microservices IA : decomposition et orchestration',
-      'Pipelines de donnees et feature stores',
+      'Introduction à l\'architecture IA moderne',
+      'Design Patterns pour systèmes intelligents',
+      'Microservices IA : décomposition et orchestration',
+      'Pipelines de données et feature stores',
       'MLOps : CI/CD pour le Machine Learning',
-      'Strategies de deploiement (Blue/Green, Canary, Shadow)',
-      'Scaling horizontal des modeles IA',
-      'Monitoring et observabilite des systemes IA',
-      'Securite et gouvernance des donnees',
-      'Architecture event-driven pour l\'IA temps reel',
-      'Cas pratiques : architectures de reference',
+      'Stratégies de déploiement (Blue/Green, Canary, Shadow)',
+      'Scaling horizontal des modèles IA',
+      'Monitoring et observabilité des systèmes IA',
+      'Sécurité et gouvernance des données',
+      'Architecture event-driven pour l\'IA temps réel',
+      'Cas pratiques : architectures de référence',
       'Roadmap et tendances futures'
     ],
     chapterCount: 12,
@@ -70,20 +70,20 @@ const EBOOKS: EbookData[] = [
   },
   {
     id: 'ia-generative',
-    title: 'IA Generative — De GPT a la Production',
-    subtitle: 'Maitriser les modeles generatifs et les deployer',
-    description: 'Plongez dans l\'univers de l\'IA generative : des fondations theoriques des Transformers aux applications en production. LLM, modeles de diffusion, fine-tuning, RAG (Retrieval-Augmented Generation), prompt engineering avance. Chaque concept est illustre par des implementations concretes.',
+    title: 'IA Générative — De GPT à la Production',
+    subtitle: 'Maîtriser les modèles génératifs et les déployer',
+    description: 'Plongez dans l\'univers de l\'IA générative : des fondations théoriques des Transformers aux applications en production. LLM, modèles de diffusion, fine-tuning, RAG (Retrieval-Augmented Generation), prompt engineering avancé. Chaque concept est illustré par des implémentations concrètes.',
     chapters: [
-      'Fondations : attention, Transformers et au-dela',
+      'Fondations : attention, Transformers et au-delà',
       'Large Language Models (LLM) : fonctionnement interne',
-      'Modeles de diffusion : images, audio, video',
+      'Modèles de diffusion : images, audio, vidéo',
       'Fine-tuning et adaptation de domaine',
       'RAG : Retrieval-Augmented Generation',
-      'Prompt Engineering avance et chain-of-thought',
+      'Prompt Engineering avancé et chain-of-thought',
       'Agents IA autonomes et orchestration',
-      'Evaluation et benchmarks des modeles generatifs',
-      'Deploiement et optimisation (quantization, distillation)',
-      'Ethique, biais et usage responsable de l\'IA generative'
+      'Évaluation et benchmarks des modèles génératifs',
+      'Déploiement et optimisation (quantization, distillation)',
+      'Éthique, biais et usage responsable de l\'IA générative'
     ],
     chapterCount: 10,
     pageCount: 150,
@@ -98,22 +98,22 @@ const EBOOKS: EbookData[] = [
   },
   {
     id: 'ia-generale',
-    title: 'IA Generale — Comprendre et Deployer l\'Intelligence Artificielle',
-    subtitle: 'Des fondamentaux au deploiement en entreprise',
-    description: 'Un guide accessible et complet pour comprendre l\'intelligence artificielle dans sa globalite. Machine Learning, Deep Learning, NLP, Computer Vision, ethique et regulation. Ideal pour les decideurs, chefs de projet et developpeurs souhaitant integrer l\'IA dans leur organisation.',
+    title: 'IA Générale — Comprendre et Déployer l\'Intelligence Artificielle',
+    subtitle: 'Des fondamentaux au déploiement en entreprise',
+    description: 'Un guide accessible et complet pour comprendre l\'intelligence artificielle dans sa globalité. Machine Learning, Deep Learning, NLP, Computer Vision, éthique et régulation. Idéal pour les décideurs, chefs de projet et développeurs souhaitant intégrer l\'IA dans leur organisation.',
     chapters: [
-      'Introduction a l\'Intelligence Artificielle',
+      'Introduction à l\'Intelligence Artificielle',
       'Machine Learning : algorithmes et paradigmes',
-      'Deep Learning : reseaux de neurones profonds',
+      'Deep Learning : réseaux de neurones profonds',
       'Traitement du Langage Naturel (NLP)',
       'Computer Vision : voir et comprendre',
-      'IA en entreprise : strategies d\'adoption',
-      'Ethique, biais et IA responsable',
-      'Regulation et conformite (AI Act, RGPD)'
+      'IA en entreprise : stratégies d\'adoption',
+      'Éthique, biais et IA responsable',
+      'Régulation et conformité (AI Act, RGPD)'
     ],
     chapterCount: 8,
     pageCount: 120,
-    tags: ['Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision', 'Ethique'],
+    tags: ['Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision', 'Éthique'],
     crossLinks: [
       { label: 'trustly-ai.com', url: 'https://trustly-ai.com' },
       { label: 'master-seller.fr', url: 'https://master-seller.fr' },
@@ -156,14 +156,14 @@ export default async function EbooksPage({
           {/* Header */}
           <div className="text-center mb-16">
             <span className="inline-block text-[#FFD700] text-xs font-semibold uppercase tracking-[0.25em] mb-5 px-4 py-2 rounded-full border border-[#FFD700]/20 bg-[#FFD700]/5">
-              Bibliotheque IA
+              Bibliothèque IA
             </span>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-5 leading-tight">
               Nos{' '}
               <span className="gradient-text-gold">eBooks</span>
             </h1>
             <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              Guides experts et complets sur l&apos;architecture IA, l&apos;IA generative et l&apos;intelligence artificielle. Telechargement gratuit.
+              Guides experts et complets sur l&apos;architecture IA, l&apos;IA générative et l&apos;intelligence artificielle. Téléchargement gratuit.
             </p>
 
             {/* Decorative line */}
@@ -195,7 +195,7 @@ export default async function EbooksPage({
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "CollectionPage",
-                "name": "eBooks IA — AI-DUE",
+                "name": "eBooks IA — AI-Due",
                 "url": `https://ai-due.com/${locale}/ebooks`,
                 "description": "Collection de eBooks experts sur l'architecture IA, l'IA generative et l'intelligence artificielle.",
                 "hasPart": EBOOKS.map(ebook => ({
@@ -205,7 +205,7 @@ export default async function EbooksPage({
                   "numberOfPages": ebook.pageCount,
                   "author": {
                     "@type": "Organization",
-                    "name": "AI-DUE"
+                    "name": "AI-Due"
                   },
                   "inLanguage": "fr",
                   "isAccessibleForFree": true
@@ -224,7 +224,7 @@ export default async function EbooksPage({
           {/* Bottom CTA */}
           <div className="text-center mt-16">
             <div className="inline-block bg-[#0a0a1f]/60 rounded-2xl border border-white/[0.06] px-4 py-5 sm:px-8 sm:py-6 max-w-full">
-              <p className="text-gray-400 text-sm mb-1">Vous souhaitez un eBook personnalise pour votre entreprise ?</p>
+              <p className="text-gray-400 text-sm mb-1">Vous souhaitez un eBook personnalisé pour votre entreprise ?</p>
               <a
                 href={`/${locale}/contact`}
                 className="text-[#FFD700] hover:text-[#FFD700]/80 font-semibold text-sm transition-colors inline-flex items-center gap-1.5"

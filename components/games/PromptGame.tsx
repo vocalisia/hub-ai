@@ -10,9 +10,9 @@ interface Challenge {
 }
 
 const CHALLENGES: Challenge[] = [
-  { task: 'Ecrivez un prompt pour generer un email professionnel de prospection B2B', keywords: ['professionnel', 'prospection', 'entreprise', 'client', 'offre', 'rendez-vous', 'valeur', 'personnalise'], maxScore: 80, hint: 'Incluez: ton, cible, objectif, CTA' },
-  { task: 'Creez un prompt pour analyser les avis clients d\'un restaurant', keywords: ['analyser', 'avis', 'sentiment', 'positif', 'negatif', 'tendance', 'categorie', 'resume', 'recommandation'], maxScore: 90, hint: 'Pensez: structure, format sortie, criteres' },
-  { task: 'Redigez un prompt pour creer un chatbot de support technique', keywords: ['support', 'technique', 'question', 'reponse', 'etape', 'solution', 'escalade', 'humain', 'polite', 'base de connaissances'], maxScore: 100, hint: 'N\'oubliez pas: ton, limites, escalade' },
+  { task: 'Écrivez un prompt pour générer un email professionnel de prospection B2B', keywords: ['professionnel', 'prospection', 'entreprise', 'client', 'offre', 'rendez-vous', 'valeur', 'personnalise'], maxScore: 80, hint: 'Incluez: ton, cible, objectif, CTA' },
+  { task: 'Créez un prompt pour analyser les avis clients d\'un restaurant', keywords: ['analyser', 'avis', 'sentiment', 'positif', 'negatif', 'tendance', 'categorie', 'resume', 'recommandation'], maxScore: 90, hint: 'Pensez: structure, format sortie, critères' },
+  { task: 'Rédigez un prompt pour créer un chatbot de support technique', keywords: ['support', 'technique', 'question', 'reponse', 'etape', 'solution', 'escalade', 'humain', 'polite', 'base de connaissances'], maxScore: 100, hint: 'N\'oubliez pas: ton, limites, escalade' },
 ]
 
 const LINKS = [

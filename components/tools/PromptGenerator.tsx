@@ -7,12 +7,12 @@ const TYPES = [
   { value: 'article', label: 'Article de blog' },
   { value: 'social', label: 'Post social media' },
   { value: 'code', label: 'Code / Dev' },
-  { value: 'analyse', label: 'Analyse de donnees' },
+  { value: 'analyse', label: 'Analyse de données' },
 ]
 
 const TONS = [
   { value: 'professionnel', label: 'Professionnel' },
-  { value: 'creatif', label: 'Creatif' },
+  { value: 'creatif', label: 'Créatif' },
   { value: 'technique', label: 'Technique' },
   { value: 'amical', label: 'Amical' },
 ]
@@ -25,41 +25,41 @@ const LONGUEURS = [
 
 const LINKS = [
   { name: 'Vocalis Blog', desc: 'Articles IA & automation', url: 'https://vocalis.blog', color: 'from-purple-500 to-violet-600' },
-  { name: 'SEO True', desc: 'SEO augmente par l\'IA', url: 'https://seo-true.com', color: 'from-cyan-500 to-teal-600' },
+  { name: 'SEO True', desc: 'SEO augmenté par l\'IA', url: 'https://seo-true.com', color: 'from-cyan-500 to-teal-600' },
   { name: 'Agents IA Pro', desc: 'Agents IA sur mesure', url: 'https://agents-ia.pro', color: 'from-gold-accent to-amber-600' },
 ]
 
 function generatePrompt(type: string, ton: string, longueur: string, sujet: string): string {
   const typeMap: Record<string, string> = {
     email: 'un email professionnel',
-    article: 'un article de blog complet et structure',
-    social: 'un post engageant pour les reseaux sociaux',
-    code: 'du code propre et documente',
-    analyse: 'une analyse detaillee de donnees',
+    article: 'un article de blog complet et structuré',
+    social: 'un post engageant pour les réseaux sociaux',
+    code: 'du code propre et documenté',
+    analyse: 'une analyse détaillée de données',
   }
 
   const tonMap: Record<string, string> = {
     professionnel: 'professionnel et formel',
-    creatif: 'creatif et original',
-    technique: 'technique et precis',
+    creatif: 'créatif et original',
+    technique: 'technique et précis',
     amical: 'amical et accessible',
   }
 
   const longueurMap: Record<string, string> = {
-    court: 'Sois concis : 50 a 100 mots maximum.',
+    court: 'Sois concis : 50 à 100 mots maximum.',
     moyen: 'Longueur moyenne : entre 200 et 400 mots.',
-    long: 'Contenu detaille : 500 mots minimum avec sous-sections.',
+    long: 'Contenu détaillé : 500 mots minimum avec sous-sections.',
   }
 
   const contextMap: Record<string, string> = {
-    email: `\n\n**Structure attendue :**\n- Objet de l'email (clair et impactant)\n- Salutation adaptee\n- Corps du message (contexte + demande/proposition)\n- Call-to-action\n- Signature professionnelle`,
-    article: `\n\n**Structure attendue :**\n- Titre H1 accrocheur (SEO-friendly)\n- Introduction avec hook\n- 3 a 5 sous-sections avec H2\n- Exemples concrets ou donnees\n- Conclusion avec call-to-action\n- Meta-description (155 caracteres)`,
-    social: `\n\n**Structure attendue :**\n- Hook des la premiere ligne\n- Corps du message (valeur + storytelling)\n- Emojis pertinents (sans exces)\n- Call-to-action engageant\n- 3 a 5 hashtags strategiques`,
-    code: `\n\n**Structure attendue :**\n- Description fonctionnelle\n- Code propre avec commentaires\n- Gestion des erreurs\n- Exemples d'utilisation\n- Documentation des parametres`,
-    analyse: `\n\n**Structure attendue :**\n- Contexte et objectifs de l'analyse\n- Methodologie proposee\n- Points cles a examiner\n- Format de presentation des resultats\n- Recommandations actionnables`,
+    email: `\n\n**Structure attendue :**\n- Objet de l'email (clair et impactant)\n- Salutation adaptée\n- Corps du message (contexte + demande/proposition)\n- Call-to-action\n- Signature professionnelle`,
+    article: `\n\n**Structure attendue :**\n- Titre H1 accrocheur (SEO-friendly)\n- Introduction avec hook\n- 3 à 5 sous-sections avec H2\n- Exemples concrets ou données\n- Conclusion avec call-to-action\n- Meta-description (155 caractères)`,
+    social: `\n\n**Structure attendue :**\n- Hook dès la première ligne\n- Corps du message (valeur + storytelling)\n- Emojis pertinents (sans excès)\n- Call-to-action engageant\n- 3 à 5 hashtags stratégiques`,
+    code: `\n\n**Structure attendue :**\n- Description fonctionnelle\n- Code propre avec commentaires\n- Gestion des erreurs\n- Exemples d'utilisation\n- Documentation des paramètres`,
+    analyse: `\n\n**Structure attendue :**\n- Contexte et objectifs de l'analyse\n- Méthodologie proposée\n- Points clés à examiner\n- Format de présentation des résultats\n- Recommandations actionnables`,
   }
 
-  return `Tu es un expert en creation de contenu et communication. Redige ${typeMap[type] || 'du contenu'} sur le sujet suivant :
+  return `Tu es un expert en création de contenu et communication. Rédige ${typeMap[type] || 'du contenu'} sur le sujet suivant :
 
 **Sujet :** ${sujet || '[Votre sujet ici]'}
 
@@ -68,11 +68,11 @@ function generatePrompt(type: string, ton: string, longueur: string, sujet: stri
 **Longueur :** ${longueurMap[longueur] || longueurMap.moyen}
 ${contextMap[type] || ''}
 
-**Consignes supplementaires :**
+**Consignes supplémentaires :**
 - Utilise un langage clair et impactant
-- Integre des donnees ou exemples si pertinent
+- Intègre des données ou exemples si pertinent
 - Adapte le vocabulaire au public cible
-- Assure une coherence dans le style du debut a la fin`
+- Assure une cohérence dans le style du début à la fin`
 }
 
 function TypewriterText({ text }: { text: string }) {
@@ -176,12 +176,12 @@ export default function PromptGenerator() {
         transition={{ duration: 0.4, delay: 0.3 }}
         className="bg-[#0a0a1f]/80 rounded-2xl border border-white/[0.06] p-5 mb-6"
       >
-        <label className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3 block">Sujet / Theme</label>
+        <label className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3 block">Sujet / Thème</label>
         <input
           type="text"
           value={sujet}
           onChange={(e) => setSujet(e.target.value)}
-          placeholder="Ex: L'impact de l'IA sur la productivite des PME suisses..."
+          placeholder="Ex: L'impact de l'IA sur la productivité des PME suisses..."
           className="w-full bg-transparent border border-white/[0.08] rounded-xl px-4 py-3 text-white text-sm placeholder:text-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/30 transition-all"
         />
       </motion.div>
@@ -201,7 +201,7 @@ export default function PromptGenerator() {
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            Generer le prompt
+            Générer le prompt
           </span>
         </button>
       </motion.div>
@@ -233,7 +233,7 @@ export default function PromptGenerator() {
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    Copie !
+                    Copié !
                   </span>
                 ) : (
                   <span className="flex items-center gap-1.5">
@@ -259,7 +259,7 @@ export default function PromptGenerator() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-        <h3 className="text-xl font-bold text-white mb-6 text-center">Ressources complementaires</h3>
+        <h3 className="text-xl font-bold text-white mb-6 text-center">Ressources complémentaires</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {LINKS.map((link, i) => (
             <motion.a

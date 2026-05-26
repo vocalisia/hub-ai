@@ -4,11 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const CRITERIA = [
   { id: 'outils', label: 'Utilisation outils IA', desc: 'ChatGPT, Copilot, outils no-code...' },
-  { id: 'donnees', label: 'Donnees structurees', desc: 'CRM, bases de donnees, data lakes...' },
+  { id: 'donnees', label: 'Données structurées', desc: 'CRM, bases de données, data lakes...' },
   { id: 'budget', label: 'Budget innovation', desc: 'Investissement R&D et transformation...' },
-  { id: 'formation', label: 'Formation digitale', desc: 'Competences IA de vos equipes...' },
-  { id: 'automatisation', label: 'Automatisation processus', desc: 'Workflows, API, integrations...' },
-  { id: 'strategie', label: 'Strategie IA definie', desc: 'Roadmap, KPIs, gouvernance...' },
+  { id: 'formation', label: 'Formation digitale', desc: 'Compétences IA de vos équipes...' },
+  { id: 'automatisation', label: 'Automatisation processus', desc: 'Workflows, API, intégrations...' },
+  { id: 'strategie', label: 'Stratégie IA définie', desc: 'Roadmap, KPIs, gouvernance...' },
 ]
 
 interface Level {
@@ -28,9 +28,9 @@ const LEVELS: Level[] = [
     max: 25,
     color: 'text-red-400',
     gradient: 'from-red-500 to-orange-500',
-    description: 'Votre entreprise debute dans l\'IA. Il est temps de poser les fondations avec des outils simples et une strategie claire.',
+    description: 'Votre entreprise débute dans l\'IA. Il est temps de poser les fondations avec des outils simples et une stratégie claire.',
     recommendations: [
-      { text: 'Decouvrir les bases de l\'IA pour PME', url: 'https://iapmesuisse.ch' },
+      { text: 'Découvrir les bases de l\'IA pour PME', url: 'https://iapmesuisse.ch' },
       { text: 'Formation revendeur IA', url: 'https://master-seller.fr' },
       { text: 'Lire nos articles IA', url: 'https://vocalis.blog' },
     ],
@@ -41,7 +41,7 @@ const LEVELS: Level[] = [
     max: 50,
     color: 'text-amber-400',
     gradient: 'from-amber-500 to-yellow-500',
-    description: 'Vous experimentez avec l\'IA. Structurez votre approche pour maximiser le retour sur investissement.',
+    description: 'Vous expérimentez avec l\'IA. Structurez votre approche pour maximiser le retour sur investissement.',
     recommendations: [
       { text: 'Calculer votre ROI avec notre outil', url: '#roi' },
       { text: 'Automatiser votre accueil avec Vocalis', url: 'https://vocalis.pro' },
@@ -54,9 +54,9 @@ const LEVELS: Level[] = [
     max: 75,
     color: 'text-purple-400',
     gradient: 'from-purple-500 to-violet-500',
-    description: 'L\'IA fait partie de vos operations. Passez au niveau superieur avec des agents IA avances et une strategie data-driven.',
+    description: 'L\'IA fait partie de vos opérations. Passez au niveau supérieur avec des agents IA avancés et une stratégie data-driven.',
     recommendations: [
-      { text: 'Deployer des agents IA sur mesure', url: 'https://agents-ia.pro' },
+      { text: 'Déployer des agents IA sur mesure', url: 'https://agents-ia.pro' },
       { text: 'Intelligence artificielle pour PME', url: 'https://iapmesuisse.ch' },
       { text: 'Assistant vocal professionnel', url: 'https://vocalis.pro' },
     ],
@@ -67,7 +67,7 @@ const LEVELS: Level[] = [
     max: 100,
     color: 'text-emerald-400',
     gradient: 'from-emerald-400 to-cyan-400',
-    description: 'Vous etes a la pointe de l\'IA. Continuez a innover et partagez votre expertise.',
+    description: 'Vous êtes à la pointe de l\'IA. Continuez à innover et partagez votre expertise.',
     recommendations: [
       { text: 'Devenir revendeur de solutions IA', url: 'https://master-seller.fr' },
       { text: 'Solutions IA enterprise', url: 'https://agents-ia.pro' },
@@ -208,7 +208,7 @@ export default function AIMaturityScore() {
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500/60 to-transparent" />
 
         <div className="relative z-10">
-          <h3 className="text-xl font-bold text-white mb-8 text-center">Votre Score de Maturite IA</h3>
+          <h3 className="text-xl font-bold text-white mb-8 text-center">Votre Score de Maturité IA</h3>
 
           <CircularGauge score={totalScore} level={currentLevel} />
 
@@ -297,7 +297,7 @@ export default function AIMaturityScore() {
                 </div>
                 <p className="text-white text-sm font-medium group-hover:text-purple-300 transition-colors">{rec.text}</p>
                 <div className="flex items-center gap-1 mt-2 text-gray-600 text-xs group-hover:text-purple-400/60 transition-colors">
-                  <span>Decouvrir</span>
+                  <span>Découvrir</span>
                   <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

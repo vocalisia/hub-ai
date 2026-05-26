@@ -13,7 +13,7 @@ const TEXT = {
     decline: 'Decline',
   },
   fr: {
-    msg: "Nous utilisons des cookies analytiques pour ameliorer votre experience et mesurer les performances du site. Vous pouvez accepter ou refuser.",
+    msg: "Nous utilisons des cookies analytiques pour améliorer votre expérience et mesurer les performances du site. Vous pouvez accepter ou refuser.",
     learn: 'En savoir plus',
     accept: 'Accepter',
     decline: 'Refuser',

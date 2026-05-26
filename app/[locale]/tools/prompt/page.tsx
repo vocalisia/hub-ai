@@ -10,8 +10,8 @@ export async function generateMetadata({
   params: { locale: string }
 }): Promise<Metadata> {
   return {
-    title: 'Generateur de Prompts IA — Creez des prompts optimises | AI-DUE',
-    description: 'Generez des prompts IA structures et professionnels pour vos emails, articles, posts, code et analyses. Outil gratuit par AI-DUE.',
+    title: 'Générateur de Prompts IA — Créez des prompts optimisés | AI-DUE',
+    description: 'Générez des prompts IA structurés et professionnels pour vos emails, articles, posts, code et analyses. Outil gratuit par AI-DUE.',
     alternates: {
       canonical: `https://ai-due.com/${locale}/tools/prompt`,
       languages: {
@@ -22,8 +22,8 @@ export async function generateMetadata({
       }
     },
     openGraph: {
-      title: 'Generateur de Prompts IA — Creez des prompts optimises | AI-DUE',
-      description: 'Outil gratuit pour generer des prompts IA structures et professionnels.',
+      title: 'Générateur de Prompts IA — Créez des prompts optimisés | AI-DUE',
+      description: 'Outil gratuit pour générer des prompts IA structurés et professionnels.',
       url: `https://ai-due.com/${locale}/tools/prompt`,
       siteName: 'AI-DUE',
       locale: locale,
