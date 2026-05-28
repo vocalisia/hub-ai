@@ -73,7 +73,7 @@ export default function AlumicaHero() {
         {/* Primary CTA — Alumica style */}
         <div className="alumica-fade flex items-center justify-center" style={{ animationDelay: '0.7s' }}>
           <Link
-            href={`/${locale}/simulateur`}
+            href={`/${locale}/paiement?plan=pro`}
             className="alumica-cta inline-flex items-center gap-3 bg-white/5 backdrop-blur-md px-7 py-3.5 rounded-full text-white font-medium text-[15px] hover:bg-white/10 transition-all duration-300"
           >
             <span className="relative z-10">
