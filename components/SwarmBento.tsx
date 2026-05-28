@@ -296,14 +296,17 @@ export default function SwarmBento() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-10 md:mb-14"
+          className="text-center mb-12 md:mb-16 max-w-4xl mx-auto"
         >
-          <div className="eyebrow mb-4">{t('kicker')}</div>
-          <h2 className="text-[clamp(26px,3.8vw,42px)] font-extrabold leading-[1.2] mb-3">
-            {t('title')} <em className="not-italic gradient-text-luxury">{t('title_em')}</em>
+          <div className="eyebrow mb-5 text-[11px] tracking-[3px]">{t('kicker')}</div>
+          <h2 className="text-[clamp(28px,4vw,44px)] font-semibold leading-[1.25] tracking-tight mb-5 text-white">
+            {t('title')}
+            <br className="hidden sm:block" />
+            <span className="font-extrabold" style={{ background: 'linear-gradient(90deg, #F97316 0%, #9333EA 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              {t('title_em')}
+            </span>
           </h2>
-          <p className="text-white/70 max-w-2xl mx-auto text-base">{t('subtitle_optional')}</p>
-
+          <p className="text-white/65 max-w-xl mx-auto text-[15px] sm:text-base leading-relaxed">{t('subtitle_optional')}</p>
         </motion.div>
 
         {/* Mini pricing cards (compact version of pricing page) */}

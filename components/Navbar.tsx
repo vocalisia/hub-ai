@@ -51,45 +51,33 @@ export default function Navbar() {
     >
       <div className="max-w-[1200px] mx-auto px-[5%]">
         <div className="flex items-center justify-between h-[68px] gap-4">
-          {/* Logo premium — Neural network nodes with electric pulse animation */}
-          <Link href={`/${locale}`} className="flex items-center gap-3 group shrink-0">
-            <div className="logo-v2 relative w-11 h-11 grid place-items-center transition-transform group-hover:scale-110">
-              {/* Background glow orb */}
-              <div className="logo-v2-orb absolute inset-0 rounded-2xl" aria-hidden />
-              {/* SVG neural network */}
-              <svg className="logo-v2-svg relative" width="32" height="32" viewBox="0 0 40 40" fill="none" aria-hidden>
+          {/* Logo final — Minimalist hexagon + animated pulse dot (architecture metaphor) */}
+          <Link href={`/${locale}`} className="flex items-center gap-2.5 group shrink-0">
+            <div className="logo-v3 relative w-9 h-9 grid place-items-center transition-transform group-hover:scale-110">
+              <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden>
                 <defs>
-                  <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="logo-v3-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#F97316" />
                     <stop offset="100%" stopColor="#9333EA" />
                   </linearGradient>
-                  <radialGradient id="logo-glow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#F97316" stopOpacity="1" />
-                    <stop offset="100%" stopColor="#9333EA" stopOpacity="0" />
-                  </radialGradient>
                 </defs>
-                {/* Connection lines */}
-                <g stroke="url(#logo-grad)" strokeWidth="1.2" strokeLinecap="round" opacity="0.7">
-                  <line x1="20" y1="6" x2="8" y2="20" className="logo-v2-line logo-v2-line-1" />
-                  <line x1="20" y1="6" x2="32" y2="20" className="logo-v2-line logo-v2-line-2" />
-                  <line x1="8" y1="20" x2="20" y2="34" className="logo-v2-line logo-v2-line-3" />
-                  <line x1="32" y1="20" x2="20" y2="34" className="logo-v2-line logo-v2-line-4" />
-                  <line x1="8" y1="20" x2="32" y2="20" className="logo-v2-line logo-v2-line-5" />
-                </g>
-                {/* Nodes (4 outer + 1 center) */}
-                <circle cx="20" cy="6" r="3" fill="url(#logo-grad)" className="logo-v2-node logo-v2-node-1" />
-                <circle cx="8" cy="20" r="3" fill="url(#logo-grad)" className="logo-v2-node logo-v2-node-2" />
-                <circle cx="32" cy="20" r="3" fill="url(#logo-grad)" className="logo-v2-node logo-v2-node-3" />
-                <circle cx="20" cy="34" r="3" fill="url(#logo-grad)" className="logo-v2-node logo-v2-node-4" />
-                {/* Center node with pulse halo */}
-                <circle cx="20" cy="20" r="6" fill="url(#logo-glow)" className="logo-v2-pulse" />
-                <circle cx="20" cy="20" r="3.5" fill="#fff" />
-                <circle cx="20" cy="20" r="3.5" fill="url(#logo-grad)" opacity="0.9" />
+                {/* Hexagon outline — architecture/layered metaphor */}
+                <path
+                  d="M20 4 L34 12 L34 28 L20 36 L6 28 L6 12 Z"
+                  stroke="url(#logo-v3-grad)"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                  fill="none"
+                  className="logo-v3-hex"
+                />
+                {/* Central pulse dot */}
+                <circle cx="20" cy="20" r="4" fill="url(#logo-v3-grad)" className="logo-v3-dot" />
+                <circle cx="20" cy="20" r="4" fill="url(#logo-v3-grad)" className="logo-v3-ping" />
               </svg>
             </div>
-            <span className="text-white font-extrabold text-lg tracking-tight leading-none">
-              <span style={{ background: 'linear-gradient(90deg, #fff, #fff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>AI</span>
-              <span style={{ background: 'linear-gradient(90deg, #F97316, #9333EA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>-DUE</span>
+            <span className="text-white font-bold text-[17px] tracking-tight leading-none">
+              AI<span className="text-white/30 mx-0.5">·</span>
+              <span style={{ background: 'linear-gradient(90deg, #F97316, #9333EA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', fontWeight: 800 }}>DUE</span>
             </span>
           </Link>
 
