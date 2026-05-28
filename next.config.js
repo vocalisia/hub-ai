@@ -12,8 +12,10 @@ const nextConfig = {
       'ai-due.com',
       'aiautomationsaas.com',
       'iapmesuisse.ch',
-      'images.unsplash.com'
-    ]
+      'images.unsplash.com',
+      'randomuser.me'
+    ],
+    formats: ['image/avif', 'image/webp']
   },
   async headers() {
     return [

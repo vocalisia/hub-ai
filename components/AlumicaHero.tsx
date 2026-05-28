@@ -3,7 +3,7 @@
 // Branch: redesign-2026-v2 — localhost preview only
 import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
-// eslint-disable-next-line @next/next/no-img-element
+import Image from 'next/image'
 
 // Hero: iridescent fluid waves (user pick from premium catalog)
 const ARTIFICIAL_VIDEO = 'https://cdn.sceneai.art/backgrounds/5443dc2c-dd3e-4de2-8725-6cc65c48bff8.mp4'
@@ -93,8 +93,7 @@ export default function AlumicaHero() {
         >
           <div className="flex -space-x-2.5">
             {[44, 32, 68, 12, 47].map((seed, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 key={seed}
                 src={`https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${seed}.jpg`}
                 alt={`Member ${i + 1}`}
@@ -102,7 +101,6 @@ export default function AlumicaHero() {
                 width={32}
                 height={32}
                 loading="lazy"
-                decoding="async"
                 style={{ filter: 'drop-shadow(0 25px 25px rgba(0,0,0,0.55))' }}
               />
             ))}
