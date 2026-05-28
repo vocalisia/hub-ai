@@ -55,10 +55,10 @@
       "phone_footer": "Rapport ReACT pret dans 3 min"
     },
     "bento": {
-      "kicker": "01 · Capacites",
-      "title": "Concu pour les equipes qui veulent",
-      "title_em": "des reponses, pas des suppositions.",
-      "subtitle_optional": "Une stack technologique de pointe, pensee pour les decideurs exigeants.",
+      "kicker": "01 · Capacités",
+      "title": "Conçu pour les équipes qui veulent",
+      "title_em": "des réponses, pas des suppositions.",
+      "subtitle_optional": "Une stack technologique de pointe, pensée pour les décideurs exigeants.",
       "graph_title": "Graphe de connaissances",
       "graph_desc": "Neo4j extrait automatiquement entites et relations de votre document. NER avec filtres intelligents et ecriture batch parallelisee.",
       "agents_title": "Agents a 5 couches",
