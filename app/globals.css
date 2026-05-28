@@ -9,6 +9,30 @@
 .alumica-fade { opacity: 0; animation: alumica-fade-up 0.7s ease-out forwards; }
 .alumica-cta { position: relative; isolation: isolate; }
 /* Rotating border disabled per user request */
+
+/* Plan blink animation — subtle border glow pulse */
+@keyframes plan-blink-anim {
+  0%, 100% { box-shadow: 0 0 0 rgba(249,115,22,0); }
+  50% { box-shadow: 0 0 20px rgba(249,115,22,0.25); }
+}
+.plan-blink { animation: plan-blink-anim 2.4s ease-in-out infinite; }
+.plan-blink.plan-featured { animation: plan-featured-pulse 1.8s ease-in-out infinite; }
+
+@keyframes plan-featured-pulse {
+  0%, 100% {
+    box-shadow: 0 0 60px rgba(249,115,22,0.35), 0 0 100px rgba(147,51,234,0.18), 0 20px 50px rgba(0,0,0,0.5);
+  }
+  50% {
+    box-shadow: 0 0 80px rgba(249,115,22,0.55), 0 0 130px rgba(147,51,234,0.35), 0 20px 50px rgba(0,0,0,0.5);
+  }
+}
+
+/* "Most popular" badge pulse */
+@keyframes plan-badge-pulse-anim {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.06); }
+}
+.plan-badge-pulse { animation: plan-badge-pulse-anim 1.6s ease-in-out infinite; }
 .alumica-grad-text {
   background: linear-gradient(180deg, #ffffff 0%, #a3a3a3 100%);
   -webkit-background-clip: text;
