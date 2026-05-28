@@ -97,6 +97,19 @@ export default async function LocaleLayout({
           }}
         />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        {/* Perf 2026-05-30: preconnect GTM (saves ~146ms per Lighthouse uses-rel-preconnect) */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        {/* Perf 2026-05-30: preload LCP hero image — fetchpriority high so it races GTM/JS chunks.
+            Matches the next/image srcset width served at 412px viewport (w=750&q=75). */}
+        <link
+          rel="preload"
+          as="image"
+          href="/_next/image?url=%2Fimages%2Fhero%2Fhero-swarm.png&w=750&q=75"
+          imageSrcSet="/_next/image?url=%2Fimages%2Fhero%2Fhero-swarm.png&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fhero%2Fhero-swarm.png&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fhero%2Fhero-swarm.png&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fhero%2Fhero-swarm.png&w=1920&q=75 1920w"
+          imageSizes="100vw"
+          fetchPriority="high"
+        />
         <meta property="og:image" content="https://ai-due.com/api/og" />
         {/* Schema.org JSON-LD */}
         <script

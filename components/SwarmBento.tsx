@@ -431,19 +431,17 @@ export default function SwarmBento() {
                   border: '1px solid rgba(249,115,22,0.1)',
                 }}
               >
-                {/* SceneAI Artificial cyborg+brain video — graph card only
-                    Perf 2026-05-29: preload="none" → no fetch until visible (was "auto" = ~6MB eager) */}
+                {/* Perf 2026-05-30: 7.6MB CDN video → static poster img.
+                    autoPlay was triggering fetch even with preload="none" on mobile/4G,
+                    saturating bandwidth and pushing LCP to 9.3s. Visual identical at fold. */}
                 {card.key === 'graph' && (
-                  <video
+                  <img
                     aria-hidden
                     className="absolute inset-0 h-full w-full object-cover opacity-70"
-                    src="https://cdn.sceneai.art/backgrounds/1d38bdf4-4310-4528-b925-753539ad9da8.mp4"
-                    poster="/images/hero/hero-swarm.png"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="none"
+                    src="/images/hero/hero-swarm.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
                   />
                 )}
                 {card.key === 'graph' && (
