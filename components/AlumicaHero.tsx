@@ -5,7 +5,8 @@ import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
 // eslint-disable-next-line @next/next/no-img-element
 
-const ARTIFICIAL_VIDEO = 'https://cdn.sceneai.art/backgrounds/1d38bdf4-4310-4528-b925-753539ad9da8.mp4'
+// Hero: iridescent fluid waves (user pick from premium catalog)
+const ARTIFICIAL_VIDEO = 'https://cdn.sceneai.art/backgrounds/5443dc2c-dd3e-4de2-8725-6cc65c48bff8.mp4'
 
 export default function AlumicaHero() {
   const t = useTranslations('swarm.hero')
