@@ -408,7 +408,23 @@ export default function SwarmBento() {
                   border: '1px solid rgba(201,165,114,0.1)',
                 }}
               >
-                {card.viz}
+                {/* SceneAI Artificial cyborg+brain video — graph card only */}
+                {card.key === 'graph' && (
+                  <video
+                    aria-hidden
+                    className="absolute inset-0 h-full w-full object-cover opacity-70"
+                    src="https://cdn.sceneai.art/backgrounds/1d38bdf4-4310-4528-b925-753539ad9da8.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                  />
+                )}
+                {card.key === 'graph' && (
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70 pointer-events-none" aria-hidden />
+                )}
+                <div className="relative z-10">{card.viz}</div>
               </div>
             </motion.div>
           ))}

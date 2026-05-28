@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getMessages } from 'next-intl/server'
-import SwarmHero from '@/components/SwarmHero'
+import SwarmHero from '@/components/AlumicaHero'
+import ModelsExplainer from '@/components/ModelsExplainer'
 import SwarmPress from '@/components/SwarmPress'
 import SwarmBento from '@/components/SwarmBento'
 import SwarmResults from '@/components/SwarmResults'
@@ -181,8 +182,9 @@ export default function HomePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
-      <main className="min-h-screen bg-[#0a0f2e]">
+      <main className="min-h-screen bg-black">
         <SwarmHero />
+        <ModelsExplainer />
         <SwarmPress />
         <SwarmBento />
         <SwarmResults />
