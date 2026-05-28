@@ -268,18 +268,19 @@ export default function SwarmBento() {
     { key: 'i18n', icon: icons.globe, viz: <I18nViz />, span: '' },
   ]
 
-  const plans =
+  const plans = (
     locale === 'en'
       ? [
-          { key: 'starter', price: '$0', label: tp('starter_name') },
-          { key: 'pro', price: '$59', label: tp('pro_name'), featured: true },
-          { key: 'enterprise', price: '$599', label: tp('enterprise_name') },
+          { key: 'starter', price: '$0', label: tp('starter_name'), desc: tp('starter_desc'), features: [tp('starter_f1'), tp('starter_f2'), tp('starter_f3'), tp('starter_f4')] },
+          { key: 'pro', price: '$59', label: tp('pro_name'), desc: tp('pro_desc'), features: [tp('pro_f1'), tp('pro_f2'), tp('pro_f3'), tp('pro_f4'), tp('pro_f5'), tp('pro_f6')], featured: true },
+          { key: 'enterprise', price: '$599', label: tp('enterprise_name'), desc: tp('enterprise_desc'), features: [tp('enterprise_f1'), tp('enterprise_f2'), tp('enterprise_f3'), tp('enterprise_f4'), tp('enterprise_f6')] },
         ]
       : [
-          { key: 'starter', price: '0€', label: tp('starter_name') },
-          { key: 'pro', price: '49€', label: tp('pro_name'), featured: true },
-          { key: 'enterprise', price: '499€', label: tp('enterprise_name') },
+          { key: 'starter', price: '0€', label: tp('starter_name'), desc: tp('starter_desc'), features: [tp('starter_f1'), tp('starter_f2'), tp('starter_f3'), tp('starter_f4')] },
+          { key: 'pro', price: '49€', label: tp('pro_name'), desc: tp('pro_desc'), features: [tp('pro_f1'), tp('pro_f2'), tp('pro_f3'), tp('pro_f4'), tp('pro_f5'), tp('pro_f6')], featured: true },
+          { key: 'enterprise', price: '499€', label: tp('enterprise_name'), desc: tp('enterprise_desc'), features: [tp('enterprise_f1'), tp('enterprise_f2'), tp('enterprise_f3'), tp('enterprise_f4'), tp('enterprise_f6')] },
         ]
+  ) as Array<{ key: string; price: string; label: string; desc: string; features: string[]; featured?: boolean }>
 
   return (
     <section id="features" className="relative py-20 md:py-32">
@@ -310,13 +311,13 @@ export default function SwarmBento() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 max-w-3xl mx-auto mb-10 md:mb-14"
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-7 max-w-6xl mx-auto mb-12 md:mb-20"
         >
           {plans.map((p) => (
             <Link
               key={p.key}
               href={`/${locale}/paiement?plan=${p.key}`}
-              className={`group relative rounded-2xl p-3 sm:p-4 md:p-5 transition-all hover:-translate-y-1 plan-blink ${p.featured ? 'plan-featured md:scale-110 md:-translate-y-2 z-10' : ''}`}
+              className={`group relative rounded-3xl p-7 sm:p-8 md:p-9 flex flex-col transition-all hover:-translate-y-1 plan-blink ${p.featured ? 'plan-featured md:scale-105 md:-translate-y-2 z-10' : ''}`}
               style={
                 p.featured
                   ? {
@@ -345,21 +346,40 @@ export default function SwarmBento() {
                   ★ Most popular
                 </div>
               )}
-              <div className="text-[13px] sm:text-base font-bold mb-0.5 sm:mb-1 font-[Montserrat]">{p.label}</div>
-              <div className="flex items-baseline gap-1 mb-2 sm:mb-3">
+              <div className="text-lg sm:text-xl font-bold mb-1 font-[Montserrat]">{p.label}</div>
+              <p className="text-[12px] text-white/55 mb-4 min-h-[36px]">{p.desc}</p>
+              <div className="flex items-baseline gap-1 mb-5">
                 <span
-                  className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-none font-[Montserrat]"
-                  style={p.featured ? { color: '#FB923C' } : { color: '#fff' }}
+                  className="text-4xl sm:text-5xl font-extrabold leading-none font-[Montserrat]"
+                  style={p.featured ? { background: 'linear-gradient(135deg, #F97316, #9333EA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } : { color: '#fff' }}
                 >
                   {p.price}
                 </span>
-                <span className="text-[9px] sm:text-[11px] text-white/45">/mo</span>
+                <span className="text-[12px] text-white/45">/mo</span>
               </div>
+              <ul className="space-y-2.5 mb-6 flex-1">
+                {p.features.map((f, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-[13px] text-white/75">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 mt-0.5" style={{ color: p.featured ? '#F97316' : '#94A3B8' }}>
+                      <path d="M5 12l5 5L20 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
               <div
-                className={`inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[12px] font-semibold ${p.featured ? 'text-gold' : 'text-white/65'} group-hover:text-gold transition-colors`}
+                className={`inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-bold text-[13px] transition-all ${
+                  p.featured
+                    ? 'text-white shadow-lg'
+                    : 'text-white/85 bg-white/5 border border-white/15 group-hover:bg-white/10'
+                }`}
+                style={p.featured ? {
+                  background: 'linear-gradient(135deg, #F97316 0%, #9333EA 100%)',
+                  boxShadow: '0 8px 24px rgba(147,51,234,0.35)',
+                } : undefined}
               >
                 {p.key === 'starter' ? 'Start free' : p.key === 'pro' ? 'Go Pro' : 'Subscribe'}
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
