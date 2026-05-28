@@ -51,21 +51,45 @@ export default function Navbar() {
     >
       <div className="max-w-[1200px] mx-auto px-[5%]">
         <div className="flex items-center justify-between h-[68px] gap-4">
-          {/* Logo animé — DS 2026 brain glyph with pulse + rotating gradient ring */}
-          <Link href={`/${locale}`} className="flex items-center gap-2.5 group shrink-0">
-            <div className="logo-anim relative w-10 h-10 rounded-xl grid place-items-center transition-transform group-hover:scale-110">
-              <div className="logo-anim-ring absolute inset-0 rounded-xl" aria-hidden />
-              <div className="logo-anim-core absolute inset-[2px] rounded-[10px] grid place-items-center"
-                style={{ background: 'linear-gradient(135deg, #F97316 0%, #9333EA 100%)' }}
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="logo-anim-pulse">
-                  <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
-                  <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
-                </svg>
-              </div>
+          {/* Logo premium — Neural network nodes with electric pulse animation */}
+          <Link href={`/${locale}`} className="flex items-center gap-3 group shrink-0">
+            <div className="logo-v2 relative w-11 h-11 grid place-items-center transition-transform group-hover:scale-110">
+              {/* Background glow orb */}
+              <div className="logo-v2-orb absolute inset-0 rounded-2xl" aria-hidden />
+              {/* SVG neural network */}
+              <svg className="logo-v2-svg relative" width="32" height="32" viewBox="0 0 40 40" fill="none" aria-hidden>
+                <defs>
+                  <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#F97316" />
+                    <stop offset="100%" stopColor="#9333EA" />
+                  </linearGradient>
+                  <radialGradient id="logo-glow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#F97316" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#9333EA" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
+                {/* Connection lines */}
+                <g stroke="url(#logo-grad)" strokeWidth="1.2" strokeLinecap="round" opacity="0.7">
+                  <line x1="20" y1="6" x2="8" y2="20" className="logo-v2-line logo-v2-line-1" />
+                  <line x1="20" y1="6" x2="32" y2="20" className="logo-v2-line logo-v2-line-2" />
+                  <line x1="8" y1="20" x2="20" y2="34" className="logo-v2-line logo-v2-line-3" />
+                  <line x1="32" y1="20" x2="20" y2="34" className="logo-v2-line logo-v2-line-4" />
+                  <line x1="8" y1="20" x2="32" y2="20" className="logo-v2-line logo-v2-line-5" />
+                </g>
+                {/* Nodes (4 outer + 1 center) */}
+                <circle cx="20" cy="6" r="3" fill="url(#logo-grad)" className="logo-v2-node logo-v2-node-1" />
+                <circle cx="8" cy="20" r="3" fill="url(#logo-grad)" className="logo-v2-node logo-v2-node-2" />
+                <circle cx="32" cy="20" r="3" fill="url(#logo-grad)" className="logo-v2-node logo-v2-node-3" />
+                <circle cx="20" cy="34" r="3" fill="url(#logo-grad)" className="logo-v2-node logo-v2-node-4" />
+                {/* Center node with pulse halo */}
+                <circle cx="20" cy="20" r="6" fill="url(#logo-glow)" className="logo-v2-pulse" />
+                <circle cx="20" cy="20" r="3.5" fill="#fff" />
+                <circle cx="20" cy="20" r="3.5" fill="url(#logo-grad)" opacity="0.9" />
+              </svg>
             </div>
-            <span className="text-white font-extrabold text-lg tracking-tight">
-              AI-<span style={{ background: 'linear-gradient(90deg, #F97316, #9333EA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>DUE</span>
+            <span className="text-white font-extrabold text-lg tracking-tight leading-none">
+              <span style={{ background: 'linear-gradient(90deg, #fff, #fff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>AI</span>
+              <span style={{ background: 'linear-gradient(90deg, #F97316, #9333EA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>-DUE</span>
             </span>
           </Link>
 
