@@ -11,30 +11,21 @@ export default function HeroSection() {
   const locale = useLocale()
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[#030014]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.08),transparent_70%)]" />
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-900/20 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-cyan-900/15 rounded-full blur-[120px]" />
-      </div>
-
-      {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }}
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+      {/* DS 2026 — SceneAI "Star" video background (crystal ball + rotating rings) */}
+      <video
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+        src="https://cdn.sceneai.art/backgrounds/2a462a16-4174-4cab-9845-61b564cd4b60.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
       />
-
-      {/* Globe behind content - full screen centered */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-        <div className="w-[100vw] h-[100vh] opacity-40 sm:opacity-65 lg:opacity-75 flex items-center justify-center">
-          <div className="w-full h-full max-w-[100vw]">
-            <Globe3D />
-          </div>
-        </div>
-      </div>
+      {/* Dark overlay for text legibility */}
+      <div className="absolute inset-0 bg-black/50" aria-hidden />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.10),transparent_70%)]" aria-hidden />
 
       {/* Content over globe */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 text-center">
