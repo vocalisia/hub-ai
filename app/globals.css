@@ -34,29 +34,59 @@
 }
 .plan-badge-pulse { animation: plan-badge-pulse-anim 1.6s ease-in-out infinite; }
 
-/* ===== Animated logo (Navbar) ===== */
-@keyframes logo-ring-spin {
-  to { transform: rotate(360deg); }
+/* ===== Animated logo v2 — Neural network with electric pulse ===== */
+@keyframes logo-v2-orb-breathe {
+  0%, 100% {
+    background: radial-gradient(circle at 30% 30%, rgba(249,115,22,0.25), rgba(147,51,234,0.15) 50%, transparent 75%);
+    filter: blur(6px);
+    transform: scale(1);
+  }
+  50% {
+    background: radial-gradient(circle at 30% 30%, rgba(249,115,22,0.45), rgba(147,51,234,0.30) 50%, transparent 75%);
+    filter: blur(8px);
+    transform: scale(1.1);
+  }
 }
-@keyframes logo-glow-breathe {
-  0%, 100% { box-shadow: 0 0 0 rgba(249,115,22,0), 0 8px 22px rgba(147,51,234,0.35); }
-  50% { box-shadow: 0 0 22px rgba(249,115,22,0.55), 0 12px 28px rgba(147,51,234,0.55); }
+@keyframes logo-v2-pulse-halo {
+  0%, 100% { opacity: 0.4; transform-origin: center; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.4); }
 }
-@keyframes logo-pulse-icon {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
-  50% { transform: scale(1.08); filter: drop-shadow(0 0 6px rgba(255,255,255,0.7)); }
+@keyframes logo-v2-node-blink {
+  0%, 100% { transform-origin: center; transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.25); opacity: 1; filter: drop-shadow(0 0 4px #F97316); }
 }
-.logo-anim { isolation: isolate; animation: logo-glow-breathe 3s ease-in-out infinite; }
-.logo-anim-ring {
-  background: conic-gradient(from 0deg, #F97316, #9333EA, #F97316, transparent 75%);
-  animation: logo-ring-spin 4s linear infinite;
+@keyframes logo-v2-line-flow {
+  0% { stroke-dasharray: 0 30; stroke-dashoffset: 0; opacity: 0.3; }
+  50% { stroke-dasharray: 15 30; opacity: 0.95; }
+  100% { stroke-dasharray: 0 30; stroke-dashoffset: -30; opacity: 0.3; }
 }
-.logo-anim-pulse {
+.logo-v2 { isolation: isolate; }
+.logo-v2-orb {
+  animation: logo-v2-orb-breathe 3.6s ease-in-out infinite;
+}
+.logo-v2-pulse {
+  transform-origin: 20px 20px;
+  animation: logo-v2-pulse-halo 2s ease-in-out infinite;
+}
+.logo-v2-node {
+  transform-box: fill-box;
   transform-origin: center;
-  animation: logo-pulse-icon 2.2s ease-in-out infinite;
 }
+.logo-v2-node-1 { animation: logo-v2-node-blink 2.4s ease-in-out infinite 0s; }
+.logo-v2-node-2 { animation: logo-v2-node-blink 2.4s ease-in-out infinite 0.3s; }
+.logo-v2-node-3 { animation: logo-v2-node-blink 2.4s ease-in-out infinite 0.6s; }
+.logo-v2-node-4 { animation: logo-v2-node-blink 2.4s ease-in-out infinite 0.9s; }
+.logo-v2-line {
+  stroke-dasharray: 0 30;
+  animation: logo-v2-line-flow 2.4s linear infinite;
+}
+.logo-v2-line-1 { animation-delay: 0s; }
+.logo-v2-line-2 { animation-delay: 0.4s; }
+.logo-v2-line-3 { animation-delay: 0.8s; }
+.logo-v2-line-4 { animation-delay: 1.2s; }
+.logo-v2-line-5 { animation-delay: 1.6s; }
 @media (prefers-reduced-motion: reduce) {
-  .logo-anim, .logo-anim-ring, .logo-anim-pulse { animation: none; }
+  .logo-v2-orb, .logo-v2-pulse, .logo-v2-node, .logo-v2-line { animation: none; }
 }
 .alumica-grad-text {
   background: linear-gradient(180deg, #ffffff 0%, #a3a3a3 100%);
