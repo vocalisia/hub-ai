@@ -12,11 +12,11 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-      {/* DS 2026 — SceneAI "Star" video background (crystal ball + rotating rings) */}
+      {/* DS 2026 — SceneAI "sadak" video background (Earth from space, blue glow) */}
       <video
         aria-hidden
         className="absolute inset-0 h-full w-full object-cover"
-        src="https://cdn.sceneai.art/backgrounds/2a462a16-4174-4cab-9845-61b564cd4b60.mp4"
+        src="https://cdn.sceneai.art/backgrounds/23e1cefd-3cb0-4ce6-a56d-f6c1dc21eaee.mp4"
         autoPlay
         muted
         loop
