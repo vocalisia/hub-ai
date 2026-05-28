@@ -1,14 +1,31 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import { getMessages } from 'next-intl/server'
+// Above-fold: keep static imports for fastest first paint
 import SwarmHero from '@/components/AlumicaHero'
 import ModelsExplainer from '@/components/ModelsExplainer'
 import SwarmPress from '@/components/SwarmPress'
-import SwarmBento from '@/components/SwarmBento'
-import SwarmResults from '@/components/SwarmResults'
-import SwarmShowcase from '@/components/SwarmShowcase'
-import SwarmWorkflow from '@/components/SwarmWorkflow'
-import SwarmTestimonials from '@/components/SwarmTestimonials'
-import SwarmCTA from '@/components/SwarmCTA'
+
+// Below-fold: dynamic imports — code-split client bundle, keep SSR for SEO
+// Placeholders sized roughly to prevent CLS while chunks load
+const SwarmBento = dynamic(() => import('@/components/SwarmBento'), {
+  loading: () => <div className="min-h-[600px]" aria-hidden />,
+})
+const SwarmResults = dynamic(() => import('@/components/SwarmResults'), {
+  loading: () => <div className="min-h-[500px]" aria-hidden />,
+})
+const SwarmShowcase = dynamic(() => import('@/components/SwarmShowcase'), {
+  loading: () => <div className="min-h-[600px]" aria-hidden />,
+})
+const SwarmWorkflow = dynamic(() => import('@/components/SwarmWorkflow'), {
+  loading: () => <div className="min-h-[700px]" aria-hidden />,
+})
+const SwarmTestimonials = dynamic(() => import('@/components/SwarmTestimonials'), {
+  loading: () => <div className="min-h-[500px]" aria-hidden />,
+})
+const SwarmCTA = dynamic(() => import('@/components/SwarmCTA'), {
+  loading: () => <div className="min-h-[300px]" aria-hidden />,
+})
 
 // Per-page metadata override — allows page-specific title/description per locale
 export async function generateMetadata({

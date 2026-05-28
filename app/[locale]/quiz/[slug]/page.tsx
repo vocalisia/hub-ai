@@ -1,7 +1,13 @@
 import { QUIZZES } from '@/data/quizzes'
-import QuizEngine from '@/components/QuizEngine'
+import nextDynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+
+// QuizEngine is interactive client UI — code-split to keep page bundle lean.
+// Keep SSR (default) so framer-motion content paints with SSR HTML.
+const QuizEngine = nextDynamic(() => import('@/components/QuizEngine'), {
+  loading: () => <div className="min-h-[500px]" aria-hidden />,
+})
 
 export const dynamic = 'force-dynamic'
 

@@ -5,7 +5,10 @@ const withNextIntl = createNextIntlPlugin('./i18n.ts')
 
 const nextConfig = {
   experimental: {
-    serverComponentsExternalPackages: ['sharp']
+    serverComponentsExternalPackages: ['sharp'],
+    // Tree-shake large packages — emits per-export chunks so unused
+    // framer-motion features are dropped from each route bundle
+    optimizePackageImports: ['framer-motion', 'lucide-react']
   },
   images: {
     domains: [

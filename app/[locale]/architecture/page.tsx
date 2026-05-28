@@ -1,10 +1,22 @@
 import type { Metadata } from 'next'
-import NetworkGraph from '@/components/NetworkGraph'
+import dynamic from 'next/dynamic'
+// Above-fold static imports
 import HeroSection from '@/components/HeroSection'
 import ArchitectureSchema from '@/components/ArchitectureSchema'
-import NeuralFeatures from '@/components/NeuralFeatures'
-import BlogPreview from '@/components/BlogPreview'
-import GeoSection from '@/components/GeoSection'
+
+// Below-fold: dynamic — code-split, keep SSR for SEO content
+const NeuralFeatures = dynamic(() => import('@/components/NeuralFeatures'), {
+  loading: () => <div className="min-h-[600px]" aria-hidden />,
+})
+const NetworkGraph = dynamic(() => import('@/components/NetworkGraph'), {
+  loading: () => <div className="min-h-[700px]" aria-hidden />,
+})
+const GeoSection = dynamic(() => import('@/components/GeoSection'), {
+  loading: () => <div className="min-h-[500px]" aria-hidden />,
+})
+const BlogPreview = dynamic(() => import('@/components/BlogPreview'), {
+  loading: () => <div className="min-h-[400px]" aria-hidden />,
+})
 
 const ARCHITECTURE_SEO: Record<string, { title: string; description: string }> = {
   en: {

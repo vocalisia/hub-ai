@@ -7,7 +7,7 @@ import { Suspense } from 'react'
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import CookieBanner from '@/components/CookieBanner'
+import CookieBannerLazy from '@/components/CookieBannerLazy'
 import GA4Tracker from '@/components/GA4Tracker'
 import '@/app/globals.css'
 
@@ -162,7 +162,7 @@ export default async function LocaleLayout({
           <Navbar />
           {children}
           <Footer />
-          <CookieBanner />
+          <CookieBannerLazy />
           <Suspense fallback={null}>
             <GA4Tracker />
           </Suspense>

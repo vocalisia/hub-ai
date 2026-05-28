@@ -1,8 +1,13 @@
 import { getAllPosts } from '@/lib/blog'
 import BlogCard from '@/components/BlogCard'
-import GeoFilter from '@/components/GeoFilter'
+import nextDynamic from 'next/dynamic'
 import { getTranslations } from 'next-intl/server'
 import type { Metadata } from 'next'
+
+// GeoFilter = interactive client filter — code-split to keep blog index lean
+const GeoFilter = nextDynamic(() => import('@/components/GeoFilter'), {
+  loading: () => <div className="min-h-[60px]" aria-hidden />,
+})
 
 export const dynamic = 'force-dynamic'
 
