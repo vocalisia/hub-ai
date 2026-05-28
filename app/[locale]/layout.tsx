@@ -34,9 +34,11 @@ export async function generateMetadata({
   const seo = (messages as any).seo
 
   // EN is the default locale — canonical points to / (root) to match Google's preference
+  // Perf 2026-05-29: removed trailing slashes — site serves /fr (308 redirects /fr/ → /fr),
+  // canonicals were pointing to redirect URLs → hreflang mismatch
   const canonicalUrl = locale === 'en'
-    ? 'https://ai-due.com/'
-    : `https://ai-due.com/${locale}/`
+    ? 'https://ai-due.com'
+    : `https://ai-due.com/${locale}`
 
   return {
     metadataBase: new URL('https://ai-due.com'),
@@ -45,11 +47,11 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'fr': 'https://ai-due.com/fr/',
-        'en': 'https://ai-due.com/',
-        'de': 'https://ai-due.com/de/',
-        'it': 'https://ai-due.com/it/',
-        'x-default': 'https://ai-due.com/'
+        'fr': 'https://ai-due.com/fr',
+        'en': 'https://ai-due.com',
+        'de': 'https://ai-due.com/de',
+        'it': 'https://ai-due.com/it',
+        'x-default': 'https://ai-due.com'
       }
     },
     openGraph: {

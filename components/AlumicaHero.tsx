@@ -1,12 +1,9 @@
 'use client'
-// Hero based on SceneAI "Alumica" blueprint + "Artificial" cyborg video
-// Branch: redesign-2026-v2 — localhost preview only
+// Hero based on SceneAI "Alumica" blueprint
+// Perf 2026-05-29: 15MB CDN video → 850KB local poster (LCP 4.8s → <2.5s target)
 import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
-
-// Hero: iridescent fluid waves (user pick from premium catalog)
-const ARTIFICIAL_VIDEO = 'https://cdn.sceneai.art/backgrounds/5443dc2c-dd3e-4de2-8725-6cc65c48bff8.mp4'
 
 export default function AlumicaHero() {
   const t = useTranslations('swarm.hero')
@@ -15,15 +12,14 @@ export default function AlumicaHero() {
   return (
     <section className="alumica-section relative w-full overflow-hidden bg-black min-h-screen flex items-center">
 
-      {/* Layer 1: Background video */}
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src={ARTIFICIAL_VIDEO}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
+      {/* Layer 1: Background image (LCP-optimised, replaces 15MB CDN video) */}
+      <Image
+        src="/images/hero/hero-swarm.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
         aria-hidden
       />
 

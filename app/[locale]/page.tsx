@@ -36,9 +36,10 @@ export async function generateMetadata({
   const messages = await getMessages()
   const seo = (messages as any).seo
 
+  // Perf 2026-05-29: no trailing slash — matches actual served URL (sitemap.ts already correct)
   const canonicalUrl = locale === 'en'
-    ? 'https://ai-due.com/'
-    : `https://ai-due.com/${locale}/`
+    ? 'https://ai-due.com'
+    : `https://ai-due.com/${locale}`
 
   return {
     title: seo.home_title,
@@ -46,11 +47,11 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'fr': 'https://ai-due.com/fr/',
-        'en': 'https://ai-due.com/',
-        'de': 'https://ai-due.com/de/',
-        'it': 'https://ai-due.com/it/',
-        'x-default': 'https://ai-due.com/'
+        'fr': 'https://ai-due.com/fr',
+        'en': 'https://ai-due.com',
+        'de': 'https://ai-due.com/de',
+        'it': 'https://ai-due.com/it',
+        'x-default': 'https://ai-due.com'
       }
     },
   }
@@ -140,11 +141,11 @@ const FAQ_SCHEMA_FR = {
 const SERVICE_SCHEMA_FR = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": "https://ai-due.com/fr/#service",
+  "@id": "https://ai-due.com/fr#service",
   "name": "Agent IA Autonome — Plateforme AI-Due",
   "serviceType": "Intelligence Artificielle & Automatisation",
   "description": "AI-Due déploie des agents IA autonomes pour automatiser vos processus métier, simuler l'opinion publique et accélérer la prise de décision. Disponible en Suisse, France, Belgique, Canada et USA.",
-  "url": "https://ai-due.com/fr/",
+  "url": "https://ai-due.com/fr",
   "areaServed": [
     { "@type": "Country", "name": "Switzerland" },
     { "@type": "Country", "name": "France" },

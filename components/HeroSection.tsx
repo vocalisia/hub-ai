@@ -12,16 +12,18 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-      {/* DS 2026 — SceneAI "sadak" video background (Earth from space, blue glow) */}
+      {/* DS 2026 — SceneAI "sadak" video background (Earth from space, blue glow)
+          Perf 2026-05-29: preload="auto" → "metadata" + poster, defers byte-load */}
       <video
         aria-hidden
         className="absolute inset-0 h-full w-full object-cover"
         src="https://cdn.sceneai.art/backgrounds/23e1cefd-3cb0-4ce6-a56d-f6c1dc21eaee.mp4"
+        poster="/images/hero/hero-swarm.png"
         autoPlay
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
       />
       {/* Dark overlay for text legibility */}
       <div className="absolute inset-0 bg-black/50" aria-hidden />
