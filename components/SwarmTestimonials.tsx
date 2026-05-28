@@ -24,7 +24,7 @@ export default function SwarmTestimonials() {
       <div
         aria-hidden
         className="absolute inset-0"
-        style={{ background: 'linear-gradient(180deg, transparent, rgba(201,165,114,0.03), transparent)' }}
+        style={{ background: 'linear-gradient(180deg, transparent, rgba(249,115,22,0.03), transparent)' }}
       />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
@@ -52,8 +52,8 @@ export default function SwarmTestimonials() {
               whileHover={{ y: -4 }}
               className="relative p-5 sm:p-7 md:p-8 rounded-3xl"
               style={{
-                border: '1px solid rgba(201,165,114,0.2)',
-                background: 'linear-gradient(135deg, rgba(201,165,114,0.04), rgba(10,15,46,0.6))',
+                border: '1px solid rgba(249,115,22,0.2)',
+                background: 'linear-gradient(135deg, rgba(249,115,22,0.04), rgba(15,15,35,0.6))',
               }}
             >
               <svg
@@ -79,8 +79,8 @@ export default function SwarmTestimonials() {
 
               <figcaption className="flex items-center gap-3">
                 <div
-                  className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-[#0a0f2e] text-sm"
-                  style={{ background: 'linear-gradient(135deg, #C9A572, #AD7D4E)' }}
+                  className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-[#0F0F23] text-sm"
+                  style={{ background: 'linear-gradient(135deg, #FB923C, #F97316)' }}
                 >
                   {testimonial.initials}
                 </div>

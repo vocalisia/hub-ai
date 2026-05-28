@@ -26,7 +26,7 @@ function GraphViz() {
             y1={p.y}
             x2={n.x}
             y2={n.y}
-            stroke="rgba(201,165,114,0.5)"
+            stroke="rgba(249,115,22,0.5)"
             strokeWidth="1.2"
             strokeDasharray="3 3"
             initial={{ pathLength: 0, opacity: 0 }}
@@ -41,10 +41,10 @@ function GraphViz() {
           cx={n.x}
           cy={n.y}
           r={n.r}
-          fill="#C9A572"
+          fill="#FB923C"
           animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }}
           transition={{ duration: 2.5, delay: n.d, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ transformOrigin: `${n.x}px ${n.y}px`, filter: 'drop-shadow(0 0 5px #AD7D4E)' }}
+          style={{ transformOrigin: `${n.x}px ${n.y}px`, filter: 'drop-shadow(0 0 5px #F97316)' }}
         />
       ))}
     </svg>
@@ -58,10 +58,10 @@ function AgentsViz() {
         cx="100"
         cy="60"
         r="10"
-        fill="#AD7D4E"
+        fill="#F97316"
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 2, repeat: Infinity }}
-        style={{ transformOrigin: '100px 60px', filter: 'drop-shadow(0 0 10px #C9A572)' }}
+        style={{ transformOrigin: '100px 60px', filter: 'drop-shadow(0 0 10px #FB923C)' }}
       />
       {Array.from({ length: 10 }).map((_, i) => {
         const a = (i / 10) * Math.PI * 2
@@ -70,7 +70,7 @@ function AgentsViz() {
           <motion.circle
             key={i}
             r={3}
-            fill="#C9A572"
+            fill="#FB923C"
             initial={{ cx: 100 + Math.cos(a) * r, cy: 60 + Math.sin(a) * r }}
             animate={{
               cx: [100 + Math.cos(a) * r, 100 + Math.cos(a + 1) * r, 100 + Math.cos(a + 2) * r],
@@ -91,14 +91,14 @@ function MarketViz() {
     <svg viewBox="0 0 200 120" className="w-full h-full">
       <defs>
         <linearGradient id="mg" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#C9A572" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#AD7D4E" stopOpacity="0" />
+          <stop offset="0%" stopColor="#FB923C" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#F97316" stopOpacity="0" />
         </linearGradient>
       </defs>
       <motion.polyline
         points={points}
         fill="none"
-        stroke="#C9A572"
+        stroke="#FB923C"
         strokeWidth="2"
         strokeLinecap="round"
         initial={{ pathLength: 0 }}
@@ -115,10 +115,10 @@ function MarketViz() {
         cx="180"
         cy="15"
         r="4"
-        fill="#C9A572"
+        fill="#FB923C"
         animate={{ scale: [1, 1.6, 1] }}
         transition={{ duration: 1.2, repeat: Infinity }}
-        style={{ transformOrigin: '180px 15px', filter: 'drop-shadow(0 0 8px #C9A572)' }}
+        style={{ transformOrigin: '180px 15px', filter: 'drop-shadow(0 0 8px #FB923C)' }}
       />
     </svg>
   )
@@ -170,9 +170,9 @@ function ChatViz() {
             className="px-2 py-1 rounded-lg max-w-[80%]"
             style={{
               background:
-                m.side === 'r' ? 'linear-gradient(135deg, #C9A572, #AD7D4E)' : 'rgba(201,165,114,0.1)',
-              color: m.side === 'r' ? '#0a0f2e' : '#fff',
-              border: m.side === 'r' ? 'none' : '1px solid rgba(201,165,114,0.2)',
+                m.side === 'r' ? 'linear-gradient(135deg, #FB923C, #F97316)' : 'rgba(249,115,22,0.1)',
+              color: m.side === 'r' ? '#0F0F23' : '#fff',
+              border: m.side === 'r' ? 'none' : '1px solid rgba(249,115,22,0.2)',
             }}
           >
             {m.text}
@@ -287,7 +287,7 @@ export default function SwarmBento() {
         aria-hidden
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, transparent, rgba(201,165,114,0.02), transparent)',
+          background: 'linear-gradient(180deg, transparent, rgba(249,115,22,0.02), transparent)',
         }}
       />
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
@@ -320,16 +320,16 @@ export default function SwarmBento() {
               style={
                 p.featured
                   ? {
-                      border: '1.5px solid rgba(201,165,114,0.55)',
+                      border: '1.5px solid rgba(249,115,22,0.55)',
                       background:
-                        'linear-gradient(180deg, rgba(201,165,114,0.10), rgba(10,15,46,0.7))',
+                        'linear-gradient(180deg, rgba(249,115,22,0.10), rgba(15,15,35,0.7))',
                       boxShadow:
-                        '0 0 40px rgba(201,165,114,0.15), 0 15px 40px rgba(0,0,0,0.3)',
+                        '0 0 40px rgba(249,115,22,0.15), 0 15px 40px rgba(0,0,0,0.3)',
                     }
                   : {
-                      border: '1px solid rgba(201,165,114,0.18)',
+                      border: '1px solid rgba(249,115,22,0.18)',
                       background:
-                        'linear-gradient(135deg, rgba(201,165,114,0.03), rgba(10,15,46,0.5))',
+                        'linear-gradient(135deg, rgba(249,115,22,0.03), rgba(15,15,35,0.5))',
                     }
               }
             >
@@ -337,9 +337,9 @@ export default function SwarmBento() {
                 <div
                   className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-[1.5px] whitespace-nowrap"
                   style={{
-                    background: 'linear-gradient(135deg, #C9A572, #AD7D4E)',
-                    color: '#0a0f2e',
-                    boxShadow: '0 6px 15px rgba(201,165,114,0.3)',
+                    background: 'linear-gradient(135deg, #FB923C, #F97316)',
+                    color: '#0F0F23',
+                    boxShadow: '0 6px 15px rgba(249,115,22,0.3)',
                   }}
                 >
                   ★ Most popular
@@ -349,7 +349,7 @@ export default function SwarmBento() {
               <div className="flex items-baseline gap-1 mb-2 sm:mb-3">
                 <span
                   className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-none font-[Montserrat]"
-                  style={p.featured ? { color: '#C9A572' } : { color: '#fff' }}
+                  style={p.featured ? { color: '#FB923C' } : { color: '#fff' }}
                 >
                   {p.price}
                 </span>
@@ -378,7 +378,7 @@ export default function SwarmBento() {
               className={`luxury-card p-5 sm:p-6 flex flex-col overflow-hidden relative group ${card.span}`}
             >
               <div className="flex items-start justify-between mb-3">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-[rgba(201,165,114,0.3)] bg-[rgba(201,165,114,0.05)] text-gold">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-[rgba(249,115,22,0.3)] bg-[rgba(249,115,22,0.05)] text-gold">
                   {card.icon}
                 </div>
                 <div
@@ -404,8 +404,8 @@ export default function SwarmBento() {
               <div
                 className="flex-1 relative rounded-xl overflow-hidden flex items-center justify-center min-h-[100px] p-3"
                 style={{
-                  background: 'linear-gradient(180deg, rgba(10,15,46,0.4), rgba(10,15,46,0.85))',
-                  border: '1px solid rgba(201,165,114,0.1)',
+                  background: 'linear-gradient(180deg, rgba(15,15,35,0.4), rgba(15,15,35,0.85))',
+                  border: '1px solid rgba(249,115,22,0.1)',
                 }}
               >
                 {/* SceneAI Artificial cyborg+brain video — graph card only */}
@@ -424,7 +424,10 @@ export default function SwarmBento() {
                 {card.key === 'graph' && (
                   <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70 pointer-events-none" aria-hidden />
                 )}
-                <div className="relative z-10">{card.viz}</div>
+                {/* Hide GraphViz overlay on graph card — let brain video breathe */}
+                {card.key !== 'graph' && (
+                  <div className="relative z-10">{card.viz}</div>
+                )}
               </div>
             </motion.div>
           ))}

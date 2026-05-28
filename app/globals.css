@@ -8,19 +8,7 @@
 .alumica-section * { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
 .alumica-fade { opacity: 0; animation: alumica-fade-up 0.7s ease-out forwards; }
 .alumica-cta { position: relative; isolation: isolate; }
-.alumica-cta::before {
-  content: "";
-  position: absolute;
-  inset: -1.5px;
-  border-radius: 9999px;
-  padding: 1.5px;
-  background: conic-gradient(from 0deg, #ff8a00, #ea580c, #ff8a00, transparent 70%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  animation: alumica-rotate 4s linear infinite;
-}
+/* Rotating border disabled per user request */
 .alumica-grad-text {
   background: linear-gradient(180deg, #ffffff 0%, #a3a3a3 100%);
   -webkit-background-clip: text;

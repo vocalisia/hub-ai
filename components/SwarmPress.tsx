@@ -21,14 +21,14 @@ export default function SwarmPress() {
         aria-hidden
         className="absolute inset-x-0 top-0 h-px"
         style={{
-          background: 'linear-gradient(90deg, transparent, rgba(201,165,114,0.3), transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.3), transparent)',
         }}
       />
       <div
         aria-hidden
         className="absolute inset-x-0 bottom-0 h-px"
         style={{
-          background: 'linear-gradient(90deg, transparent, rgba(201,165,114,0.3), transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.3), transparent)',
         }}
       />
 
