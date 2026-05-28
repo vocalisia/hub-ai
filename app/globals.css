@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Alumica Hero (redesign-2026-v2) ===== */
+@keyframes alumica-rotate { to { transform: rotate(360deg); } }
+@keyframes alumica-fade-up { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+.alumica-section * { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+.alumica-fade { opacity: 0; animation: alumica-fade-up 0.7s ease-out forwards; }
+.alumica-cta { position: relative; isolation: isolate; }
+/* Rotating border disabled per user request */
+.alumica-grad-text {
+  background: linear-gradient(180deg, #ffffff 0%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.alumica-grad-orange {
+  background: linear-gradient(90deg, #ff8a00 0%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.alumica-badge {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
 * {
   margin: 0;
   padding: 0;

@@ -14,8 +14,8 @@ export default function Footer() {
       className="relative"
       style={{
         background:
-          'linear-gradient(180deg, #0a0f2e 0%, #060a22 100%)',
-        borderTop: '1px solid rgba(201,165,114,0.15)',
+          'linear-gradient(180deg, #0F0F23 0%, #060a22 100%)',
+        borderTop: '1px solid rgba(249,115,22,0.15)',
       }}
     >
       <div
@@ -23,7 +23,7 @@ export default function Footer() {
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            'linear-gradient(90deg, transparent, rgba(201,165,114,0.5), transparent)',
+            'linear-gradient(90deg, transparent, rgba(249,115,22,0.5), transparent)',
         }}
       />
 
@@ -55,7 +55,7 @@ export default function Footer() {
                   aria-label={s.name}
                   className="w-10 h-10 rounded-full flex items-center justify-center text-white/50 hover:text-gold transition-all"
                   style={{
-                    border: '1px solid rgba(201,165,114,0.15)',
+                    border: '1px solid rgba(249,115,22,0.15)',
                     background: 'rgba(255,255,255,0.02)',
                   }}
                 >
@@ -127,7 +127,7 @@ export default function Footer() {
 
         <div
           className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4"
-          style={{ borderTop: '1px solid rgba(201,165,114,0.1)' }}
+          style={{ borderTop: '1px solid rgba(249,115,22,0.1)' }}
         >
           <p className="text-white/40 text-xs text-center md:text-left">
             © {currentYear} AI-DUE. All rights reserved. Made in Switzerland.

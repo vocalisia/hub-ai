@@ -26,8 +26,8 @@ function SwarmCore() {
       <mesh ref={coreRef}>
         <Icosahedron args={[1.3, 1]}>
           <MeshDistortMaterial
-            color="#AD7D4E"
-            emissive="#C9A572"
+            color="#F97316"
+            emissive="#FB923C"
             emissiveIntensity={0.4}
             roughness={0.15}
             metalness={0.95}
@@ -40,7 +40,7 @@ function SwarmCore() {
       <mesh scale={1.6}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshBasicMaterial
-          color="#AD7D4E"
+          color="#F97316"
           transparent
           opacity={0.05}
           side={THREE.BackSide}
@@ -50,7 +50,7 @@ function SwarmCore() {
       <mesh scale={1.4}>
         <icosahedronGeometry args={[1, 1]} />
         <meshBasicMaterial
-          color="#C9A572"
+          color="#FB923C"
           wireframe
           transparent
           opacity={0.25}
@@ -96,8 +96,8 @@ function OrbitingAgents() {
         <mesh key={i}>
           <sphereGeometry args={[agent.size, 12, 12]} />
           <meshStandardMaterial
-            color="#C9A572"
-            emissive="#AD7D4E"
+            color="#FB923C"
+            emissive="#F97316"
             emissiveIntensity={0.8}
             metalness={0.9}
             roughness={0.1}
@@ -134,8 +134,8 @@ function OrbitingRings() {
       <mesh ref={ring1}>
         <torusGeometry args={[1.9, 0.02, 16, 100]} />
         <meshStandardMaterial
-          color="#AD7D4E"
-          emissive="#AD7D4E"
+          color="#F97316"
+          emissive="#F97316"
           emissiveIntensity={1}
           transparent
           opacity={0.7}
@@ -144,8 +144,8 @@ function OrbitingRings() {
       <mesh ref={ring2}>
         <torusGeometry args={[2.2, 0.015, 16, 100]} />
         <meshStandardMaterial
-          color="#C9A572"
-          emissive="#C9A572"
+          color="#FB923C"
+          emissive="#FB923C"
           emissiveIntensity={1.2}
           transparent
           opacity={0.5}
@@ -154,8 +154,8 @@ function OrbitingRings() {
       <mesh ref={ring3}>
         <torusGeometry args={[2.5, 0.01, 16, 100]} />
         <meshStandardMaterial
-          color="#AD7D4E"
-          emissive="#AD7D4E"
+          color="#F97316"
+          emissive="#F97316"
           emissiveIntensity={0.8}
           transparent
           opacity={0.3}
@@ -184,9 +184,9 @@ export default function Logo3D({ size = 'large' }: { size?: 'large' | 'small' })
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.2} />
-          <directionalLight position={[5, 5, 5]} intensity={1.5} color="#C9A572" />
-          <directionalLight position={[-5, -5, 5]} intensity={0.8} color="#AD7D4E" />
-          <pointLight position={[0, 0, 3]} intensity={2} color="#C9A572" />
+          <directionalLight position={[5, 5, 5]} intensity={1.5} color="#FB923C" />
+          <directionalLight position={[-5, -5, 5]} intensity={0.8} color="#F97316" />
+          <pointLight position={[0, 0, 3]} intensity={2} color="#FB923C" />
 
           <Float speed={1.8} rotationIntensity={0.3} floatIntensity={0.4}>
             <SwarmCore />
@@ -194,7 +194,7 @@ export default function Logo3D({ size = 'large' }: { size?: 'large' | 'small' })
 
           <OrbitingRings />
           <OrbitingAgents />
-          <Sparkles count={40} scale={5} size={2} speed={0.4} color="#C9A572" />
+          <Sparkles count={40} scale={5} size={2} speed={0.4} color="#FB923C" />
         </Suspense>
       </Canvas>
     </div>

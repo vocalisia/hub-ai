@@ -102,15 +102,15 @@ export default function SwarmWorkflow() {
             className="hidden md:block absolute left-[10%] right-[10%] top-[60px] h-px"
             style={{
               background:
-                'linear-gradient(90deg, transparent, rgba(201,165,114,0.5) 20%, rgba(201,165,114,0.5) 80%, transparent)',
+                'linear-gradient(90deg, transparent, rgba(249,115,22,0.5) 20%, rgba(249,115,22,0.5) 80%, transparent)',
             }}
           />
           <motion.div
             aria-hidden
             className="hidden md:block absolute top-[58px] w-3 h-3 rounded-full"
             style={{
-              background: '#C9A572',
-              boxShadow: '0 0 15px #C9A572, 0 0 30px #C9A572',
+              background: '#FB923C',
+              boxShadow: '0 0 15px #FB923C, 0 0 30px #FB923C',
               left: '10%',
             }}
             animate={{ left: ['10%', '90%'] }}
@@ -131,7 +131,7 @@ export default function SwarmWorkflow() {
                   <motion.div
                     className="absolute inset-0 rounded-full"
                     style={{
-                      background: 'linear-gradient(135deg, #C9A572, #AD7D4E)',
+                      background: 'linear-gradient(135deg, #FB923C, #F97316)',
                       filter: 'blur(20px)',
                       opacity: 0.4,
                     }}
@@ -141,18 +141,18 @@ export default function SwarmWorkflow() {
                   <div
                     className="relative w-[90px] h-[90px] rounded-full flex items-center justify-center"
                     style={{
-                      background: 'radial-gradient(circle at 30% 30%, #1a2560, #0a0f2e)',
-                      border: '2px solid rgba(201,165,114,0.5)',
-                      boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 30px rgba(201,165,114,0.1)',
+                      background: 'radial-gradient(circle at 30% 30%, #1a2560, #0F0F23)',
+                      border: '2px solid rgba(249,115,22,0.5)',
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 30px rgba(249,115,22,0.1)',
                     }}
                   >
                     <div className="text-gold">{step.icon}</div>
                     <div
                       className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-extrabold font-[Montserrat]"
                       style={{
-                        background: 'linear-gradient(135deg, #C9A572, #AD7D4E)',
-                        color: '#0a0f2e',
-                        boxShadow: '0 4px 12px rgba(201,165,114,0.4)',
+                        background: 'linear-gradient(135deg, #FB923C, #F97316)',
+                        color: '#0F0F23',
+                        boxShadow: '0 4px 12px rgba(249,115,22,0.4)',
                       }}
                     >
                       {String(i + 1).padStart(2, '0')}
@@ -163,8 +163,8 @@ export default function SwarmWorkflow() {
                 <div
                   className="inline-flex items-baseline gap-1 px-2.5 py-1 rounded-full mb-3"
                   style={{
-                    background: 'rgba(201,165,114,0.08)',
-                    border: '1px solid rgba(201,165,114,0.25)',
+                    background: 'rgba(249,115,22,0.08)',
+                    border: '1px solid rgba(249,115,22,0.25)',
                   }}
                 >
                   <span className="text-sm font-bold text-gold font-mono">{step.metric}</span>
@@ -187,7 +187,7 @@ export default function SwarmWorkflow() {
                     animate={{ y: [0, 6, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A572" strokeWidth="2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FB923C" strokeWidth="2">
                       <path d="M12 5v14M5 12l7 7 7-7" />
                     </svg>
                   </motion.div>
@@ -212,8 +212,8 @@ export default function SwarmWorkflow() {
               key={s.l}
               className="rounded-2xl p-4 text-center"
               style={{
-                border: '1px solid rgba(201,165,114,0.18)',
-                background: 'linear-gradient(135deg, rgba(201,165,114,0.04), rgba(10,15,46,0.5))',
+                border: '1px solid rgba(249,115,22,0.18)',
+                background: 'linear-gradient(135deg, rgba(249,115,22,0.04), rgba(15,15,35,0.5))',
               }}
             >
               <div className="text-2xl sm:text-3xl font-extrabold gradient-text-luxury font-[Montserrat]">

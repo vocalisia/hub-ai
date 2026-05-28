@@ -25,14 +25,14 @@ export default function SwarmHero() {
         aria-hidden
         className="absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse at top, #1a2560 0%, #0a0f2e 60%)',
+          background: 'radial-gradient(ellipse at top, #1a2560 0%, #0F0F23 60%)',
         }}
       />
       <div
         aria-hidden
         className="absolute -top-1/2 -left-[20%] w-[140%] h-[200%] pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(201,165,114,0.08) 0%, transparent 50%)',
+          background: 'radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 50%)',
         }}
       />
 
@@ -45,10 +45,10 @@ export default function SwarmHero() {
             style={{
               width: `${Math.random() * 3 + 1}px`,
               height: `${Math.random() * 3 + 1}px`,
-              background: '#AD7D4E',
+              background: '#F97316',
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              boxShadow: '0 0 10px #AD7D4E',
+              boxShadow: '0 0 10px #F97316',
             }}
             animate={{
               y: [0, -40, 0],
@@ -70,7 +70,7 @@ export default function SwarmHero() {
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            'linear-gradient(#AD7D4E 1px, transparent 1px), linear-gradient(90deg, #AD7D4E 1px, transparent 1px)',
+            'linear-gradient(#F97316 1px, transparent 1px), linear-gradient(90deg, #F97316 1px, transparent 1px)',
           backgroundSize: '80px 80px',
         }}
       />
@@ -147,7 +147,7 @@ export default function SwarmHero() {
               aria-hidden
               className="absolute inset-0 rounded-full blur-[60px] opacity-50"
               style={{
-                background: 'radial-gradient(circle, rgba(201,165,114,0.5), transparent 60%)',
+                background: 'radial-gradient(circle, rgba(249,115,22,0.5), transparent 60%)',
               }}
             />
             <div className="relative w-full max-w-[280px] sm:max-w-[400px] lg:max-w-[520px] aspect-square">
@@ -163,9 +163,9 @@ export default function SwarmHero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-12 md:mt-24 border-y py-7 sm:py-10 grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-6 text-center"
           style={{
-            borderColor: 'rgba(201, 165, 114, 0.2)',
+            borderColor: 'rgba(249, 115, 22, 0.2)',
             background:
-              'linear-gradient(135deg, rgba(201,165,114,0.05), rgba(201,165,114,0.01))',
+              'linear-gradient(135deg, rgba(249,115,22,0.05), rgba(249,115,22,0.01))',
           }}
         >
           {stats.map((s, i) => (

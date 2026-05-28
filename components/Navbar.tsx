@@ -44,9 +44,9 @@ export default function Navbar() {
     <nav
       className="sticky top-0 z-50"
       style={{
-        background: 'rgba(10,15,46,0.96)',
+        background: 'rgba(15,15,35,0.96)',
         backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid rgba(201,165,114,0.15)',
+        borderBottom: '1px solid rgba(249,115,22,0.15)',
       }}
     >
       <div className="max-w-[1200px] mx-auto px-[5%]">
@@ -74,7 +74,7 @@ export default function Navbar() {
                       ? 'text-gold font-semibold'
                       : 'text-white/82 hover:text-gold'
                   }`}
-                  style={{ color: isActive ? '#AD7D4E' : 'rgba(255,255,255,0.82)' }}
+                  style={{ color: isActive ? '#F97316' : 'rgba(255,255,255,0.82)' }}
                 >
                   {item.label}
                 </Link>
@@ -91,7 +91,7 @@ export default function Navbar() {
                 style={{
                   background: 'transparent',
                   border: '1px solid rgba(173,125,78,0.35)',
-                  color: '#AD7D4E',
+                  color: '#F97316',
                 }}
               >
                 {locale.toUpperCase()}
@@ -136,7 +136,7 @@ export default function Navbar() {
             <Link
               href={`/${locale}/tarifs`}
               className="hidden lg:inline-flex items-center px-5 py-2 rounded-full text-[13px] font-bold transition-opacity hover:opacity-90"
-              style={{ background: '#AD7D4E', color: '#0a0f2e' }}
+              style={{ background: '#F97316', color: '#0F0F23' }}
             >
               {t('pricing')}
             </Link>
@@ -150,18 +150,18 @@ export default function Navbar() {
               <span
                 className="block w-6 h-[2.5px] rounded-sm transition-all duration-300"
                 style={{
-                  background: '#AD7D4E',
+                  background: '#F97316',
                   transform: mobileOpen ? 'translateY(7.5px) rotate(45deg)' : 'none',
                 }}
               />
               <span
                 className="block w-6 h-[2.5px] rounded-sm transition-all duration-300"
-                style={{ background: '#AD7D4E', opacity: mobileOpen ? 0 : 1 }}
+                style={{ background: '#F97316', opacity: mobileOpen ? 0 : 1 }}
               />
               <span
                 className="block w-6 h-[2.5px] rounded-sm transition-all duration-300"
                 style={{
-                  background: '#AD7D4E',
+                  background: '#F97316',
                   transform: mobileOpen ? 'translateY(-7.5px) rotate(-45deg)' : 'none',
                 }}
               />

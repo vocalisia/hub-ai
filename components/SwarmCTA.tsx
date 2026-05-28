@@ -15,7 +15,7 @@ export default function SwarmCTA() {
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse at center, rgba(201,165,114,0.15), transparent 60%)',
+            'radial-gradient(ellipse at center, rgba(249,115,22,0.15), transparent 60%)',
         }}
       />
       <motion.div

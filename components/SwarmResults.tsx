@@ -7,10 +7,10 @@ type Bar = { label: string; value: number; color: string }
 
 const RESULTS = {
   accuracy: [
-    { label: 'Sentiment polarity', value: 89, color: '#C9A572' },
-    { label: 'Trend direction', value: 84, color: '#C9A572' },
-    { label: 'Risk identification', value: 78, color: '#C9A572' },
-    { label: 'Audience segmentation', value: 92, color: '#C9A572' },
+    { label: 'Sentiment polarity', value: 89, color: '#FB923C' },
+    { label: 'Trend direction', value: 84, color: '#FB923C' },
+    { label: 'Risk identification', value: 78, color: '#FB923C' },
+    { label: 'Audience segmentation', value: 92, color: '#FB923C' },
   ] as readonly Bar[],
   benchmarks: [
     { metric: 'Time to insight', before: '4-6 weeks', after: '< 5 min', delta: '-99%' },
@@ -53,8 +53,8 @@ export default function SwarmResults() {
           <div
             className="rounded-3xl p-6 sm:p-8"
             style={{
-              border: '1px solid rgba(201,165,114,0.2)',
-              background: 'linear-gradient(135deg, rgba(201,165,114,0.04), rgba(10,15,46,0.6))',
+              border: '1px solid rgba(249,115,22,0.2)',
+              background: 'linear-gradient(135deg, rgba(249,115,22,0.04), rgba(15,15,35,0.6))',
             }}
           >
             <div className="flex items-center justify-between mb-6">
@@ -85,8 +85,8 @@ export default function SwarmResults() {
                     <motion.div
                       className="h-full rounded-full"
                       style={{
-                        background: `linear-gradient(90deg, #C9A572, #AD7D4E)`,
-                        boxShadow: '0 0 10px rgba(201,165,114,0.5)',
+                        background: `linear-gradient(90deg, #FB923C, #F97316)`,
+                        boxShadow: '0 0 10px rgba(249,115,22,0.5)',
                       }}
                       initial={{ width: 0 }}
                       animate={{ width: `${bar.value}%` }}
@@ -99,7 +99,7 @@ export default function SwarmResults() {
 
             <div
               className="mt-6 pt-4 text-[11px] text-white/45 leading-relaxed"
-              style={{ borderTop: '1px solid rgba(201,165,114,0.1)' }}
+              style={{ borderTop: '1px solid rgba(249,115,22,0.1)' }}
             >
               {t('chart_methodology')}
             </div>
@@ -109,8 +109,8 @@ export default function SwarmResults() {
           <div
             className="rounded-3xl p-6 sm:p-8"
             style={{
-              border: '1px solid rgba(201,165,114,0.2)',
-              background: 'linear-gradient(135deg, rgba(201,165,114,0.04), rgba(10,15,46,0.6))',
+              border: '1px solid rgba(249,115,22,0.2)',
+              background: 'linear-gradient(135deg, rgba(249,115,22,0.04), rgba(15,15,35,0.6))',
             }}
           >
             <div className="mb-6">
@@ -128,12 +128,12 @@ export default function SwarmResults() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
                   className="py-3 sm:grid sm:grid-cols-[1fr_auto_auto_auto] sm:items-center sm:gap-3"
-                  style={{ borderBottom: i < RESULTS.benchmarks.length - 1 ? '1px solid rgba(201,165,114,0.08)' : 'none' }}
+                  style={{ borderBottom: i < RESULTS.benchmarks.length - 1 ? '1px solid rgba(249,115,22,0.08)' : 'none' }}
                 >
                   <div className="text-sm font-medium text-white mb-1.5 sm:mb-0">{b.metric}</div>
                   <div className="flex items-center gap-2 text-xs">
                     <span className="text-white/45 line-through font-mono">{b.before}</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A572" strokeWidth="2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FB923C" strokeWidth="2">
                       <path d="M5 12h14M13 6l6 6-6 6" />
                     </svg>
                     <span className="font-bold text-gold font-mono">{b.after}</span>
@@ -144,7 +144,7 @@ export default function SwarmResults() {
 
             <div
               className="mt-6 pt-4 flex items-center justify-between"
-              style={{ borderTop: '1px solid rgba(201,165,114,0.1)' }}
+              style={{ borderTop: '1px solid rgba(249,115,22,0.1)' }}
             >
               <span className="text-[11px] text-white/50 uppercase tracking-wider">
                 {t('bench_overall')}

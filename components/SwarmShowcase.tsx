@@ -64,8 +64,8 @@ export default function SwarmShowcase() {
               whileHover={{ y: -8 }}
               className="group relative overflow-hidden rounded-2xl"
               style={{
-                border: '1px solid rgba(201,165,114,0.2)',
-                background: 'linear-gradient(135deg, rgba(201,165,114,0.04), rgba(10,15,46,0.8))',
+                border: '1px solid rgba(249,115,22,0.2)',
+                background: 'linear-gradient(135deg, rgba(249,115,22,0.04), rgba(15,15,35,0.8))',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
               }}
             >
@@ -81,16 +81,16 @@ export default function SwarmShowcase() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      'linear-gradient(180deg, transparent 0%, rgba(10,15,46,0.4) 60%, rgba(10,15,46,0.95) 100%)',
+                      'linear-gradient(180deg, transparent 0%, rgba(15,15,35,0.4) 60%, rgba(15,15,35,0.95) 100%)',
                   }}
                 />
                 <div className="absolute top-4 left-4">
                   <span
                     className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider"
                     style={{
-                      background: 'rgba(201,165,114,0.15)',
-                      border: '1px solid rgba(201,165,114,0.4)',
-                      color: '#C9A572',
+                      background: 'rgba(249,115,22,0.15)',
+                      border: '1px solid rgba(249,115,22,0.4)',
+                      color: '#FB923C',
                       backdropFilter: 'blur(10px)',
                     }}
                   >
