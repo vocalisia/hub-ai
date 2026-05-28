@@ -316,15 +316,15 @@ export default function SwarmBento() {
             <Link
               key={p.key}
               href={`/${locale}/paiement?plan=${p.key}`}
-              className="group relative rounded-2xl p-3 sm:p-4 md:p-5 transition-all hover:-translate-y-1"
+              className={`group relative rounded-2xl p-3 sm:p-4 md:p-5 transition-all hover:-translate-y-1 plan-blink ${p.featured ? 'plan-featured md:scale-110 md:-translate-y-2 z-10' : ''}`}
               style={
                 p.featured
                   ? {
-                      border: '1.5px solid rgba(249,115,22,0.55)',
+                      border: '2px solid rgba(249,115,22,0.8)',
                       background:
-                        'linear-gradient(180deg, rgba(249,115,22,0.10), rgba(15,15,35,0.7))',
+                        'linear-gradient(180deg, rgba(249,115,22,0.18), rgba(147,51,234,0.10), rgba(15,15,35,0.85))',
                       boxShadow:
-                        '0 0 40px rgba(249,115,22,0.15), 0 15px 40px rgba(0,0,0,0.3)',
+                        '0 0 60px rgba(249,115,22,0.35), 0 0 100px rgba(147,51,234,0.18), 0 20px 50px rgba(0,0,0,0.5)',
                     }
                   : {
                       border: '1px solid rgba(249,115,22,0.18)',
@@ -335,11 +335,11 @@ export default function SwarmBento() {
             >
               {p.featured && (
                 <div
-                  className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-[1.5px] whitespace-nowrap"
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-[1.5px] whitespace-nowrap plan-badge-pulse"
                   style={{
-                    background: 'linear-gradient(135deg, #FB923C, #F97316)',
-                    color: '#0F0F23',
-                    boxShadow: '0 6px 15px rgba(249,115,22,0.3)',
+                    background: 'linear-gradient(135deg, #F97316, #9333EA)',
+                    color: '#fff',
+                    boxShadow: '0 8px 24px rgba(249,115,22,0.5), 0 0 30px rgba(147,51,234,0.4)',
                   }}
                 >
                   ★ Most popular
