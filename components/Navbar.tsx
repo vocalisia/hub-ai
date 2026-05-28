@@ -51,15 +51,18 @@ export default function Navbar() {
     >
       <div className="max-w-[1200px] mx-auto px-[5%]">
         <div className="flex items-center justify-between h-[68px] gap-4">
-          {/* Logo — DS 2026 minimalist brain glyph */}
+          {/* Logo animé — DS 2026 brain glyph with pulse + rotating gradient ring */}
           <Link href={`/${locale}`} className="flex items-center gap-2.5 group shrink-0">
-            <div className="w-9 h-9 rounded-xl grid place-items-center transition-transform group-hover:scale-110"
-              style={{ background: 'linear-gradient(135deg, #F97316 0%, #9333EA 100%)', boxShadow: '0 8px 22px rgba(147,51,234,0.35)' }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
-                <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
-              </svg>
+            <div className="logo-anim relative w-10 h-10 rounded-xl grid place-items-center transition-transform group-hover:scale-110">
+              <div className="logo-anim-ring absolute inset-0 rounded-xl" aria-hidden />
+              <div className="logo-anim-core absolute inset-[2px] rounded-[10px] grid place-items-center"
+                style={{ background: 'linear-gradient(135deg, #F97316 0%, #9333EA 100%)' }}
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="logo-anim-pulse">
+                  <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
+                  <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
+                </svg>
+              </div>
             </div>
             <span className="text-white font-extrabold text-lg tracking-tight">
               AI-<span style={{ background: 'linear-gradient(90deg, #F97316, #9333EA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>DUE</span>
