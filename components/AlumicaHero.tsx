@@ -1,65 +1,32 @@
 'use client'
-// Hero based on SceneAI "Alumica" blueprint
-// Video re-enabled with smart lazy-load: image as poster (instant LCP),
-// video mounted after requestIdleCallback, skipped on slow connections.
+// Hero based on SceneAI "Alumica" blueprint.
+// Background video loads immediately. No poster image fallback to avoid
+// visible swap on slow connections. Black background acts as natural
+// placeholder while video buffers (~1-2s on 4G).
 import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 
 const HERO_VIDEO = 'https://cdn.sceneai.art/backgrounds/5443dc2c-dd3e-4de2-8725-6cc65c48bff8.mp4'
 
 export default function AlumicaHero() {
   const t = useTranslations('swarm.hero')
   const locale = useLocale()
-  const [mountVideo, setMountVideo] = useState(false)
-  const [videoReady, setVideoReady] = useState(false)
-
-  useEffect(() => {
-    const nav = navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }
-    const conn = nav.connection
-    if (conn?.saveData) return
-    if (conn?.effectiveType && ['slow-2g', '2g', '3g'].includes(conn.effectiveType)) return
-
-    const win = window as Window & {
-      requestIdleCallback?: (cb: () => void, opts?: { timeout?: number }) => number
-      cancelIdleCallback?: (handle: number) => void
-    }
-    const idle = win.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 1500) as unknown as number)
-    const handle = idle(() => setMountVideo(true), { timeout: 2500 })
-    return () => {
-      if (win.cancelIdleCallback && typeof handle === 'number') win.cancelIdleCallback(handle)
-    }
-  }, [])
 
   return (
     <section className="alumica-section relative w-full overflow-hidden bg-black min-h-screen flex items-center">
 
-      {/* Layer 0: Poster image (LCP-friendly, stays behind video) */}
-      <Image
-        src="/images/hero/hero-swarm.png"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
+      {/* Layer 1: Background video (loads immediately, black bg while buffering) */}
+      <video
+        src={HERO_VIDEO}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
         aria-hidden
+        className="absolute inset-0 w-full h-full object-cover"
       />
-
-      {/* Layer 1: Background video (lazy-mounted, fades in onCanPlay) */}
-      {mountVideo && (
-        <video
-          src={HERO_VIDEO}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-hidden
-          onCanPlay={() => setVideoReady(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
-        />
-      )}
 
       {/* Layer 2: 40% black overlay */}
       <div className="absolute inset-0 bg-black/40 z-[1]" aria-hidden />
