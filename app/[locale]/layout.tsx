@@ -111,7 +111,7 @@ export default async function LocaleLayout({
           fetchPriority="high"
         />
         <meta property="og:image" content="https://ai-due.com/api/og" />
-        {/* Schema.org JSON-LD */}
+        {/* E-E-A-T enriched schema — Organization + Person (Laurent Duplat) — Sprint 2026-05-29 */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -119,41 +119,51 @@ export default async function LocaleLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
+                "@id": "https://ai-due.com/#website",
                 "name": "AI-Due",
                 "url": "https://ai-due.com",
                 "description": "AI Architecture & Intelligent Systems — Switzerland, Europe, Canada, USA",
                 "inLanguage": [locale],
+                "publisher": { "@id": "https://ai-due.com/#organization" },
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": `https://ai-due.com/${locale}/blog?q={search_term_string}`,
                   "query-input": "required name=search_term_string"
                 },
-                "author": {
-                  "@type": "Person",
-                  "name": "Laurent Duplat",
-                  "url": "https://ai-due.com/about",
-                  "jobTitle": "Publication Director",
-                  "sameAs": ["https://www.linkedin.com/in/laurentduplat/"]
-                }
+                "author": { "@id": "https://ai-due.com/#laurent-duplat" }
               },
               {
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 "@id": "https://ai-due.com/#organization",
                 "name": "AI-Due",
+                "alternateName": "AI Due — AI Architecture Platform",
                 "url": "https://ai-due.com",
-                "logo": {"@type": "ImageObject", "url": "https://ai-due.com/favicon.svg", "width": 512, "height": 512},
+                "logo": { "@type": "ImageObject", "url": "https://ai-due.com/favicon.svg", "width": 512, "height": 512 },
+                "image": { "@type": "ImageObject", "url": "https://ai-due.com/api/og", "width": 1200, "height": 630 },
                 "description": "AI Architecture & Intelligent Systems — Strategic consulting, training and AI integration for businesses in Switzerland, Europe, Canada and USA.",
                 "email": "contact@ai-due.com",
-                "founder": {
-                  "@type": "Person",
-                  "name": "Laurent Duplat",
-                  "url": "https://ai-due.com/about",
-                  "jobTitle": "Publication Director",
-                  "sameAs": ["https://www.linkedin.com/in/laurentduplat/"]
-                },
+                "foundingDate": "2023",
+                "founder": { "@id": "https://ai-due.com/#laurent-duplat" },
                 "areaServed": ["Switzerland", "Europe", "Canada", "United States"],
                 "knowsLanguage": ["fr", "en", "de", "it"],
+                "knowsAbout": [
+                  "AI architecture",
+                  "Multi-agent systems",
+                  "AI integration for SMB",
+                  "LLM orchestration",
+                  "Strategic AI consulting",
+                  "AI training",
+                  "RAG systems",
+                  "AI agents",
+                  "Knowledge graphs",
+                  "MLOps"
+                ],
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressCountry": "CH",
+                  "addressRegion": "Switzerland"
+                },
                 "sameAs": [
                   "https://www.linkedin.com/company/ai-due",
                   "https://twitter.com/ai_due_com",
@@ -164,7 +174,46 @@ export default async function LocaleLayout({
                   "email": "contact@ai-due.com",
                   "contactType": "customer support",
                   "availableLanguage": ["French", "English", "German", "Italian"]
-                }
+                },
+                "publishingPrinciples": "https://ai-due.com/about",
+                "ethicsPolicy": "https://ai-due.com/about",
+                "correctionsPolicy": "https://ai-due.com/contact",
+                "diversityPolicy": "https://ai-due.com/about",
+                "actionableFeedbackPolicy": "https://ai-due.com/contact"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "@id": "https://ai-due.com/#laurent-duplat",
+                "name": "Laurent Duplat",
+                "url": "https://ai-due.com/about",
+                "jobTitle": "Publication Director",
+                "description": "Publication Director of AI-Due — AI architect and consultant in multi-agent systems, RAG and strategic AI integration for businesses.",
+                "image": {
+                  "@type": "ImageObject",
+                  "url": "https://ai-due.com/authors/laurent-duplat.jpg",
+                  "width": 400,
+                  "height": 400
+                },
+                "nationality": { "@type": "Country", "name": "France" },
+                "worksFor": { "@id": "https://ai-due.com/#organization" },
+                "knowsAbout": [
+                  "AI architecture",
+                  "Multi-agent systems",
+                  "LLM orchestration",
+                  "RAG systems",
+                  "AI consulting",
+                  "Strategic AI",
+                  "Knowledge graphs",
+                  "AI integration",
+                  "AI training"
+                ],
+                "knowsLanguage": ["French", "English"],
+                "sameAs": [
+                  "https://www.linkedin.com/in/laurentduplat/",
+                  "https://x.com/laurent_duplat",
+                  "https://github.com/laurentduplat"
+                ]
               }
             ])
           }}
