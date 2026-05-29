@@ -211,7 +211,7 @@ export default async function LocaleLayout({
                 "knowsLanguage": ["French", "English"],
                 "sameAs": [
                   "https://www.linkedin.com/in/vocalisia/",
-                  "https://x.com/vocalisia",
+                  "https://x.com/VocalisAi",
                   "https://github.com/laurentduplat"
                 ]
               }
