@@ -210,8 +210,8 @@ export default async function LocaleLayout({
                 ],
                 "knowsLanguage": ["French", "English"],
                 "sameAs": [
-                  "https://www.linkedin.com/in/laurentduplat/",
-                  "https://x.com/laurent_duplat",
+                  "https://www.linkedin.com/in/vocalisia/",
+                  "https://x.com/vocalisia",
                   "https://github.com/laurentduplat"
                 ]
               }
