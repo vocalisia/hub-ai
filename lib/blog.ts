@@ -8,6 +8,7 @@ export interface BlogPost {
   slug: string
   title: string
   date: string
+  dateModified: string
   category: string
   tags: string[]
   geo: {
@@ -62,6 +63,7 @@ export function getAllPosts(locale: string = 'fr'): BlogPost[] {
         slug: data.slug,
         title,
         date: data.date,
+        dateModified: data.dateModified || data.date,
         category: data.category,
         tags: data.tags || [],
         geo: data.geo,

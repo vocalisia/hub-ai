@@ -85,8 +85,16 @@ export default function BlogPostPage({
                   "@type": "Article",
                   "headline": post.title,
                   "datePublished": post.date,
-                  "author": { "@type": "Person", "name": "Laurent Duplat", "url": "https://ai-due.com/about" },
-                  "dateModified": post.date,
+                  "author": {
+                    "@type": "Person",
+                    "name": "Laurent Duplat",
+                    "url": "https://ai-due.com/about",
+                    "sameAs": [
+                      "https://www.linkedin.com/in/vocalisia/",
+                      "https://x.com/VocalisAi"
+                    ]
+                  },
+                  "dateModified": post.dateModified || post.date,
                   "mainEntityOfPage": {
                     "@type": "WebPage",
                     "@id": `https://ai-due.com/${params.locale}/blog/${params.slug}`
