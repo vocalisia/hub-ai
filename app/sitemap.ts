@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
+import matter from 'gray-matter'
 
 const BASE_URL = 'https://ai-due.com'
 const LOCALES = ['en', 'fr', 'de', 'it'] as const
-const DEFAULT_LOCALE = 'en'
+const DEFAULT_LOCALE = 'fr'
 
 type Locale = (typeof LOCALES)[number]
 
@@ -62,10 +63,11 @@ function readBlogSlugsForLocale(locale: Locale): { slug: string; lastModified: D
   if (!dir) return []
 
   const entries = fs.readdirSync(dir, { withFileTypes: true })
+  const seen = new Set<string>()
   return entries
     .filter((e) => e.isFile() && e.name.endsWith('.mdx'))
-    .map((e) => {
-      const slug = e.name.replace(/\.mdx$/, '')
+    .flatMap((e) => {
+      const fallbackSlug = e.name.replace(/\.mdx$/, '')
       const filePath = path.join(dir, e.name)
       let lastModified: Date
       try {
@@ -73,25 +75,59 @@ function readBlogSlugsForLocale(locale: Locale): { slug: string; lastModified: D
       } catch {
         lastModified = new Date()
       }
-      return { slug, lastModified }
+      try {
+        const raw = fs.readFileSync(filePath, 'utf8')
+        const { data } = matter(raw)
+        const slug = String(data.slug || fallbackSlug).trim()
+        if (!slug || seen.has(slug)) return []
+        seen.add(slug)
+        return [{ slug, lastModified }]
+      } catch {
+        if (seen.has(fallbackSlug)) return []
+        seen.add(fallbackSlug)
+        return [{ slug: fallbackSlug, lastModified }]
+      }
     })
+}
+
+function encodePath(pathSegment: string): string {
+  return pathSegment
+    .split('/')
+    .map((segment) => encodeURIComponent(segment))
+    .join('/')
+}
+
+function makeUrl(locale: Locale, pathSegment: string): string {
+  return pathSegment
+    ? `${BASE_URL}/${locale}/${encodePath(pathSegment)}`
+    : `${BASE_URL}/${locale}`
 }
 
 /**
  * Build hreflang alternates map for a given path.
- * Includes all 4 locales + x-default → English.
+ * Includes all 4 locales + x-default to French.
  */
 function buildAlternates(pathSegment: string): Record<string, string> {
   const langs: Record<string, string> = {}
   for (const loc of LOCALES) {
-    const url = pathSegment
-      ? `${BASE_URL}/${loc}/${pathSegment}`
-      : `${BASE_URL}/${loc}`
-    langs[loc] = url
+    langs[loc] = makeUrl(loc, pathSegment)
   }
   langs['x-default'] = pathSegment
-    ? `${BASE_URL}/${DEFAULT_LOCALE}/${pathSegment}`
+    ? makeUrl(DEFAULT_LOCALE, pathSegment)
     : `${BASE_URL}/${DEFAULT_LOCALE}`
+  return langs
+}
+
+function buildBlogAlternates(slug: string, slugsByLocale: Record<Locale, Set<string>>): Record<string, string> {
+  const langs: Record<string, string> = {}
+  for (const loc of LOCALES) {
+    if (slugsByLocale[loc].has(slug)) {
+      langs[loc] = makeUrl(loc, `blog/${slug}`)
+    }
+  }
+  if (slugsByLocale[DEFAULT_LOCALE].has(slug)) {
+    langs['x-default'] = makeUrl(DEFAULT_LOCALE, `blog/${slug}`)
+  }
   return langs
 }
 
@@ -102,9 +138,7 @@ function makeEntry(
   changeFrequency: PageDef['changeFrequency'],
   priority: number,
 ): MetadataRoute.Sitemap[number] {
-  const url = pathSegment
-    ? `${BASE_URL}/${locale}/${pathSegment}`
-    : `${BASE_URL}/${locale}`
+  const url = makeUrl(locale, pathSegment)
   return {
     url,
     lastModified,
@@ -119,6 +153,12 @@ function makeEntry(
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = []
   const lastDeploy = new Date('2026-04-24')
+  const postsByLocale = Object.fromEntries(
+    LOCALES.map((locale) => [locale, readBlogSlugsForLocale(locale)])
+  ) as Record<Locale, { slug: string; lastModified: Date }[]>
+  const slugsByLocale = Object.fromEntries(
+    LOCALES.map((locale) => [locale, new Set(postsByLocale[locale].map((post) => post.slug))])
+  ) as Record<Locale, Set<string>>
 
   // 1. Static pages × 4 locales
   for (const page of STATIC_PAGES) {
@@ -153,10 +193,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 4. Blog articles - only emit URL for locales where content actually exists
   for (const locale of LOCALES) {
-    const posts = readBlogSlugsForLocale(locale)
+    const posts = postsByLocale[locale]
     for (const { slug, lastModified } of posts) {
       const segment = `blog/${slug}`
-      entries.push(makeEntry(locale, segment, lastModified, 'monthly', 0.7))
+      entries.push({
+        url: makeUrl(locale, segment),
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: {
+          languages: buildBlogAlternates(slug, slugsByLocale),
+        },
+      })
     }
   }
 
