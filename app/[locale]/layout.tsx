@@ -83,8 +83,9 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale}>
+    <html lang={locale} translate="no">
       <head>
+        <meta name="google" content="notranslate" />
         {/* Consent Mode v2 + GA4 loader — tout inline pour forcer l'ordre (Next.js hoist les <script src> avant les inline, ce qui casse le consent) */}
         <script
           dangerouslySetInnerHTML={{
@@ -220,7 +221,7 @@ export default async function LocaleLayout({
         />
         {/* Hreflang - géré par alternates dans generateMetadata de chaque page */}
       </head>
-      <body className={`${montserrat.variable} ${lato.variable} font-body bg-[#0a0f2e] text-white antialiased`}>
+      <body className={`${montserrat.variable} ${lato.variable} font-body bg-[#0a0f2e] text-white antialiased notranslate`}>
         {/* GA4 tag déplacé dans <head> au-dessus pour garantir ordre consent->gtag */}
         <NextIntlClientProvider messages={messages}>
           <Navbar />
