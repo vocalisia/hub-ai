@@ -225,11 +225,17 @@ export default async function LocaleLayout({
       <body className={`${montserrat.variable} ${lato.variable} font-body bg-[#0a0f2e] text-white antialiased notranslate`} suppressHydrationWarning>
         {/* GA4 tag déplacé dans <head> au-dessus pour garantir ordre consent->gtag */}
         <NextIntlClientProvider messages={messages}>
-          <ClientErrorBoundary locale={locale}>
+          <ClientErrorBoundary name="navbar">
             <Navbar />
-            {children}
+          </ClientErrorBoundary>
+          {children}
+          <ClientErrorBoundary name="footer">
             <Footer />
+          </ClientErrorBoundary>
+          <ClientErrorBoundary name="cookie-banner">
             <CookieBannerLazy />
+          </ClientErrorBoundary>
+          <ClientErrorBoundary name="ga4-tracker">
             <Suspense fallback={null}>
               <GA4Tracker />
             </Suspense>

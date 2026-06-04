@@ -5,6 +5,7 @@ import { getMessages } from 'next-intl/server'
 import SwarmHero from '@/components/AlumicaHero'
 import ModelsExplainer from '@/components/ModelsExplainer'
 import SwarmPress from '@/components/SwarmPress'
+import ClientErrorBoundary from '@/components/ClientErrorBoundary'
 
 // Below-fold: dynamic imports — code-split client bundle, keep SSR for SEO
 // Placeholders sized roughly to prevent CLS while chunks load
@@ -201,15 +202,33 @@ export default function HomePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
       <main className="min-h-screen bg-black">
-        <SwarmHero />
-        <ModelsExplainer />
-        <SwarmPress />
-        <SwarmBento />
-        <SwarmResults />
-        <SwarmShowcase />
-        <SwarmWorkflow />
-        <SwarmTestimonials />
-        <SwarmCTA />
+        <ClientErrorBoundary name="home-hero">
+          <SwarmHero />
+        </ClientErrorBoundary>
+        <ClientErrorBoundary name="models-explainer">
+          <ModelsExplainer />
+        </ClientErrorBoundary>
+        <ClientErrorBoundary name="press">
+          <SwarmPress />
+        </ClientErrorBoundary>
+        <ClientErrorBoundary name="bento">
+          <SwarmBento />
+        </ClientErrorBoundary>
+        <ClientErrorBoundary name="results">
+          <SwarmResults />
+        </ClientErrorBoundary>
+        <ClientErrorBoundary name="showcase">
+          <SwarmShowcase />
+        </ClientErrorBoundary>
+        <ClientErrorBoundary name="workflow">
+          <SwarmWorkflow />
+        </ClientErrorBoundary>
+        <ClientErrorBoundary name="testimonials">
+          <SwarmTestimonials />
+        </ClientErrorBoundary>
+        <ClientErrorBoundary name="cta">
+          <SwarmCTA />
+        </ClientErrorBoundary>
       </main>
     </>
   )
