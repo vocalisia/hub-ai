@@ -6,6 +6,7 @@ import matter from 'gray-matter'
 const BASE_URL = 'https://ai-due.com'
 const LOCALES = ['en', 'fr', 'de', 'it'] as const
 const DEFAULT_LOCALE = 'fr'
+const REDIRECT_SOURCES = readRedirectSources()
 
 type Locale = (typeof LOCALES)[number]
 
@@ -55,20 +56,37 @@ const GAME_SLUGS = [
  * Per-locale subdirs (content/blog/{en,de,it}) mirror the same slug, so
  * we emit one entry per slug per locale w/ hreflang alternates.
  */
+function readRedirectSources(): Set<string> {
+  try {
+    const raw = fs.readFileSync(path.join(process.cwd(), 'vercel.json'), 'utf8')
+    const config = JSON.parse(raw) as { redirects?: { source?: string }[] }
+    return new Set((config.redirects ?? []).map((redirect) => redirect.source).filter(Boolean) as string[])
+  } catch {
+    return new Set()
+  }
+}
+
+function isRedirectSource(locale: Locale, pathSegment: string): boolean {
+  return REDIRECT_SOURCES.has(`/${locale}/${pathSegment}`) || REDIRECT_SOURCES.has(`/${pathSegment}`)
+}
+
 function readBlogSlugsForLocale(locale: Locale): { slug: string; lastModified: Date }[] {
-  // Per-locale dir takes priority; fallback to root for default locale
+  // The blog route loader iterates canonical root files and reads a translated
+  // same-name file when it exists. The sitemap must mirror that exactly.
   const localeDir = path.join(process.cwd(), 'content', 'blog', locale)
   const rootDir = path.join(process.cwd(), 'content', 'blog')
-  const dir = fs.existsSync(localeDir) ? localeDir : locale === DEFAULT_LOCALE && fs.existsSync(rootDir) ? rootDir : null
-  if (!dir) return []
+  if (!fs.existsSync(rootDir)) return []
 
-  const entries = fs.readdirSync(dir, { withFileTypes: true })
+  const entries = fs.readdirSync(rootDir, { withFileTypes: true })
   const seen = new Set<string>()
   return entries
     .filter((e) => e.isFile() && e.name.endsWith('.mdx'))
     .flatMap((e) => {
       const fallbackSlug = e.name.replace(/\.mdx$/, '')
-      const filePath = path.join(dir, e.name)
+      const localePath = path.join(localeDir, e.name)
+      const filePath = locale !== DEFAULT_LOCALE && fs.existsSync(localePath)
+        ? localePath
+        : path.join(rootDir, e.name)
       let lastModified: Date
       try {
         lastModified = fs.statSync(filePath).mtime
@@ -79,10 +97,12 @@ function readBlogSlugsForLocale(locale: Locale): { slug: string; lastModified: D
         const raw = fs.readFileSync(filePath, 'utf8')
         const { data } = matter(raw)
         const slug = String(data.slug || fallbackSlug).trim()
+        if (isRedirectSource(locale, `blog/${slug}`)) return []
         if (!slug || seen.has(slug)) return []
         seen.add(slug)
         return [{ slug, lastModified }]
       } catch {
+        if (isRedirectSource(locale, `blog/${fallbackSlug}`)) return []
         if (seen.has(fallbackSlug)) return []
         seen.add(fallbackSlug)
         return [{ slug: fallbackSlug, lastModified }]
@@ -121,11 +141,11 @@ function buildAlternates(pathSegment: string): Record<string, string> {
 function buildBlogAlternates(slug: string, slugsByLocale: Record<Locale, Set<string>>): Record<string, string> {
   const langs: Record<string, string> = {}
   for (const loc of LOCALES) {
-    if (slugsByLocale[loc].has(slug)) {
+    if (slugsByLocale[loc].has(slug) && !isRedirectSource(loc, `blog/${slug}`)) {
       langs[loc] = makeUrl(loc, `blog/${slug}`)
     }
   }
-  if (slugsByLocale[DEFAULT_LOCALE].has(slug)) {
+  if (slugsByLocale[DEFAULT_LOCALE].has(slug) && !isRedirectSource(DEFAULT_LOCALE, `blog/${slug}`)) {
     langs['x-default'] = makeUrl(DEFAULT_LOCALE, `blog/${slug}`)
   }
   return langs
