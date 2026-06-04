@@ -9,6 +9,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieBannerLazy from '@/components/CookieBannerLazy'
 import GA4Tracker from '@/components/GA4Tracker'
+import ClientErrorBoundary from '@/components/ClientErrorBoundary'
 import '@/app/globals.css'
 
 const montserrat = Montserrat({
@@ -83,7 +84,7 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} translate="no">
+    <html lang={locale} translate="no" suppressHydrationWarning>
       <head>
         <meta name="google" content="notranslate" />
         {/* Consent Mode v2 + GA4 loader — tout inline pour forcer l'ordre (Next.js hoist les <script src> avant les inline, ce qui casse le consent) */}
@@ -221,16 +222,18 @@ export default async function LocaleLayout({
         />
         {/* Hreflang - géré par alternates dans generateMetadata de chaque page */}
       </head>
-      <body className={`${montserrat.variable} ${lato.variable} font-body bg-[#0a0f2e] text-white antialiased notranslate`}>
+      <body className={`${montserrat.variable} ${lato.variable} font-body bg-[#0a0f2e] text-white antialiased notranslate`} suppressHydrationWarning>
         {/* GA4 tag déplacé dans <head> au-dessus pour garantir ordre consent->gtag */}
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          {children}
-          <Footer />
-          <CookieBannerLazy />
-          <Suspense fallback={null}>
-            <GA4Tracker />
-          </Suspense>
+          <ClientErrorBoundary locale={locale}>
+            <Navbar />
+            {children}
+            <Footer />
+            <CookieBannerLazy />
+            <Suspense fallback={null}>
+              <GA4Tracker />
+            </Suspense>
+          </ClientErrorBoundary>
         </NextIntlClientProvider>
       </body>
     </html>
