@@ -7,6 +7,51 @@
       "permanent": true
     },
     {
+      "source": "/articles",
+      "destination": "/fr/blog",
+      "permanent": true
+    },
+    {
+      "source": "/articles/",
+      "destination": "/fr/blog",
+      "permanent": true
+    },
+    {
+      "source": "/articles/agent-ia-autonome-guide-2026.html",
+      "destination": "/fr/blog/agent-ia-autonome-guide-complet",
+      "permanent": true
+    },
+    {
+      "source": "/articles/architecture-dun-agent-ia-multimodal-en-2026-patterns-et-stack.html",
+      "destination": "/fr/blog/architecture-agents-autonomes",
+      "permanent": true
+    },
+    {
+      "source": "/articles/ia-generative-souveraine-eu-stack-complete-2026.html",
+      "destination": "/fr/blog/ia-europe-panorama",
+      "permanent": true
+    },
+    {
+      "source": "/articles/intelligence-artificielle-france-adoption-chiffres-2026.html",
+      "destination": "/fr/blog/intelligence-artificielle-france-adoption-statistiques-2026",
+      "permanent": true
+    },
+    {
+      "source": "/articles/langgraph-vs-crewai-vs-autogen-comparatif-framework-agents-2026.html",
+      "destination": "/fr/blog/architecture-ia-multi-agents",
+      "permanent": true
+    },
+    {
+      "source": "/articles/mcp-model-context-protocol-integrer-les-outils-ia-proprement.html",
+      "destination": "/fr/blog/architecture-llm-production",
+      "permanent": true
+    },
+    {
+      "source": "/articles/rag-agent-ia-pattern-production-pour-2026.html",
+      "destination": "/fr/blog/architecture-rag-retrieval",
+      "permanent": true
+    },
+    {
       "source": "/ai-lead-generation-methods-2026",
       "destination": "/fr/blog/ai-lead-generation-methods-2026",
       "permanent": true
