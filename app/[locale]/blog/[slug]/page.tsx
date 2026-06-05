@@ -7,6 +7,69 @@ import ReadingProgress from '@/components/ReadingProgress'
 
 export const revalidate = 86400
 
+function extractFaq(content: string) {
+  const faqStart = content.search(/^## FAQ\b/im)
+  if (faqStart < 0) return []
+
+  const faqContent = content.slice(faqStart)
+  const matches = Array.from(
+    faqContent.matchAll(/^###\s+(.+?)\s*\n+([\s\S]*?)(?=\n###\s+|\n##(?!#)\s+|(?![\s\S]))/gm),
+  )
+
+  return matches
+    .map((match) => ({
+      question: match[1].trim(),
+      answer: match[2]
+        .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+        .replace(/[*_`>#-]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim(),
+    }))
+    .filter((item) => item.question && item.answer)
+    .slice(0, 6)
+}
+
+function cleanSchemaText(value: string) {
+  return value
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+    .replace(/!\[(.*?)\]\(.*?\)/g, '$1')
+    .replace(/[*_`>#|:-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function isHowToCandidate(post: { slug: string; title: string; tags: string[]; category: string }) {
+  const text = `${post.slug} ${post.title} ${post.category} ${post.tags.join(' ')}`
+  return /guide|how to|comment|tutoriel|tutorial|methode|method|strategie|strategy|checklist|complete/i.test(text)
+}
+
+function extractHowToSteps(content: string) {
+  const body = content.replace(/^---[\s\S]*?---\s*/m, '')
+  const matches = Array.from(
+    body.matchAll(/^##(?!#)\s+(.+?)\s*\n+([\s\S]*?)(?=\n##(?!#)\s+|(?![\s\S]))/gm),
+  )
+
+  return matches
+    .map((match, index) => {
+      const name = cleanSchemaText(match[1])
+      const text = cleanSchemaText(match[2])
+      return {
+        "@type": "HowToStep",
+        "position": index + 1,
+        "name": name,
+        "text": text.slice(0, 500),
+      }
+    })
+    .filter((step) => {
+      const heading = step.name.toLowerCase()
+      return step.name &&
+        step.text.length > 80 &&
+        !/faq|conclusion|ressources|resources|pour aller plus loin|introduction/.test(heading)
+    })
+    .slice(0, 8)
+}
+
 export async function generateMetadata({
   params
 }: {
@@ -46,7 +109,8 @@ export async function generateMetadata({
       locale: locale,
       type: 'article',
       publishedTime: post.date,
-      tags: post.tags
+      tags: post.tags,
+      images: post.coverImage ? [`https://ai-due.com${post.coverImage}`] : undefined
     }
   }
 }
@@ -63,6 +127,8 @@ export default function BlogPostPage({
   const related = getPostsByCountry(post.geo?.country)
     .filter(p => p.slug !== post.slug)
     .slice(0, 3)
+  const faqItems = extractFaq(post.content)
+  const howToSteps = isHowToCandidate(post) ? extractHowToSteps(post.content) : []
 
   return (
     <>
@@ -99,9 +165,11 @@ export default function BlogPostPage({
                     "@type": "WebPage",
                     "@id": `https://ai-due.com/${params.locale}/blog/${params.slug}`
                   },
-                  "image": post.geo?.country
-                    ? `https://ai-due.com/api/og?title=${encodeURIComponent(post.title)}`
-                    : "https://ai-due.com/api/og",
+                  "image": post.coverImage
+                    ? `https://ai-due.com${post.coverImage}`
+                    : post.geo?.country
+                      ? `https://ai-due.com/api/og?title=${encodeURIComponent(post.title)}`
+                      : "https://ai-due.com/api/og",
                   "publisher": {
                     "@type": "Organization",
                     "name": "AI-Due",
@@ -120,6 +188,55 @@ export default function BlogPostPage({
                 })
               }}
             />
+            {faqItems.length > 0 && (
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": faqItems.map((item) => ({
+                      "@type": "Question",
+                      "name": item.question,
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": item.answer,
+                      },
+                    })),
+                  }),
+                }}
+              />
+            )}
+            {howToSteps.length >= 3 && (
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "HowTo",
+                    "@id": `https://ai-due.com/${params.locale}/blog/${params.slug}#howto`,
+                    "name": post.title,
+                    "description": post.excerpt,
+                    "inLanguage": params.locale,
+                    "mainEntityOfPage": {
+                      "@type": "WebPage",
+                      "@id": `https://ai-due.com/${params.locale}/blog/${params.slug}`
+                    },
+                    "author": {
+                      "@type": "Person",
+                      "name": "Laurent Duplat",
+                      "url": "https://ai-due.com/about"
+                    },
+                    "publisher": {
+                      "@type": "Organization",
+                      "name": "AI-Due",
+                      "url": "https://ai-due.com"
+                    },
+                    "step": howToSteps,
+                  }),
+                }}
+              />
+            )}
 
             {/* Breadcrumb */}
             <nav className="mb-10 flex items-center gap-2 text-sm text-gray-600">
@@ -168,6 +285,16 @@ export default function BlogPostPage({
               <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-6">
                 {post.excerpt}
               </p>
+
+              {post.coverImage && (
+                <figure className="my-8">
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    className="w-full h-auto rounded-2xl border border-white/[0.08]"
+                  />
+                </figure>
+              )}
 
               {/* Tags */}
               <div className="flex gap-2 flex-wrap">

@@ -26,6 +26,49 @@ const lato = Lato({
   display: 'swap',
 })
 
+const aiDueDefinedTerms = [
+  {
+    name: 'AI agent',
+    description: 'Software system that reasons about an objective, chooses actions, uses tools, observes results, and adapts its next steps without requiring a human prompt for every operation.',
+  },
+  {
+    name: 'Autonomous AI agent',
+    description: 'AI agent designed to pursue a business goal across multiple steps with planning, memory, tool use, feedback loops, and escalation rules.',
+  },
+  {
+    name: 'Multi-agent system',
+    description: 'Architecture where several specialized AI agents collaborate under an orchestrator or shared protocol to solve tasks that exceed a single agent capability.',
+  },
+  {
+    name: 'Agentic RAG',
+    description: 'Retrieval augmented generation pattern where an agent decides what to retrieve, when to search again, how to validate context, and how to cite sources.',
+  },
+  {
+    name: 'RAG',
+    description: 'Retrieval augmented generation technique that grounds a language model answer in retrieved documents, knowledge bases, or structured data before generation.',
+  },
+  {
+    name: 'LLM orchestration',
+    description: 'Coordination layer that routes prompts, tools, memory, retrieval, evaluation, and model calls so language models can operate reliably in production workflows.',
+  },
+  {
+    name: 'ReAct loop',
+    description: 'Reasoning and acting loop where an AI agent alternates between analysis, tool execution, observation, and revised planning until the objective is met.',
+  },
+  {
+    name: 'Knowledge graph',
+    description: 'Structured representation of entities and relationships that helps AI systems preserve context, explain links, and retrieve precise business knowledge.',
+  },
+  {
+    name: 'AI architecture',
+    description: 'Technical design of an AI system, including models, data flows, memory, tools, orchestration, security, evaluation, and deployment constraints.',
+  },
+  {
+    name: 'Synthetic persona',
+    description: 'Generated representative profile used to simulate audience reactions, decision patterns, or user behavior without relying on real personal data.',
+  },
+]
+
 export async function generateMetadata({
   params: { locale }
 }: {
@@ -37,9 +80,7 @@ export async function generateMetadata({
   // EN is the default locale — canonical points to / (root) to match Google's preference
   // Perf 2026-05-29: removed trailing slashes — site serves /fr (308 redirects /fr/ → /fr),
   // canonicals were pointing to redirect URLs → hreflang mismatch
-  const canonicalUrl = locale === 'en'
-    ? 'https://ai-due.com'
-    : `https://ai-due.com/${locale}`
+  const canonicalUrl = `https://ai-due.com/${locale}`
 
   return {
     metadataBase: new URL('https://ai-due.com'),
@@ -49,10 +90,10 @@ export async function generateMetadata({
       canonical: canonicalUrl,
       languages: {
         'fr': 'https://ai-due.com/fr',
-        'en': 'https://ai-due.com',
+        'en': 'https://ai-due.com/en',
         'de': 'https://ai-due.com/de',
         'it': 'https://ai-due.com/it',
-        'x-default': 'https://ai-due.com'
+        'x-default': 'https://ai-due.com/fr'
       }
     },
     openGraph: {
@@ -96,6 +137,12 @@ export default async function LocaleLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `gtag('js',new Date());gtag('config','G-PE4BF17GKG');`,
+          }}
+        />
+        <script
+          id="ga4-lead-conversion-tracking"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){if(window.__ga4LeadTrackingInstalled)return;window.__ga4LeadTrackingInstalled=true;function send(n,p){if(typeof window.gtag!=='function')return;window.gtag('event',n,Object.assign({event_category:'lead',event_label:location.pathname,page_location:location.href},p||{}));}document.addEventListener('submit',function(e){var f=e.target;if(!f||f.tagName!=='FORM')return;var id=(f.id||f.getAttribute('name')||f.className||'form').toString();send('qualify_lead',{event_label:id,method:/newsletter/i.test(id)?'newsletter':'form'});},true);document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a'):null;if(!a)return;var h=a.getAttribute('href')||'';if(/wa\\.me|whatsapp/i.test(h)){send('close_convert_lead',{event_label:'whatsapp_click',method:'whatsapp'});}else if(/^tel:/i.test(h)){send('qualify_lead',{event_label:'phone_click',method:'phone'});}else if(/^mailto:/i.test(h)){send('qualify_lead',{event_label:'email_click',method:'email'});}else if(/contact|rdv|devis|quote|demo|booking|cal\\.com|calendly/i.test(h)){send('qualify_lead',{event_label:'contact_click',method:'contact'});}},true);})();`,
           }}
         />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -216,6 +263,23 @@ export default async function LocaleLayout({
                   "https://x.com/VocalisAi",
                   "https://github.com/laurentduplat"
                 ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "DefinedTermSet",
+                "@id": "https://ai-due.com/#ai-glossary",
+                "name": "AI-Due AI Architecture Glossary",
+                "description": "Core definitions used by AI-Due for AI agents, RAG, LLM orchestration, and production AI architecture.",
+                "url": `https://ai-due.com/${locale}/blog`,
+                "inLanguage": locale,
+                "publisher": { "@id": "https://ai-due.com/#organization" },
+                "hasDefinedTerm": aiDueDefinedTerms.map((term) => ({
+                  "@type": "DefinedTerm",
+                  "@id": `https://ai-due.com/#term-${term.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+                  "name": term.name,
+                  "description": term.description,
+                  "inDefinedTermSet": "https://ai-due.com/#ai-glossary"
+                }))
               }
             ])
           }}

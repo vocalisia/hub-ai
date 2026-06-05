@@ -20,6 +20,7 @@ export interface BlogPost {
   }
   readTime: number
   excerpt: string
+  coverImage?: string
   content: string
 }
 
@@ -69,6 +70,7 @@ export function getAllPosts(locale: string = 'fr'): BlogPost[] {
         geo: data.geo,
         readTime: data.readTime || 5,
         excerpt,
+        coverImage: data.coverImage,
         content
       }
     })
