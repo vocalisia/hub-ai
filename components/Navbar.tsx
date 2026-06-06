@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, type JSX } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
@@ -15,6 +15,39 @@ export default function Navbar() {
   const router = useRouter()
   const [langOpen, setLangOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const FLAGS: Record<string, JSX.Element> = {
+    fr: (
+      <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true" style={{ borderRadius: '2px', display: 'block', flexShrink: 0 }}>
+        <rect width="6.67" height="14" fill="#002395" />
+        <rect x="6.67" width="6.67" height="14" fill="#fff" />
+        <rect x="13.33" width="6.67" height="14" fill="#ED2939" />
+      </svg>
+    ),
+    en: (
+      <svg width="20" height="14" viewBox="0 0 60 40" aria-hidden="true" style={{ borderRadius: '2px', display: 'block', flexShrink: 0 }}>
+        <rect width="60" height="40" fill="#012169" />
+        <path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" strokeWidth="8" />
+        <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" strokeWidth="5" />
+        <path d="M30,0 V40 M0,20 H60" stroke="#fff" strokeWidth="12" />
+        <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" strokeWidth="8" />
+      </svg>
+    ),
+    de: (
+      <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true" style={{ borderRadius: '2px', display: 'block', flexShrink: 0 }}>
+        <rect width="20" height="4.67" fill="#000" />
+        <rect y="4.67" width="20" height="4.67" fill="#DD0000" />
+        <rect y="9.33" width="20" height="4.67" fill="#FFCE00" />
+      </svg>
+    ),
+    it: (
+      <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true" style={{ borderRadius: '2px', display: 'block', flexShrink: 0 }}>
+        <rect width="6.67" height="14" fill="#009246" />
+        <rect x="6.67" width="6.67" height="14" fill="#fff" />
+        <rect x="13.33" width="6.67" height="14" fill="#CE2B37" />
+      </svg>
+    ),
+  }
 
   const LANGS = [
     { code: 'fr', label: 'FR' },
@@ -107,13 +140,14 @@ export default function Navbar() {
             <div className="relative">
               <button
                 onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-1 px-3 py-1.5 rounded-full text-[12px] font-semibold transition-all"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-semibold transition-all"
                 style={{
                   background: 'transparent',
                   border: '1px solid rgba(173,125,78,0.35)',
                   color: '#F97316',
                 }}
               >
+                {FLAGS[locale] ?? null}
                 {locale.toUpperCase()}
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -138,12 +172,13 @@ export default function Navbar() {
                       <button
                         key={lang.code}
                         onClick={() => switchLocale(lang.code)}
-                        className={`block w-full px-4 py-2.5 text-sm text-left transition-all ${
+                        className={`flex items-center gap-2.5 w-full px-4 py-2.5 text-sm text-left transition-all ${
                           locale === lang.code
                             ? 'text-gold bg-[rgba(173,125,78,0.15)]'
                             : 'text-white/85 hover:text-gold hover:bg-[rgba(173,125,78,0.1)]'
                         }`}
                       >
+                        {FLAGS[lang.code] ?? null}
                         {lang.label}
                       </button>
                     ))}
