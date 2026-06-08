@@ -1,0 +1,41 @@
+source,target,score,priority,title
+alternative-zapier-open-source-pme,alternative-zapier-open-source-ia,103.93,high,open-source Zapier alternative for AI: practical guide for governed deployment
+multi-agent-framework-comparatif-production,multi-agent-framework-orchestration,96.41,high,multi-agent framework orchestration: practical guide for governed deployment
+n8n-self-hosted-architecture-ia,n8n-self-hosted-agent-ia-stack,89.47,high,self-hosted n8n stack for AI agents: practical guide for governed deployment
+automatisation-ia-b2b-support-client,automatisation-ia-b2b-prospection,88.94,high,B2B AI automation for prospecting: practical guide for governed deployment
+agent-ia-entreprise-guide-2026,multi-agent-framework-orchestration,88.29,high,multi-agent framework orchestration: practical guide for governed deployment
+scenario-ia-make-automatisation,scenario-ia-make-vs-n8n,88.28,high,Make AI scenario vs n8n: practical guide for governed deployment
+scenario-ia-make-vs-n8n,scenario-ia-make-automatisation,88.28,high,Make AI scenario automation: practical guide for governed deployment
+agent-ia-entreprise-guide-2026,plateforme-agent-ia-criteres-selection,87.63,high,AI agent platform selection: practical guide for governed deployment
+n8n-self-hosted-architecture-ia,n8n-self-hosted-securite-rgpd,86.18,high,self-hosted n8n security and GDPR: practical guide for governed deployment
+agent-ia-hubspot-workflow-commercial,multi-agent-framework-orchestration,83.02,medium,multi-agent framework orchestration: practical guide for governed deployment
+agent-ia-hubspot-workflow-commercial,workflow-ia-cartographie-processus,82.17,medium,AI workflow mapping: practical guide for governed deployment
+scenario-ia-make-automatisation,scenario-ia-make-crm-email,81.76,medium,Make AI scenario for CRM and email: practical guide for governed deployment
+scenario-ia-make-crm-email,scenario-ia-make-automatisation,81.76,medium,Make AI scenario automation: practical guide for governed deployment
+automatisation-ia-b2b-playbook,automatisation-ia-b2b-prospection,81.08,medium,B2B AI automation for prospecting: practical guide for governed deployment
+automatisation-ia-b2b-prospection,automatisation-ia-b2b-playbook,81.08,medium,B2B AI automation playbook: practical guide for governed deployment
+multi-agent-framework-comparatif-production,plateforme-agent-ia-criteres-selection,81.08,medium,AI agent platform selection: practical guide for governed deployment
+automatisation-ia-b2b-support-client,automatisation-ia-b2b-playbook,80.77,medium,B2B AI automation playbook: practical guide for governed deployment
+agent-ia-hubspot-playbook-revops,automatisation-ia-b2b-playbook,78.18,medium,B2B AI automation playbook: practical guide for governed deployment
+automatisation-ia-b2b-playbook,agent-ia-hubspot-playbook-revops,78.18,medium,HubSpot AI agent RevOps playbook: practical guide for governed deployment
+workflow-ia-cartographie-processus,workflow-ia-rag-crm-support,77.04,medium,"AI workflow with RAG, CRM and support: practical guide for governed deployment"
+plateforme-agent-ia-criteres-selection,plateforme-agent-ia-connecteurs-api,76.82,medium,AI agent platform connectors and APIs: practical guide for governed deployment
+plateforme-agent-ia-criteres-selection,plateforme-agent-ia-open-source-vs-saas,76.34,medium,open-source vs SaaS AI agent platform: practical guide for governed deployment
+scenario-ia-make-crm-email,scenario-ia-make-vs-n8n,75.57,medium,Make AI scenario vs n8n: practical guide for governed deployment
+scenario-ia-make-vs-n8n,scenario-ia-make-crm-email,75.57,medium,Make AI scenario for CRM and email: practical guide for governed deployment
+multi-agent-framework-orchestration,plateforme-agent-ia-criteres-selection,75.45,medium,AI agent platform selection: practical guide for governed deployment
+n8n-self-hosted-agent-ia-stack,n8n-self-hosted-securite-rgpd,74.49,medium,self-hosted n8n security and GDPR: practical guide for governed deployment
+n8n-self-hosted-securite-rgpd,n8n-self-hosted-agent-ia-stack,74.49,medium,self-hosted n8n stack for AI agents: practical guide for governed deployment
+workflow-ia-cartographie-processus,workflow-ia-observabilite-tests,74.21,medium,AI workflow observability and tests: practical guide for governed deployment
+multi-agent-framework-orchestration,workflow-ia-cartographie-processus,73.86,medium,AI workflow mapping: practical guide for governed deployment
+agent-ia-vs-automation-classique,multi-agent-framework-orchestration,71.52,medium,multi-agent framework orchestration: practical guide for governed deployment
+agent-ia-vs-automation-classique,plateforme-agent-ia-criteres-selection,71.19,medium,AI agent platform selection: practical guide for governed deployment
+ia-entreprise-gouvernance-agents,multi-agent-framework-orchestration,70.35,medium,multi-agent framework orchestration: practical guide for governed deployment
+crewai-vs-autogen-choix-framework,multi-agent-framework-orchestration,70.29,medium,multi-agent framework orchestration: practical guide for governed deployment
+automatisation-ia-b2b-prospection,multi-agent-framework-orchestration,70.2,medium,multi-agent framework orchestration: practical guide for governed deployment
+agent-ia-hubspot-playbook-revops,multi-agent-framework-orchestration,69.52,medium,multi-agent framework orchestration: practical guide for governed deployment
+workflow-ia-observabilite-tests,workflow-ia-rag-crm-support,69.19,medium,"AI workflow with RAG, CRM and support: practical guide for governed deployment"
+workflow-ia-rag-crm-support,workflow-ia-observabilite-tests,69.19,medium,AI workflow observability and tests: practical guide for governed deployment
+n8n-self-hosted-agent-ia-stack,multi-agent-framework-orchestration,69.02,medium,multi-agent framework orchestration: practical guide for governed deployment
+agent-ia-hubspot-donnees-propres,agent-ia-hubspot-playbook-revops,68.62,medium,HubSpot AI agent RevOps playbook: practical guide for governed deployment
+agent-ia-hubspot-donnees-propres,plateforme-agent-ia-criteres-selection,68.5,medium,AI agent platform selection: practical guide for governed deployment
