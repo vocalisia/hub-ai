@@ -1,5 +1,8 @@
 # AI-Due
 
+Sitemap: https://ai-due.com/sitemap.xml
+Robots: https://ai-due.com/robots.txt
+
 AI-Due is an AI public-opinion simulation platform for strategy, communications, risk, investor relations, policy, and market-research teams.
 
 ## Site
