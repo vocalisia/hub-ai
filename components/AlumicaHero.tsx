@@ -50,13 +50,13 @@ export default function AlumicaHero() {
         </h1>
 
         {/* Heading bottom line — orange gradient */}
-        <h1 className="alumica-fade text-[40px] sm:text-[60px] md:text-[78px] lg:text-[92px] font-medium leading-[1.05] tracking-tight mb-7"
+        <div className="alumica-fade text-[40px] sm:text-[60px] md:text-[78px] lg:text-[92px] font-medium leading-[1.05] tracking-tight mb-7"
           style={{ animationDelay: '0.4s' }}
         >
           <span className="alumica-grad-orange">
             {locale === 'fr' ? "l'Architecture IA" : locale === 'de' ? 'KI-Architektur neu definieren' : locale === 'it' ? 'Architettura AI' : 'AI Architecture'}
           </span>
-        </h1>
+        </div>
 
         {/* Sub-headline */}
         <p className="alumica-fade text-white/60 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10"

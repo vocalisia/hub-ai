@@ -93,6 +93,7 @@ export default function Footer() {
               {[
                 { href: `/${locale}/blog`, label: 'Blog' },
                 { href: `/${locale}/ebooks`, label: 'eBooks' },
+                { href: `/${locale}/quiz/quel-agent-ia-deployer`, label: 'AI Agent Quiz' },
                 { href: `/${locale}/carte`, label: 'AI Map' },
                 { href: '#', label: 'API Docs' },
               ].map((l) => (
