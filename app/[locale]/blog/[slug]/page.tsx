@@ -7,6 +7,10 @@ import ReadingProgress from '@/components/ReadingProgress'
 
 export const revalidate = 86400
 
+const markdownComponents = {
+  h1: ({ node: _node, ...props }: any) => <h2 {...props} />,
+}
+
 function extractFaq(content: string) {
   const faqStart = content.search(/^## FAQ\b/im)
   if (faqStart < 0) return []
@@ -311,7 +315,7 @@ export default function BlogPostPage({
 
             {/* Content */}
             <article className="prose prose-invert prose-purple max-w-none mb-20 prose-premium">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
+              <ReactMarkdown components={markdownComponents}>{post.content}</ReactMarkdown>
             </article>
 
             {/* Author card */}
