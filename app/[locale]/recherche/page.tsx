@@ -4,19 +4,19 @@ import RechercheClient from './RechercheClient'
 const SEO: Record<string, { title: string; description: string }> = {
   fr: {
     title: 'Simulateur Recherche Marché IA | Testez votre produit sur des acheteurs français | AI-Due',
-    description: 'Simulez les réactions de 10 à 15 acheteurs français IA en quelques minutes. Remplacez les études à 50 000 € par une simulation précise basée sur les données INSEE. Alternative française à Aaru.',
+    description: "Simulez les réactions de 10 à 15 acheteurs français IA en quelques minutes. Remplacez les cycles d'etude lourds par une simulation IA precise basee sur les donnees INSEE. Alternative française à Aaru.",
   },
   en: {
     title: 'AI Market Research Simulator | Test on French buyers | AI-Due',
-    description: 'Simulate reactions from 10-15 AI French buyers in minutes. Replace €50,000 studies with precise AI simulation based on INSEE data. French alternative to Aaru.',
+    description: 'Simulate reactions from 10-15 AI French buyers in minutes. Replace long research cycles with precise AI simulation based on INSEE data. French alternative to Aaru.',
   },
   de: {
     title: 'KI-Marktforschungs-Simulator | Auf französischen Käufern testen | AI-Due',
-    description: 'Simulieren Sie die Reaktionen von 10-15 KI-französischen Käufern in Minuten. Ersetzen Sie 50.000 € Studien durch präzise KI-Simulation basierend auf INSEE-Daten.',
+    description: 'Simulieren Sie die Reaktionen von 10-15 KI-französischen Käufern in Minuten. Ersetzen Sie lange Forschungszyklen durch praezise KI-Simulation basierend auf INSEE-Daten.',
   },
   it: {
     title: 'Simulatore di Ricerca di Mercato IA | Testa su acquirenti francesi | AI-Due',
-    description: 'Simula le reazioni di 10-15 acquirenti francesi IA in pochi minuti. Sostituisci studi da 50.000 € con simulazioni IA precise basate sui dati INSEE.',
+    description: 'Simula le reazioni di 10-15 acquirenti francesi IA in pochi minuti. Sostituisci cicli di ricerca lunghi con simulazioni IA precise basate sui dati INSEE.',
   },
 }
 

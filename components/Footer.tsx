@@ -74,7 +74,7 @@ export default function Footer() {
               {[
                 { href: `/${locale}`, label: 'Home' },
                 { href: `/${locale}/simulateur`, label: 'Simulator' },
-                { href: `/${locale}/tarifs`, label: 'Pricing' },
+                { href: `/${locale}/contact`, label: 'Audit' },
                 { href: `/${locale}/architecture`, label: 'Architecture' },
               ].map((l) => (
                 <li key={l.href}>

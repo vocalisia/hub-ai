@@ -120,7 +120,7 @@ export default function SwarmHero() {
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
-              <Link href={`/${locale}/tarifs`} className="btn-gold-outline">
+              <Link href={`/${locale}/contact`} className="btn-gold-outline">
                 {t('cta_secondary')}
               </Link>
             </motion.div>

@@ -40,9 +40,9 @@ const SOLUTIONS = [
 
 export default function ROICalculator() {
   const [employes, setEmployes] = useState(10)
-  const [salaire, setSalaire] = useState(5000)
+  const [salaire, setSalaire] = useState(50)
   const [heures, setHeures] = useState(10)
-  const [coutIA, setCoutIA] = useState(500)
+  const [coutIA, setCoutIA] = useState(20)
 
   const tauxHoraire = salaire / 160
   const economiesAnnuelles = heures * tauxHoraire * 52 * employes
@@ -53,9 +53,9 @@ export default function ROICalculator() {
 
   const sliders = [
     { label: 'Nombre d\'employes', value: employes, set: setEmployes, min: 1, max: 500, step: 1, suffix: '' },
-    { label: 'Salaire moyen mensuel', value: salaire, set: setSalaire, min: 2000, max: 15000, step: 100, suffix: ' CHF' },
+    { label: 'Charge equipe index', value: salaire, set: setSalaire, min: 10, max: 100, step: 1, suffix: '' },
     { label: 'Heures/semaine automatisables', value: heures, set: setHeures, min: 1, max: 40, step: 1, suffix: 'h' },
-    { label: 'Cout outil IA / mois', value: coutIA, set: setCoutIA, min: 50, max: 5000, step: 50, suffix: ' CHF' },
+    { label: 'Charge IA index', value: coutIA, set: setCoutIA, min: 1, max: 100, step: 1, suffix: '' },
   ]
 
   return (
@@ -115,7 +115,7 @@ export default function ROICalculator() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 relative z-10">
           <div className="text-center p-4">
             <div className="text-3xl md:text-4xl font-black bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-2">
-              <AnimatedCounter value={Math.round(economiesNettes)} suffix=" CHF" />
+              <AnimatedCounter value={Math.round(economiesNettes)} suffix=" points" />
             </div>
             <p className="text-gray-400 text-sm">Economies nettes / an</p>
           </div>

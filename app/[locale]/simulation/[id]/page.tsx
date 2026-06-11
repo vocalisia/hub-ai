@@ -304,7 +304,7 @@ export default function SimulationViewPage() {
             <Link href={`/${locale}/simulateur`} className="btn-gold-outline">
               {t('new_sim')}
             </Link>
-            <Link href={`/${locale}/tarifs`} className="btn-gold">
+            <Link href={`/${locale}/contact`} className="btn-gold">
               {t('upgrade')}
             </Link>
           </div>

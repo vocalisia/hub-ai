@@ -268,19 +268,11 @@ export default function SwarmBento() {
     { key: 'i18n', icon: icons.globe, viz: <I18nViz />, span: '' },
   ]
 
-  const plans = (
-    locale === 'en'
-      ? [
-          { key: 'starter', price: '$0', label: tp('starter_name'), desc: tp('starter_desc'), features: [tp('starter_f1'), tp('starter_f2'), tp('starter_f3'), tp('starter_f4')] },
-          { key: 'pro', price: '$59', label: tp('pro_name'), desc: tp('pro_desc'), features: [tp('pro_f1'), tp('pro_f2'), tp('pro_f3'), tp('pro_f4'), tp('pro_f5'), tp('pro_f6')], featured: true },
-          { key: 'enterprise', price: '$599', label: tp('enterprise_name'), desc: tp('enterprise_desc'), features: [tp('enterprise_f1'), tp('enterprise_f2'), tp('enterprise_f3'), tp('enterprise_f4'), tp('enterprise_f6')] },
-        ]
-      : [
-          { key: 'starter', price: '0€', label: tp('starter_name'), desc: tp('starter_desc'), features: [tp('starter_f1'), tp('starter_f2'), tp('starter_f3'), tp('starter_f4')] },
-          { key: 'pro', price: '49€', label: tp('pro_name'), desc: tp('pro_desc'), features: [tp('pro_f1'), tp('pro_f2'), tp('pro_f3'), tp('pro_f4'), tp('pro_f5'), tp('pro_f6')], featured: true },
-          { key: 'enterprise', price: '499€', label: tp('enterprise_name'), desc: tp('enterprise_desc'), features: [tp('enterprise_f1'), tp('enterprise_f2'), tp('enterprise_f3'), tp('enterprise_f4'), tp('enterprise_f6')] },
-        ]
-  ) as Array<{ key: string; price: string; label: string; desc: string; features: string[]; featured?: boolean }>
+  const plans = [
+    { key: 'audit', label: tp('starter_name'), desc: tp('starter_desc'), action: 'Audit gratuit', features: [tp('starter_f1'), tp('starter_f2'), tp('starter_f3'), tp('starter_f4')] },
+    { key: 'pro', label: tp('pro_name'), desc: tp('pro_desc'), action: 'Cadrer le projet', features: [tp('pro_f1'), tp('pro_f2'), tp('pro_f3'), tp('pro_f4'), tp('pro_f5'), tp('pro_f6')], featured: true },
+    { key: 'enterprise', label: tp('enterprise_name'), desc: tp('enterprise_desc'), action: 'Parler a un expert', features: [tp('enterprise_f1'), tp('enterprise_f2'), tp('enterprise_f3'), tp('enterprise_f4'), tp('enterprise_f6')] },
+  ] as Array<{ key: string; label: string; desc: string; action: string; features: string[]; featured?: boolean }>
 
   return (
     <section id="features" className="relative py-20 md:py-32">
@@ -309,7 +301,7 @@ export default function SwarmBento() {
           <p className="text-white/65 max-w-xl mx-auto text-[15px] sm:text-base leading-relaxed">{t('subtitle_optional')}</p>
         </motion.div>
 
-        {/* Mini pricing cards (compact version of pricing page) */}
+        {/* Project scope cards */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -319,7 +311,7 @@ export default function SwarmBento() {
           {plans.map((p) => (
             <Link
               key={p.key}
-              href={`/${locale}/paiement?plan=${p.key}`}
+              href={`/${locale}/contact`}
               className={`group relative rounded-3xl p-7 sm:p-8 md:p-9 flex flex-col transition-all hover:-translate-y-1 plan-blink ${p.featured ? 'plan-featured md:scale-105 md:-translate-y-2 z-10' : ''}`}
               style={
                 p.featured
@@ -353,12 +345,11 @@ export default function SwarmBento() {
               <p className="text-[12px] text-white/55 mb-4 min-h-[36px]">{p.desc}</p>
               <div className="flex items-baseline gap-1 mb-5">
                 <span
-                  className="text-4xl sm:text-5xl font-extrabold leading-none font-[Montserrat]"
+                  className="text-2xl sm:text-3xl font-extrabold leading-none font-[Montserrat]"
                   style={p.featured ? { background: 'linear-gradient(135deg, #F97316, #9333EA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } : { color: '#fff' }}
                 >
-                  {p.price}
+                  {p.action}
                 </span>
-                <span className="text-[12px] text-white/45">/mo</span>
               </div>
               <ul className="space-y-2.5 mb-6 flex-1">
                 {p.features.map((f, i) => (
@@ -381,7 +372,7 @@ export default function SwarmBento() {
                   boxShadow: '0 8px 24px rgba(147,51,234,0.35)',
                 } : undefined}
               >
-                {p.key === 'starter' ? 'Start free' : p.key === 'pro' ? 'Go Pro' : 'Subscribe'}
+                {p.action}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

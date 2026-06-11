@@ -59,7 +59,7 @@ export default function Navbar() {
   const NAV = [
     { href: `/${locale}`, label: t('home') },
     { href: `/${locale}/simulateur`, label: t('simulator') },
-    { href: `/${locale}/tarifs`, label: t('pricing') },
+    { href: `/${locale}/contact`, label: t('contact') },
     { href: `/${locale}/architecture`, label: t('ecosystem') },
     { href: `/${locale}/blog`, label: t('blog') },
     { href: `/${locale}/careers`, label: t('careers') },
@@ -189,7 +189,7 @@ export default function Navbar() {
 
             {/* CTA button desktop */}
             <Link
-              href={`/${locale}/tarifs`}
+              href={`/${locale}/contact`}
               className="hidden lg:inline-flex items-center px-5 py-2 rounded-full text-[13px] font-bold transition-opacity hover:opacity-90"
               style={{ background: '#F97316', color: '#0F0F23' }}
             >

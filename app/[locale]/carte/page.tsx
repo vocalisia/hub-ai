@@ -13,9 +13,21 @@ export async function generateMetadata({
   params: { locale: string }
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'seo' })
+  const canonicalUrl = `https://ai-due.com/${locale}/carte`
+
   return {
     title: t('map_title'),
     description: t('home_description'),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        fr: 'https://ai-due.com/fr/carte',
+        en: 'https://ai-due.com/en/carte',
+        de: 'https://ai-due.com/de/carte',
+        it: 'https://ai-due.com/it/carte',
+        'x-default': 'https://ai-due.com/en/carte'
+      }
+    },
     other: {
       'geo.region': 'CH',
       'geo.placename': 'Geneve, Suisse',

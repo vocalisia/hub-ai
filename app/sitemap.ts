@@ -22,7 +22,7 @@ interface PageDef {
 const STATIC_PAGES: PageDef[] = [
   { path: '', changeFrequency: 'weekly', priority: 1.0 },
   { path: 'simulateur', changeFrequency: 'monthly', priority: 0.9 },
-  { path: 'tarifs', changeFrequency: 'monthly', priority: 0.9 },
+  { path: 'contact', changeFrequency: 'monthly', priority: 0.9 },
   { path: 'architecture', changeFrequency: 'monthly', priority: 0.8 },
   { path: 'carte', changeFrequency: 'monthly', priority: 0.8 },
   { path: 'ebooks', changeFrequency: 'monthly', priority: 0.8 },

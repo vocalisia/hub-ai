@@ -14,7 +14,7 @@ const RESULTS = {
   ] as readonly Bar[],
   benchmarks: [
     { metric: 'Time to insight', before: '4-6 weeks', after: '< 5 min', delta: '-99%' },
-    { metric: 'Cost per study', before: '€25-80k', after: '€49-499', delta: '-99%' },
+    { metric: 'Study effort', before: 'Long consulting cycle', after: 'Instant simulation', delta: '-99%' },
     { metric: 'Coverage breadth', before: '5-10 voices', after: '500+ agents', delta: '+50×' },
     { metric: 'Replicability', before: 'Manual', after: 'Programmable', delta: '∞' },
   ],

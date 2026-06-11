@@ -38,9 +38,7 @@ export async function generateMetadata({
   const seo = (messages as any).seo
 
   // Perf 2026-05-29: no trailing slash — matches actual served URL (sitemap.ts already correct)
-  const canonicalUrl = locale === 'en'
-    ? 'https://ai-due.com'
-    : `https://ai-due.com/${locale}`
+  const canonicalUrl = `https://ai-due.com/${locale}`
 
   return {
     title: seo.home_title,
@@ -49,10 +47,10 @@ export async function generateMetadata({
       canonical: canonicalUrl,
       languages: {
         'fr': 'https://ai-due.com/fr',
-        'en': 'https://ai-due.com',
+        'en': 'https://ai-due.com/en',
         'de': 'https://ai-due.com/de',
         'it': 'https://ai-due.com/it',
-        'x-default': 'https://ai-due.com'
+        'x-default': 'https://ai-due.com/fr'
       }
     },
   }

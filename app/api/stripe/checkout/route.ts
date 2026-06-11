@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
     'line_items[0][price]': priceId,
     'line_items[0][quantity]': '1',
     success_url: `${origin}/${locale}/paiement/succes?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${origin}/${locale}/tarifs`,
+    cancel_url: `${origin}/${locale}/contact`,
     allow_promotion_codes: 'true',
     'automatic_tax[enabled]': 'false',
   })

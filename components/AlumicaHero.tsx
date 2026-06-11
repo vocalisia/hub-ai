@@ -5,7 +5,6 @@
 // placeholder while video buffers (~1-2s on 4G).
 import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
-import Image from 'next/image'
 
 const HERO_VIDEO = 'https://cdn.sceneai.art/backgrounds/5443dc2c-dd3e-4de2-8725-6cc65c48bff8.mp4'
 
@@ -50,13 +49,13 @@ export default function AlumicaHero() {
         </h1>
 
         {/* Heading bottom line — orange gradient */}
-        <div className="alumica-fade text-[40px] sm:text-[60px] md:text-[78px] lg:text-[92px] font-medium leading-[1.05] tracking-tight mb-7"
+        <p role="text" className="alumica-fade text-[40px] sm:text-[60px] md:text-[78px] lg:text-[92px] font-medium leading-[1.05] tracking-tight mb-7"
           style={{ animationDelay: '0.4s' }}
         >
           <span className="alumica-grad-orange">
             {locale === 'fr' ? "l'Architecture IA" : locale === 'de' ? 'KI-Architektur neu definieren' : locale === 'it' ? 'Architettura AI' : 'AI Architecture'}
           </span>
-        </div>
+        </p>
 
         {/* Sub-headline */}
         <p className="alumica-fade text-white/60 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10"
@@ -74,7 +73,7 @@ export default function AlumicaHero() {
         {/* Primary CTA — Alumica style */}
         <div className="alumica-fade flex items-center justify-center" style={{ animationDelay: '0.7s' }}>
           <Link
-            href={`/${locale}/paiement?plan=pro`}
+            href={`/${locale}/contact`}
             className="alumica-cta inline-flex items-center gap-3 bg-white/5 backdrop-blur-md px-7 py-3.5 rounded-full text-white font-medium text-[15px] hover:bg-white/10 transition-all duration-300"
           >
             <span className="relative z-10">
@@ -88,22 +87,23 @@ export default function AlumicaHero() {
           </Link>
         </div>
 
-        {/* Avatar group bottom */}
+        {/* Trust signal bottom */}
         <div className="alumica-fade mt-12 flex flex-col items-center gap-2"
           style={{ animationDelay: '0.85s' }}
         >
           <div className="flex -space-x-2.5">
             {[44, 32, 68, 12, 47].map((seed, i) => (
-              <Image
+              <div
                 key={seed}
-                src={`https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${seed}.jpg`}
-                alt={`Member ${i + 1}`}
-                className="h-8 w-8 rounded-full border-2 border-black object-cover"
-                width={32}
-                height={32}
-                loading="lazy"
-                style={{ filter: 'drop-shadow(0 25px 25px rgba(0,0,0,0.55))' }}
-              />
+                aria-hidden
+                className="h-8 w-8 rounded-full border-2 border-black"
+                style={{
+                  background: `linear-gradient(135deg, hsl(${seed * 3}, 70%, 56%), hsl(${seed * 5}, 80%, 36%))`,
+                  filter: 'drop-shadow(0 25px 25px rgba(0,0,0,0.55))'
+                }}
+              >
+                <span className="sr-only">Team signal {i + 1}</span>
+              </div>
             ))}
             <div className="grid h-8 w-8 place-items-center rounded-full border-2 border-black bg-white/10 backdrop-blur-md text-[10px] font-bold text-white">
               +500

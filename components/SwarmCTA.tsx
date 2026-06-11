@@ -40,7 +40,7 @@ export default function SwarmCTA() {
           <Link href={`/${locale}/simulateur`} className="btn-gold">
             {t('cta_primary')}
           </Link>
-          <Link href={`/${locale}/tarifs`} className="btn-gold-outline">
+          <Link href={`/${locale}/contact`} className="btn-gold-outline">
             {t('cta_secondary')}
           </Link>
         </div>

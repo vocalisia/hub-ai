@@ -225,7 +225,7 @@ function getDemoResult(product: string, locale: string): MarketResearchResult {
       isFr ? 'Configurez votre clé API pour accéder aux résultats réels' : 'Configure your API key for real results',
     ],
     roi_vs_traditional: isFr
-      ? 'Cette simulation remplace une étude traditionnelle à 20 000-100 000 € en quelques minutes.'
-      : 'This simulation replaces a traditional study costing €20,000-100,000 in minutes.',
+      ? "Cette simulation remplace un cycle d'etude traditionnelle lourd en quelques minutes."
+      : 'This simulation replaces a heavy traditional research cycle in minutes.',
   }
 }
