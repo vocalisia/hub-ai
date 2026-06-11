@@ -14,9 +14,7 @@ const nextConfig = {
     domains: [
       'ai-due.com',
       'aiautomationsaas.com',
-      'iapmesuisse.ch',
-      'images.unsplash.com',
-      'randomuser.me'
+      'iapmesuisse.ch'
     ],
     formats: ['image/avif', 'image/webp']
   },
