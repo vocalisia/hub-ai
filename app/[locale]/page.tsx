@@ -157,7 +157,6 @@ const SERVICE_SCHEMA_FR = {
   "inLanguage": "fr",
   "offers": {
     "@type": "Offer",
-    "priceCurrency": "EUR",
     "url": "https://ai-due.com/fr/contact"
   },
   "provider": {
@@ -176,8 +175,7 @@ const SOFTWARE_SCHEMA = {
   "url": "https://ai-due.com",
   "description": "AI Swarm public opinion simulation engine — stress-test decisions before they happen with 250 AI agents and synthetic prediction markets.",
   "offers": {
-    "@type": "Offer",
-    "priceCurrency": "EUR"
+    "@type": "Offer"
   },
   "publisher": {
     "@type": "Organization",

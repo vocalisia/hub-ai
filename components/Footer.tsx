@@ -93,9 +93,9 @@ export default function Footer() {
               {[
                 { href: `/${locale}/blog`, label: 'Blog' },
                 { href: `/${locale}/ebooks`, label: 'eBooks' },
-                { href: `/${locale}/quiz/quel-agent-ia-deployer`, label: 'AI Agent Quiz' },
+                { href: `/${locale}/quiz`, label: 'AI Quiz' },
                 { href: `/${locale}/carte`, label: 'AI Map' },
-                { href: '#', label: 'API Docs' },
+                { href: `/${locale}/games`, label: 'AI Games' },
               ].map((l) => (
                 <li key={l.label}>
                   <Link href={l.href} className="text-white/55 hover:text-gold transition-colors text-[14px]">
