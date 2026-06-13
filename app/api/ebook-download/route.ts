@@ -68,6 +68,21 @@ export async function POST(req: NextRequest) {
           `,
         }),
       }).catch(() => null)
+
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'AI-DUE <noreply@ai-due.com>',
+          to: ['contact@vocalis.pro'],
+          reply_to: email,
+          subject: `[Lead eBook AI-DUE] ${ebook.title}`,
+          html: `<h2>Nouveau lead eBook AI-DUE</h2><p><strong>Email :</strong> ${email}</p><p><strong>Nom :</strong> ${name || 'N/A'}</p><p><strong>eBook :</strong> ${ebook.title}</p><p><strong>Date :</strong> ${new Date().toISOString()}</p>`,
+        }),
+      }).catch(() => null)
     }
 
     // Always return the direct download URL

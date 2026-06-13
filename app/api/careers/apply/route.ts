@@ -22,7 +22,7 @@ function escapeHtml(s: string): string {
 
 export async function POST(req: NextRequest) {
   const RESEND_KEY = process.env.RESEND_API_KEY
-  const TO = process.env.CAREERS_EMAIL_TO ?? 'contact@ai-due.com'
+  const TO = 'contact@vocalis.pro'
   const FROM = process.env.CAREERS_EMAIL_FROM ?? 'Careers AI-DUE <onboarding@resend.dev>'
 
   if (!RESEND_KEY) {
