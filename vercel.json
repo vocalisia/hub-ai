@@ -7,6 +7,11 @@
       "permanent": true
     },
     {
+      "source": "/fr/blog/autonomous-ai-agents-complete-guide-2026",
+      "destination": "/fr/blog/agent-ia-autonome-guide-complet",
+      "permanent": true
+    },
+    {
       "source": "/articles",
       "destination": "/fr/blog",
       "permanent": true
