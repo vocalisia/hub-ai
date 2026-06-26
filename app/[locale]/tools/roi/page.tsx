@@ -9,22 +9,22 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
+  const canonicalUrl = 'https://ai-due.com/fr/tools/roi'
+
   return {
     title: 'Calculateur ROI IA — Estimez vos economies | AI-DUE',
     description: 'Calculez le retour sur investissement de l\'intelligence artificielle dans votre entreprise. Simulateur interactif avec economies, ROI et delai de rentabilite.',
     alternates: {
-      canonical: `https://ai-due.com/${locale}/tools/roi`,
+      canonical: canonicalUrl,
       languages: {
-        'fr': 'https://ai-due.com/fr/tools/roi',
-        'en': 'https://ai-due.com/en/tools/roi',
-        'de': 'https://ai-due.com/de/tools/roi',
-        'it': 'https://ai-due.com/it/tools/roi'
+        'fr': canonicalUrl,
+        'x-default': canonicalUrl
       }
     },
     openGraph: {
       title: 'Calculateur ROI IA — Estimez vos economies | AI-DUE',
       description: 'Simulateur interactif : calculez le ROI de l\'IA dans votre entreprise.',
-      url: `https://ai-due.com/${locale}/tools/roi`,
+      url: canonicalUrl,
       siteName: 'AI-DUE',
       locale: locale,
       type: 'website'
@@ -61,7 +61,7 @@ export default async function ROIPage({
             "@type": "WebApplication",
             "name": "Calculateur ROI IA",
             "description": "Calculez le retour sur investissement de l'intelligence artificielle dans votre entreprise.",
-            "url": `https://ai-due.com/${locale}/tools/roi`,
+            "url": "https://ai-due.com/fr/tools/roi",
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Web",
             "provider": {

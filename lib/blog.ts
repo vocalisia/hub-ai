@@ -25,7 +25,12 @@ export interface BlogPost {
 }
 
 export function getAllPosts(locale: string = 'fr'): BlogPost[] {
-  const files = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx') && !f.includes('/'))
+  const rootFiles = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx') && !f.includes('/'))
+  const localeDir = path.join(BLOG_DIR, locale)
+  const localeFiles = fs.existsSync(localeDir)
+    ? fs.readdirSync(localeDir).filter(f => f.endsWith('.mdx'))
+    : []
+  const files = Array.from(new Set([...rootFiles, ...localeFiles]))
 
   return files
     .map(filename => {
@@ -77,10 +82,12 @@ export function getAllPosts(locale: string = 'fr'): BlogPost[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
-export function getPostsByGeo(continent: string): BlogPost[] {
+export function getPostsByGeo(continent?: string): BlogPost[] {
+  if (!continent) return []
   return getAllPosts().filter(post => post.geo?.continent === continent)
 }
 
-export function getPostsByCountry(country: string): BlogPost[] {
+export function getPostsByCountry(country?: string): BlogPost[] {
+  if (!country) return []
   return getAllPosts().filter(post => post.geo?.country === country)
 }

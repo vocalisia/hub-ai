@@ -1,6 +1,6 @@
 import { getAllPosts, getPostsByCountry } from '@/lib/blog'
 import ReactMarkdown from 'react-markdown'
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import ReadingProgress from '@/components/ReadingProgress'
@@ -9,6 +9,60 @@ export const revalidate = 86400
 
 const markdownComponents = {
   h1: ({ node: _node, ...props }: any) => <h2 {...props} />,
+}
+
+const BLOG_SLUG_ALIASES: Record<string, string> = {
+  'reputation-digitale-ia-ecommercants': 'digital-reputation-ai-ecommerce-sellers',
+  'reputation-digitale-ia-ecommerçants': 'digital-reputation-ai-ecommerce-sellers',
+  'reputation-digitale-ia-ecommerÃ§ants': 'digital-reputation-ai-ecommerce-sellers',
+  'automazione-ia-aziendale-2026-04-14': 'ia-automatisation-entreprise',
+  'automazione-ai-aziende-2026-04-14': 'ia-automatisation-entreprise',
+  'ai-du-2026-04-13': 'ai-agents-for-business-2026-04-14',
+  'ai-montreal-2025': 'ia-canada-toronto',
+}
+
+function getLegacyBlogAliasKey(slug: string) {
+  let decoded = slug
+  try {
+    decoded = decodeURIComponent(slug)
+  } catch {
+    decoded = slug
+  }
+
+  return decoded
+    .replace(/\u00c3\u0192\u00c2\u00a7/g, 'c')
+    .replace(/\u00c3\u00a7/g, 'c')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+}
+
+function resolveLegacyBlogTarget(locale: string, slug: string) {
+  const legacySlug = getLegacyBlogAliasKey(slug)
+
+  if (legacySlug === 'ai-canada-montreal') {
+    return locale === 'fr' ? 'ia-canada-toronto' : 'ai-montreal-2025'
+  }
+
+  if (legacySlug === 'ai-montreal-2025') {
+    return locale === 'fr' ? 'ia-canada-toronto' : undefined
+  }
+
+  if (
+    legacySlug === 'reputation-digitale-ia-ecommercants' ||
+    legacySlug === 'reputation-digitale-ia-ecommerants'
+  ) {
+    return 'digital-reputation-ai-ecommerce-sellers'
+  }
+
+  return BLOG_SLUG_ALIASES[legacySlug]
+}
+
+function redirectLegacySlug(locale: string, slug: string) {
+  const target = resolveLegacyBlogTarget(locale, slug)
+  if (target) {
+    permanentRedirect(`/${locale}/blog/${target}`)
+  }
 }
 
 function extractFaq(content: string) {
@@ -126,6 +180,7 @@ export default function BlogPostPage({
 }) {
   const posts = getAllPosts(params.locale)
   const post = posts.find(p => p.slug === params.slug)
+  if (!post) redirectLegacySlug(params.locale, params.slug)
   if (!post) notFound()
 
   const related = getPostsByCountry(post.geo?.country)

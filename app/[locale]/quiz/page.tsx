@@ -8,9 +8,27 @@ function t(obj: Record<string, string>, locale: string): string {
   return obj[locale] || obj['fr'] || ''
 }
 
-export const metadata: Metadata = {
-  title: 'Quiz IA — AI-DUE',
-  description: 'Interactive AI quizzes: find the right AI for your business, test your knowledge, assess your AI maturity.'
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = 'https://ai-due.com/fr/quiz'
+
+  return {
+    title: 'Quiz IA — AI-DUE',
+    description: 'Interactive AI quizzes: find the right AI for your business, test your knowledge, assess your AI maturity.',
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        fr: canonicalUrl,
+        'x-default': canonicalUrl,
+      },
+    },
+    openGraph: {
+      title: 'Quiz IA - AI-DUE',
+      description: 'Interactive AI quizzes.',
+      url: canonicalUrl,
+      siteName: 'AI-DUE',
+      type: 'website',
+    },
+  }
 }
 
 const labels: Record<string, { badge: string; title: string; subtitle: string; cta: string }> = {

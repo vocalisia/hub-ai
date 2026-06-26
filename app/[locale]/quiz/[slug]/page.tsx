@@ -21,20 +21,18 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   const title = t(quiz.title, params.locale)
   const desc = t(quiz.description, params.locale)
   const slug = params.slug
+  const canonicalUrl = `https://ai-due.com/fr/quiz/${slug}`
   return {
     title: `${title} | AI-DUE Quiz`,
     description: desc,
     alternates: {
-      canonical: `https://ai-due.com/${params.locale}/quiz/${slug}`,
+      canonical: canonicalUrl,
       languages: {
-        en: `https://ai-due.com/en/quiz/${slug}`,
-        fr: `https://ai-due.com/fr/quiz/${slug}`,
-        de: `https://ai-due.com/de/quiz/${slug}`,
-        it: `https://ai-due.com/it/quiz/${slug}`,
-        'x-default': `https://ai-due.com/en/quiz/${slug}`,
+        fr: canonicalUrl,
+        'x-default': canonicalUrl,
       },
     },
-    openGraph: { title, description: desc, type: 'website', url: `https://ai-due.com/${params.locale}/quiz/${slug}` },
+    openGraph: { title, description: desc, type: 'website', url: canonicalUrl },
   }
 }
 

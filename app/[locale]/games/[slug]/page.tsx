@@ -21,17 +21,15 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   const game = GAMES[params.slug]
   if (!game) return {}
   const slug = params.slug
+  const canonicalUrl = `https://ai-due.com/fr/games/${slug}`
   return {
     title: `${game.title} | AI-DUE Games`,
     description: game.description,
     alternates: {
-      canonical: `https://ai-due.com/${params.locale}/games/${slug}`,
+      canonical: canonicalUrl,
       languages: {
-        en: `https://ai-due.com/en/games/${slug}`,
-        fr: `https://ai-due.com/fr/games/${slug}`,
-        de: `https://ai-due.com/de/games/${slug}`,
-        it: `https://ai-due.com/it/games/${slug}`,
-        'x-default': `https://ai-due.com/en/games/${slug}`,
+        fr: canonicalUrl,
+        'x-default': canonicalUrl,
       },
     },
   }

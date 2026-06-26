@@ -3,9 +3,27 @@ import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
 
-export const metadata: Metadata = {
-  title: 'Mini-Jeux IA — AI-DUE',
-  description: 'Mini-jeux interactifs sur l\'architecture IA : construisez des reseaux de neurones, assemblez des pipelines RAG, testez votre memoire IA.'
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = 'https://ai-due.com/fr/games'
+
+  return {
+    title: 'Mini-Jeux IA — AI-DUE',
+    description: 'Mini-jeux interactifs sur l\'architecture IA : construisez des reseaux de neurones, assemblez des pipelines RAG, testez votre memoire IA.',
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        fr: canonicalUrl,
+        'x-default': canonicalUrl,
+      },
+    },
+    openGraph: {
+      title: 'Mini-Jeux IA - AI-DUE',
+      description: 'Mini-jeux interactifs sur l architecture IA.',
+      url: canonicalUrl,
+      siteName: 'AI-DUE',
+      type: 'website',
+    },
+  }
 }
 
 const GAMES = [

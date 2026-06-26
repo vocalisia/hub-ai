@@ -15,6 +15,7 @@ interface PageDef {
   path: string
   changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']
   priority: number
+  locales?: readonly Locale[]
 }
 
 // Public, indexable static pages (one entry per logical page; emitted x4 locales)
@@ -26,12 +27,12 @@ const STATIC_PAGES: PageDef[] = [
   { path: 'architecture', changeFrequency: 'monthly', priority: 0.8 },
   { path: 'carte', changeFrequency: 'monthly', priority: 0.8 },
   { path: 'ebooks', changeFrequency: 'monthly', priority: 0.8 },
-  { path: 'tools', changeFrequency: 'monthly', priority: 0.8 },
-  { path: 'tools/maturite', changeFrequency: 'monthly', priority: 0.7 },
-  { path: 'tools/prompt', changeFrequency: 'monthly', priority: 0.7 },
-  { path: 'tools/roi', changeFrequency: 'monthly', priority: 0.7 },
-  { path: 'games', changeFrequency: 'monthly', priority: 0.7 },
-  { path: 'quiz', changeFrequency: 'monthly', priority: 0.7 },
+  { path: 'tools', changeFrequency: 'monthly', priority: 0.8, locales: [DEFAULT_LOCALE] },
+  { path: 'tools/maturite', changeFrequency: 'monthly', priority: 0.7, locales: [DEFAULT_LOCALE] },
+  { path: 'tools/prompt', changeFrequency: 'monthly', priority: 0.7, locales: [DEFAULT_LOCALE] },
+  { path: 'tools/roi', changeFrequency: 'monthly', priority: 0.7, locales: [DEFAULT_LOCALE] },
+  { path: 'games', changeFrequency: 'monthly', priority: 0.7, locales: [DEFAULT_LOCALE] },
+  { path: 'quiz', changeFrequency: 'monthly', priority: 0.7, locales: [DEFAULT_LOCALE] },
   { path: 'blog', changeFrequency: 'daily', priority: 0.9 },
   { path: 'careers', changeFrequency: 'monthly', priority: 0.6 },
   { path: 'contact', changeFrequency: 'yearly', priority: 0.6 },
@@ -71,22 +72,29 @@ function isRedirectSource(locale: Locale, pathSegment: string): boolean {
 }
 
 function readBlogSlugsForLocale(locale: Locale): { slug: string; lastModified: Date }[] {
-  // The blog route loader iterates canonical root files and reads a translated
-  // same-name file when it exists. The sitemap must mirror that exactly.
+  // The blog route loader reads canonical root files plus locale-only files.
+  // Locale-only files are real public URLs and must not be left out of sitemap.
   const localeDir = path.join(process.cwd(), 'content', 'blog', locale)
   const rootDir = path.join(process.cwd(), 'content', 'blog')
   if (!fs.existsSync(rootDir)) return []
 
-  const entries = fs.readdirSync(rootDir, { withFileTypes: true })
+  const rootEntries = fs.readdirSync(rootDir, { withFileTypes: true })
+    .filter((e) => e.isFile() && e.name.endsWith('.mdx'))
+    .map((e) => e.name)
+  const localeEntries = fs.existsSync(localeDir)
+    ? fs.readdirSync(localeDir, { withFileTypes: true })
+      .filter((e) => e.isFile() && e.name.endsWith('.mdx'))
+      .map((e) => e.name)
+    : []
+  const entries = Array.from(new Set([...rootEntries, ...localeEntries]))
   const seen = new Set<string>()
   return entries
-    .filter((e) => e.isFile() && e.name.endsWith('.mdx'))
-    .flatMap((e) => {
-      const fallbackSlug = e.name.replace(/\.mdx$/, '')
-      const localePath = path.join(localeDir, e.name)
+    .flatMap((filename) => {
+      const fallbackSlug = filename.replace(/\.mdx$/, '')
+      const localePath = path.join(localeDir, filename)
       const filePath = locale !== DEFAULT_LOCALE && fs.existsSync(localePath)
         ? localePath
-        : path.join(rootDir, e.name)
+        : path.join(rootDir, filename)
       let lastModified: Date
       try {
         lastModified = fs.statSync(filePath).mtime
@@ -127,9 +135,9 @@ function makeUrl(locale: Locale, pathSegment: string): string {
  * Build hreflang alternates map for a given path.
  * Includes all 4 locales + x-default to French.
  */
-function buildAlternates(pathSegment: string): Record<string, string> {
+function buildAlternates(pathSegment: string, locales: readonly Locale[] = LOCALES): Record<string, string> {
   const langs: Record<string, string> = {}
-  for (const loc of LOCALES) {
+  for (const loc of locales) {
     langs[loc] = makeUrl(loc, pathSegment)
   }
   langs['x-default'] = pathSegment
@@ -157,6 +165,7 @@ function makeEntry(
   lastModified: Date | string,
   changeFrequency: PageDef['changeFrequency'],
   priority: number,
+  alternateLocales: readonly Locale[] = LOCALES,
 ): MetadataRoute.Sitemap[number] {
   const url = makeUrl(locale, pathSegment)
   return {
@@ -165,7 +174,7 @@ function makeEntry(
     changeFrequency,
     priority,
     alternates: {
-      languages: buildAlternates(pathSegment),
+      languages: buildAlternates(pathSegment, alternateLocales),
     },
   }
 }
@@ -182,7 +191,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 1. Static pages × 4 locales
   for (const page of STATIC_PAGES) {
-    for (const locale of LOCALES) {
+    const pageLocales = page.locales ?? LOCALES
+    for (const locale of pageLocales) {
       entries.push(
         makeEntry(
           locale,
@@ -190,6 +200,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           lastDeploy,
           page.changeFrequency,
           page.priority,
+          pageLocales,
         ),
       )
     }
@@ -198,17 +209,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 2. Quiz pages × 4 locales
   for (const slug of QUIZ_SLUGS) {
     const segment = `quiz/${slug}`
-    for (const locale of LOCALES) {
-      entries.push(makeEntry(locale, segment, lastDeploy, 'monthly', 0.6))
-    }
+    entries.push(makeEntry(DEFAULT_LOCALE, segment, lastDeploy, 'monthly', 0.6, [DEFAULT_LOCALE]))
   }
 
   // 3. Game pages × 4 locales
   for (const slug of GAME_SLUGS) {
     const segment = `games/${slug}`
-    for (const locale of LOCALES) {
-      entries.push(makeEntry(locale, segment, lastDeploy, 'monthly', 0.6))
-    }
+    entries.push(makeEntry(DEFAULT_LOCALE, segment, lastDeploy, 'monthly', 0.6, [DEFAULT_LOCALE]))
   }
 
   // 4. Blog articles - only emit URL for locales where content actually exists

@@ -9,22 +9,22 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
+  const canonicalUrl = 'https://ai-due.com/fr/tools/prompt'
+
   return {
     title: 'Générateur de Prompts IA — Créez des prompts optimisés | AI-DUE',
     description: 'Générez des prompts IA structurés et professionnels pour vos emails, articles, posts, code et analyses. Outil gratuit par AI-DUE.',
     alternates: {
-      canonical: `https://ai-due.com/${locale}/tools/prompt`,
+      canonical: canonicalUrl,
       languages: {
-        'fr': 'https://ai-due.com/fr/tools/prompt',
-        'en': 'https://ai-due.com/en/tools/prompt',
-        'de': 'https://ai-due.com/de/tools/prompt',
-        'it': 'https://ai-due.com/it/tools/prompt'
+        'fr': canonicalUrl,
+        'x-default': canonicalUrl
       }
     },
     openGraph: {
       title: 'Générateur de Prompts IA — Créez des prompts optimisés | AI-DUE',
       description: 'Outil gratuit pour générer des prompts IA structurés et professionnels.',
-      url: `https://ai-due.com/${locale}/tools/prompt`,
+      url: canonicalUrl,
       siteName: 'AI-DUE',
       locale: locale,
       type: 'website'
@@ -61,7 +61,7 @@ export default async function PromptPage({
             "@type": "WebApplication",
             "name": "Generateur de Prompts IA",
             "description": "Generez des prompts IA structures et professionnels.",
-            "url": `https://ai-due.com/${locale}/tools/prompt`,
+            "url": "https://ai-due.com/fr/tools/prompt",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Web",
             "provider": {

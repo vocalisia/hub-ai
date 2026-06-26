@@ -6,6 +6,9 @@
 # ============================================================
 User-agent: *
 Allow: /
+Allow: /_next/static/
+Allow: /_next/image
+Allow: /api/og
 
 # Block private / non-indexable areas
 Disallow: /api/
@@ -13,11 +16,7 @@ Disallow: /_next/
 Disallow: /_vercel/
 Disallow: /*.json$
 
-# Block transactional / dynamic per-locale routes
-Disallow: /fr/paiement
-Disallow: /en/paiement
-Disallow: /de/paiement
-Disallow: /it/paiement
+# Block dynamic user-scoped routes
 Disallow: /fr/simulation/
 Disallow: /en/simulation/
 Disallow: /de/simulation/
@@ -33,74 +32,98 @@ Disallow: /*?*gclid=
 # ============================================================
 User-agent: GPTBot
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
-Disallow: /fr/paiement
-Disallow: /en/paiement
-Disallow: /de/paiement
-Disallow: /it/paiement
 
 User-agent: ChatGPT-User
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: OAI-SearchBot
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
-Disallow: /fr/paiement
-Disallow: /en/paiement
-Disallow: /de/paiement
-Disallow: /it/paiement
 
 User-agent: Claude-Web
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: anthropic-ai
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: Perplexity-User
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: Applebot-Extended
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: Bytespider
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: cohere-ai
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: Meta-ExternalAgent
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: DuckAssistBot
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: YouBot
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 User-agent: Diffbot
 Allow: /
+Allow: /_next/static/
+Allow: /api/og
 Disallow: /api/
 
 # ============================================================

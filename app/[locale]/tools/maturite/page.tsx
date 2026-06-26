@@ -9,22 +9,22 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
+  const canonicalUrl = 'https://ai-due.com/fr/tools/maturite'
+
   return {
     title: 'Score de Maturité IA — Évaluez votre entreprise | AI-DUE',
     description: 'Évaluez la maturité IA de votre entreprise en 6 critères clés. Recevez un score sur 100 et des recommandations personnalisées.',
     alternates: {
-      canonical: `https://ai-due.com/${locale}/tools/maturite`,
+      canonical: canonicalUrl,
       languages: {
-        'fr': 'https://ai-due.com/fr/tools/maturite',
-        'en': 'https://ai-due.com/en/tools/maturite',
-        'de': 'https://ai-due.com/de/tools/maturite',
-        'it': 'https://ai-due.com/it/tools/maturite'
+        'fr': canonicalUrl,
+        'x-default': canonicalUrl
       }
     },
     openGraph: {
       title: 'Score de Maturité IA — Évaluez votre entreprise | AI-DUE',
       description: 'Évaluez votre maturité IA en 6 critères. Score sur 100 + recommandations.',
-      url: `https://ai-due.com/${locale}/tools/maturite`,
+      url: canonicalUrl,
       siteName: 'AI-DUE',
       locale: locale,
       type: 'website'
@@ -61,7 +61,7 @@ export default async function MaturitePage({
             "@type": "WebApplication",
             "name": "Score de Maturité IA",
             "description": "Évaluez la maturité IA de votre entreprise en 6 critères clés.",
-            "url": `https://ai-due.com/${locale}/tools/maturite`,
+            "url": "https://ai-due.com/fr/tools/maturite",
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Web",
             "provider": {

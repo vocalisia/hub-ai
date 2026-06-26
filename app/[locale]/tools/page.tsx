@@ -8,22 +8,22 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
+  const canonicalUrl = 'https://ai-due.com/fr/tools'
+
   return {
     title: 'AI Tools — Outils IA Interactifs & Recommandés | AI-DUE',
     description: 'Calculateur ROI, générateur de prompts, score de maturité IA et sélection d\'outils IA vérifiés par AI-DUE.',
     alternates: {
-      canonical: `https://ai-due.com/${locale}/tools`,
+      canonical: canonicalUrl,
       languages: {
-        'fr': 'https://ai-due.com/fr/tools',
-        'en': 'https://ai-due.com/en/tools',
-        'de': 'https://ai-due.com/de/tools',
-        'it': 'https://ai-due.com/it/tools'
+        'fr': canonicalUrl,
+        'x-default': canonicalUrl
       }
     },
     openGraph: {
       title: 'AI Tools — Outils IA Interactifs & Recommandés | AI-DUE',
       description: 'Calculateur ROI, générateur de prompts, score de maturité IA et outils recommandés.',
-      url: `https://ai-due.com/${locale}/tools`,
+      url: canonicalUrl,
       siteName: 'AI-DUE',
       locale: locale,
       type: 'website'
