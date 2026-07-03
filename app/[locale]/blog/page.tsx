@@ -16,9 +16,24 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
+  const canonicalUrl = `https://ai-due.com/${locale}/blog`
+
   return {
     title: 'Blog IA — Articles Experts Geolocalises | Hub AI',
     description: 'Articles IA geolocalises : Suisse, Europe, Canada, USA. SEO local + expertise IA.',
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        en: 'https://ai-due.com/en/blog',
+        fr: 'https://ai-due.com/fr/blog',
+        de: 'https://ai-due.com/de/blog',
+        it: 'https://ai-due.com/it/blog',
+        'x-default': 'https://ai-due.com/fr/blog',
+      },
+    },
+    openGraph: {
+      url: canonicalUrl,
+    },
     other: {
       'geo.region': 'CH',
       'geo.placename': 'Suisse'
