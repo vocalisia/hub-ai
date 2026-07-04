@@ -53,7 +53,7 @@ export const UI: Record<'en' | 'fr' | 'de' | 'it', CareersUI> = {
     hero_title_1: 'Join the team',
     hero_title_2: 'redefining decision intelligence.',
     hero_subtitle:
-      'AI-DUE recruits Sales Development Reps, Setters, Account Executives and Enterprise Closers. Operating across 14 countries. Full remote. Variable compensation only.',
+      'AI-DUE recruits Sales Development Reps, Setters, Account Executives and Enterprise Closers. Operating across 14 countries. Full remote. Variable pay only.',
     apply_now: 'Apply now',
     open_positions: 'Open positions',
     jobs_heading: 'Jobs',
@@ -128,7 +128,7 @@ export const UI: Record<'en' | 'fr' | 'de' | 'it', CareersUI> = {
     hero_title_1: 'Werde Teil des Teams,',
     hero_title_2: 'das Entscheidungsintelligenz neu definiert.',
     hero_subtitle:
-      'AI-DUE rekrutiert Sales Development Reps, Setter, Account Executives und Enterprise Closer. 14 Länder, Full Remote, unlimitierte Provision.',
+      'AI-DUE rekrutiert Sales Development Reps, Setter, Account Executives und Enterprise Closer. 14 Länder, Full Remote, nur variable Vergütung.',
     apply_now: 'Jetzt bewerben',
     open_positions: 'Offene Stellen',
     jobs_heading: 'Jobs',
@@ -166,7 +166,7 @@ export const UI: Record<'en' | 'fr' | 'de' | 'it', CareersUI> = {
     hero_title_1: "Unisciti al team che",
     hero_title_2: "ridefinisce l'intelligenza decisionale.",
     hero_subtitle:
-      'AI-DUE assume Sales Development Rep, Setter, Account Executive e Enterprise Closer. 14 paesi, full remote, commissione illimitata.',
+      'AI-DUE assume Sales Development Rep, Setter, Account Executive e Enterprise Closer. 14 paesi, full remote, solo compenso variabile.',
     apply_now: 'Candidati',
     open_positions: 'Posizioni aperte',
     jobs_heading: 'Lavori',
@@ -224,7 +224,7 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Excellent diction, phone confidence, 30-second pitch',
         'English native + French/German/Italian professional (B2 minimum)',
       ],
-      comp: 'Variable compensation only.',
+      comp: 'Variable pay only.',
       remote: 'Full remote.',
       growth:
         'Natural promotion to Account Executive after 12-18 months. Alternative: BDR Team Lead after 18-24 months.',
@@ -252,7 +252,7 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Organization and rigor: never a missed callback',
         'English fluent + basic French/Italian/German',
       ],
-      comp: 'Variable compensation only.',
+      comp: 'Variable pay only.',
       remote: 'Full remote.',
       growth:
         'BDR promotion after 12 months, Senior Setter/Team Lead after 18 months. Structured AI-DUE Sales Academy program.',
@@ -280,7 +280,7 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Verifiable track record: 90%+ recurring quota attainment',
         'English native + second European language fluent',
       ],
-      comp: 'Variable compensation only.',
+      comp: 'Variable pay only.',
       remote: 'Full remote.',
       growth:
         'Senior AE after 18 months (enterprise accounts) or Team Lead / Sales Manager after 24 months.',
@@ -308,7 +308,7 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Comfort in C-level boardroom and executive committee',
         'English native + minimum 2 European languages',
       ],
-      comp: 'Variable compensation only.',
+      comp: 'Variable pay only.',
       remote: 'Full remote.',
       growth: 'VP Sales / Chief Revenue Officer after 24-36 months. Founding team trajectory possible.',
       nice:
