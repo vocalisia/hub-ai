@@ -60,7 +60,7 @@ export const UI: Record<'en' | 'fr' | 'de' | 'it', CareersUI> = {
     mission_label: 'MISSION',
     duties_label: 'A TYPICAL DAY',
     must_label: 'MUST-HAVE PROFILE',
-    comp_label: 'COMPENSATION',
+    comp_label: 'COMMISSION',
     remote_label: 'REMOTE',
     growth_label: 'GROWTH',
     nice_label: 'NICE TO HAVE',
@@ -97,7 +97,7 @@ export const UI: Record<'en' | 'fr' | 'de' | 'it', CareersUI> = {
     mission_label: 'MISSION',
     duties_label: 'TES JOURNÉES',
     must_label: 'PROFIL MUST-HAVE',
-    comp_label: 'RÉMUNÉRATION',
+    comp_label: 'COMMISSION',
     remote_label: 'REMOTE',
     growth_label: 'ÉVOLUTION',
     nice_label: 'NICE TO HAVE',
@@ -135,7 +135,7 @@ export const UI: Record<'en' | 'fr' | 'de' | 'it', CareersUI> = {
     mission_label: 'MISSION',
     duties_label: 'DEIN ALLTAG',
     must_label: 'MUST-HAVE PROFIL',
-    comp_label: 'VERGÜTUNG',
+    comp_label: 'PROVISION',
     remote_label: 'REMOTE',
     growth_label: 'ENTWICKLUNG',
     nice_label: 'NICE TO HAVE',
@@ -173,7 +173,7 @@ export const UI: Record<'en' | 'fr' | 'de' | 'it', CareersUI> = {
     mission_label: 'MISSIONE',
     duties_label: 'LA TUA GIORNATA',
     must_label: 'PROFILO MUST-HAVE',
-    comp_label: 'RETRIBUZIONE',
+    comp_label: 'COMMISSIONE',
     remote_label: 'REMOTE',
     growth_label: 'CRESCITA',
     nice_label: 'NICE TO HAVE',
@@ -224,10 +224,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Excellent diction, phone confidence, 30-second pitch',
         'English native + French/German/Italian professional (B2 minimum)',
       ],
-      comp:
-        'Attractive package: base + variable on qualified meetings + recurring commission on MRR. Fast progression based on performance.',
-      remote:
-        'Full remote — work from anywhere (UTC-1 to UTC+3). Quarterly team meetups. Home office budget provided.',
+      comp: 'Variable compensation only.',
+      remote: 'Full remote.',
       growth:
         'Natural promotion to Account Executive after 12-18 months. Alternative: BDR Team Lead after 18-24 months.',
       nice:
@@ -254,9 +252,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Organization and rigor: never a missed callback',
         'English fluent + basic French/Italian/German',
       ],
-      comp:
-        'Balanced compensation: base + variable on booked meetings + quality bonus. Fast track to BDR possible.',
-      remote: 'Full remote with 9am-6pm local availability. Pro USB headset reimbursed. Minimum 50Mbps fiber required.',
+      comp: 'Variable compensation only.',
+      remote: 'Full remote.',
       growth:
         'BDR promotion after 12 months, Senior Setter/Team Lead after 18 months. Structured AI-DUE Sales Academy program.',
       nice:
@@ -283,9 +280,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Verifiable track record: 90%+ recurring quota attainment',
         'English native + second European language fluent',
       ],
-      comp:
-        'Competitive package: base + variable on ARR quota + accelerated commission past quota. Stock options after 12 months.',
-      remote: 'Full remote + client mobility for strategic meetings. 3 offsites/year.',
+      comp: 'Variable compensation only.',
+      remote: 'Full remote.',
       growth:
         'Senior AE after 18 months (enterprise accounts) or Team Lead / Sales Manager after 24 months.',
       nice:
@@ -312,9 +308,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Comfort in C-level boardroom and executive committee',
         'English native + minimum 2 European languages',
       ],
-      comp:
-        'Top-tier package: high base + uncapped commission + significant equity. RSU vesting 4 years.',
-      remote: 'Full remote + heavy client travel (40-60%). Premium offsites. Personal executive assistant.',
+      comp: 'Variable compensation only.',
+      remote: 'Full remote.',
       growth: 'VP Sales / Chief Revenue Officer after 24-36 months. Founding team trajectory possible.',
       nice:
         'Network in Big 4 / strategy consulting · Direct experience with C-suite buying processes · MBA or equivalent',
@@ -342,10 +337,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Excellente élocution, aisance téléphonique, pitch 30 secondes',
         'Français natif + anglais professionnel (B2 minimum)',
       ],
-      comp:
-        'Package attractif : base fixe + variable sur RDV qualifiés + commission récurrente sur MRR. Progression rapide selon performance.',
-      remote:
-        "Full remote — travaille d'où tu veux (UTC-1 à UTC+3). Team meetups trimestriels. Budget home office fourni.",
+      comp: 'Paiement variable uniquement.',
+      remote: 'Full remote.',
       growth:
         'Promotion naturelle vers AE après 12-18 mois de performance soutenue. Alternative : Team Lead BDR après 18-24 mois.',
       nice:
@@ -372,9 +365,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Organisation et rigueur : jamais un callback raté',
         'Français natif + bonne compréhension anglais écrit',
       ],
-      comp:
-        'Rémunération équilibrée : base + variable sur RDV bookés + bonus qualité (show rate, conversion). Évolution rapide vers BDR possible.',
-      remote: 'Full remote avec disponibilité 9h-18h fuseau local. Casque USB pro remboursé. Fibre minimum 50Mbps requise.',
+      comp: 'Paiement variable uniquement.',
+      remote: 'Full remote.',
       growth:
         'Promotion BDR après 12 mois + Senior Setter/Team Lead après 18 mois. Parcours interne structuré AI-DUE Sales Academy.',
       nice:
@@ -401,9 +393,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Track record vérifiable : atteinte/dépassement quota 90%+ récurrent',
         'Français natif + anglais courant (démos/nego internationales)',
       ],
-      comp:
-        'Package compétitif : base + variable sur quota ARR + commission accélérée au-delà du quota. Stock-options après 12 mois.',
-      remote: 'Full remote + mobilité clients pour meetings stratégiques. 3 offsites/an.',
+      comp: 'Paiement variable uniquement.',
+      remote: 'Full remote.',
       growth:
         "Senior AE après 18 mois (comptes enterprise) ou Team Lead / Sales Manager après 24 mois. Relocation internationale possible.",
       nice:
@@ -430,9 +421,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Aisance C-level boardroom et comité exécutif',
         'Français natif + minimum 2 langues européennes',
       ],
-      comp:
-        'Package top-tier : base élevée + commission non plafonnée + equity significative. RSU vesting 4 ans.',
-      remote: 'Full remote + heavy client travel (40-60%). Premium offsites. Executive assistant personnel.',
+      comp: 'Paiement variable uniquement.',
+      remote: 'Full remote.',
       growth: 'VP Sales / Chief Revenue Officer après 24-36 mois de performance. Trajectoire founding team possible.',
       nice:
         'Réseau Big 4 / strategy consulting · Expérience directe avec processus achat C-suite · MBA ou équivalent',
@@ -460,9 +450,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Hervorragende Ausdrucksweise, Telefon-Sicherheit, 30-Sekunden-Pitch',
         'Deutsch Muttersprache + Englisch berufsfähig (B2 Minimum)',
       ],
-      comp:
-        'Attraktives Paket: Fixum + variabel auf qualifizierte Meetings + wiederkehrende Provision auf MRR.',
-      remote: 'Full Remote — arbeite von überall (UTC-1 bis UTC+3). Quartalsweise Team-Meetups. Home-Office-Budget.',
+      comp: 'Nur variable Vergütung.',
+      remote: 'Full Remote.',
       growth: 'Beförderung zum AE nach 12-18 Monaten. Alternative: BDR Team Lead nach 18-24 Monaten.',
       nice:
         'Erfahrung mit Verkauf von KI/Research/Insights-Tools · MEDDIC-, Sandler-, Challenger-Sale-Training · Zweite europäische Sprache',
@@ -488,8 +477,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Organisation und Genauigkeit: nie ein verpasster Rückruf',
         'Deutsch fließend + Grundkenntnisse Englisch',
       ],
-      comp: 'Ausgewogene Vergütung: Fixum + variabel auf gebuchte Meetings + Quality-Bonus.',
-      remote: 'Full Remote mit 9-18 Uhr lokaler Verfügbarkeit. USB-Pro-Headset erstattet. Mindestens 50 Mbps Glasfaser.',
+      comp: 'Nur variable Vergütung.',
+      remote: 'Full Remote.',
       growth: 'BDR-Promotion nach 12 Monaten, Senior Setter/Team Lead nach 18 Monaten.',
       nice:
         'Hochvolumige Inbound-Call-Center-Erfahrung · Kenntnisse von Dialpad, Aircall, Ringover, Twilio Flex',
@@ -515,8 +504,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Nachweisbare Erfolge: 90%+ wiederkehrende Quotenerreichung',
         'Deutsch Muttersprache + zweite europäische Sprache fließend',
       ],
-      comp: 'Wettbewerbsfähiges Paket: Fixum + variabel auf ARR-Quote + beschleunigte Provision oberhalb der Quote.',
-      remote: 'Full Remote + Kunden-Mobilität für strategische Meetings. 3 Offsites/Jahr.',
+      comp: 'Nur variable Vergütung.',
+      remote: 'Full Remote.',
       growth: 'Senior AE nach 18 Monaten oder Team Lead / Sales Manager nach 24 Monaten.',
       nice:
         'Technischer Hintergrund oder Verkauf von KI/LLM/Research-Tech · Etabliertes Netzwerk in Beratung, Finanzen, Kommunikation',
@@ -542,8 +531,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Sicherheit im C-Level-Boardroom und Executive Committee',
         'Deutsch Muttersprache + mindestens 2 europäische Sprachen',
       ],
-      comp: 'Top-Tier-Paket: hohe Basis + uncapped Provision + signifikante Equity. RSU-Vesting 4 Jahre.',
-      remote: 'Full Remote + intensive Kundenreisen (40-60%). Premium-Offsites. Persönlicher Executive Assistant.',
+      comp: 'Nur variable Vergütung.',
+      remote: 'Full Remote.',
       growth: 'VP Sales / Chief Revenue Officer nach 24-36 Monaten. Founding-Team-Trajektorie möglich.',
       nice:
         'Netzwerk in Big 4 / Strategy Consulting · Direkte Erfahrung mit C-Suite-Einkaufsprozessen · MBA oder gleichwertig',
@@ -571,8 +560,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Eccellente dizione, sicurezza al telefono, pitch di 30 secondi',
         'Italiano madrelingua + inglese professionale (B2 minimo)',
       ],
-      comp: 'Pacchetto attraente: fisso + variabile sui meeting qualificati + commissione ricorrente su MRR.',
-      remote: 'Full remote — lavora ovunque (UTC-1 a UTC+3). Team meetup trimestrali. Budget home office.',
+      comp: 'Solo compenso variabile.',
+      remote: 'Full remote.',
       growth: 'Promozione naturale a AE dopo 12-18 mesi. Alternativa: BDR Team Lead dopo 18-24 mesi.',
       nice:
         'Esperienza nella vendita di tool IA/research/insights · Formazione MEDDIC, Sandler, Challenger Sale · Seconda lingua europea',
@@ -598,8 +587,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Organizzazione e rigore: mai una callback persa',
         'Italiano madrelingua + buona comprensione inglese scritto',
       ],
-      comp: 'Retribuzione equilibrata: fisso + variabile sui meeting prenotati + bonus qualità.',
-      remote: 'Full remote con disponibilità 9-18 fuso locale. Cuffia USB pro rimborsata. Minimo 50Mbps fibra.',
+      comp: 'Solo compenso variabile.',
+      remote: 'Full remote.',
       growth: 'Promozione BDR dopo 12 mesi, Senior Setter/Team Lead dopo 18 mesi.',
       nice:
         'Esperienza call center inbound ad alto volume · Conoscenza Dialpad, Aircall, Ringover, Twilio Flex',
@@ -625,8 +614,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Track record verificabile: 90%+ raggiungimento quota ricorrente',
         'Italiano madrelingua + seconda lingua europea fluente',
       ],
-      comp: 'Pacchetto competitivo: fisso + variabile su quota ARR + commissione accelerata oltre quota.',
-      remote: 'Full remote + mobilità clienti per meeting strategici. 3 offsite/anno.',
+      comp: 'Solo compenso variabile.',
+      remote: 'Full remote.',
       growth: 'Senior AE dopo 18 mesi o Team Lead / Sales Manager dopo 24 mesi.',
       nice:
         'Background tecnico o vendita prodotti IA/LLM/research tech · Network consolidato in consulenza, finanza, comunicazioni',
@@ -652,8 +641,8 @@ export const JOBS_BY_LOCALE: Record<'en' | 'fr' | 'de' | 'it', readonly Job[]> =
         'Padronanza in C-level boardroom e comitato esecutivo',
         'Italiano madrelingua + minimo 2 lingue europee',
       ],
-      comp: 'Pacchetto top-tier: base alta + commissione illimitata + equity significativo. RSU vesting 4 anni.',
-      remote: 'Full remote + frequenti viaggi clienti (40-60%). Offsite premium. Executive assistant personale.',
+      comp: 'Solo compenso variabile.',
+      remote: 'Full remote.',
       growth: 'VP Sales / Chief Revenue Officer dopo 24-36 mesi. Possibile traiettoria founding team.',
       nice:
         'Network in Big 4 / strategy consulting · Esperienza diretta con processi di acquisto C-suite · MBA o equivalente',
