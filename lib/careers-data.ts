@@ -53,7 +53,7 @@ export const UI: Record<'en' | 'fr' | 'de' | 'it', CareersUI> = {
     hero_title_1: 'Join the team',
     hero_title_2: 'redefining decision intelligence.',
     hero_subtitle:
-      'AI-DUE recruits Sales Development Reps, Setters, Account Executives and Enterprise Closers. Operating across 14 countries. Full remote. Uncapped commission.',
+      'AI-DUE recruits Sales Development Reps, Setters, Account Executives and Enterprise Closers. Operating across 14 countries. Full remote. Variable compensation only.',
     apply_now: 'Apply now',
     open_positions: 'Open positions',
     jobs_heading: 'Jobs',
@@ -90,7 +90,7 @@ export const UI: Record<'en' | 'fr' | 'de' | 'it', CareersUI> = {
     hero_title_1: 'Rejoins l\'équipe qui',
     hero_title_2: 'redéfinit l\'intelligence décisionnelle.',
     hero_subtitle:
-      'AI-DUE recrute Business Developers, Setters, Commerciaux et Closers Enterprise. 14 pays, full remote, commission non plafonnée.',
+      'AI-DUE recrute Business Developers, Setters, Commerciaux et Closers Enterprise. 14 pays, full remote, paiement variable uniquement.',
     apply_now: 'Postuler',
     open_positions: 'Postes ouverts',
     jobs_heading: 'Offres',
