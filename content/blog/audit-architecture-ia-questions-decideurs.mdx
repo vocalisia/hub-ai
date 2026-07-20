@@ -1,0 +1,102 @@
+---
+title: "Audit d’architecture IA : questions clés"
+slug: "audit-architecture-ia-questions-decideurs"
+date: "2026-07-20"
+dateModified: "2026-07-20"
+author: "Laurent Duplat"
+category: "Audit et gouvernance IA"
+tags: ["audit IA", "due diligence IA", "gouvernance IA", "agents IA"]
+geo: {"city": "Gen?ve", "region": "Gen?ve", "country": "CH", "lat": 46.2044, "lng": 6.1432, "continent": "Europe"}
+readTime: 9
+excerpt: "Un décideur n’a pas besoin de lire chaque ligne de code pour poser les bonnes questions sur une architecture IA. Il doit comprendre les composants, les dépendances, les données, les points d’action et la manière dont le "
+coverImage: "/images/blog/portfolio-20260720/ai-due-audit-architecture.png"
+---
+
+Un décideur n’a pas besoin de lire chaque ligne de code pour poser les bonnes questions sur une architecture IA. Il doit comprendre les composants, les dépendances, les données, les points d’action et la manière dont le système se dégrade lorsqu’un service échoue. L’audit traduit la conception technique en conséquences opérationnelles.
+
+Les réponses doivent être accompagnées de schémas, tests ou journaux. Une affirmation générale de robustesse ne suffit pas.
+
+## Quels sont les composants indispensables ?
+
+Demandez un schéma qui montre les entrées, le traitement, les modèles, les outils, le stockage, les sorties et l’observation. Identifiez ce qui est développé en interne, acheté ou fourni comme service.
+
+Pour chaque composant, posez deux questions : que se passe-t-il s’il est lent ou indisponible, et comment peut-il être remplacé ? Cette lecture fait apparaître les points uniques de défaillance.
+
+Vérifiez que le schéma correspond à l’environnement réel, y compris les scripts temporaires, files manuelles et services de secours.
+
+## Comment les données circulent-elles ?
+
+Suivez une demande de bout en bout. Quelles données sont collectées, transformées, mises en cache, journalisées et envoyées à des fournisseurs ? Qui peut les lire et les supprimer ?
+
+Demandez comment la qualité est vérifiée. Une base de connaissances peut contenir des doublons ou des versions anciennes. Un pipeline doit détecter, signaler et permettre de corriger.
+
+Examinez la séparation entre développement, test et production. Les données réelles ne doivent pas arriver dans un environnement de test sans cadre validé.
+
+## Où se trouvent les décisions et permissions ?
+
+Un agent peut recevoir un objectif dans une consigne, choisir un outil et exécuter une action via une permission. Chacune de ces couches doit limiter la suivante. Une consigne seule ne protège pas un connecteur trop puissant.
+
+Demandez quelles actions exigent une confirmation, quels seuils déclenchent une reprise et comment les droits sont révoqués. Testez un compte limité.
+
+Vérifiez la gestion des changements. Qui peut modifier un prompt système ou ajouter un outil ? Une petite modification peut élargir fortement le comportement.
+
+## Comment observe-t-on la qualité et les incidents ?
+
+Les journaux doivent relier une sortie à la version du modèle, des consignes, des données et des outils. Sans cette traçabilité, une erreur intermittente devient difficile à reproduire.
+
+Demandez quels indicateurs surveillent les refus, les reprises humaines, les erreurs d’outils, les changements de format et la qualité. Une disponibilité technique parfaite peut cacher des sorties inutilisables.
+
+Examinez le processus d’incident : détection, suspension, correction, communication et retour en service. Un incident IA peut être un comportement erroné sans panne visible.
+
+## Comment l’architecture gère-t-elle le changement ?
+
+Les modèles et services évoluent. Demandez les tests de non-régression, les environnements de recette et la possibilité de revenir à une version connue. Un changement fournisseur ne doit pas arriver directement en production sans observation.
+
+Regardez la portabilité des consignes, index et connecteurs. Une abstraction peut faciliter le remplacement, mais elle peut aussi masquer des fonctions propres à un fournisseur.
+
+Prévoyez la croissance en types d’usage, pas uniquement en volume. Ajouter une langue ou une action sensible modifie les tests et la gouvernance.
+
+## L’équipe peut-elle exploiter le système ?
+
+Identifiez les compétences et astreintes nécessaires. Une architecture élégante mais comprise par une seule personne est fragile. Demandez les procédures de déploiement, de reprise et d’onboarding.
+
+Vérifiez que le support métier peut signaler un mauvais comportement avec le contexte utile. La correction ne doit pas dépendre d’une longue enquête informelle.
+
+## Examiner la frontière entre prototype et production
+
+Demandez quelles parties de l’architecture ont été conçues pour une démonstration et lesquelles disposent de tests, supervision et procédures d’exploitation. Un notebook ou un script manuel peut être approprié pendant l’exploration, mais il ne doit pas être présenté comme un service industrialisé.
+
+Vérifiez la gestion des secrets, la séparation des environnements, les sauvegardes et la récupération des files en attente. Demandez une preuve de déploiement et de retour arrière. La transition vers la production modifie aussi les responsabilités : une personne doit accepter le service, recevoir les alertes et décider quand suspendre.
+
+Interrogez enfin le rythme des changements. Un prototype modifié quotidiennement peut convenir à une équipe de recherche, mais une production demande des versions identifiables, des fenêtres de déploiement et une communication aux utilisateurs. Comparez la vitesse annoncée à la capacité réelle de tester et d’exploiter.
+
+## Questions fréquentes
+
+### Quel schéma demander en premier ?
+
+Un diagramme de flux de données et d’actions sur un cas d’usage réel. Il révèle les composants et les responsabilités plus vite qu’une vue purement infrastructure.
+
+### Comment vérifier la résilience ?
+
+Demandez des tests de panne et observez le comportement : file d’attente, refus, bascule ou reprise humaine. Une documentation seule ne prouve pas la continuité.
+
+### Faut-il une architecture multi-modèle ?
+
+Pas toujours. Elle est utile si elle répond à un besoin de performance, continuité ou spécialisation, mais elle ajoute des tests et de l’exploitation.
+
+## Préparer votre audit
+
+[Contactez AI-Due](/fr/fr/contact) pour transformer vos risques métier en questions d’architecture, scénarios de panne et preuves à examiner.
+
+## Pour aller plus loin
+
+- [Due diligence IA : examiner un système avant achat](/fr/blog/due-diligence-ia-systeme-avant-achat)
+- [Évaluer un agent IA autonome avant son déploiement](/fr/blog/evaluer-agent-ia-autonome-avant-deploiement)
+- [Marchés prédictifs synthétiques : limites et usages](/fr/blog/marches-predictifs-synthetiques-limites-usages)
+- [Simulation par agents IA : lire les résultats prudemment](/fr/blog/simulation-agents-ia-lire-resultats)
+
+## Sources de référence
+
+- [EUR-Lex — règlement européen sur l’IA](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- [NIST — AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
+- [CNIL — intelligence artificielle](https://www.cnil.fr/fr/intelligence-artificielle)

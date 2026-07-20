@@ -1,0 +1,102 @@
+---
+title: "Due diligence d’un système IA"
+slug: "due-diligence-ia-systeme-avant-achat"
+date: "2026-07-20"
+dateModified: "2026-07-20"
+author: "Laurent Duplat"
+category: "Audit et gouvernance IA"
+tags: ["audit IA", "due diligence IA", "gouvernance IA", "agents IA"]
+geo: {"city": "Gen?ve", "region": "Gen?ve", "country": "CH", "lat": 46.2044, "lng": 6.1432, "continent": "Europe"}
+readTime: 9
+excerpt: "Une due diligence IA cherche à comprendre ce que le système fait réellement, dans quelles conditions et avec quelles dépendances. Une démonstration peut montrer un parcours réussi ; la revue doit aussi examiner les donné"
+coverImage: "/images/blog/portfolio-20260720/ai-due-due-diligence.png"
+---
+
+Une due diligence IA cherche à comprendre ce que le système fait réellement, dans quelles conditions et avec quelles dépendances. Une démonstration peut montrer un parcours réussi ; la revue doit aussi examiner les données, les échecs, les validations humaines, les fournisseurs et la capacité à maintenir le service.
+
+Cette analyse complète les diligences financières, juridiques, techniques et commerciales conduites par les professionnels compétents. Elle ne les remplace pas et doit rester proportionnée à la décision.
+
+## Définir l’objet exact de la revue
+
+Séparez le produit commercial, les modèles, les données, l’infrastructure et les services humains. Une entreprise peut présenter un agent autonome alors qu’une partie importante des exceptions est traitée manuellement. Ce n’est pas nécessairement un problème, mais le fonctionnement doit être compris.
+
+Listez les cas d’usage vendus, les clients visés et les actions possibles. Demandez lesquels sont en production, en pilote ou seulement prévus. Une feuille de route n’est pas une capacité actuelle.
+
+Formulez les questions critiques selon votre décision : dépendance à un fournisseur, qualité des données, propriété intellectuelle, capacité de reprise ou conformité du déploiement.
+
+## Reconstituer le flux de données
+
+Demandez un schéma depuis l’entrée jusqu’à la sortie. Incluez collecte, nettoyage, indexation, inférence, stockage, journaux et réutilisation. Identifiez les services externes à chaque étape.
+
+Examinez l’origine et les droits associés aux données d’entraînement, de test et de production avec les conseils appropriés. Une affirmation générale de conformité ne remplace pas les contrats, registres et procédures.
+
+Vérifiez comment une correction ou une suppression se propage. Une donnée peut quitter la source tout en restant dans un index, un cache ou un jeu de test.
+
+## Examiner les preuves de performance
+
+Demandez la définition de chaque indicateur, le jeu utilisé, la date, le protocole et les cas exclus. Une performance moyenne peut cacher une faiblesse sur une langue, un secteur ou une catégorie rare.
+
+Rejouez un échantillon avec des cas normaux, ambigus et hors périmètre. Conservez les sorties brutes et les corrections humaines. Si le système apprend des retours, examinez la manière dont ils sont validés avant d’influencer le comportement.
+
+Distinguez la performance du modèle de celle du produit complet. Une bonne prédiction peut échouer à créer l’action attendue à cause d’une intégration ou d’une interface.
+
+## Cartographier les dépendances critiques
+
+Listez les fournisseurs de modèles, de calcul, de données, d’identité et d’observation. Demandez ce qui se passe si une API change, si un service devient indisponible ou si une fonction est retirée.
+
+Examinez les possibilités de remplacement. Une architecture dite multi-modèle peut tout de même dépendre d’un format, d’un connecteur ou d’un jeu de consignes fortement lié à un fournisseur.
+
+Le plan de continuité doit avoir été testé. Une alternative inscrite dans une présentation ne prouve pas que le service peut basculer sans perte de fonction.
+
+## Évaluer la gouvernance opérationnelle
+
+Qui peut modifier les consignes, les modèles, les seuils et les connecteurs ? Comment une version est-elle approuvée, déployée et retirée ? Demandez des exemples de changement et d’incident.
+
+Vérifiez la séparation des rôles, les revues de code ou configuration, les tests et l’observation. Pour un agent autonome, examinez les limites d’action et les confirmations humaines.
+
+L’organisation doit pouvoir suspendre rapidement un comportement sans arrêter tout le service. Une gouvernance centralisée dans la tête d’une seule personne est un risque de continuité.
+
+## Transformer les constats en conditions
+
+Classez les constats entre preuve suffisante, information à confirmer, remédiation et point bloquant. Reliez chaque point à l’impact sur la décision, sans transformer une préférence technique en risque majeur.
+
+Une condition peut limiter un cas d’usage, exiger un test, clarifier un contrat ou attribuer une responsabilité. Fixez la preuve attendue et la personne qui la revoit.
+
+## Conduire des entretiens croisés
+
+Posez les mêmes questions au produit, à la technique, aux opérations et au support. Des réponses différentes ne prouvent pas une anomalie, mais elles révèlent les zones où le fonctionnement dépend d’une connaissance informelle.
+
+Demandez à voir un incident ou un changement récent de bout en bout : détection, décision, correction et communication. Cet exemple concret permet d’évaluer la gouvernance quotidienne mieux qu’une politique décrite uniquement en principe.
+
+Consignez les divergences et faites-les clarifier par les responsables concernés avant de conclure, sans choisir arbitrairement la version la plus rassurante.
+
+## Questions fréquentes
+
+### Une démo technique suffit-elle pour commencer ?
+
+Elle aide à comprendre le produit, mais la due diligence examine aussi les données, la gouvernance, les dépendances et les preuves de production.
+
+### Faut-il accéder au code source ?
+
+Cela dépend de la transaction et du risque. Une revue peut s’appuyer sur architecture, tests, journaux et entretiens, mais certains constats exigent un accès technique plus approfondi.
+
+### Comment traiter une information non disponible ?
+
+Notez l’incertitude, son impact et la preuve demandée. Ne remplacez pas l’absence par une hypothèse favorable ou défavorable non fondée.
+
+## Préparer votre revue IA
+
+[Contactez AI-Due](/fr/fr/contact) pour structurer les questions techniques et opérationnelles d’une diligence en coordination avec vos conseils spécialisés.
+
+## Pour aller plus loin
+
+- [Audit d’architecture IA : questions pour décideurs](/fr/blog/audit-architecture-ia-questions-decideurs)
+- [Évaluer un agent IA autonome avant son déploiement](/fr/blog/evaluer-agent-ia-autonome-avant-deploiement)
+- [Marchés prédictifs synthétiques : limites et usages](/fr/blog/marches-predictifs-synthetiques-limites-usages)
+- [Simulation par agents IA : lire les résultats prudemment](/fr/blog/simulation-agents-ia-lire-resultats)
+
+## Sources de référence
+
+- [EUR-Lex — règlement européen sur l’IA](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- [NIST — AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
+- [CNIL — intelligence artificielle](https://www.cnil.fr/fr/intelligence-artificielle)

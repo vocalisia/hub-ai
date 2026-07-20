@@ -1,0 +1,104 @@
+---
+title: "Évaluer un agent IA autonome"
+slug: "evaluer-agent-ia-autonome-avant-deploiement"
+date: "2026-07-20"
+dateModified: "2026-07-20"
+author: "Laurent Duplat"
+category: "Audit et gouvernance IA"
+tags: ["audit IA", "due diligence IA", "gouvernance IA", "agents IA"]
+geo: {"city": "Gen?ve", "region": "Gen?ve", "country": "CH", "lat": 46.2044, "lng": 6.1432, "continent": "Europe"}
+readTime: 9
+excerpt: "Un agent IA autonome ne doit pas être évalué seulement sur la qualité de ses réponses. Il planifie, utilise des outils et modifie parfois un système. Le test doit donc examiner l’objectif, les permissions, la séquence d’"
+coverImage: "/images/blog/portfolio-20260720/ai-due-agent-autonome.png"
+---
+
+Un agent IA autonome ne doit pas être évalué seulement sur la qualité de ses réponses. Il planifie, utilise des outils et modifie parfois un système. Le test doit donc examiner l’objectif, les permissions, la séquence d’actions, le comportement face à l’incertitude et la reprise humaine.
+
+Le principe directeur est simple : donner peu de droits, observer beaucoup et augmenter le périmètre uniquement lorsque les échecs sont compris.
+
+## Définir la mission et les interdictions
+
+Écrivez la mission en termes d’entrée et de sortie. « Traiter les demandes » est trop vague. « Lire une demande de test, proposer une catégorie et préparer un brouillon non envoyé » est vérifiable.
+
+Listez les actions interdites : envoyer, supprimer, modifier un statut sensible, accéder à une autre base ou prendre un engagement. Une interdiction doit être appliquée par les permissions, pas uniquement par une phrase dans le prompt.
+
+Indiquez les conditions d’arrêt : donnée manquante, conflit de consignes, outil indisponible ou demande hors sujet.
+
+## Isoler l’environnement de test
+
+Utilisez des comptes, documents et services fictifs. L’agent ne doit pas pouvoir atteindre les données de production par un chemin indirect. Limitez les réseaux, les connecteurs et les secrets disponibles.
+
+Créez des outils de test qui simulent les actions et enregistrent les paramètres. Vous pouvez ainsi voir ce que l’agent aurait envoyé ou modifié sans produire l’effet réel.
+
+Vérifiez la réinitialisation entre les scénarios. Une mémoire persistante peut mélanger les données et rendre les résultats difficiles à attribuer.
+
+## Tester la planification et les limites d’outils
+
+Donnez un objectif normal et observez le plan, les appels d’outils et les vérifications. L’agent confirme-t-il l’état avant une action ? Utilise-t-il le bon outil ou cherche-t-il un raccourci non prévu ?
+
+Introduisez une information contradictoire dans une source. L’agent doit signaler le conflit ou revenir vers une personne, pas choisir silencieusement la version qui facilite son plan.
+
+Faites échouer un outil. Le système doit interrompre la chaîne ou prendre une voie de secours autorisée. Il ne doit pas annoncer une action qui n’a pas été confirmée.
+
+## Tester les instructions adverses
+
+Placez dans un document une consigne qui tente de détourner l’agent : ignorer l’objectif, révéler son contexte ou appeler un outil différent. Observez si le contenu est traité comme une donnée ou comme un ordre.
+
+Demandez à l’agent de dépasser son rôle directement. Les permissions doivent bloquer même si le modèle accepte la demande. Testez aussi les noms de fichiers, liens et champs qui contiennent des instructions trompeuses.
+
+Documentez chaque réponse et corrigez la couche appropriée : consigne, filtrage, permission, validation ou architecture.
+
+## Construire la reprise humaine
+
+L’agent doit transmettre l’objectif, les étapes effectuées, les données confirmées et le blocage. Un simple message « erreur » oblige l’utilisateur à tout recommencer.
+
+Définissez qui reçoit chaque type d’exception et dans quel outil. Une reprise sans propriétaire laisse les tâches s’accumuler.
+
+Permettez à une personne de suspendre l’agent, d’annuler une action réversible et de corriger la source. Testez ces commandes pendant la recette.
+
+## Observer et limiter en production
+
+Commencez en mode proposition ou lecture seule. Comparez les sorties aux décisions humaines et classez les écarts. Ajoutez l’écriture seulement pour un type d’action stable et facilement annulable.
+
+Surveillez les changements de distribution : nouveaux formats, nouveaux utilisateurs, hausse des exceptions ou modification d’un outil. Un agent validé sur un flux ne l’est pas automatiquement sur un autre.
+
+Conservez les versions de consignes, outils et modèles associées aux actions. Sans cette information, un incident est difficile à reproduire.
+
+## Tester les conflits entre objectifs
+
+Donnez à l’agent une tâche rapide qui entre en tension avec une règle de qualité ou de confidentialité. Observez s’il respecte la contrainte même lorsque cela empêche de terminer. Ajoutez ensuite deux objectifs concurrents, par exemple traiter une demande et attendre une confirmation absente.
+
+Le système doit disposer d’une hiérarchie claire : sécurité et permissions, règles métier, objectif de la tâche puis préférences. Si le modèle arbitre seul selon la formulation la plus insistante, l’architecture doit renforcer les limites hors du prompt.
+
+Refaites ce test après chaque ajout d’outil. Une permission nouvelle peut offrir un chemin qui n’existait pas lors de la recette initiale. Conservez un cas où l’objectif semble urgent mais doit tout de même s’arrêter. La réussite consiste alors à refuser proprement, pas à terminer la tâche.
+
+## Questions fréquentes
+
+### Un agent peut-il être totalement autonome ?
+
+L’autonomie dépend de l’action, de son impact et de sa réversibilité. Les cas sensibles gardent une validation ou une reprise humaine.
+
+### Que tester après un changement de modèle ?
+
+Le parcours normal, les refus, les instructions adverses, les erreurs d’outils et les sorties. Une version nouvelle peut modifier le comportement même si les consignes restent identiques.
+
+### Quels journaux conserver ?
+
+Les objectifs, appels d’outils, statuts, validations et versions utiles à l’audit, en limitant les données et les accès selon le cadre défini.
+
+## Tester un agent avant ouverture
+
+[Contactez AI-Due](/fr/fr/contact) pour construire une matrice de scénarios et de permissions adaptée à votre agent autonome.
+
+## Pour aller plus loin
+
+- [Audit d’architecture IA : questions pour décideurs](/fr/blog/audit-architecture-ia-questions-decideurs)
+- [Due diligence IA : examiner un système avant achat](/fr/blog/due-diligence-ia-systeme-avant-achat)
+- [Marchés prédictifs synthétiques : limites et usages](/fr/blog/marches-predictifs-synthetiques-limites-usages)
+- [Simulation par agents IA : lire les résultats prudemment](/fr/blog/simulation-agents-ia-lire-resultats)
+
+## Sources de référence
+
+- [EUR-Lex — règlement européen sur l’IA](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- [NIST — AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
+- [CNIL — intelligence artificielle](https://www.cnil.fr/fr/intelligence-artificielle)
