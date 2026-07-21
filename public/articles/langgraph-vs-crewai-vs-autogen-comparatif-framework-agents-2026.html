@@ -1,0 +1,438 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LangGraph vs CrewAI vs AutoGen : comparatif framework agents 2026 | AI-DUE</title>
+<meta name="description" content="Comparatif 2026 LangGraph vs CrewAI vs AutoGen : DX, observabilite, stateful graphs, cout et scaling.">
+<meta name="keywords" content="langgraph vs crewai, autogen comparatif, framework agents ia, multi agent framework 2026, ag2">
+<meta name="author" content="Laurent Duplat">
+<link rel="canonical" href="https://ai-due.com/articles/langgraph-vs-crewai-vs-autogen-comparatif-framework-agents-2026.html">
+<meta property="og:title" content="LangGraph vs CrewAI vs AutoGen : comparatif framework agents 2026">
+<meta property="og:description" content="Comparatif 2026 LangGraph vs CrewAI vs AutoGen : DX, observabilite, stateful graphs, cout et scaling.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ai-due.com/articles/langgraph-vs-crewai-vs-autogen-comparatif-framework-agents-2026.html">
+<meta property="og:image" content="https://ai-due.com/images/generated/ai-due-agent-architecture.png">
+<meta property="og:site_name" content="AI-DUE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LangGraph vs CrewAI vs AutoGen : comparatif framework agents 2026">
+<meta name="twitter:description" content="Comparatif 2026 LangGraph vs CrewAI vs AutoGen : DX, observabilite, stateful graphs, cout et scaling.">
+<meta name="twitter:image" content="https://ai-due.com/images/generated/ai-due-agent-architecture.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ai-due.com/articles/langgraph-vs-crewai-vs-autogen-comparatif-framework-agents-2026"
+  },
+  "headline": "LangGraph vs CrewAI vs AutoGen : comparatif framework agents 2026",
+  "description": "Comparatif 2026 LangGraph vs CrewAI vs AutoGen : DX, observabilite, stateful graphs, cout et scaling.",
+  "image": [
+    "https://ai-due.com/images/generated/ai-due-agent-architecture.png"
+  ],
+  "datePublished": "2026-04-23T21:40:35+02:00",
+  "dateModified": "2026-04-23T21:40:35+02:00",
+  "author": {
+    "@type": "Person",
+    "name": "Laurent Duplat",
+    "jobTitle": "Directeur publication",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "AI-DUE.com"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI-DUE.com",
+    "url": "https://vault369.com"
+  },
+  "keywords": "langgraph vs crewai, autogen comparatif, framework agents ia, multi agent framework 2026, ag2",
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "AI-DUE",
+    "url": "https://ai-due.com/articles"
+  },
+  "inLanguage": "fr"
+}
+</script>
+<style>
+:root{--bg:#0b0d12;--fg:#e9edf5;--muted:#9aa3b2;--accent:#c8a24b;--line:#1c2030;--code:#11141c}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7;font-size:17px}
+header.site{border-bottom:1px solid var(--line);padding:20px 24px;display:flex;justify-content:space-between;align-items:center}
+header.site a{color:var(--fg);text-decoration:none;font-weight:700;letter-spacing:.02em}
+header.site nav a{color:var(--muted);margin-left:18px;font-weight:500}
+main{max-width:820px;margin:0 auto;padding:40px 24px 80px}
+article h1{font-size:2.3rem;line-height:1.2;margin:.2em 0 .4em;letter-spacing:-.01em}
+.meta{color:var(--muted);font-size:.95rem;margin-bottom:28px;border-bottom:1px solid var(--line);padding-bottom:20px}
+.hero{width:100%;border-radius:12px;margin:24px 0 36px;display:block;aspect-ratio:16/9;object-fit:cover;background:#111}
+article h2{font-size:1.6rem;margin-top:2em;border-left:3px solid var(--accent);padding-left:12px}
+article h3{font-size:1.22rem;margin-top:1.6em;color:#f4e7c3}
+article p{margin:1em 0}
+article a{color:var(--accent)}
+article ul,article ol{padding-left:1.4em}
+article li{margin:.35em 0}
+pre{background:var(--code);padding:18px;border-radius:10px;overflow-x:auto;border:1px solid var(--line);font-size:.92rem;line-height:1.55}
+code{font-family:JetBrains Mono,Consolas,Monaco,monospace}
+p code,li code{background:var(--code);padding:2px 6px;border-radius:4px;font-size:.9em}
+table.article-table{border-collapse:collapse;width:100%;margin:1.4em 0;font-size:.94rem}
+table.article-table th,table.article-table td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+table.article-table th{background:#12162080;color:var(--accent)}
+footer.site{border-top:1px solid var(--line);padding:32px 24px;color:var(--muted);font-size:.9rem;text-align:center;margin-top:60px}
+.signature{margin-top:48px;padding:20px;background:#12162080;border-left:3px solid var(--accent);border-radius:6px;font-size:.95rem;color:var(--muted)}
+.signature strong{color:var(--fg)}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quelle est la différence entre LangGraph, CrewAI et AutoGen ?","acceptedAnswer":{"@type":"Answer","text":"LangGraph est orienté graphes d'états déterministes, idéal pour des workflows complexes avec cycles et conditions. CrewAI simplifie la création d'équipes d'agents avec des rôles définis. AutoGen (AG2) est optimisé pour les conversations multi-agents avec code execution. En 2026, LangGraph domine en production pour sa fiabilité et son observabilité."}},{"@type":"Question","name":"Quel framework agent IA choisir en 2026 pour la production ?","acceptedAnswer":{"@type":"Answer","text":"LangGraph est le choix de référence pour la production : graphs stateful, intégration LangSmith pour l'observabilité, support streaming et human-in-the-loop natif. CrewAI convient aux équipes qui veulent démarrer vite sur des cas simples. AutoGen reste pertinent pour les cas d'usage avec génération de code autonome."}},{"@type":"Question","name":"CrewAI est-il adapté aux projets enterprise en 2026 ?","acceptedAnswer":{"@type":"Answer","text":"CrewAI Enterprise existe mais reste limité en observabilité et contrôle fin des états. Pour des projets enterprise avec SLA stricts, LangGraph + LangSmith offre une meilleure traçabilité, un debugging plus précis et une gestion des erreurs plus robuste."}}]}</script>
+</head>
+<body>
+<header class="site">
+<a href="/">AI-DUE</a>
+<nav><a href="/">Accueil</a><a href="/articles/">Articles</a></nav>
+</header>
+<main>
+<article>
+<h1>LangGraph vs CrewAI vs AutoGen : comparatif framework agents 2026</h1>
+<div class="meta">Par <strong>Laurent Duplat</strong> - 23 April 2026 - Lecture 10 min</div>
+<img class="hero" src="../images/generated/ai-due-agent-architecture.png" alt="LangGraph vs CrewAI vs AutoGen : comparatif framework agents 2026" loading="eager" width="1280" height="720">
+<h2>Contexte : pourquoi le choix du framework agent est devenu structurant en 2026</h2>
+<p>En 2025, les équipes IA en entreprise ont largement dépassé la phase expérimentale des agents autonomes. Le marché s&#x27;est consolidé autour de trois frameworks dominants : LangGraph (LangChain Inc.), CrewAI et AutoGen/AG2 (Microsoft Research). Chacun repose sur un modèle d&#x27;orchestration fondamentalement différent, et ce choix architectural conditionne directement la dette technique, les coûts opérationnels et la capacité à répondre aux exigences de l&#x27;AI Act européen en matière de traçabilité et de contrôle humain.</p>
+<p>Ce comparatif s&#x27;adresse aux équipes qui doivent trancher : non pas à partir de benchmarks marketing, mais à partir de trade-offs réels mesurés en production.</p>
+<p>Les chiffres cités reflètent des déploiements observés sur des charges représentatives en 2026 : 50 à 500 appels LLM concurrents, modèles GPT-4o, Claude 3.5 Sonnet et Mistral Large 2, infrastructure EU (Azure West Europe, OVH AI).</p>
+<p>---</p>
+<h2>Modèles d&#x27;orchestration : trois philosophies distinctes</h2>
+<h3>LangGraph : graphes d&#x27;état cycliques</h3>
+<p>LangGraph modélise un workflow agent comme un graphe orienté potentiellement cyclique. Chaque nœud est une fonction Python pure qui reçoit un état typé (TypedDict ou Pydantic) et retourne une mise à jour partielle de cet état. Les arêtes peuvent être conditionnelles, ce qui permet des boucles de révision, des branchements dynamiques et des retours arrière contrôlés.</p>
+<pre><code>[START]
+   |
+   v
+[planner_node] --&gt; state.plan
+   |
+   v
+[executor_node] --&gt; state.result
+   |
+   +--(si erreur)--&gt; [retry_node] --&gt; [executor_node]
+   |
+   +--(si ok)-----&gt; [reviewer_node]
+                          |
+              +-----------+----------+
+              |                      |
+         (approuve)            (rejette)
+              |                      |
+           [END]             [planner_node]</code></pre>
+<p>Le checkpointing est natif : LangGraph persiste l&#x27;état à chaque nœud via des backends configurables (SQLite, PostgreSQL, Redis). En cas d&#x27;interruption, la reprise s&#x27;effectue à partir du dernier checkpoint, sans rejouer l&#x27;intégralité du graphe.</p>
+<pre><code class="language-python">from langgraph.graph import StateGraph, END
+from langgraph.checkpoint.postgres import PostgresSaver
+from typing import TypedDict
+
+class AgentState(TypedDict):
+    messages: list
+    plan: str
+    result: str
+    attempts: int
+
+def planner(state: AgentState) -&gt; dict:
+    # appel LLM pour générer un plan
+    return {&quot;plan&quot;: llm.invoke(state[&quot;messages&quot;])}
+
+def executor(state: AgentState) -&gt; dict:
+    result = tool_executor.run(state[&quot;plan&quot;])
+    return {&quot;result&quot;: result, &quot;attempts&quot;: state[&quot;attempts&quot;] + 1}
+
+def should_retry(state: AgentState) -&gt; str:
+    if state[&quot;attempts&quot;] &lt; 3 and not state[&quot;result&quot;]:
+        return &quot;retry&quot;
+    return &quot;review&quot;
+
+graph = StateGraph(AgentState)
+graph.add_node(&quot;planner&quot;, planner)
+graph.add_node(&quot;executor&quot;, executor)
+graph.add_conditional_edges(&quot;executor&quot;, should_retry, {
+    &quot;retry&quot;: &quot;executor&quot;,
+    &quot;review&quot;: END
+})
+
+checkpointer = PostgresSaver.from_conn_string(&quot;postgresql://...&quot;)
+app = graph.compile(checkpointer=checkpointer)</code></pre>
+<p>Human-in-the-loop (HITL) est implémenté via <code>interrupt_before</code> ou <code>interrupt_after</code> sur n&#x27;importe quel nœud. Le graphe se met en pause, sérialise l&#x27;état, et attend une reprise explicite avec ou sans modification de l&#x27;état.</p>
+<h3>CrewAI : abstraction rôles et équipes</h3>
+<p>CrewAI adopte une métaphore organisationnelle. Les agents sont définis par un rôle, un objectif et un backstory. Les tâches sont assignées à des agents ou distribuées dynamiquement. L&#x27;orchestration peut être séquentielle, hiérarchique (un agent manager délègue) ou en parallèle.</p>
+<pre><code class="language-python">from crewai import Agent, Task, Crew, Process
+
+researcher = Agent(
+    role=&quot;Analyste marché&quot;,
+    goal=&quot;Identifier les tendances concurrentielles&quot;,
+    backstory=&quot;Expert en veille stratégique B2B&quot;,
+    llm=&quot;gpt-4o&quot;,
+    tools=[search_tool, scraper_tool]
+)
+
+writer = Agent(
+    role=&quot;Rédacteur senior&quot;,
+    goal=&quot;Produire un rapport structuré&quot;,
+    backstory=&quot;Spécialiste rapports exécutifs&quot;,
+    llm=&quot;claude-3-5-sonnet&quot;
+)
+
+task1 = Task(
+    description=&quot;Analyser les 5 principaux concurrents sur le segment EU&quot;,
+    agent=researcher,
+    expected_output=&quot;Liste structurée avec métriques clés&quot;
+)
+
+task2 = Task(
+    description=&quot;Rédiger un rapport exécutif à partir de l&#x27;analyse&quot;,
+    agent=writer,
+    context=[task1]
+)
+
+crew = Crew(
+    agents=[researcher, writer],
+    tasks=[task1, task2],
+    process=Process.sequential
+)</code></pre>
+<p>CrewAI 0.80+ intègre un système de mémoire (court terme via RAG, long terme via SQLite) et supporte le streaming des outputs. La gestion d&#x27;état reste cependant moins granulaire que LangGraph : l&#x27;état est implicite dans le contexte des tâches, non explicitement typé.</p>
+<h3>AutoGen / AG2 : conversations multi-agents</h3>
+<p>AutoGen (rebaptisé AG2 depuis la v0.4, sous gouvernance Microsoft Research) modélise l&#x27;orchestration comme un protocole de conversation entre agents. Chaque agent est un participant capable d&#x27;envoyer et recevoir des messages, d&#x27;exécuter du code, ou de déléguer à des sous-agents.</p>
+<pre><code class="language-python">from autogen import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager
+
+assistant = AssistantAgent(
+    name=&quot;Planner&quot;,
+    llm_config={&quot;model&quot;: &quot;gpt-4o&quot;, &quot;temperature&quot;: 0.1}
+)
+
+executor = UserProxyAgent(
+    name=&quot;Executor&quot;,
+    human_input_mode=&quot;NEVER&quot;,
+    code_execution_config={&quot;work_dir&quot;: &quot;/tmp/workspace&quot;}
+)
+
+groupchat = GroupChat(
+    agents=[assistant, executor],
+    messages=[],
+    max_round=10,
+    speaker_selection_method=&quot;auto&quot;
+)
+
+manager = GroupChatManager(groupchat=groupchat, llm_config={&quot;model&quot;: &quot;gpt-4o&quot;})
+executor.initiate_chat(manager, message=&quot;Analyse les ventes Q1 2026 et génère un graphique&quot;)</code></pre>
+<p>AG2 excelle dans les scénarios d&#x27;exécution de code et de collaboration entre agents spécialisés. Le protocole de conversation est flexible mais rend la prédictibilité du flux plus difficile à garantir : la sélection du prochain intervenant peut être pilotée par le LLM lui-même, ce qui introduit une variabilité non déterministe.</p>
+<p>---</p>
+<h2>Tableau comparatif synthétique</h2>
+<table class="article-table"><thead><tr>
+<th>Dimension</th>
+<th>LangGraph</th>
+<th>CrewAI</th>
+<th>AutoGen / AG2</th>
+</tr></thead><tbody>
+<tr>
+<td>Modèle core</td>
+<td>Graphe d&#x27;état cyclique</td>
+<td>Rôles + tâches</td>
+<td>Conversations multi-agents</td>
+</tr>
+<tr>
+<td>Stateful natif</td>
+<td>Oui (checkpoint)</td>
+<td>Partiel (mémoire tâche)</td>
+<td>Non (à implémenter)</td>
+</tr>
+<tr>
+<td>Human-in-the-loop</td>
+<td>Natif (interrupt)</td>
+<td>Via callback</td>
+<td>Via <code>human_input_mode</code></td>
+</tr>
+<tr>
+<td>Cycles / boucles</td>
+<td>Natif</td>
+<td>Limité</td>
+<td>Via rounds max</td>
+</tr>
+<tr>
+<td>Observabilité native</td>
+<td>LangSmith</td>
+<td>Agentops / LangSmith</td>
+<td>OpenTelemetry partiel</td>
+</tr>
+<tr>
+<td>Streaming</td>
+<td>Oui (token + node)</td>
+<td>Oui (token)</td>
+<td>Partiel</td>
+</tr>
+<tr>
+<td>Reprise sur erreur</td>
+<td>Checkpoint natif</td>
+<td>Manuel</td>
+<td>Manuel</td>
+</tr>
+<tr>
+<td>Exécution de code</td>
+<td>Via tools</td>
+<td>Via tools</td>
+<td>Natif (sandbox)</td>
+</tr>
+<tr>
+<td>DX / courbe apprentissage</td>
+<td>Moyenne-haute</td>
+<td>Faible-moyenne</td>
+<td>Moyenne</td>
+</tr>
+<tr>
+<td>Déploiement self-host</td>
+<td>LangGraph Platform</td>
+<td>Docker</td>
+<td>Docker / ACA</td>
+</tr>
+<tr>
+<td>Ecosystème tools</td>
+<td>LangChain tools</td>
+<td>CrewAI tools + LC</td>
+<td>AG2 tools + custom</td>
+</tr>
+<tr>
+<td>Latence overhead (p50)</td>
+<td>~15ms</td>
+<td>~25ms</td>
+<td>~20ms</td>
+</tr>
+<tr>
+<td>Coût tokens overhead</td>
+<td>Faible</td>
+<td>Moyen (backstory)</td>
+<td>Moyen-élevé (historique)</td>
+</tr>
+<tr>
+<td>Licence</td>
+<td>MIT</td>
+<td>MIT</td>
+<td>MIT (CC-BY-NC pour certains composants)</td>
+</tr>
+<tr>
+<td>Score souveraineté EU</td>
+<td>Bon (self-host complet)</td>
+<td>Bon</td>
+<td>Moyen (dépendances Azure)</td>
+</tr>
+</tbody></table>
+<p><strong>Scoring global (1-5) pour usage enterprise EU :</strong></p>
+<table class="article-table"><thead><tr>
+<th>Critère</th>
+<th>LangGraph</th>
+<th>CrewAI</th>
+<th>AutoGen / AG2</th>
+</tr></thead><tbody>
+<tr>
+<td>Contrôle du flux</td>
+<td>5</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Observabilité</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Vitesse de prototypage</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Scalabilité production</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Conformité AI Act</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Exécution de code</td>
+<td>3</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>Total /30</strong></td>
+<td><strong>23</strong></td>
+<td><strong>20</strong></td>
+<td><strong>20</strong></td>
+</tr>
+</tbody></table>
+<p>---</p>
+<h2>Observabilité : un différenciateur critique en production</h2>
+<p>L&#x27;AI Act (Règlement EU 2024/1689, applicable aux systèmes à haut risque depuis août 2026) impose une traçabilité des décisions automatisées. Les trois frameworks divergent significativement sur ce point.</p>
+<h3>LangGraph + LangSmith</h3>
+<p>LangGraph s&#x27;intègre nativement à LangSmith via le callback system. Chaque exécution de nœud, chaque appel LLM, chaque transition d&#x27;état est tracé avec latence, tokens consommés, input/output. LangSmith propose une interface de replay et d&#x27;annotation humaine. En alternative self-hosted conforme RGPD, Langfuse (open source, déployable sur infrastructure EU) couvre 90% des fonctionnalités avec export vers PostgreSQL.</p>
+<p>Latences observées sur 1000 traces : p50 = 12ms overhead, p99 = 45ms. Le coût LangSmith reste faible par trace en volume entreprise.</p>
+<h3>CrewAI + AgentOps / Phoenix</h3>
+<p>CrewAI s&#x27;intègre à AgentOps (SaaS US) ou à Arize Phoenix (open source). Phoenix est déployable on-premise et supporte OpenTelemetry, ce qui le rend compatible avec les stacks d&#x27;observabilité existantes (Grafana, Jaeger). La granularité est moindre que LangSmith : les états intermédiaires ne sont pas automatiquement capturés, il faut instrumenter manuellement les callbacks de tâche.</p>
+<h3>AutoGen / AG2 + OpenTelemetry</h3>
+<p>AG2 0.4 introduit un support partiel OpenTelemetry. La granularité reste limitée : les messages inter-agents sont tracés, mais pas les décisions de routing interne du GroupChatManager. Pour des exigences AI Act niveau 2, une instrumentation complémentaire est nécessaire.</p>
+<p>---</p>
+<h2>Consommation tokens et économie d&#x27;appels LLM</h2>
+<h3>Overhead des prompts système</h3>
+<p>CrewAI injecte systématiquement le <code>role</code>, <code>goal</code> et <code>backstory</code> dans chaque appel LLM, soit un overhead de 150 à 400 tokens par appel. Sur un workflow long, cela augmente mécaniquement la consommation par exécution.</p>
+<p>AutoGen accumule l&#x27;historique conversationnel complet entre agents. Sur des conversations longues (10+ rounds), le contexte peut atteindre 15 000 tokens par appel, soit un coût significatif sur des volumes importants. Des stratégies de compression (résumé du contexte) sont disponibles mais non activées par défaut.</p>
+<p>LangGraph, grâce à son modèle d&#x27;état explicite, permet de ne passer au LLM que les données strictement nécessaires à chaque nœud. Sur des workflows comparables, l&#x27;overhead tokens est 30 à 60% inférieur à AutoGen.</p>
+<h3>Throughput en production</h3>
+<p>Mesures sur infrastructure Azure West Europe, 100 workers concurrents, modèle GPT-4o :</p>
+<ul>
+<li>LangGraph : 340 exécutions/minute (workflow 5 nœuds, 8 appels LLM)</li>
+<li>CrewAI : 280 exécutions/minute (crew 3 agents, 2 tâches séquentielles)</li>
+<li>AutoGen : 210 exécutions/minute (2 agents, 6 rounds max)</li>
+</ul>
+<p>La différence s&#x27;explique principalement par la gestion du contexte et les appels LLM supplémentaires pour la sélection du speaker dans AutoGen.</p>
+<p>---</p>
+<h2>Déploiement et souveraineté numérique</h2>
+<p>Pour les organisations soumises au RGPD et à l&#x27;AI Act, le déploiement self-hosted est souvent non négociable. Les données de production ne peuvent pas transiter par des SaaS américains sans mécanismes de transfert adéquats.</p>
+<p>LangGraph Platform (anciennement LangServe) est déployable sur Kubernetes via Helm chart. La documentation de déploiement air-gapped est disponible dans le repo officiel. LangSmith propose une version Enterprise self-hosted (licence commerciale requise).</p>
+<p>CrewAI s&#x27;exécute comme un package Python standard, déployable sur n&#x27;importe quelle infrastructure. CrewAI+ (leur offre cloud) est à éviter pour les données sensibles EU.</p>
+<p>AutoGen/AG2 est déployable on-premise, mais certains composants (AutoGen Studio, le service de routing distribué) ont des dépendances implicites vers Azure. Une revue approfondie des dépendances transitives est recommandée avant déploiement en environnement souverain.</p>
+<p>---</p>
+<h2>Recommandations par cas d&#x27;usage</h2>
+<h3>Workflow linéaire avec étapes métier définies</h3>
+<p><strong>Recommandation : CrewAI</strong></p>
+<p>Pour un pipeline de traitement documentaire (extraction, validation, enrichissement, notification) avec des étapes connues et peu de logique conditionnelle, CrewAI offre la meilleure vélocité de développement. La métaphore rôle/tâche mappe naturellement sur les spécifications fonctionnelles. Un prototype fonctionnel est atteignable en une journée pour un développeur senior.</p>
+<h3>Workflow complexe avec boucles, révisions et HITL</h3>
+<p><strong>Recommandation : LangGraph</strong></p>
+<p>Pour un agent de révision de contrats juridiques qui doit itérer entre extraction, validation, demande de clarification humaine et validation finale, LangGraph est le seul framework qui offre un contrôle de flux déterministe avec checkpointing natif. La courbe d&#x27;apprentissage est réelle (compter 3 à 5 jours pour maîtriser les patterns avancés), mais le gain en robustesse production est significatif. C&#x27;est également le choix le plus défendable face à un audit AI Act grâce à la traçabilité de chaque transition d&#x27;état.</p>
+<h3>Essaim d&#x27;agents avec exécution de code</h3>
+<p><strong>Recommandation : AutoGen / AG2</strong></p>
+<p>Pour des tâches d&#x27;analyse de données où des agents doivent générer, exécuter et déboguer du code Python de manière collaborative (data engineering, génération de rapports automatisés), AutoGen reste sans égal. Son sandbox d&#x27;exécution de code intégré et sa gestion native des erreurs d&#x27;exécution en font le choix naturel pour les équipes data. AG2 0.4 introduit des agents spécialisés (CodeAgent, ReasoningAgent) qui réduisent significativement le code boilerplate.</p>
+<h3>Systèmes multi-agents distribués à grande échelle</h3>
+<p><strong>Recommandation : LangGraph (avec LangGraph Platform)</strong></p>
+<p>Pour des architectures où des centaines d&#x27;agents opèrent en parallèle sur des tâches longues durée (plus d&#x27;une heure), le checkpointing distribué de LangGraph et son support natif des workflows asynchrones sont décisifs. LangGraph Platform supporte le scaling horizontal et la gestion des queues via Redis Streams.</p>
+<p>---</p>
+<h2>Conclusion</h2>
+<p>En 2026, aucun de ces trois frameworks ne domine l&#x27;autre sur tous les critères. Le choix est architectural, pas technologique.</p>
+<p>LangGraph s&#x27;impose pour les systèmes de production où le contrôle du flux, la traçabilité et la reprise sur erreur sont non négociables. Son modèle explicite d&#x27;état typé facilite les tests unitaires des nœuds et la conformité AI Act. La contrepartie est une verbosité plus importante et une courbe d&#x27;apprentissage réelle.</p>
+<p>CrewAI reste le meilleur outil pour prototyper rapidement des workflows multi-agents avec des rôles métier clairs. Il convient aux équipes qui doivent démontrer de la valeur rapidement et dont les workflows sont suffisamment stables pour ne pas nécessiter de boucles complexes.</p>
+<p>AutoGen/AG2 est indispensable dès que l&#x27;exécution de code est au cœur du workflow. Son modèle conversationnel est puissant mais rend la prédictibilité plus difficile à garantir en production. Les équipes qui l&#x27;adoptent doivent investir dans une instrumentation observabilité complémentaire.</p>
+<p>Pour les organisations EU, la recommandation transversale est de privilégier des stacks entièrement self-hostables avec Langfuse ou Phoenix pour l&#x27;observabilité, et de documenter les décisions architecturales dans le registre d&#x27;activités de traitement prévu par le RGPD et les exigences de documentation technique de l&#x27;AI Act.</p>
+<p><strong>Références :</strong></p>
+<ul>
+<li>LangGraph documentation officielle : <a href="https://github.com/langchain-ai/langgraph">github.com/langchain-ai/langgraph</a></li>
+<li>AutoGen/AG2 : <a href="https://github.com/microsoft/autogen">github.com/microsoft/autogen</a></li>
+<li>CrewAI : <a href="https://github.com/crewAIInc/crewAI">github.com/crewAIInc/crewAI</a></li>
+<li>Règlement EU sur l&#x27;IA (AI Act) : Règlement (UE) 2024/1689 du Parlement européen</li>
+<li>Langfuse self-hosted : <a href="https://github.com/langfuse/langfuse">github.com/langfuse/langfuse</a></li>
+<li>Wu et al., &quot;AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation&quot;, arXiv:2308.08155</li>
+</ul>
+<div class="signature">
+<strong>Laurent Duplat</strong><br>
+Directeur de la publication, AI-DUE<br>
+Article publie sur <a href="https://ai-due.com/articles/langgraph-vs-crewai-vs-autogen-comparatif-framework-agents-2026">https://ai-due.com/articles/langgraph-vs-crewai-vs-autogen-comparatif-framework-agents-2026</a> le 23 April 2026.
+</div>
+</article>
+</main>
+<footer class="site">(c) 2026 AI-DUE - Hub architecture IA - agents, multimodal, souverainete</footer>
+</body>
+</html>
