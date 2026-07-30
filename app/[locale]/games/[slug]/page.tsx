@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import type { Metadata } from 'next'
 
 export { }
@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: { params: { locale: string; s
 export default function GamePage({ params }: { params: { locale: string; slug: string } }) {
   const game = GAMES[params.slug]
   if (!game) notFound()
+  if (params.locale !== 'fr') permanentRedirect(`/fr/games/${params.slug}`)
 
   const GameComponent = game.component
 

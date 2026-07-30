@@ -1,6 +1,7 @@
 import EbookCard from '@/components/EbookCard'
 import type { EbookData } from '@/components/EbookCard'
 import type { Metadata } from 'next'
+import { permanentRedirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
 
@@ -129,6 +130,10 @@ export default async function EbooksPage({
 }: {
   params: { locale: string }
 }) {
+  if (locale !== 'fr') {
+    permanentRedirect('/fr/ebooks')
+  }
+
   const totalPages = EBOOKS.reduce((sum, e) => sum + e.pageCount, 0)
   const totalChapters = EBOOKS.reduce((sum, e) => sum + e.chapterCount, 0)
 

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { permanentRedirect } from 'next/navigation'
 import ROICalculator from '@/components/tools/ROICalculator'
 
 export const dynamic = 'force-dynamic'
@@ -37,6 +38,10 @@ export default async function ROIPage({
 }: {
   params: { locale: string }
 }) {
+  if (locale !== 'fr') {
+    permanentRedirect('/fr/tools/roi')
+  }
+
   return (
     <main className="min-h-screen bg-[#030014] relative">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
