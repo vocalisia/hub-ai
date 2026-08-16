@@ -26,7 +26,7 @@ const STATIC_PAGES: PageDef[] = [
   { path: 'contact', changeFrequency: 'monthly', priority: 0.9 },
   { path: 'architecture', changeFrequency: 'monthly', priority: 0.8 },
   { path: 'carte', changeFrequency: 'monthly', priority: 0.8 },
-  { path: 'ebooks', changeFrequency: 'monthly', priority: 0.8 },
+  { path: 'ebooks', changeFrequency: 'monthly', priority: 0.8, locales: [DEFAULT_LOCALE] },
   { path: 'tools', changeFrequency: 'monthly', priority: 0.8, locales: [DEFAULT_LOCALE] },
   { path: 'tools/maturite', changeFrequency: 'monthly', priority: 0.7, locales: [DEFAULT_LOCALE] },
   { path: 'tools/prompt', changeFrequency: 'monthly', priority: 0.7, locales: [DEFAULT_LOCALE] },
