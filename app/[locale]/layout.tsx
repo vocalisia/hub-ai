@@ -10,6 +10,7 @@ import Footer from '@/components/Footer'
 import CookieBannerLazy from '@/components/CookieBannerLazy'
 import GA4Tracker from '@/components/GA4Tracker'
 import ClientErrorBoundary from '@/components/ClientErrorBoundary'
+import WhatsAppButton from '@/components/WhatsAppButton'
 import '@/app/globals.css'
 
 const montserrat = Montserrat({
@@ -299,6 +300,7 @@ export default async function LocaleLayout({
           <ClientErrorBoundary name="cookie-banner">
             <CookieBannerLazy />
           </ClientErrorBoundary>
+          <WhatsAppButton />
           <ClientErrorBoundary name="ga4-tracker">
             <Suspense fallback={null}>
               <GA4Tracker />
